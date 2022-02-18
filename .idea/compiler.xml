@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.7">
+    <bytecodeTargetLevel target="1.8">
       <module name="GeekBank-Android.app" target="11" />
       <module name="GeekBank-Android.buildSrc" target="11" />
       <module name="GeekBank-Android.data" target="11" />
-      <module name="GeekBank-Android.domain" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

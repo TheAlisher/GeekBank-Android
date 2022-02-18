@@ -17,8 +17,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GeekBank-Android"
 include(
-        ":app",
-        ":data",
-        ":domain",
-        ":common"
+    ":app",
+    ":data",
+    ":domain",
+    ":common"
 )

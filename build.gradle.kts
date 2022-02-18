@@ -1,16 +1,11 @@
 plugins {
     id("com.android.application") version "7.1.1" apply false
     id("com.android.library") version "7.1.1" apply false
-    kotlin("android") version Dependencies.Versions.kotlin apply false
+    kotlin("android") version "1.6.10" apply false
 
     // Navigation Safe Args
-    id("androidx.navigation.safeargs.kotlin") version Dependencies.Versions.nav apply false
-}
+    id(Dependencies.Navigation.safeArgsPlugin) version Dependencies.Navigation.version apply false
 
-buildscript {
-    dependencies {
-
-        // Hilt
-        classpath("com.google.dagger:hilt-android-gradle-plugin:${Dependencies.Versions.hilt}")
-    }
+    // Hilt
+    id(Dependencies.Hilt.plugin) version Dependencies.Hilt.version apply false
 }
