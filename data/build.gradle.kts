@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
-        minSdk = 23
-        targetSdk = 31
+        minSdk = AndroidConfig.minSdk
+        targetSdk = AndroidConfig.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -18,8 +18,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }

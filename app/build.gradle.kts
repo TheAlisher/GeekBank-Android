@@ -11,12 +11,12 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = AndroidConfig.compileSdk
 
     defaultConfig {
         applicationId = "com.alish.geekbank"
-        minSdk = 23
-        targetSdk = 31
+        minSdk = AndroidConfig.minSdk
+        targetSdk = AndroidConfig.targetSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -27,8 +27,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -40,11 +39,8 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures {
-
-        // View Binding
-        viewBinding = true
-    }
+    // View Binding
+    buildFeatures.viewBinding = true
 }
 
 dependencies {
