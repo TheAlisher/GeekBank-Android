@@ -72,5 +72,15 @@ dependencies {
 
     // Hilt
     implementation(Dependencies.Hilt.android)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt(Dependencies.Hilt.compiler)
+
+    // viewBinding
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")
+
+    // Activity
+    implementation("androidx.activity:activity-ktx:1.4.0")
+
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
 }

@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/bottom_sheet_corners_background.xml" value="0.181" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_screen.xml" value="0.181" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card_detail.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_exchange.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_qr.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_settings.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_transfer.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_card_list.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_detail_card.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
