@@ -4,6 +4,7 @@ import android.content.Context
 import com.alish.geekbank.data.local.db.AppDatabase
 import com.alish.geekbank.data.local.db.RoomClient
 import com.alish.geekbank.data.local.db.daos.FooDao
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,4 +30,9 @@ object DatabaseModule {
     fun provideFooDao(
         appDatabase: AppDatabase
     ): FooDao = roomClient.provideFooDao(appDatabase)
+
+    @Provides
+    fun providePreferences(@ApplicationContext context: Context): PreferencesHelper {
+        return PreferencesHelper(context)
+    }
 }
