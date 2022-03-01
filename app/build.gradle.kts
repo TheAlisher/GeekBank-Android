@@ -81,10 +81,8 @@ dependencies {
     //Biometric
     implementation ("androidx.biometric:biometric:1.1.0")
 
-
-
     // Material Design
-    implementation ("com.google.android.material:material:1.6.0-alpha02")
+    implementation ("com.google.android.material:material:1.6.0-alpha03")
 
     // viewBinding
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")

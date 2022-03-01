@@ -46,7 +46,7 @@ class CreatePinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentCreat
                 if (isConfirm) {
                     if (value == preferences.pinCode) {
                         preferences.onSavePinCode()
-                        findNavController().navigate(R.id.action_pinCodeFragment_to_testHomeFragment)
+                        findNavController().navigate(R.id.action_pinCodeFragment_to_homeFragment)
                     } else {
                         Toast.makeText(requireContext(), "wrong password", Toast.LENGTH_SHORT).show()
                     }

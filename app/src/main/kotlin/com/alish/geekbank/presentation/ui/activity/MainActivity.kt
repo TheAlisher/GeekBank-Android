@@ -3,6 +3,7 @@ package com.alish.geekbank.presentation.ui.activity
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -21,13 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
-
     private val mAppBarConfiguration: AppBarConfiguration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavigationView.background = null
@@ -39,6 +37,31 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+        navController.addOnDestinationChangedListener{_, destination, _ ->
+            when (destination.id){
+                R.id.pinCodeFragment,
+                R.id.inputPinCodeFragment,
+                R.id.cardDetailFragment,
+                R.id.settingsFragment,
+                R.id.paymentsFragment,
+                R.id.profileFragment,
+                R.id.exchangeFragment
+                    ->{
+                        whetherToShow(false)
+                    }else ->{
+                        whetherToShow(true)
+                    }
+
+
+            }
+        }
+
+    }
+
+    private fun whetherToShow(b: Boolean) {
+        binding.bottomAppBar.isVisible = b
+        binding.fab.isVisible = b
+
 
     }
 

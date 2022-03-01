@@ -3,25 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2215" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_cards.xml" value="0.2215" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_home.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_icon.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_pay.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_profile.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_qrbutton.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_qrcode.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_userprofile.xml" value="0.2065" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.12" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/content_main.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_biometric.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_input_pin_code.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_test_home.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/menu/bottom_navigation.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/xml/motion_scene.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/bottom_sheet_corners_background.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_screen.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
@@ -37,6 +18,28 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_detail_card.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_list_transfer_number.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_transfer_list.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2215" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_cards.xml" value="0.2215" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_home.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_icon.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_pattern.xml" value="0.104" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_pay.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_profile.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_qrbutton.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_qrcode.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_userprofile.xml" value="0.2065" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/pattern.xml" value="0.104" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.12" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/content_main.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_biometric.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_input_pin_code.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_test_home.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_card_list.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/menu/bottom_navigation.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/xml/motion_scene.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
       </map>
     </option>
