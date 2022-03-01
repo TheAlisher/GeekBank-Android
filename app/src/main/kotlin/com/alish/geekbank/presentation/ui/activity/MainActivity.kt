@@ -1,7 +1,6 @@
 package com.alish.geekbank.presentation.ui.activity
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -24,20 +23,11 @@ class MainActivity : AppCompatActivity() {
 
     private val mAppBarConfiguration: AppBarConfiguration? = null
 
-//    @BindView(R.id.toolbar)
-//    var toolbar: Toolbar? = null
-//
-//    @BindView(R.id.text)
-//    var textView: TextView? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        ButterKnife.bind(this);
-
-     //   setSupportActionBar(binding.toolbar);
         navigation()
         setUpNavigation()
     }
