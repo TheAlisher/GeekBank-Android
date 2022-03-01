@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <com.alish.geekbank.presentation.customviews.GoodPinKeyPad
+        android:id="@+id/key"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultIndicator="@drawable/black_hollow_dot"
+        app:errorIndicator="@drawable/black_hollow_dot_error"
+        app:keyBackground="@drawable/keys_white_theme_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:marginTop="10dp"
+        app:pinEntry="four"
+        app:keyTextSize="30"
+        app:keySize="65dp"
+        app:selectedIndicator="@drawable/black_solid_dot"
+        app:keyPadStyle="dark_border"
+        tools:layout_editor_absoluteY="100dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
