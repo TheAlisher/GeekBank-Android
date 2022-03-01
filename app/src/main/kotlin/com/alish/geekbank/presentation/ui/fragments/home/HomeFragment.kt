@@ -31,22 +31,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
-            val displayMetrics = resources.displayMetrics
-            val cardWidth = binding.ivFirst.width
-            val cardStart = (displayMetrics.widthPixels.toFloat() / 2 - (cardWidth / 2))
-
-
             when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    xCoOrdinate = view.x - event.rawX
+                }
                 MotionEvent.ACTION_MOVE -> {
-                    val newX = event.rawX
-                    if (newX - cardWidth < cardStart) {// or new
-
-                        view.animate().x(
-                            min(cardStart, newX - (cardWidth / 2))
-                        )
-                            .setDuration(150)
-                            .start()
-                    }
+                    view.animate().x(event.rawX + xCoOrdinate)
+                        .setDuration(0)
+                        .start()
                 }
                 MotionEvent.ACTION_UP -> {
 
