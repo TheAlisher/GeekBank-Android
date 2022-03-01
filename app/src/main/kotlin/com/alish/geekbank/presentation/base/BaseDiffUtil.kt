@@ -7,13 +7,13 @@ interface IBaseDiffModel {
     override fun equals(other: Any?): Boolean
 }
 
-class BaseDiffUtilItemCallback<T : IBaseDiffModel> : DiffUtil.ItemCallback<T>() {
+class BaseDiffUtilItemCallback<Int : IBaseDiffModel> : DiffUtil.ItemCallback<Int>() {
 
-    override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+    override fun areItemsTheSame(oldItem: Int, newItem: Int): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+    override fun areContentsTheSame(oldItem: Int, newItem: Int): Boolean {
         return oldItem == newItem
     }
 }

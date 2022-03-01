@@ -14,9 +14,6 @@
             android:id="@+id/action_cardDetailFragment_to_exchangeFragment"
             app:destination="@id/exchangeFragment" />
         <action
-            android:id="@+id/action_cardDetailFragment_to_freezeFragment"
-            app:destination="@id/freezeFragment" />
-        <action
             android:id="@+id/action_cardDetailFragment_to_qrFragment"
             app:destination="@id/qrFragment" />
         <action
@@ -28,17 +25,15 @@
         <action
             android:id="@+id/action_cardDetailFragment_to_transferFragment"
             app:destination="@id/transferFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/exchangeFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeFragment"
         android:label="fragment_exchange"
         tools:layout="@layout/fragment_exchange" />
-    <fragment
-        android:id="@+id/freezeFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeFragment"
-        android:label="fragment_freeze"
-        tools:layout="@layout/fragment_freeze" />
     <fragment
         android:id="@+id/paymentsFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.payments.PaymentsFragment"
@@ -58,5 +53,9 @@
         android:id="@+id/transferFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.transfer.TransferFragment"
         android:label="fragment_transfer"
-        tools:layout="@layout/fragment_transfer" />
+        tools:layout="@layout/fragment_transfer" >
+        <action
+            android:id="@+id/action_transferFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+    </fragment>
 </navigation>

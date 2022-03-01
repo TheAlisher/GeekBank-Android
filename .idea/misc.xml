@@ -7,12 +7,17 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_screen.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card_detail.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_dialog_freeze.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_exchange.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_freeze.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_payments.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_qr.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_settings.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_transfer.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_card_list.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_detail_card.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_list_transfer_number.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_transfer_list.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
       </map>
     </option>

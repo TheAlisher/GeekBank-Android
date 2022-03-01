@@ -103,7 +103,7 @@
             android:layout_marginTop="5dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
-            app:icon="@drawable/ic_screen"
+            app:icon="@drawable/qrcode"
             app:iconGravity="textStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_transfer" />
