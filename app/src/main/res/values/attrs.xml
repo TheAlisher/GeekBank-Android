@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GoodPinKeyPad">
+
+        <attr name="backgroundColor" format="reference|color" />
+
+        <attr name="textColor" format="reference|color" />
+
+        <attr name="textSize" format="dimension"/>
+
+        <attr name="backPressIcon" format="reference"/>
+
+        <attr name="cancelIcon" format="reference"/>
+
+        <attr name="marginTop" format="dimension"/>
+
+        <attr name="marginLeft" format="dimension"/>
+
+        <attr name="marginRight" format="dimension"/>
+
+        <attr name="marginBottom" format="dimension"/>
+
+        <attr name="keySize" format="dimension"/>
+
+        <attr name="keyBackground" format="reference"/>
+
+        <attr name="selectedIndicator" format="reference"/>
+
+        <attr name="defaultIndicator" format="reference"/>
+
+        <attr name="errorIndicator" format="reference"/>
+
+        <attr name="font" format="reference"/>
+
+        <attr name="keyTextSize" format="float"/>
+
+        <attr name="errorTextSize" format="dimension"/>
+
+
+        <attr name="pinEntry" format="enum">
+            <enum name="four" value="4"/>
+            <enum name="five" value="5"/>
+            <enum name="six" value="6"/>
+        </attr>
+
+        <attr name="keyPadStyle" format="enum">
+            <enum name="white" value="1"/>
+            <enum name="dark" value="2"/>
+            <enum name="white_border" value="3"/>
+            <enum name="dark_border" value="4"/>
+        </attr>
+
+        <attr name="controlsPressVisibility" format="enum">
+            <enum name="visible" value="1"/>
+            <enum name="gone" value="0"/>
+        </attr>
+
+    </declare-styleable>
+</resources>
