@@ -73,5 +73,59 @@
         <action
             android:id="@+id/action_biometricFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    app:startDestination="@id/cardDetailFragment">
+
+    <fragment
+        android:id="@+id/cardDetailFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
+        android:label="fragment_card_detail"
+        tools:layout="@layout/fragment_card_detail" >
+        <action
+            android:id="@+id/action_cardDetailFragment_to_exchangeFragment"
+            app:destination="@id/exchangeFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_qrFragment"
+            app:destination="@id/qrFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_paymentsFragment"
+            app:destination="@id/paymentsFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_transferFragment"
+            app:destination="@id/transferFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_settingsFragment2"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exchangeFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeFragment"
+        android:label="fragment_exchange"
+        tools:layout="@layout/fragment_exchange" />
+    <fragment
+        android:id="@+id/paymentsFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.payments.PaymentsFragment"
+        android:label="fragment_payments"
+        tools:layout="@layout/fragment_payments" />
+    <fragment
+        android:id="@+id/qrFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.QrFragment"
+        android:label="fragment_qr"
+        tools:layout="@layout/fragment_qr" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/transferFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.transfer.TransferFragment"
+        android:label="fragment_transfer"
+        tools:layout="@layout/fragment_transfer" >
+        <action
+            android:id="@+id/action_transferFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
     </fragment>
 </navigation>

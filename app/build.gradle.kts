@@ -85,4 +85,16 @@ dependencies {
 
     // Material Design
     implementation ("com.google.android.material:material:1.6.0-alpha02")
+
+    // viewBinding
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")
+
+    // Activity
+    implementation("androidx.activity:activity-ktx:1.4.0")
+
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
+
+    // Coil
+    implementation ("io.coil-kt:coil:1.3.2")
 }

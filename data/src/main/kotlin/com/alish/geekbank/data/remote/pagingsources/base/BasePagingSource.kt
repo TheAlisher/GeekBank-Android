@@ -2,7 +2,7 @@ package com.alish.geekbank.data.remote.pagingsources.base
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.alish.geekbank.data.remote.dtos.FooPagingResponse
+import com.alish.geekbank.data.remote.dtos.CardsPagingResponseDto
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
@@ -10,8 +10,8 @@ import java.io.IOException
 private const val BASE_STARTING_PAGE_INDEX = 1
 
 abstract class BasePagingSource<ValueDto : Any, Value : Any>(
-    private val request: suspend (position: Int) -> Response<FooPagingResponse<ValueDto>>,
-    private val mappedData: (data: List<ValueDto>) -> List<Value>
+    private val request: suspend (position: Int) -> Response<CardsPagingResponseDto<ValueDto>>,
+    private val mappedData: (data: List<ValueDto>) -> List<Value>,
 ) : PagingSource<Int, Value>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Value> {

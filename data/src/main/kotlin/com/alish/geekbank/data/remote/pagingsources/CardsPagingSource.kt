@@ -6,9 +6,9 @@ import com.alish.geekbank.data.remote.dtos.toDomain
 import com.alish.geekbank.data.remote.pagingsources.base.BasePagingSource
 import com.alish.geekbank.domain.models.Foo
 
-class FooPagingSource(
-    private val service: FooApiService
+class CardsPagingSource(
+    private val service: FooApiService,
 ) : BasePagingSource<FooDto, Foo>(
-    { service.fetchFooPaging(it) },
+    { service.fetchCardsPaging(it) },
     { data -> data.map { it.toDomain() } }
 )

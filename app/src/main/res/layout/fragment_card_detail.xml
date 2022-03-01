@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.cardDetail.CardDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_card_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/white_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/arrowshorizontal"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_recycler" />
+
+        <TextView
+            android:id="@+id/txt_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:hint="Transfer"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_horizontal" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_wallet"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/white_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/wallet"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toEndOf="@id/button_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/list_recycler" />
+
+        <TextView
+            android:id="@+id/txt_payments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:hint="Payments"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/txt_transfer"
+            app:layout_constraintTop_toBottomOf="@id/button_wallet" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_exchange"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/white_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/currency"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toEndOf="@id/button_wallet"
+            app:layout_constraintTop_toBottomOf="@id/list_recycler" />
+
+        <TextView
+            android:id="@+id/txt_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:hint="Exchange"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/txt_payments"
+            app:layout_constraintTop_toBottomOf="@id/button_exchange" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonQR"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="5dp"
+            app:backgroundTint="@color/white_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/qrcode"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_transfer" />
+
+        <TextView
+            android:id="@+id/txt_QR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:hint="QR"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonQR" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_freeze_card"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            app:backgroundTint="@color/white_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/snowflake"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toEndOf="@id/buttonQR"
+            app:layout_constraintTop_toBottomOf="@id/txt_payments" />
+
+        <TextView
+            android:id="@+id/txt_freeze_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:hint="Freeze Card"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/txt_QR"
+            app:layout_constraintTop_toBottomOf="@id/button_freeze_card" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_settings"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            app:backgroundTint="@color/white_black"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/settingsadjust"
+            app:iconGravity="textStart"
+            app:layout_constraintStart_toEndOf="@id/button_freeze_card"
+            app:layout_constraintTop_toBottomOf="@id/txt_exchange" />
+
+        <TextView
+            android:id="@+id/txt_settings"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
+            android:layout_marginStart="45dp"
+            android:hint="Settings"
+            app:layout_constraintStart_toEndOf="@id/button_freeze_card"
+            app:layout_constraintTop_toBottomOf="@id/button_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_corners_background"
+        app:behavior_hideable="false"
+        android:backgroundTint="#191919"
+        app:behavior_peekHeight="258dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/chevron"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="26dp"
+            android:text="@string/history_transactions"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/pull"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/fresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/history">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="80dp"
+                android:minHeight="800dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_detail_card" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
