@@ -7,9 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
-import com.alish.geekbank.databinding.ActivityMainBinding
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
@@ -29,19 +28,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        navigation()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.bottomNavigationView.background = null
+        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
         setUpNavigation()
     }
 
     private fun setUpNavigation() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-            navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
     }
-
-
 
     @SuppressLint("SetTextI18n")
     override fun onStart() {
@@ -52,21 +51,9 @@ class MainActivity : AppCompatActivity() {
 
         if (!preferenceHelper.isShown()) {
             navController.navigate(R.id.pinCodeFragment)
-        }else{
+        } else {
             navController.navigate(R.id.inputPinCodeFragment)
         }
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        binding.bottomNavigationView.background = null
-        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
-        setUpNavigation()
-
-    }
-
-    private fun setUpNavigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-        val navController = navHostFragment!!.navController
     }
 
     override fun onStop() {
@@ -74,11 +61,5 @@ class MainActivity : AppCompatActivity() {
         val editor = getSharedPreferences("PASS_CODE", MODE_PRIVATE).edit()
         editor.putBoolean("is_pass", false)
         editor.apply()
-    }
-
-    private fun navigation() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
     }
 }

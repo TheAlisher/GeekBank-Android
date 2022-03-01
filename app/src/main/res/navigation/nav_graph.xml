@@ -21,9 +21,12 @@
         android:label="fragment_card"
         tools:layout="@layout/fragment_card" >
         <action
+            android:id="@+id/action_cardFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
+        <action
             android:id="@+id/action_cardFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-    app:startDestination="@id/testHomeFragment">
     <fragment
         android:id="@+id/testHomeFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.pincode.TestHomeFragment"
@@ -37,6 +40,9 @@
             android:id="@+id/action_pinCodeFragment_to_testHomeFragment"
             app:destination="@id/testHomeFragment"
             app:popUpTo="@id/nav_graph"/>
+        <action
+            android:id="@+id/action_pinCodeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/inputPinCodeFragment"
@@ -51,6 +57,9 @@
             android:id="@+id/action_inputPinCodeFragment_to_biometricFragment"
             app:destination="@id/biometricFragment"
             app:popUpTo="@id/nav_graph" />
+        <action
+            android:id="@+id/action_inputPinCodeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/biometricFragment"
@@ -61,5 +70,8 @@
             android:id="@+id/action_biometricFragment_to_testHomeFragment"
             app:destination="@id/testHomeFragment"
             app:popUpTo="@id/nav_graph" />
+        <action
+            android:id="@+id/action_biometricFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
