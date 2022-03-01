@@ -78,5 +78,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     kapt(Dependencies.Hilt.compiler)
 
+    //Biometric
+    implementation ("androidx.biometric:biometric:1.1.0")
+
 
 }
