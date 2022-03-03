@@ -81,7 +81,7 @@ class InputPinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentInputP
     private val biometricCallback = object : BiometricPrompt.AuthenticationCallback() {
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
             super.onAuthenticationSucceeded(result)
-            findNavController().navigate(R.id.action_inputPinCodeFragment_to_testHomeFragment3)
+            findNavController().navigate(R.id.homeFragment)
         }
 
         override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
@@ -102,7 +102,7 @@ class InputPinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentInputP
 
             override fun onKeyPadPressed(value: String?) {
                 if (preferencesHelper.pinCode == value){
-                    findNavController().navigate(R.id.action_inputPinCodeFragment_to_testHomeFragment3)
+                    findNavController().navigate(R.id.homeFragment)
                 }else{
                     Toast.makeText(requireContext(), "wrong password", Toast.LENGTH_SHORT).show()
                 }

@@ -81,6 +81,16 @@ dependencies {
     //Biometric
     implementation ("androidx.biometric:biometric:1.1.0")
 
+    //Map
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+
+    // Coil
+    implementation ("io.coil-kt:coil:1.3.2")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
 
 
     // Material Design
