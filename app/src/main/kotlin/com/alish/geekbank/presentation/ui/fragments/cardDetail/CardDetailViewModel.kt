@@ -1,9 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
-import com.alish.geekbank.domain.usecases.foo.FetchFooUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.models.CardsUI
-import com.alish.geekbank.presentation.models.toUI
 import com.alish.geekbank.presentation.state.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
