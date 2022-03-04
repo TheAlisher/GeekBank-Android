@@ -49,6 +49,7 @@ class CreatePinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentCreat
                         findNavController().navigate(R.id.action_pinCodeFragment_to_homeFragment)
                     } else {
                         Toast.makeText(requireContext(), "wrong password", Toast.LENGTH_SHORT).show()
+                        binding.key.clearAll()
                     }
                 } else {
                     Toast.makeText(requireContext(), value, Toast.LENGTH_SHORT).show()
