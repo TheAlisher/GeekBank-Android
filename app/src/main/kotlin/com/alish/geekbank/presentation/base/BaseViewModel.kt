@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.alish.geekbank.common.resource.Resource
+import com.alish.geekbank.presentation.models.CardsUI
 import com.alish.geekbank.presentation.state.UIState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +18,7 @@ abstract class BaseViewModel : ViewModel() {
 
     protected fun <T, S> Flow<Resource<T>>.collectRequest(
         state: MutableStateFlow<UIState<S>>,
-        mappedData: (T) -> S
+        mappedData: (T) -> S,
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             this@collectRequest.collect {
@@ -37,6 +38,6 @@ abstract class BaseViewModel : ViewModel() {
     }
 
     protected fun <T : Any, S : Any> Flow<PagingData<T>>.collectPagingRequest(
-        mappedData: (T) -> S
+        mappedData: (T) -> S,
     ) = map { it.map { data -> mappedData(data) } }.cachedIn(viewModelScope)
 }

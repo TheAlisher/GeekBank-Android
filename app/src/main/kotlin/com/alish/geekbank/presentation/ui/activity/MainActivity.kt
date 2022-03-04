@@ -1,12 +1,9 @@
 package com.alish.geekbank.presentation.ui.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
@@ -18,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private var isAuthorized = false
+    private var isAuthorizate = false
 
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
@@ -34,19 +31,18 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
         val graph = navController.navInflater.inflate(R.navigation.nav_graph)
-        when{
-            !isAuthorized ->{
+
+        when {
+            !isAuthorizate -> {
                 graph.setStartDestination(R.id.signFlowFragment)
-
-            }isAuthorized ->{
+            }
+            isAuthorizate -> {
                 graph.setStartDestination(R.id.mainFlowFragment)
-
+            }
         }
 
-        }
         navController.graph = graph
-
     }
-
 }

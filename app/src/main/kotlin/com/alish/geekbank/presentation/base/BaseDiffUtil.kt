@@ -5,4 +5,3 @@ import androidx.recyclerview.widget.DiffUtil
 interface IBaseDiffModel {
    val url: String?
 }
-

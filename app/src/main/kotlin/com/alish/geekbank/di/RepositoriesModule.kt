@@ -1,5 +1,7 @@
 package com.alish.geekbank.di
 
+import com.alish.geekbank.data.repositories.SignInRepositoryImpl
+import com.alish.geekbank.domain.repositories.SignInRepository
 import com.alish.geekbank.data.repositories.NewsRepositoryImpl
 import com.alish.geekbank.domain.repositories.NewsRepository
 import dagger.Binds
@@ -13,4 +15,6 @@ abstract class RepositoriesModule {
 
     @Binds
     abstract fun bindNewsRepository(repositoryImpl: NewsRepositoryImpl): NewsRepository
+    @Binds
+    abstract fun bindSignRepository(repositorySignImpl: SignInRepositoryImpl): SignInRepository
 }

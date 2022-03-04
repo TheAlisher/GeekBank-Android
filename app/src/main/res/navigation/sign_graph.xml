@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sign_graph"
-    app:startDestination="@id/signIn">
+    app:startDestination="@id/signInFragment">
 
     <fragment
-        android:id="@+id/signIn"
-        android:name="com.alish.geekbank.presentation.ui.fragments.sign.login.SignIn"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        android:id="@+id/signInFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.sign.login.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in">
+    </fragment>
 </navigation>
