@@ -18,18 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private var isAuthorized = false
 
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
-
-    private val mAppBarConfiguration: AppBarConfiguration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.background = null
-        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
         setUpNavigation()
     }
 
@@ -37,27 +34,19 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+        val graph = navController.navInflater.inflate(R.navigation.nav_graph)
+        when{
+            !isAuthorized ->{
+                graph.setStartDestination(R.id.signFlowFragment)
 
-    }
+            }isAuthorized ->{
+                graph.setStartDestination(R.id.mainFlowFragment)
 
-    @SuppressLint("SetTextI18n")
-    override fun onStart() {
-        super.onStart()
-        if (mAppBarConfiguration != null) {
-            setupActionBarWithNavController(this, navController, mAppBarConfiguration)
         }
 
-        if (!preferenceHelper.isShown()) {
-            navController.navigate(R.id.pinCodeFragment)
-        } else {
-            navController.navigate(R.id.inputPinCodeFragment)
         }
+        navController.graph = graph
+
     }
 
-    override fun onStop() {
-        super.onStop()
-        val editor = getSharedPreferences("PASS_CODE", MODE_PRIVATE).edit()
-        editor.putBoolean("is_pass", false)
-        editor.apply()
-    }
 }

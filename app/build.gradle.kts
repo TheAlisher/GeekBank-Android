@@ -3,11 +3,15 @@ plugins {
     kotlin("android")
     kotlin("kapt")
 
+    //Parcelable
+    id("kotlin-parcelize")
+
     // Navigation Safe Args
     id(Dependencies.Navigation.safeArgsPlugin)
 
     // Hilt
     id(Dependencies.Hilt.plugin)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -76,6 +80,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.1")
     kapt(Dependencies.Hilt.compiler)
 
     //Biometric

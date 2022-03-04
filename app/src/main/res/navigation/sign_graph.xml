@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_graph"
+    app:startDestination="@id/signIn">
+
+    <fragment
+        android:id="@+id/signIn"
+        android:name="com.alish.geekbank.presentation.ui.fragments.sign.login.SignIn"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+</navigation>

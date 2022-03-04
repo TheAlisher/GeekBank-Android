@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 
 
-class NewsAdapter(): ListAdapter<NewsModelUI,NewsAdapter.NewsViewHolder>(BaseComparator()) {
+class NewsAdapter(private val clickNewsItem: (model: NewsModelUI) -> Unit): ListAdapter<NewsModelUI,NewsAdapter.NewsViewHolder>(BaseComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
@@ -38,8 +38,19 @@ class NewsAdapter(): ListAdapter<NewsModelUI,NewsAdapter.NewsViewHolder>(BaseCom
 
 
 
+
     inner class NewsViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+
+        init {
+            itemView.setOnClickListener {
+                getItem(absoluteAdapterPosition)?.let {
+                    clickNewsItem(it)
+                }
+            }
+
+        }
         fun onBind(model: NewsModelUI) = with(binding) {
             textTitle.text = model.title
             textDescription.text = model.description
@@ -47,4 +58,6 @@ class NewsAdapter(): ListAdapter<NewsModelUI,NewsAdapter.NewsViewHolder>(BaseCom
             newsImage.load(model.urlToImage)
         }
     }
+
+
 }

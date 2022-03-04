@@ -4,7 +4,9 @@ import android.os.Parcelable
 import android.widget.ImageView
 import com.alish.geekbank.domain.models.NewsModel
 import com.alish.geekbank.presentation.base.IBaseDiffModel
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class NewsModelUI(
     val author: String?,
     val title: String?,
@@ -13,7 +15,7 @@ data class NewsModelUI(
     val urlToImage: String?,
     val publishedAt: String?,
     val content: String?
-):IBaseDiffModel
+):IBaseDiffModel,Parcelable
 
 fun NewsModel.toUI() = NewsModelUI(
     author,

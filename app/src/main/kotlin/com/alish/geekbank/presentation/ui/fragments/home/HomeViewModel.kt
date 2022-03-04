@@ -19,7 +19,7 @@ class HomeViewModel @Inject constructor(private val fetchNewsUseCase: FetchNewsU
         fetchNews()
     }
 
-    fun fetchNews(){
+    private fun fetchNews(){
         fetchNewsUseCase().collectRequest(_newsState){it.map { data -> data.toUI() }}
 
     }

@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     id(Dependencies.Kotlin.ksp) version Dependencies.Kotlin.kspVersion
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
 
     // Room
     api(Dependencies.Room.runtime)
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.1")
     ksp(Dependencies.Room.compiler)
     implementation(Dependencies.Room.supportKotlinExtensionsAndCoroutines)
 

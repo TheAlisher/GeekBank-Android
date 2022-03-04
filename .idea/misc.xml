@@ -23,10 +23,18 @@
         <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/menu/bottom_navigation.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/xml/motion_scene.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_pattern.xml" value="0.114" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/content_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/flow_fragment_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/flow_fragment_sign.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_all_news.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_detail_news.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_biometric.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_create_pin_code.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_detail_news.xml" value="0.4" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_input_pin_code.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_sign_in.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/User/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_news.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
       </map>

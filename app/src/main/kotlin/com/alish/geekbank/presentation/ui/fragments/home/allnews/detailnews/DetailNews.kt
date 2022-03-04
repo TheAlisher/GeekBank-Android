@@ -5,56 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import by.kirich1409.viewbindingdelegate.viewBinding
+import coil.load
 import com.alish.geekbank.R
+import com.alish.geekbank.databinding.FragmentDetailNewsBinding
+import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.ui.fragments.home.HomeViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class DetailNews : BaseFragment<HomeViewModel,FragmentDetailNewsBinding>(R.layout.fragment_detail_news) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailNews.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DetailNews : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override val viewModel: HomeViewModel by viewModels()
+    override val binding: FragmentDetailNewsBinding by viewBinding(FragmentDetailNewsBinding::bind)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun initialize() {
+        val model = DetailNewsArgs.fromBundle(requireArguments()).model
+        binding.imageNews.load(model.urlToImage)
+        binding.textDescription.text = model.description
+        binding.textTitle.text = model.title
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_news, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailNews.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailNews().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
