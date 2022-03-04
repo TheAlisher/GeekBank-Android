@@ -8,6 +8,7 @@ plugins {
 
     // Hilt
     id(Dependencies.Hilt.plugin)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -76,10 +77,24 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     kapt(Dependencies.Hilt.compiler)
 
     //Biometric
     implementation ("androidx.biometric:biometric:1.1.0")
 
+    // Material Design
+    implementation ("com.google.android.material:material:1.6.0-alpha03")
 
+    // viewBinding
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")
+
+    // Activity
+    implementation("androidx.activity:activity-ktx:1.4.0")
+
+    // Fragment
+    implementation("androidx.fragment:fragment-ktx:1.4.1")
+
+    // Coil
+    implementation ("io.coil-kt:coil:1.3.2")
 }

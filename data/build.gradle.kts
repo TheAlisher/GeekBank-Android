@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     id(Dependencies.Kotlin.ksp) version Dependencies.Kotlin.kspVersion
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -46,9 +47,12 @@ dependencies {
 
     // Room
     api(Dependencies.Room.runtime)
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     ksp(Dependencies.Room.compiler)
     implementation(Dependencies.Room.supportKotlinExtensionsAndCoroutines)
 
     // Paging 3
     api(Dependencies.Paging3.runtime)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.9")
 }
