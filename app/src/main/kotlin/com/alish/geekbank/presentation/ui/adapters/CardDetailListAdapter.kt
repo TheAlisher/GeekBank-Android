@@ -5,36 +5,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.alish.geekbank.databinding.ItemCardListBinding
+import com.alish.geekbank.databinding.ItemDetailCardBinding
 import com.alish.geekbank.presentation.base.BaseDiffUtilItemCallback
+import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardsUIModel
 
-
-class CardDetailAdapter :
-    ListAdapter<CardsUIModel, CardDetailAdapter.ViewHolder>(BaseDiffUtilItemCallback()) {
-
-
+class CardDetailListAdapter : ListAdapter<CardListUIModel, CardDetailListAdapter.ViewHolder>(
+    BaseDiffUtilItemCallback()
+) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemCardListBinding.inflate(
-                LayoutInflater.from(parent.context),
+            ItemDetailCardBinding.inflate(LayoutInflater.from(
+                parent.context),
                 parent,
-                false
-            )
+                false)
         )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.onBind(getItem(position))
+
     }
 
-    inner class ViewHolder(private val binding: ItemCardListBinding) :
+    inner class ViewHolder(private val binding: ItemDetailCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        fun onBind(item: CardsUIModel) = with(binding) {
-            imageVisa1.load(item.image)
+        fun onBind(item: CardListUIModel) = with(binding) {
+            logoAirbnb.load(item.image)
+            txtAirbnb.text = item.name
         }
     }
-
-
 }
