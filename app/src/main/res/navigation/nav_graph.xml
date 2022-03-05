@@ -91,6 +91,10 @@
         <action
             android:id="@+id/action_cardDetailFragment_to_settingsFragment2"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/exchangeFragment"
