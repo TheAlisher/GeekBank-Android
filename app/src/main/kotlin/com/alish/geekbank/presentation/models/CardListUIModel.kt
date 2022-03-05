@@ -1,11 +1,9 @@
 package com.alish.geekbank.presentation.models
 
-import com.alish.geekbank.domain.models.Foo
 import com.alish.geekbank.presentation.base.IBaseDiffModel
 
-data class CardsUI(
+data class CardListUIModel(
+    val image: Int,
+    val name: String,
     override val id: Long,
-    val bar: String
 ) : IBaseDiffModel
-
-fun Foo.toUI() = CardsUI(id, bar)
