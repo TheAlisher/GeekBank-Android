@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bottom_sheet_corners_background"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="240dp"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <androidx.constraintlayout.widget.ConstraintLayout

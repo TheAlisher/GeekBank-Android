@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface NewsApiService {
 
-    @GET("/v2/everything?apiKey=4633cbf21ce74b59850d9c56f1cbc60f")
+    @GET("/v2/everything?apiKey=c08ab6a617d0486d8677c0ba7bcb18bc")
     suspend fun fetchNews(
         @Query("q") query: String?
     ): NewsResponseDto<NewsModelDto>
