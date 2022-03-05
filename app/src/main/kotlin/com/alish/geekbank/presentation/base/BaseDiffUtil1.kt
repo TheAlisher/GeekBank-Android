@@ -1,6 +1,6 @@
 package com.alish.geekbank.presentation.base
 
-interface IBaseDiffModel {
-    val url: String?
+interface BaseDiffUtil1{
+    val id: Long
     override fun equals(other: Any?): Boolean
 }
