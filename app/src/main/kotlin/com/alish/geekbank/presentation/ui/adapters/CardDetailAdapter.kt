@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.alish.geekbank.databinding.ItemCardListBinding
-import com.alish.geekbank.presentation.base.BaseDiffUtilItemCallback
+import com.alish.geekbank.presentation.base.BaseComparator1
 import com.alish.geekbank.presentation.models.CardsUIModel
 
 
 class CardDetailAdapter :
-    ListAdapter<CardsUIModel, CardDetailAdapter.ViewHolder>(BaseDiffUtilItemCallback()) {
+    ListAdapter<CardsUIModel, CardDetailAdapter.ViewHolder>(BaseComparator1()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

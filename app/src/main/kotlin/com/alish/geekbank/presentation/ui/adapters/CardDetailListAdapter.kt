@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.alish.geekbank.databinding.ItemDetailCardBinding
-import com.alish.geekbank.presentation.base.BaseDiffUtilItemCallback
+import com.alish.geekbank.presentation.base.BaseComparator1
 import com.alish.geekbank.presentation.models.CardListUIModel
-import com.alish.geekbank.presentation.models.CardsUIModel
 
 class CardDetailListAdapter : ListAdapter<CardListUIModel, CardDetailListAdapter.ViewHolder>(
-    BaseDiffUtilItemCallback()
+    BaseComparator1()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -24,7 +23,6 @@ class CardDetailListAdapter : ListAdapter<CardListUIModel, CardDetailListAdapter
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.onBind(getItem(position))
-
     }
 
     inner class ViewHolder(private val binding: ItemDetailCardBinding) :

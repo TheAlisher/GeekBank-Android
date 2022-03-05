@@ -79,7 +79,7 @@ class CardDetailFragment :
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
         }
         binding.imageArrow.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToCardFragment())
+            findNavController().navigateUp()
         }
 
     }
