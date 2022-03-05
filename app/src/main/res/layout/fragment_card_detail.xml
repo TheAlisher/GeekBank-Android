@@ -1,40 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="10dp"
     tools:context=".presentation.ui.fragments.cardDetail.CardDetailFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:background="@color/black"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:orientation="horizontal"
-            tools:listitem="@layout/item_card_list"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Card detail"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@id/image_arrow"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_arrow"
+        tools:listitem="@layout/item_card_list" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/list_recycler">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_horizontal"
             android:layout_width="80dp"
             android:layout_height="65dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="10dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
             app:icon="@drawable/arrowshorizontal"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/list_recycler" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_transfer"
@@ -52,13 +77,17 @@
             android:layout_width="80dp"
             android:layout_height="65dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
             app:icon="@drawable/wallet"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@id/button_horizontal"
-            app:layout_constraintTop_toBottomOf="@id/list_recycler" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_payments"
@@ -76,13 +105,17 @@
             android:layout_width="80dp"
             android:layout_height="65dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
             app:icon="@drawable/currency"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@id/button_wallet"
-            app:layout_constraintTop_toBottomOf="@id/list_recycler" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_exchange"
@@ -101,10 +134,15 @@
             android:layout_height="65dp"
             android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
             app:icon="@drawable/qrcode"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_transfer" />
 
@@ -125,10 +163,15 @@
             android:layout_height="65dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
             app:icon="@drawable/snowflake"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@id/buttonQR"
             app:layout_constraintTop_toBottomOf="@id/txt_payments" />
 
@@ -149,81 +192,98 @@
             android:layout_height="65dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             app:backgroundTint="@color/white_black"
             app:cornerRadius="10dp"
             app:icon="@drawable/settingsadjust"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintStart_toEndOf="@id/button_freeze_card"
             app:layout_constraintTop_toBottomOf="@id/txt_exchange" />
 
         <TextView
             android:id="@+id/txt_settings"
-            android:textColorHint="#8E8E93"
-            android:textSize="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:hint="Settings"
+            android:textColorHint="#8E8E93"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@id/button_freeze_card"
-            app:layout_constraintTop_toBottomOf="@id/button_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintTop_toBottomOf="@id/button_settings" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sheet_container"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bottom_sheet_corners_background"
-        app:behavior_hideable="false"
-        android:backgroundTint="#191919"
-        app:behavior_peekHeight="258dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        android:layout_height="match_parent">
 
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/pull"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/chevron"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <include
+            android:id="@+id/bottom_sheet_include"
+            layout="@layout/bottom_sheet" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <TextView
-            android:id="@+id/history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="26dp"
-            android:text="asdads"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/pull"
-            app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/fresh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constrainedHeight="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/history">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="80dp"
-                android:minHeight="800dp"
-                android:nestedScrollingEnabled="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_detail_card" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/sheet_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@drawable/bottom_sheet_corners_background"-->
+    <!--        app:behavior_hideable="false"-->
+    <!--        android:backgroundTint="#191919"-->
+    <!--            app:behavior_peekHeight="258dp"-->
+    <!--        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <!--        <androidx.appcompat.widget.AppCompatImageView-->
+    <!--            android:id="@+id/pull"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="35dp"-->
+    <!--            android:layout_marginTop="30dp"-->
+    <!--            android:src="@drawable/chevron"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/history"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="20dp"-->
+    <!--            android:layout_marginTop="26dp"-->
+    <!--            android:text="@string/history_transactions"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textSize="20sp"-->
+    <!--            app:layout_constraintStart_toEndOf="@id/pull"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+    <!--            android:id="@+id/fresh"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="10dp"-->
+    <!--            app:layout_constrainedHeight="true"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/history">-->
+
+    <!--            <androidx.recyclerview.widget.RecyclerView-->
+    <!--                android:id="@+id/recycler"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:elevation="80dp"-->
+    <!--                android:minHeight="800dp"-->
+    <!--                android:nestedScrollingEnabled="false"-->
+    <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+    <!--                tools:listitem="@layout/item_detail_card" />-->
+    <!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+

@@ -6,20 +6,21 @@
     android:background="#191919"
     android:padding="10dp">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo_airbnb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:src="@drawable/airbnb"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_airbnb"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:text="Airbnb"
         android:textColor="@color/white"
@@ -31,8 +32,8 @@
     <TextView
         android:id="@+id/txt_hint"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="4dp"
         android:hint="Rental"
         android:textColorHint="#8E8E93"
@@ -42,14 +43,13 @@
     <TextView
         android:id="@+id/txt_number"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="15dp"
-        android:text="+12345678$"
+        android:text="-53,100 KGS"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txt_airbnb"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
