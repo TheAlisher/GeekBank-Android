@@ -18,6 +18,7 @@
         <activity
             android:name=".presentation.ui.activity.MainActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
+            android:theme="@style/SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

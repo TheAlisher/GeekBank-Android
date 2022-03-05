@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_GeekBankAndroid)
         binding = ActivityMainBinding.inflate(layoutInflater)
         isAuthorized = preferenceHelper.getBoolean("bool")
         setContentView(binding.root)
