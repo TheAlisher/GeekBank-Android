@@ -1,10 +1,9 @@
 package com.alish.geekbank.domain.repositories
 
 import com.alish.geekbank.common.resource.Resource
-import com.alish.geekbank.domain.models.Foo
+import com.alish.geekbank.domain.models.UsersModel
 import kotlinx.coroutines.flow.Flow
 
-interface FooRepository {
-
-    fun fetchFoo(): Flow<Resource<Foo>>
+interface SignInRepository {
+    fun fetchData(): Flow<Resource<List<UsersModel?>>>
 }

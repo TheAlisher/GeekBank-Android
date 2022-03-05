@@ -7,5 +7,4 @@ import javax.inject.Inject
 @HiltViewModel
 class CardDetailViewModel @Inject constructor(
 ) : BaseViewModel() {
-
 }

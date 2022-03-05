@@ -3,47 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/mainFlowFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_cardFragment"
-            app:destination="@id/cardFragment"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
-    <fragment
-        android:id="@+id/cardFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.home.cards.CardFragment"
-        android:label="fragment_card"
-        tools:layout="@layout/fragment_card" >
-        <action
-            android:id="@+id/action_cardFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_cardFragment_to_cardDetailFragment"
-            app:destination="@id/cardDetailFragment" />
-    </fragment>
-        <action
-            android:id="@+id/action_cardFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    <fragment
-        android:id="@+id/pinCodeFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.pincode.CreatePinCodeFragment"
-        android:label="fragment_pin_code"
-        tools:layout="@layout/fragment_create_pin_code" >
-        <action
-            android:id="@+id/action_pinCodeFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/nav_graph"/>
-    </fragment>
-    <fragment
-        android:id="@+id/inputPinCodeFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.pincode.InputPinCodeFragment"
-        android:label="InputPinCodeFragment" >
 
         <action
             android:id="@+id/action_inputPinCodeFragment_to_biometricFragment"
@@ -102,27 +63,19 @@
         android:label="fragment_exchange"
         tools:layout="@layout/fragment_exchange" />
     <fragment
-        android:id="@+id/paymentsFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.payments.PaymentsFragment"
-        android:label="fragment_payments"
-        tools:layout="@layout/fragment_payments" />
+        android:id="@+id/mainFlowFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.main.MainFlowFragment"
+        android:label="flow_fragment_main"
+        tools:layout="@layout/flow_fragment_main" />
     <fragment
-        android:id="@+id/qrFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.QrFragment"
-        android:label="fragment_qr"
-        tools:layout="@layout/fragment_qr" />
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.settings.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/transferFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.transfer.TransferFragment"
-        android:label="fragment_transfer"
-        tools:layout="@layout/fragment_transfer" >
+        android:id="@+id/signFlowFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.sign.SignFlowFragment"
+        android:label="flow_fragment_sign"
+        tools:layout="@layout/flow_fragment_sign">
         <action
-            android:id="@+id/action_transferFragment_to_cardDetailFragment"
-            app:destination="@id/cardDetailFragment" />
+            android:id="@+id/action_signFlowFragment_to_mainFlowFragment"
+            app:destination="@id/mainFlowFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
