@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment"
+    app:startDestination="@id/inputPinCodeFragment"
     android:id="@+id/main_graph">
 
     <fragment
@@ -44,7 +44,8 @@
         <action
             android:id="@+id/action_pinCodeFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/nav_graph"/>
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/inputPinCodeFragment"
@@ -54,11 +55,12 @@
         <action
             android:id="@+id/action_inputPinCodeFragment_to_biometricFragment"
             app:destination="@id/biometricFragment"
-            app:popUpTo="@id/nav_graph" />
+            app:popUpTo="@id/main_graph" />
         <action
             android:id="@+id/action_inputPinCodeFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/nav_graph"/>
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/biometricFragment"
@@ -68,7 +70,8 @@
         <action
             android:id="@+id/action_biometricFragment_to_homeFragment2"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/nav_graph"/>
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <action
         android:id="@+id/action_biometricFragment_to_homeFragment"
