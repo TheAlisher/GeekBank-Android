@@ -28,6 +28,6 @@ class RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun provideFooApiService(): NewsApiService = provideRetrofit
+    fun provideNewsApiService(): NewsApiService = provideRetrofit
         .create(NewsApiService::class.java)
 }

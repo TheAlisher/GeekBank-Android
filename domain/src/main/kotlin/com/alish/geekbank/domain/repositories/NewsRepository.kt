@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
 
-    fun fetchNews(): Flow<Resource<List<NewsModel>>>
+    fun fetchNewsDollar(): Flow<Resource<List<NewsModel>>>
+    fun fetchNewsBank(): Flow<Resource<List<NewsModel>>>
+    fun fetchNewsBitcoin(): Flow<Resource<List<NewsModel>>>
 }

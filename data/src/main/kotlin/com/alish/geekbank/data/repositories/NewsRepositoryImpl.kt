@@ -13,9 +13,16 @@ class NewsRepositoryImpl @Inject constructor(
     private val service: NewsApiService
 ) : BaseRepository(), NewsRepository {
 
-
-
-    override fun fetchNews() = doRequest {
+    override fun fetchNewsDollar() = doRequest {
         service.fetchNews("dollar").articles.map { it.toDomain() }
+    }
+
+    override fun fetchNewsBank() = doRequest {
+        service.fetchNews("bank").articles.map{ it.toDomain()
+        }
+    }
+
+    override fun fetchNewsBitcoin() = doRequest {
+        service.fetchNews("bitcoin").articles.map { it.toDomain() }
     }
 }

@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private var isAuthorizate = false
+    private var isAuthorized = false
 
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        isAuthorized = preferenceHelper.getBoolean("bool")
         setContentView(binding.root)
         setUpNavigation()
     }
@@ -35,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         val graph = navController.navInflater.inflate(R.navigation.nav_graph)
 
         when {
-            !isAuthorizate -> {
+            !isAuthorized -> {
                 graph.setStartDestination(R.id.signFlowFragment)
             }
-            isAuthorizate -> {
+            isAuthorized -> {
                 graph.setStartDestination(R.id.mainFlowFragment)
             }
         }

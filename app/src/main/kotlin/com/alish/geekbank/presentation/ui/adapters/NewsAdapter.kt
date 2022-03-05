@@ -11,11 +11,7 @@ import coil.load
 import com.alish.geekbank.databinding.ItemNewsBinding
 import com.alish.geekbank.presentation.base.BaseComparator
 import com.alish.geekbank.presentation.models.NewsModelUI
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestListener
+
 
 
 class NewsAdapter(private val clickNewsItem: (model: NewsModelUI) -> Unit): ListAdapter<NewsModelUI,NewsAdapter.NewsViewHolder>(BaseComparator()) {

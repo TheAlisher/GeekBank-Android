@@ -36,7 +36,10 @@ class AllNews() : BaseFragment<HomeViewModel,FragmentAllNewsBinding>(R.layout.fr
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    adapter.submitList(it.data)
+                    var list: ArrayList<NewsModelUI> = ArrayList()
+                    list.addAll(it.data)
+                    list.shuffle()
+                    adapter.submitList(list)
                 }
             }
         }

@@ -100,4 +100,7 @@ dependencies {
 
     // Coil
     implementation ("io.coil-kt:coil:1.3.2")
+
+    //Map
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
 }

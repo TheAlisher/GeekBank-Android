@@ -14,6 +14,12 @@
             android:id="@+id/action_homeFragment_to_cardFragment"
             app:destination="@id/cardFragment"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_allNews"
+            app:destination="@id/allNews" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailNews"
+            app:destination="@id/detailNews" />
     </fragment>
     <fragment
         android:id="@+id/cardFragment"
@@ -120,6 +126,24 @@
         <action
             android:id="@+id/action_transferFragment_to_cardDetailFragment"
             app:destination="@id/cardDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allNews"
+        android:name="com.alish.geekbank.presentation.ui.fragments.home.allnews.AllNews"
+        android:label="fragment_all_news"
+        tools:layout="@layout/fragment_all_news" >
+        <action
+            android:id="@+id/action_allNews_to_detailNews"
+            app:destination="@id/detailNews" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailNews"
+        android:name="com.alish.geekbank.presentation.ui.fragments.home.allnews.detailnews.DetailNews"
+        android:label="fragment_detail_news"
+        tools:layout="@layout/fragment_detail_news" >
+        <argument
+            android:name="model"
+            app:argType="com.alish.geekbank.presentation.models.NewsModelUI" />
     </fragment>
 
 
