@@ -58,21 +58,26 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
     }
 
     private fun signDetails():Boolean{
-        if (binding.editId.text.toString().trim().isEmpty()){
-            showToast("Enter Login")
-            return false
-        }else if (binding.editPassword.text.toString().trim().isEmpty()){
-            showToast("Enter Password")
-            return false
-        }else if (binding.editId.text.toString().trim().length < 6){
-            showToast("Login must be bigger 7 simbols")
-            return false
-        }else if(binding.editPassword.text.toString().trim().length < 6){
-            showToast("Password must be bigger than 7 simbols")
-            return false
-        }
-        else {
-            return true
+        when {
+            binding.editId.text.toString().trim().isEmpty() -> {
+                showToast("Enter Login")
+                return false
+            }
+            binding.editPassword.text.toString().trim().isEmpty() -> {
+                showToast("Enter Password")
+                return false
+            }
+            binding.editId.text.toString().trim().length < 6 -> {
+                showToast("Login must be bigger 7 simbols")
+                return false
+            }
+            binding.editPassword.text.toString().trim().length < 6 -> {
+                showToast("Password must be bigger than 7 simbols")
+                return false
+            }
+            else -> {
+                return true
+            }
         }
     }
 }
