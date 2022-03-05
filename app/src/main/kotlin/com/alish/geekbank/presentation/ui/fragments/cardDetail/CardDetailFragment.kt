@@ -2,6 +2,7 @@ package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +19,7 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class CardDetailFragment :
@@ -47,6 +49,8 @@ class CardDetailFragment :
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
+        bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -54,6 +58,7 @@ class CardDetailFragment :
                     BottomSheetBehavior.STATE_HIDDEN -> {
                         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
                     }
+                    else -> {}
                 }
             }
             override fun onSlide(bottomSheet: View, slideOffset: Float) {

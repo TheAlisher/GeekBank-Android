@@ -9,7 +9,7 @@ class AuthorizationInterceptor : Interceptor {
         val request = chain
             .request()
             .newBuilder()
-            .addHeader("X-Api-Key", "4633cbf21ce74b59850d9c56f1cbc60f")
+            .addHeader("X-Api-Key", "c08ab6a617d0486d8677c0ba7bcb18bc")
             .build()
         return chain.proceed(request)
     }
