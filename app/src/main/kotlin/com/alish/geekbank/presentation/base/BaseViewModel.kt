@@ -6,7 +6,6 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.alish.geekbank.common.resource.Resource
-import com.alish.geekbank.presentation.models.CardsUI
 import com.alish.geekbank.presentation.state.UIState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

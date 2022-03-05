@@ -2,6 +2,7 @@ package com.alish.geekbank.presentation.ui.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -13,6 +14,7 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -39,16 +41,17 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         navController.addOnDestinationChangedListener{_, destination, _ ->
             when (destination.id){
+                R.id.transferFragment,
                 R.id.pinCodeFragment,
                 R.id.inputPinCodeFragment,
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
                 R.id.profileFragment,
-                R.id.exchangeFragment
-                    ->{
-                        whetherToShow(false)
-                    }else ->{
+                R.id.exchangeFragment,
+                -> {
+                    whetherToShow(false)
+                }else ->{
                         whetherToShow(true)
                     }
 
@@ -61,7 +64,6 @@ class MainActivity : AppCompatActivity() {
     private fun whetherToShow(b: Boolean) {
         binding.bottomAppBar.isVisible = b
         binding.fab.isVisible = b
-
 
     }
 
