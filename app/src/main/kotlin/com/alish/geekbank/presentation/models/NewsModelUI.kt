@@ -1,6 +1,5 @@
 package com.alish.geekbank.presentation.models
 
-import android.os.Parcel
 import android.os.Parcelable
 import android.widget.ImageView
 import com.alish.geekbank.domain.models.NewsModel

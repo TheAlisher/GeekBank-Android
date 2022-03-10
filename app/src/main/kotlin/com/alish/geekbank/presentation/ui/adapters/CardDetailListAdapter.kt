@@ -5,22 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.alish.geekbank.databinding.ItemCardListBinding
+import com.alish.geekbank.databinding.ItemDetailCardBinding
 import com.alish.geekbank.presentation.base.BaseComparator1
-import com.alish.geekbank.presentation.models.CardsUIModel
+import com.alish.geekbank.presentation.models.CardListUIModel
 
-
-class CardDetailAdapter :
-    ListAdapter<CardsUIModel, CardDetailAdapter.ViewHolder>(BaseComparator1()) {
-
-
+class CardDetailListAdapter : ListAdapter<CardListUIModel, CardDetailListAdapter.ViewHolder>(
+    BaseComparator1()
+) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemCardListBinding.inflate(
-                LayoutInflater.from(parent.context),
+            ItemDetailCardBinding.inflate(LayoutInflater.from(
+                parent.context),
                 parent,
-                false
-            )
+                false)
         )
     }
 
@@ -28,13 +25,11 @@ class CardDetailAdapter :
         holder.onBind(getItem(position))
     }
 
-    inner class ViewHolder(private val binding: ItemCardListBinding) :
+    inner class ViewHolder(private val binding: ItemDetailCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        fun onBind(item: CardsUIModel) = with(binding) {
-            imageVisa1.load(item.image)
+        fun onBind(item: CardListUIModel) = with(binding) {
+            logoAirbnb.load(item.image)
+            txtAirbnb.text = item.name
         }
     }
-
-
 }

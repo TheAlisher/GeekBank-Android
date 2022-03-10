@@ -105,6 +105,7 @@ class InputPinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentInputP
                     findNavController().navigate(R.id.action_inputPinCodeFragment_to_homeFragment)
                 }else{
                     Toast.makeText(requireContext(), "wrong password", Toast.LENGTH_SHORT).show()
+                    binding.key.doClearPin()
                 }
             }
 

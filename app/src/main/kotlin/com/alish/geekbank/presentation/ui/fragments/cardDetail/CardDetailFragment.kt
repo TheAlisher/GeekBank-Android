@@ -2,9 +2,10 @@ package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.os.Handler
-import android.os.Looper
+import android.util.DisplayMetrics
+import android.view.View
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +13,13 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.databinding.FragmentCardDetailBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.models.CardListUIModel
+import com.alish.geekbank.presentation.models.CardsUIModel
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
+import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class CardDetailFragment :
@@ -23,11 +28,17 @@ class CardDetailFragment :
     override val viewModel: CardDetailViewModel by viewModels()
     override val binding by viewBinding(FragmentCardDetailBinding::bind)
     private val cardDetailAdapter = CardDetailAdapter()
+    private val cardDetailListAdapter = CardDetailListAdapter()
+    private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
     override fun initialize() = with(binding) {
-        listRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        listRecycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         listRecycler.adapter = cardDetailAdapter
-
+        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetInclude.recycler.adapter = cardDetailListAdapter
+        bottomSheetInclude.recycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
     override fun setupListeners() {
@@ -37,13 +48,23 @@ class CardDetailFragment :
     }
 
     private fun setupBottomSheet() {
-        BottomSheetBehavior.from(binding.sheetContainer)
-        binding.fresh.setOnRefreshListener {
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({
-                binding.fresh.isRefreshing = false
-            }, 2000)
-        }
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
+        bottomSheetBehavior?.isHideable = false
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
+                    }
+                    else -> {}
+                }
+            }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                binding.bottomSheetInclude.imageBack.rotation = slideOffset * 180
+            }
+        })
     }
 
     private fun setupAction() = with(binding) {
@@ -62,14 +83,20 @@ class CardDetailFragment :
         buttonSettings.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
         }
+        binding.imageArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
     }
 
-    override fun setupRequests() {
-        var list: ArrayList<Int> = ArrayList()
-        list.add(R.drawable.visa)
-        list.add(R.drawable.visa_card)
-        cardDetailAdapter.addImage(list)
+    override fun setupSubscribes() {
+        val list: ArrayList<CardsUIModel> = ArrayList()
+        list.add(CardsUIModel(R.drawable.visa, "Visa", 1))
+        list.add(CardsUIModel(R.drawable.visa_card, "Visa Card", 2))
+        cardDetailAdapter.submitList(list)
+        val list2: ArrayList<CardListUIModel> = ArrayList()
+        list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
+        cardDetailListAdapter.submitList(list2)
     }
 
     private fun setupAlertDialog() {
@@ -88,21 +115,4 @@ class CardDetailFragment :
             dialog.show()
         }
     }
-
-//    override fun setupSubscribes() {
-//        viewModel.fetchCardDetail()
-//        viewModel.cardDetailState.collectUIState {
-//            when(it){
-//                is UIState.Error -> {
-//
-//                }
-//                is UIState.Loading -> {
-//
-//                }
-//                is UIState.Success -> {
-//                    cardDetailAdapter.submitList(it.data)
-//                }
-//            }
-//        }
-//    }
 }

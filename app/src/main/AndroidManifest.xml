@@ -12,9 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GeekBankAndroid">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBn2R5wLDg2jTKszWwBprY0TgVd1pcC9Yw" />
         <activity
             android:name=".presentation.ui.activity.MainActivity"
-            android:theme="@style/SplashScreen"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
