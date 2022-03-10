@@ -44,7 +44,7 @@ class CardFragment : Fragment() {
                 }
                 MotionEvent.ACTION_UP -> {
 
-                    findNavController().navigate(R.id.action_cardFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_cardFragment_to_cardDetailFragment)
 
                     Log.e("anime", "onViewCreated: $xCoOrdinate")
 

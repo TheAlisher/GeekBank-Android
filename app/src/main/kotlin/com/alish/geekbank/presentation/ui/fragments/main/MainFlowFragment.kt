@@ -30,6 +30,8 @@ class MainFlowFragment :
                 R.id.paymentsFragment,
                 R.id.profileFragment,
                 R.id.exchangeFragment,
+                R.id.transferFragment,
+                R.id.qrFragment,
                 -> {
                     whetherToShow(false)
                 }
