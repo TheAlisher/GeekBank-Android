@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.NewsModelUI
@@ -20,6 +22,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fragment_home),
@@ -27,6 +30,9 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
     private var xCoOrdinate = 0f
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
+
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
 
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
@@ -40,11 +46,13 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
         binding.map.onResume()
         binding.map.getMapAsync(this)
         binding.recyclerNews.adapter = adapter
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun setupListeners() {
         clickForAllNews()
+        clickForSeeFullMap()
         binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -73,6 +81,13 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
 
     }
 
+    private fun clickForSeeFullMap() {
+        binding.txtShowAllMap.setOnClickListener {
+            findNavController().navigate(R.id.mapFull)
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     private fun clickForAllNews() {
         binding.txtShowAll.setOnClickListener {
             findNavController().navigate(R.id.allNews)
@@ -80,7 +95,21 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
     }
 
     override fun setupRequests() {
-        viewModel.newsState.collectUIState {
+        viewModel.stateUser.collectUIState {
+            when(it){
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    it.data.forEach {data ->
+                        if (data.id ==preferencesHelper.getString("id") ){
+                            binding.tvCash.text = data.firstCard?.get("money").toString()
+                        }
+                    }
+                }
+            }
+        }
+
+        viewModel.newsState.collectUIState{
             when(it){
                 is UIState.Error -> {}
                 is UIState.Loading -> {}

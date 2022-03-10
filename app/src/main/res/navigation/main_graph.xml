@@ -145,6 +145,11 @@
             android:name="model"
             app:argType="com.alish.geekbank.presentation.models.NewsModelUI" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFull"
+        android:name="com.alish.geekbank.presentation.ui.fragments.home.map.MapFull"
+        android:label="fragment_map_full"
+        tools:layout="@layout/fragment_map_full" />
 
 
 </navigation>
