@@ -4,4 +4,5 @@ import androidx.recyclerview.widget.DiffUtil
 
 interface IBaseDiffModel {
    val url: String?
+   override fun equals(other:Any?):Boolean
 }

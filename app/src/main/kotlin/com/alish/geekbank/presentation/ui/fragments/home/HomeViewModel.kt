@@ -26,7 +26,8 @@ private val fetchNewsBitcoinUseCases: FetchNewsBitcoinUseCases) : BaseViewModel(
     }
 
     private fun fetchNews(){
-        fetchNewsUseCase().collectRequest(_newsState){it.map { data -> data.toUI() }}
+        fetchNewsUseCase().collectRequest(_newsState){
+            it.map { data -> data.toUI() }}
 
     }
     private fun fetchNewsBank(){

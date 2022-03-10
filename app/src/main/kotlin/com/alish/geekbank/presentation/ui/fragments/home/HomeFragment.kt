@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
@@ -40,11 +41,13 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
         binding.map.onResume()
         binding.map.getMapAsync(this)
         binding.recyclerNews.adapter = adapter
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun setupListeners() {
         clickForAllNews()
+        clickForSeeFullMap()
         binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -73,6 +76,13 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
 
     }
 
+    private fun clickForSeeFullMap() {
+        binding.txtShowAllMap.setOnClickListener {
+            findNavController().navigate(R.id.mapFull)
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     private fun clickForAllNews() {
         binding.txtShowAll.setOnClickListener {
             findNavController().navigate(R.id.allNews)
@@ -80,7 +90,7 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
     }
 
     override fun setupRequests() {
-        viewModel.newsState.collectUIState {
+        viewModel.newsState.collectUIState{
             when(it){
                 is UIState.Error -> {}
                 is UIState.Loading -> {}

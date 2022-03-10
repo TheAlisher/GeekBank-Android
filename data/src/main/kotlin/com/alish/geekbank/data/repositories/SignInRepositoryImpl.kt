@@ -17,5 +17,6 @@ class SignInRepositoryImpl @Inject constructor(
         userCollection.get().await().documents.mapNotNull { document ->
             document.toObject(UsersModel::class.java)
         }
+
     }
 }

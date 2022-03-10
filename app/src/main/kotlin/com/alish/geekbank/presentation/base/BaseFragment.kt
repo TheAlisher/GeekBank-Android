@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.alish.geekbank.presentation.state.UIState
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 
 abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
