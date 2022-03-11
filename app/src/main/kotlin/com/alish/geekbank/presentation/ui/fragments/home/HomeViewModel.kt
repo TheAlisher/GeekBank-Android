@@ -26,8 +26,8 @@ private val fetchDataUseCase: FetchDataUseCase) : BaseViewModel() {
     val newsState: StateFlow<UIState<List<NewsModelUI>>> = _newsState
 
     private val _stateUser =
-        MutableStateFlow<UIState<List<UsersModelUI>>>(UIState.Loading())
-    val stateUser: StateFlow<UIState<List<UsersModelUI>>> = _stateUser.asStateFlow()
+        MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
+    val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()
     init {
         fetchNews()
         fetchNewsBank()
@@ -36,7 +36,7 @@ private val fetchDataUseCase: FetchDataUseCase) : BaseViewModel() {
     }
 
     private fun fetchUser(){
-        fetchDataUseCase().collectRequest(_stateUser){it.map { data-> data!!.toUsersModelUI() }}
+        fetchDataUseCase().collectRequest(_stateUser){it.map { data-> data?.toUsersModelUI() }}
     }
 
     private fun fetchNews(){
