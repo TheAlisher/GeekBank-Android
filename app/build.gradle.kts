@@ -83,6 +83,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     kapt(Dependencies.Hilt.compiler)
 
+    implementation ("androidx.viewpager2:viewpager2:1.0.0-alpha01")
+
     //Biometric
     implementation ("androidx.biometric:biometric:1.1.0")
 

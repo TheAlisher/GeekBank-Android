@@ -1,4 +1,4 @@
-package com.alish.geekbank.presentation.ui.fragments.cardDetail
+package com.alish.geekbank.presentation.ui.fragments.home.cards
 
 import com.alish.geekbank.domain.usecases.FetchDataUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
@@ -10,10 +10,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
-
 @HiltViewModel
-class CardDetailViewModel @Inject constructor(private val fetchDataUseCase: FetchDataUseCase
-) : BaseViewModel() {
+class CardViewModel @Inject constructor(private val fetchDataUseCase: FetchDataUseCase): BaseViewModel() {
 
     private val _stateUser =
         MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())

@@ -1,6 +1,9 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
 import android.annotation.SuppressLint
+import android.os.Handler
+import android.os.Looper
+
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -22,6 +25,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
+
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -30,6 +34,7 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
     private var xCoOrdinate = 0f
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
+
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
@@ -95,14 +100,14 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
     }
 
     override fun setupRequests() {
-        viewModel.stateUser.collectUIState {
+        viewModel.stateUser.collectUIState() {
             when(it){
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
                     it.data.forEach {data ->
-                        if (data.id ==preferencesHelper.getString("id") ){
-                            binding.tvCash.text = data.firstCard?.get("money").toString()
+                        if (data?.id == preferencesHelper.getString("id") ){
+                            binding.tvCash.text = data?.firstCard?.get("money").toString()
                         }
                     }
                 }
