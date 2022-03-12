@@ -43,4 +43,7 @@
         <item name="android:background">@color/black</item>
     </style>
 
+    <style name="SplashScreen" parent="Theme.GeekBankAndroid">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>
