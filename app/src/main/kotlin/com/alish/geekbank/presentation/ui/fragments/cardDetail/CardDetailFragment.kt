@@ -87,7 +87,7 @@ class CardDetailFragment :
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
         }
         buttonQR.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToQrFragment())
+            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToScannerFragment())
         }
         buttonSettings.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
