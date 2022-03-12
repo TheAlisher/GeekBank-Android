@@ -9,7 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.alish.geekbank.presentation.state.UIState
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 
 abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
@@ -44,7 +46,7 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
         action: (UIState<T>) -> Unit
     ) {
-        viewLifecycleOwner.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch() {
             viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {
                 this@collectUIState.collect {
                     action(it)

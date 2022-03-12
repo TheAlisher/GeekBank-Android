@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/room_card"
-        android:text="****  ****  ****  2345"
+        android:text="**** **** **** 2345"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintTop_toTopOf="parent"

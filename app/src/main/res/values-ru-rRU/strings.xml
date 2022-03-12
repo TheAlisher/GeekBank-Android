@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GeekBank-Android</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="create_a_password">Cоздать пароль</string>
+    <string name="enter_your_password">Введите свой пароль</string>
+    <string name="history_transactions">История транзакций</string>
+    <string name="alina_tashbolotova">Алина Ташболотова</string>
+    <string name="settings">Настройки</string>
+    <string name="change_pin_code">Изменить пин-код</string>
+    <string name="change_account_password">Изменить пароль учетной записи</string>
+    <string name="notification">Уведомление</string>
+    <string name="theme">Тема</string>
+    <string name="language">Язык</string>
+    <string name="are_you_sure_you_want_to_switch_to_a_dark_theme">Вы уверены, что хотите переключиться на темную тему???</string>
+    <string name="yes">Да</string>
+    <string name="cancel">Отмена</string>
+    <string name="russian">Русский</string>
+    <string name="switch_language">Переключить язык</string>
+    <string name="english">Английский</string>
+</resources>
