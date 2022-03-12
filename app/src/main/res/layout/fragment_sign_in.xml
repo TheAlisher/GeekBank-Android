@@ -1,30 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.sign.login.SignInFragment">
 
-    <EditText
-        android:id="@+id/edit_id"
-        android:layout_gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/text_login"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@id/loginTIL"
+        app:layout_constraintLeft_toLeftOf="@id/loginTIL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_vertical"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/loginTIL"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/password"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_in"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_vertical"
+        <EditText
+            android:id="@+id/ID_et"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/IDText"
+            android:text="На вашей карте есть ID, введите цифры после"
+            android:textColor="#575555"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/text_password"
+        android:text="Password"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/passwordTIL"
+        app:layout_constraintBottom_toTopOf="@id/passwordTIL"
+        android:layout_below="@id/loginTIL"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTIL"
+        android:layout_below="@id/text_password"
+        android:background="@drawable/password"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/loginTIL"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp"
+        app:passwordToggleTint="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/password"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+        <TextView
+            android:id="@+id/passwordText"
+            android:text="Ваш пароль"
+            android:textColor="#575555"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginBtn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/blue"
+        android:text="Login"
+        android:textColor="@color/white"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

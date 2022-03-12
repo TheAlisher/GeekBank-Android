@@ -28,7 +28,7 @@
         tools:layout="@layout/fragment_card" >
         <action
             android:id="@+id/action_cardFragment_to_homeFragment2"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_cardFragment_to_cardDetailFragment"
             app:destination="@id/cardDetailFragment" />
@@ -150,5 +150,11 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/mapFull"
+        android:name="com.alish.geekbank.presentation.ui.fragments.home.map.MapFull"
+        android:label="fragment_map_full"
+        tools:layout="@layout/fragment_map_full" />
+
 
 </navigation>

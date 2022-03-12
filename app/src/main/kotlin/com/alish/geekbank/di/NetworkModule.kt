@@ -21,7 +21,6 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideFireStore(): FirebaseFirestore {
-        return FirebaseFirestore.getInstance()
-    }
+    fun provideFireStore(): FirebaseFirestore = FirebaseFirestore.getInstance()
+
 }

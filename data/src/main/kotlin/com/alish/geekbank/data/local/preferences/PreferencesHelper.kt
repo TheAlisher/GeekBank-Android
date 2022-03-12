@@ -24,6 +24,15 @@ class PreferencesHelper (context: Context) {
         return preferences.getBoolean(key,false)
     }
 
+    fun putString(key: String,value:String){
+        var editor: SharedPreferences.Editor = preferences.edit()
+        editor.putString(key,value)
+        editor.apply()
+    }
+    fun getString(key: String):String?{
+        return preferences.getString(key,null)
+    }
+
     fun onSavePinCode() {
         preferences.edit().putBoolean("show", true).apply()
     }
