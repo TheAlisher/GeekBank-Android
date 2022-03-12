@@ -4,6 +4,7 @@ import android.content.Context
 import com.alish.geekbank.data.local.db.AppDatabase
 import com.alish.geekbank.data.local.db.RoomClient
 import com.alish.geekbank.data.local.db.daos.FooDao
+import com.alish.geekbank.data.local.preferences.LanguagePreferencesHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import dagger.Module
 import dagger.Provides
@@ -22,17 +23,22 @@ object DatabaseModule {
     @Singleton
     @Provides
     fun provideRoom(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): AppDatabase = roomClient.provideRoom(context)
 
     @Singleton
     @Provides
     fun provideFooDao(
-        appDatabase: AppDatabase
+        appDatabase: AppDatabase,
     ): FooDao = roomClient.provideFooDao(appDatabase)
 
     @Provides
     fun providePreferences(@ApplicationContext context: Context): PreferencesHelper {
         return PreferencesHelper(context)
+    }
+
+    @Provides
+    fun provideLanguagePreferences(@ApplicationContext context: Context): LanguagePreferencesHelper {
+        return LanguagePreferencesHelper(context)
     }
 }

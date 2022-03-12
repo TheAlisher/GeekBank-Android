@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
+import com.alish.geekbank.data.local.preferences.LocalHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,13 +19,17 @@ class MainActivity : AppCompatActivity() {
     private var isAuthorized = false
 
     @Inject
+    lateinit var localHelper: LocalHelper
+
+    @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        isAuthorized = preferenceHelper.getBoolean("bool")
         setContentView(binding.root)
+        localHelper.loadLocale(this)
+        isAuthorized = preferenceHelper.getBoolean("bool")
         setUpNavigation()
     }
 

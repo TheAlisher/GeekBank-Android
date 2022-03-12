@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:title="Home"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/cardsFragment"
+        android:id="@+id/navigation_cards"
         android:title="Cards"
         android:icon="@drawable/ic_pay"/>
     <item
@@ -16,12 +16,9 @@
         android:id="@+id/fragment2"
         android:title=""
         />
-
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/navigation_profile"
         android:title="Profile"
         android:icon="@drawable/ic_userprofile"/>
-
-
 
 </menu>

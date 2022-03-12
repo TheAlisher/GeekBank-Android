@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment"
+    app:startDestination="@id/navigation_home"
     android:id="@+id/main_graph">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
@@ -28,14 +28,14 @@
         tools:layout="@layout/fragment_card" >
         <action
             android:id="@+id/action_cardFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/navigation_home" />
         <action
             android:id="@+id/action_cardFragment_to_cardDetailFragment"
             app:destination="@id/cardDetailFragment" />
     </fragment>
     <action
         android:id="@+id/action_cardFragment_to_homeFragment"
-        app:destination="@id/homeFragment" />
+        app:destination="@id/navigation_home" />
     <fragment
         android:id="@+id/pinCodeFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.pincode.CreatePinCodeFragment"
@@ -43,7 +43,7 @@
         tools:layout="@layout/fragment_create_pin_code" >
         <action
             android:id="@+id/action_pinCodeFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            app:destination="@id/navigation_home"
             app:popUpTo="@id/nav_graph"/>
     </fragment>
     <fragment
@@ -57,7 +57,7 @@
             app:popUpTo="@id/nav_graph" />
         <action
             android:id="@+id/action_inputPinCodeFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            app:destination="@id/navigation_home"
             app:popUpTo="@id/nav_graph"/>
     </fragment>
     <fragment
@@ -67,12 +67,12 @@
         tools:layout="@layout/fragment_biometric" >
         <action
             android:id="@+id/action_biometricFragment_to_homeFragment2"
-            app:destination="@id/homeFragment"
+            app:destination="@id/navigation_home"
             app:popUpTo="@id/nav_graph"/>
     </fragment>
     <action
         android:id="@+id/action_biometricFragment_to_homeFragment"
-        app:destination="@id/homeFragment" />
+        app:destination="@id/navigation_home" />
 
     <fragment
         android:id="@+id/cardDetailFragment"
@@ -145,6 +145,11 @@
             android:name="model"
             app:argType="com.alish.geekbank.presentation.models.NewsModelUI" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.alish.geekbank.presentation.ui.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/mapFull"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.map.MapFull"
