@@ -83,13 +83,13 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
     kapt(Dependencies.Hilt.compiler)
 
-    implementation ("androidx.viewpager2:viewpager2:1.0.0-alpha01")
+    implementation("androidx.viewpager2:viewpager2:1.0.0-alpha01")
 
     //Biometric
-    implementation ("androidx.biometric:biometric:1.1.0")
+    implementation("androidx.biometric:biometric:1.1.0")
 
     // Material Design
-    implementation ("com.google.android.material:material:1.6.0-alpha03")
+    implementation("com.google.android.material:material:1.6.0-alpha03")
 
     // viewBinding
     implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")
@@ -101,8 +101,15 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.4.1")
 
     // Coil
-    implementation ("io.coil-kt:coil:1.3.2")
+    implementation("io.coil-kt:coil:1.3.2")
 
     //Map
-    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+
+    // Qr Code Generator
+    implementation("com.google.zxing:core:3.4.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
+
+    // Qr Code Scanner
+    implementation("com.github.yuriy-budiyev:code-scanner:2.1.0")
 }
