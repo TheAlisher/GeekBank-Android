@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="mainFlowFragment" type="id" />
+    <item name="signFlowFragment" type="id" />
+    <item name="action_signFlowFragment_to_mainFlowFragment" type="id" />
+</resources>

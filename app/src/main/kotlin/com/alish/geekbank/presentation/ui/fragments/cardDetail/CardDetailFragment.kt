@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ import com.alish.geekbank.presentation.models.CardModel
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
+import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -47,7 +49,7 @@ class CardDetailFragment :
     }
 
     override fun setupListeners() {
-        setupAlertDialog()
+        setupDialog()
         setupAction()
         setupBottomSheet()
     }
@@ -83,7 +85,7 @@ class CardDetailFragment :
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
         }
         buttonQR.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToQrFragment())
+            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToScannerFragment())
         }
         buttonSettings.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
@@ -153,20 +155,10 @@ class CardDetailFragment :
 
     }
 
-    private fun setupAlertDialog() {
+    private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {
-            val dialog = AlertDialog.Builder(requireContext())
-            dialog.setMessage("Are you sure,you want to freeze cards?")
-            dialog.setPositiveButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
-                dialog.dismiss()
-            })
-            dialog.setNegativeButton("Freeze card",
-                DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                })
-            dialog.create()
-            dialog.show()
+            val dialog = FreezeDialogFragment()
+            fragmentManager?.let { it1 -> dialog.show(it1,"freezeDialog") }
         }
     }
 
