@@ -4,4 +4,9 @@
     <string name="create_a_password">Create a password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="history_transactions">History transactions</string>
+    <string name="send_money">Send money</string>
+    <string name="from_the_card">From the Card</string>
+    <string name="to_the_card">To the Card</string>
+    <string name="available">Available:</string>
+    <string name="commission">Commission:</string>
 </resources>
