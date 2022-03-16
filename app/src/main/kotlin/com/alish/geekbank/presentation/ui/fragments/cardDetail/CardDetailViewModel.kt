@@ -12,7 +12,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class CardDetailViewModel @Inject constructor(private val fetchDataUseCase: FetchDataUseCase
+class CardDetailViewModel @Inject constructor(
+    private val fetchDataUseCase: FetchDataUseCase
 ) : BaseViewModel() {
 
     private val _stateUser =

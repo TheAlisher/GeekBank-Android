@@ -1,11 +1,10 @@
 package com.alish.geekbank.data.remote
 
-import com.alish.geekbank.common.constants.Constants
-import com.alish.geekbank.data.remote.interceptors.LoggingInterceptor
+import com.alish.geekbank.data.remote.apiservices.ExchangeApiService
 import com.alish.geekbank.data.remote.apiservices.NewsApiService
 import com.alish.geekbank.data.remote.interceptors.AuthorizationInterceptor
+import com.alish.geekbank.data.remote.interceptors.LoggingInterceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
@@ -30,4 +29,7 @@ class RetrofitClient {
 
     fun provideNewsApiService(): NewsApiService = provideRetrofit
         .create(NewsApiService::class.java)
+
+    fun provideExchangeApiService(): ExchangeApiService = provideRetrofit
+        .create(ExchangeApiService::class.java)
 }

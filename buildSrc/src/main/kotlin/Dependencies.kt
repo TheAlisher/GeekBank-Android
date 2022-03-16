@@ -91,4 +91,9 @@ object Dependencies {
 
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
     }
+
+    object LottieFile {
+        private const val lottieVersion = "3.4.0"
+        const val lottie = "com.airbnb.android:lottie:$lottieVersion"
+    }
 }
