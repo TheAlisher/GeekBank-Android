@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#191919"
     android:padding="10dp">
 
@@ -22,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:text="Airbnb"
+        tools:text="Airbnb"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -33,12 +34,11 @@
         android:id="@+id/exchange"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="70dp"
         android:layout_marginTop="4dp"
-        android:hint="Rental"
         android:textColorHint="#8E8E93"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exchange_name" />
+        app:layout_constraintStart_toStartOf="@+id/exchange_name"
+        app:layout_constraintTop_toBottomOf="@id/exchange_name"
+        tools:hint="Rental" />
 
     <TextView
         android:id="@+id/exchange_number"
@@ -46,7 +46,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="150dp"
         android:layout_marginTop="15dp"
-        android:text="-53,100 KGS"
+        tools:text="-53,100 KGS"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,10 +57,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:hint="9:10 PM"
         android:textColorHint="#8E8E93"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exchange_number" />
+        app:layout_constraintEnd_toEndOf="@+id/exchange_number"
+        app:layout_constraintTop_toBottomOf="@id/exchange_number"
+        tools:hint="9:10 PM" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

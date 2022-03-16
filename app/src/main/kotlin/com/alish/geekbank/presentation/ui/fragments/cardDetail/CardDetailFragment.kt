@@ -1,11 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +20,6 @@ import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragm
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-
 
 @AndroidEntryPoint
 class CardDetailFragment :
@@ -84,8 +79,9 @@ class CardDetailFragment :
         buttonExchange.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
         }
+
         buttonQR.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToScannerFragment())
+//            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToScannerFragment())
         }
         buttonSettings.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
@@ -93,7 +89,6 @@ class CardDetailFragment :
         binding.imageArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-
     }
 
     override fun setupSubscribes() {
@@ -123,7 +118,7 @@ class CardDetailFragment :
                                 )
                             )
 
-                            cardDetailAdapter.addModel(list)
+                            cardDetailAdapter.submitList(list)
                             val myPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
                                 override fun onPageSelected(position: Int) {
                                     when (position) {
@@ -160,10 +155,5 @@ class CardDetailFragment :
             val dialog = FreezeDialogFragment()
             fragmentManager?.let { it1 -> dialog.show(it1,"freezeDialog") }
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        cardDetailAdapter.clear()
     }
 }

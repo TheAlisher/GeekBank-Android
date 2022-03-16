@@ -73,6 +73,10 @@ class TransferFragment :
                                                     data?.secondCard?.get("money").toString()
                                             }
                                         }
+                                        binding.btnSetMoney.setOnClickListener {
+                                            val money = binding.inputTxtTransfer.toString().trim()
+
+                                        }
                                     }
                                 }
                             binding.cardRecycler1.registerOnPageChangeCallback(

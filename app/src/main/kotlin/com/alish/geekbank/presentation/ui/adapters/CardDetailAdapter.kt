@@ -2,27 +2,17 @@ package com.alish.geekbank.presentation.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alish.geekbank.databinding.ItemCardListBinding
+import com.alish.geekbank.presentation.base.BaseComparatorCard
 import com.alish.geekbank.presentation.models.CardModel
 
-class CardDetailAdapter() :
-    RecyclerView.Adapter<CardDetailAdapter.ViewHolder>() {
+class CardDetailAdapter :
+    ListAdapter<CardModel, CardDetailAdapter.CardViewHolder>(BaseComparatorCard()) {
 
-    private val model = ArrayList<CardModel>()
-
-    fun addModel(model: ArrayList<CardModel>){
-        this.model.addAll(model)
-        notifyDataSetChanged()
-    }
-
-    fun clear() {
-        val size: Int = model.size
-        model.clear()
-        notifyItemRangeRemoved(0, size)
-    }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+        return CardViewHolder(
             ItemCardListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -31,15 +21,11 @@ class CardDetailAdapter() :
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.onBind(model[position])
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+        holder.onBind(getItem(position))
     }
 
-    override fun getItemCount(): Int {
-        return model.size
-    }
-
-    inner class ViewHolder(private val binding: ItemCardListBinding) :
+    inner class CardViewHolder(private val binding: ItemCardListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(item: CardModel) = with(binding) {

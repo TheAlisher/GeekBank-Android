@@ -22,4 +22,7 @@
     <string name="russian">Russian</string>
     <string name="switch_language">Switch Language</string>
     <string name="english">English</string>
+    <string name="default_course">Default course</string>
+    <string name="offer">Offer</string>
+    <string name="total_balance">Total balance</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.alish.geekbank.presentation.base
 
 interface BaseDiffUtilExchange {
-    val conversion_rates: Map<String, Double>
+    val exchangeName: String
     override fun equals(other: Any?): Boolean
 }

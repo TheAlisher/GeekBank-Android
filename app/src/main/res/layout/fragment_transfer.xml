@@ -7,6 +7,16 @@
     android:background="@color/black"
     tools:context=".presentation.ui.fragments.transfer.TransferFragment">
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:visibility="gone"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_set_money"
+        app:layout_constraintRight_toRightOf="@id/btn_set_money"
+        app:layout_constraintTop_toTopOf="@id/btn_set_money"
+        android:layout_marginEnd="14dp"/>
+
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/txt_from_card"
@@ -21,12 +31,13 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/card_recycler1"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txt_to_the_card"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_from_card"
         tools:listitem="@layout/item_transfer_list" />
 
@@ -44,7 +55,7 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/card_recycler2"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
@@ -69,7 +80,7 @@
         android:id="@+id/txt_number_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$ 3,150.70"
+        tools:text="$ 3,150.70"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/txt_available"
@@ -90,8 +101,8 @@
 
     <TextView
         android:id="@+id/txt_commission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="19dp"
         android:layout_marginStart="120dp"
         android:text="@string/commission"
         android:textColor="#8E8E93"
@@ -103,7 +114,7 @@
         android:id="@+id/txt_commission_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$ 5,150"
+        tools:text="$ 5,150"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/txt_commission"
@@ -114,14 +125,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/background_card_number"
-        android:drawableEnd="@drawable/ic_next"
         android:text="@string/send_money"
+        android:id="@+id/btn_set_money"
         android:textColor="@color/white"
         android:textSize="20sp"
+        app:icon="@drawable/ic_next"
+        app:iconGravity="end"
         android:textStyle="bold"
         app:backgroundTint="@null"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_commission_number" />
+
+
+
+    <!--    <com.airbnb.lottie.LottieAnimationView-->
+    <!--        app:layout_constraintRight_toRightOf="@id/btn_set_money"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/btn_set_money"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/btn_set_money"-->
+    <!--        android:id="@+id/loading"-->
+    <!--        android:layout_width="30dp"-->
+    <!--        android:layout_height="30dp"-->
+    <!--        android:layout_marginEnd="14dp"-->
+    <!--        app:lottie_rawRes="@raw/loading"-->
+    <!--        android:visibility="gone"-->
+    <!--        app:lottie_autoPlay="true"-->
+    <!--        app:lottie_loop="true"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

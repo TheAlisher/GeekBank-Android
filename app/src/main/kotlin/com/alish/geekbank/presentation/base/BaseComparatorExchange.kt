@@ -9,7 +9,7 @@ class BaseComparatorExchange<T : BaseDiffUtilExchange> : DiffUtil.ItemCallback<T
         oldItem: T,
         newItem: T,
     ): Boolean {
-        return oldItem.conversion_rates == newItem.conversion_rates
+        return oldItem.exchangeName == newItem.exchangeName
     }
 
     @SuppressLint("DiffUtilEquals")

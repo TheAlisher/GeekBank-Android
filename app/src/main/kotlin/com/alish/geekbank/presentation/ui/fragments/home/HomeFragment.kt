@@ -50,7 +50,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         binding.map.onResume()
         binding.map.getMapAsync(this)
         binding.recyclerNews.adapter = adapter
-
     }
 
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
@@ -145,8 +144,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         } else {
                             break
                         }
-
-
                     }
                     adapter.submitList(list)
                 }
@@ -170,7 +167,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         googleMap.addMarker(MarkerOptions().position(geekTech2).title("avtomoyka"))
         googleMap.addMarker(MarkerOptions().position(geekTech3).title("chto to"))
 
-
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
 
@@ -188,5 +184,3 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
 }
-
-

@@ -28,6 +28,7 @@ private val fetchDataUseCase: FetchDataUseCase) : BaseViewModel() {
     private val _stateUser =
         MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
     val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()
+
     init {
         fetchNews()
         fetchNewsBank()
