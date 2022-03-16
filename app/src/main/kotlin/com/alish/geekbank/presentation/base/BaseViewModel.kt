@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel : ViewModel() {
+abstract class  BaseViewModel : ViewModel() {
 
     protected fun <T, S> Flow<Resource<T>>.collectRequest(
         state: MutableStateFlow<UIState<S>>,

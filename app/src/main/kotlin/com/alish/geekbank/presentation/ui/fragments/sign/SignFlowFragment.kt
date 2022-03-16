@@ -1,6 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.sign
 
-import androidx.fragment.app.Fragment
 import com.alish.geekbank.R
 import com.alish.geekbank.presentation.base.BaseFlowFragment
 

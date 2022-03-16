@@ -1,6 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.NewsModelUI
@@ -19,20 +21,28 @@ import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fragment_home),
+class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
     private var xCoOrdinate = 0f
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
 
-    override val viewModel:HomeViewModel by viewModels()
+    override val viewModel: HomeViewModel by viewModels()
     override val binding by viewBinding(FragmentHomeBinding::bind)
 
     override fun initialize() {
@@ -42,9 +52,12 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
         binding.recyclerNews.adapter = adapter
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun setupListeners() {
         clickForAllNews()
+        clickForSeeFullMap()
+        clickForQrScanner()
+
         binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -73,27 +86,64 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
 
     }
 
+    private fun clickForQrScanner() {
+        binding.qrCode.setOnClickListener {
+            findNavController().navigate(R.id.scannerFragment)
+        }
+    }
+
+    private fun clickForSeeFullMap() {
+        binding.txtShowAllMap.setOnClickListener {
+            findNavController().navigate(R.id.mapFull)
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
     private fun clickForAllNews() {
         binding.txtShowAll.setOnClickListener {
             findNavController().navigate(R.id.allNews)
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun setupRequests() {
+        viewModel.stateUser.collectUIState() {
+            when (it) {
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    it.data.forEach { data ->
+                        if (data?.id == preferencesHelper.getString("id")) {
+                            binding.tvCash.text = data?.firstCard?.get("money").toString()
+                            binding.numberCard.text =
+                                "**** **** **** ****" + data?.firstCard?.get("cardNumber")
+                                    .toString().substring(
+                                        data?.firstCard?.get("cardNumber").toString().length - 4
+                                    )
+                            binding.qrView.setImageBitmap(
+                                generateQrCode(
+                                    cardNumber = data?.firstCard?.get("cardNumber")
+                                        .toString()
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
         viewModel.newsState.collectUIState {
-            when(it){
+            when (it) {
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
                     var list: ArrayList<NewsModelUI> = ArrayList()
-                    for(i in it.data){
+                    for (i in it.data) {
                         if (list.size < 3) {
                             list.add(i)
-                        }else{
+                        } else {
                             break
                         }
-
-
                     }
                     adapter.submitList(list)
                 }
@@ -117,10 +167,20 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>(R.layout.fr
         googleMap.addMarker(MarkerOptions().position(geekTech2).title("avtomoyka"))
         googleMap.addMarker(MarkerOptions().position(geekTech3).title("chto to"))
 
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
+    }
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech,17f))
+    private fun generateQrCode(cardNumber: String?): Bitmap? {
+        val writer = MultiFormatWriter()
+        var bitmap: Bitmap? = null
+
+        try {
+            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+            val encoder = BarcodeEncoder()
+            bitmap = encoder.createBitmap(matrix)
+        } catch (e: WriterException) {
+        }
+        return bitmap
     }
 
 }
-
-

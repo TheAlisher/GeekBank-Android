@@ -24,7 +24,7 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
     lateinit var preferencesHelper: PreferencesHelper
 
     override fun setupListeners() {
-        binding.btnIn.setOnClickListener {
+        binding.loginBtn.setOnClickListener {
             if (signDetails()){
                 signIn()
             }
@@ -40,14 +40,14 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
                 }
                 is UIState.Success -> {
                     it.data.forEach { data ->
-                        if (editId.text.toString().trim() == data?.id
-                                && editPassword.text.toString().trim() == data.password
+                        if (IDEt.text.toString().trim() == data?.id
+                                && passwordEt.text.toString().trim() == data.password
                             ) {
+                                preferencesHelper.putString("id",data.id)
                                preferencesHelper.putBoolean("bool",true)
                                 mainNavController().navigate(
-                                    R.id.action_signFlowFragment_to_mainFlowFragment
-                                )
-                            }
+                                    R.id.action_signFlowFragment_to_mainFlowFragment)
+                        }
                     }
                 }
             }
@@ -59,19 +59,19 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
 
     private fun signDetails():Boolean{
         when {
-            binding.editId.text.toString().trim().isEmpty() -> {
+            binding.IDEt.text.toString().trim().isEmpty() -> {
                 showToast("Enter Login")
                 return false
             }
-            binding.editPassword.text.toString().trim().isEmpty() -> {
+            binding.passwordEt.text.toString().trim().isEmpty() -> {
                 showToast("Enter Password")
                 return false
             }
-            binding.editId.text.toString().trim().length < 6 -> {
+            binding.IDEt.text.toString().trim().length < 6 -> {
                 showToast("Login must be bigger 7 simbols")
                 return false
             }
-            binding.editPassword.text.toString().trim().length < 6 -> {
+            binding.passwordEt.text.toString().trim().length < 6 -> {
                 showToast("Password must be bigger than 7 simbols")
                 return false
             }

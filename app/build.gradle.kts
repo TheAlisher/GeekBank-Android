@@ -15,8 +15,8 @@ plugins {
 }
 
 android {
+    compileSdk = AndroidConfig.compileSdk
 
-    compileSdk = 32
     defaultConfig {
         applicationId = "com.alish.geekbank"
         minSdk = AndroidConfig.minSdk
@@ -36,8 +36,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = rootProject.extra["sourceCompatibility"] as String
-        targetCompatibility = rootProject.extra["targetCompatibility"] as String
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -76,22 +76,26 @@ dependencies {
 
     // Hilt
     implementation(Dependencies.Hilt.android)
+
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
+
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
-    implementation("com.google.android.libraries.maps:maps:3.1.0-beta")
+
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.2")
     kapt(Dependencies.Hilt.compiler)
 
+    implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")
+
     //Biometric
-    implementation ("androidx.biometric:biometric:1.1.0")
+    implementation("androidx.biometric:biometric:1.1.0")
 
     // Material Design
-    implementation ("com.google.android.material:material:1.6.0-alpha03")
+    implementation("com.google.android.material:material:1.6.0-alpha03")
 
     // viewBinding
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
 
     // Activity
     implementation("androidx.activity:activity-ktx:1.4.0")
@@ -100,8 +104,18 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.4.1")
 
     // Coil
-    implementation ("io.coil-kt:coil:1.3.2")
+    implementation("io.coil-kt:coil:1.3.2")
 
     //Map
-    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
+
+    // Qr Code Generator
+    implementation("com.google.zxing:core:3.4.0")
+    implementation("com.journeyapps:zxing-android-embedded:4.1.0")
+
+    // Qr Code Scanner
+    implementation("com.github.yuriy-budiyev:code-scanner:2.1.0")
+
+    // LottieFile
+    implementation(Dependencies.LottieFile.lottie)
 }

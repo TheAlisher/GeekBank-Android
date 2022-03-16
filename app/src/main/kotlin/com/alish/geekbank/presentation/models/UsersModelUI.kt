@@ -5,7 +5,9 @@ import com.alish.geekbank.domain.models.UsersModel
 data class UsersModelUI(
     val id: String? = null,
     val password: String? = null,
+    val firstCard: Map<String,Any>? = null,
+    val secondCard: Map<String,Any>? = null
 )
 
 fun UsersModel.toUsersModelUI(): UsersModelUI =
-    UsersModelUI(id, password)
+    UsersModelUI(id, password,firstCard,secondCard)
