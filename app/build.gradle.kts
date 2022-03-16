@@ -76,14 +76,17 @@ dependencies {
 
     // Hilt
     implementation(Dependencies.Hilt.android)
+
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")
+
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
-    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
+
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.2")
     kapt(Dependencies.Hilt.compiler)
 
-    implementation("androidx.viewpager2:viewpager2:1.0.0-alpha01")
+    implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")
 
     //Biometric
     implementation("androidx.biometric:biometric:1.1.0")
@@ -92,7 +95,7 @@ dependencies {
     implementation("com.google.android.material:material:1.6.0-alpha03")
 
     // viewBinding
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3")
+    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
 
     // Activity
     implementation("androidx.activity:activity-ktx:1.4.0")
@@ -115,4 +118,7 @@ dependencies {
 
     // Qr Code Scanner
     implementation("com.github.yuriy-budiyev:code-scanner:2.1.0")
+
+    // LottieFile
+    implementation(Dependencies.LottieFile.lottie)
 }

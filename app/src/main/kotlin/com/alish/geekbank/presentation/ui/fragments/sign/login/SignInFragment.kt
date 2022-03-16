@@ -44,7 +44,6 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
                         if (IDEt.text.toString().trim() == data?.id
                                 && passwordEt.text.toString().trim() == data.password
                             ) {
-
                                 preferencesHelper.putString("id",data.id)
                                preferencesHelper.putBoolean("bool",true)
                                 mainNavController().navigate(
