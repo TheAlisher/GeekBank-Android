@@ -11,7 +11,7 @@
             app:popUpTo="@id/nav_graph" />
         <action
             android:id="@+id/action_inputPinCodeFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            app:destination="@id/navigation_home"
             app:popUpTo="@id/nav_graph"/>
 
     <fragment
@@ -21,12 +21,12 @@
         tools:layout="@layout/fragment_biometric" >
         <action
             android:id="@+id/action_biometricFragment_to_homeFragment2"
-            app:destination="@id/homeFragment"
+            app:destination="@id/navigation_home"
             app:popUpTo="@id/nav_graph"/>
     </fragment>
     <action
             android:id="@+id/action_biometricFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/navigation_home" />
 
     <fragment
         android:id="@+id/cardDetailFragment"
@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_cardDetailFragment_to_cardFragment"
             app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_cardDetailFragment_to_freezeDialogFragment"
+            app:destination="@id/freezeDialogFragment" />
 
     </fragment>
     <fragment
@@ -77,4 +80,9 @@
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
+    <dialog
+        android:id="@+id/freezeDialogFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment"
+        android:label="fragment_freeze_dialog"
+        tools:layout="@layout/fragment_freeze_dialog" />
 </navigation>
