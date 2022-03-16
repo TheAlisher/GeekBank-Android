@@ -15,8 +15,8 @@ plugins {
 }
 
 android {
-    compileSdk = AndroidConfig.compileSdk
 
+    compileSdk = 32
     defaultConfig {
         applicationId = "com.alish.geekbank"
         minSdk = AndroidConfig.minSdk
@@ -36,8 +36,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = rootProject.extra["sourceCompatibility"] as String
+        targetCompatibility = rootProject.extra["targetCompatibility"] as String
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -81,6 +81,7 @@ dependencies {
     implementation("com.google.android.material:material:1.5.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
+    implementation("com.google.android.libraries.maps:maps:3.1.0-beta")
     kapt(Dependencies.Hilt.compiler)
 
     //Biometric

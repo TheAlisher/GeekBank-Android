@@ -5,7 +5,7 @@
         android:title="Home"
         android:icon="@drawable/ic_home"/>
     <item
-        android:id="@+id/cardsFragment"
+        android:id="@+id/cardFragment"
         android:title="Cards"
         android:icon="@drawable/ic_pay"/>
     <item
@@ -14,7 +14,8 @@
         />
     <item
         android:id="@+id/fragment2"
-        android:title=""
+        android:title="Crypta"
+        android:icon="@drawable/ic_crypta"
         />
 
     <item
