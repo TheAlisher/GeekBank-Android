@@ -5,5 +5,7 @@ import com.alish.geekbank.domain.models.UsersModel
 import kotlinx.coroutines.flow.Flow
 
 interface FirestoreRepository {
+
     fun fetchData(): Flow<Resource<List<UsersModel?>>>
+
 }

@@ -1,5 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
+import com.alish.geekbank.common.resource.Resource
+import com.alish.geekbank.domain.models.UsersModel
 import com.alish.geekbank.domain.usecases.FetchDataUseCase
 import com.alish.geekbank.domain.usecases.FetchNewsBankUseCase
 import com.alish.geekbank.domain.usecases.FetchNewsBitcoinUseCases
@@ -11,9 +13,7 @@ import com.alish.geekbank.presentation.models.toUI
 import com.alish.geekbank.presentation.models.toUsersModelUI
 import com.alish.geekbank.presentation.state.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val fetchNewsUseCase: FetchNewsUseCases
@@ -28,6 +28,7 @@ private val fetchDataUseCase: FetchDataUseCase) : BaseViewModel() {
     private val _stateUser =
         MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
     val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()
+
     init {
         fetchNews()
         fetchNewsBank()
@@ -36,7 +37,7 @@ private val fetchDataUseCase: FetchDataUseCase) : BaseViewModel() {
     }
 
     private fun fetchUser(){
-        fetchDataUseCase().collectRequest(_stateUser){it.map { data-> data?.toUsersModelUI() }}
+        fetchDataUseCase().collectRequest(_stateUser){it.map { data -> data?.toUsersModelUI() }}
     }
 
     private fun fetchNews(){

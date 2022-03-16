@@ -31,6 +31,7 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
         }
     }
     private fun signIn() = with(binding) {
+
         viewModel.signState.collectUIState {
             when (it) {
                 is UIState.Error -> {

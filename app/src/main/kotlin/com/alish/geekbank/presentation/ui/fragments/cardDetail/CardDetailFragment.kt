@@ -116,29 +116,14 @@ class CardDetailFragment :
                                     data?.secondCard?.get("date").toString())
                             )
                             cardDetailAdapter.addModel(list)
-                            var myPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
-                                override fun onPageSelected(position: Int) {
-                                   when(position){
-                                       0 ->{
-                                           val list2: ArrayList<CardListUIModel> = ArrayList()
-                                           list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
-                                           cardDetailListAdapter.submitList(list2)
-                                       }
-                                       1 ->{
-                                           val list2: ArrayList<CardListUIModel> = ArrayList()
-                                           list2.add(CardListUIModel(R.drawable.airbnb, "21342", 1))
-                                           cardDetailListAdapter.submitList(list2)
-                                       }
-                                   }
-                                }
-                            }
-
-                            binding.listRecycler.registerOnPageChangeCallback(myPageChangeCallback)
                         }
                     }
                 }
             }
         }
+        val list2: ArrayList<CardListUIModel> = ArrayList()
+        list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
+        cardDetailListAdapter.submitList(list2)
 
     }
 

@@ -6,3 +6,4 @@ data class UsersModel(
     val firstCard: Map<String,Any>? = null,
     val secondCard: Map<String,Any>? = null
 )
+
