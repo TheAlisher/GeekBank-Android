@@ -3,10 +3,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_a_password">Create a password</string>
     <string name="enter_your_password">Enter your password</string>
-    <string name="history_transactions">History transactions</string>
     <string name="send_money">Send money</string>
-    <string name="from_the_card">From the Card</string>
-    <string name="to_the_card">To the Card</string>
     <string name="available">Available:</string>
     <string name="commission">Commission:</string>
     <string name="alina_tashbolotova">Alina Tashbolotova</string>
@@ -34,7 +31,6 @@
     <string name="history_transactions">History transactions</string>
     <string name="card_holder_name">Card Holder name</string>
     <string name="are_you_sure_you_want_to_freeze_cards">Are you sure,you want to freeze cards?</string>
-    <string name="total_balance">Total balance</string>
     <string name="qr_code">QR code</string>
     <string name="see_all">See All</string>
     <string name="latest_news">Latest News</string>
@@ -45,8 +41,6 @@
     <string name="transfer_card">Transfer Card</string>
     <string name="from_the_card">From the Card</string>
     <string name="to_the_card">To the Card</string>
-    <string name="available">Available:</string>
-    <string name="commission">Commission:</string>
     <string name="january_18_2022">January 18.2022</string>
     <string name="error_text">Error Text</string>
     <string name="phone_number">Phone number</string>

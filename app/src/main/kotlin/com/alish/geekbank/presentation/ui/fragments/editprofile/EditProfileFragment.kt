@@ -7,11 +7,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentEditProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
-import com.alish.geekbank.presentation.extensions.hasPermissionCheckAndRequest
 import com.alish.geekbank.presentation.extensions.setImage
+import com.alish.geekbank.presentation.state.UIState
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class EditProfileFragment :
@@ -21,6 +24,9 @@ class EditProfileFragment :
     override val binding by viewBinding(FragmentEditProfileBinding::bind)
     private var imageUri: Uri? = null
     private var image = ""
+
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -34,6 +40,7 @@ class EditProfileFragment :
             }
         }
     }
+
     private fun checkPermissionGallery() {
 //        if (hasPermissionCheckAndRequest(
 //                requestPermissionLauncher,
@@ -41,7 +48,7 @@ class EditProfileFragment :
 //            )
 //        ) {
 //            fileChooserContract.launch("image/*")
-   //     }
+        //     }
         fileChooserContract.launch("image/*")
     }
 
@@ -49,9 +56,31 @@ class EditProfileFragment :
         clickGallery()
     }
 
+    override fun setupRequests() {
+        viewModel.stateUser.collectUIState {
+            when (it) {
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
+                is UIState.Success -> {
+                    it.data.forEach { data ->
+                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                            binding.inputName.setText(data?.name)
+                            binding.inputLastName.setText(data?.surname)
+                            binding.inputNumber.setText(data?.number)
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
     private fun clickGallery() {
         binding.txtChoosePhoto.setOnClickListener(clickListener)
     }
+
     private val clickListener = View.OnClickListener {
         checkPermissionGallery()
     }

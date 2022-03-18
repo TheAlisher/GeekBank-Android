@@ -8,11 +8,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.Localization
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
+import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
@@ -67,6 +69,26 @@ class ProfileFragment :
         setupDialogTheme()
         setupEditProfile()
         clickImage()
+    }
+
+    override fun setupRequests() {
+        viewModel.stateUser.collectUIState {
+            when(it){
+                is UIState.Error -> {
+
+                }
+                is UIState.Loading -> {
+
+                }
+                is UIState.Success -> {
+                    it.data.forEach {data->
+                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
+                            binding.txtName.text = "${data?.name} ${data?.surname}"
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun setupRussian() = with(binding) {

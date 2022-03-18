@@ -51,4 +51,8 @@
     <string name="enter_your_name">Введите ваше имя</string>
     <string name="enter_your_last_name">Введите вашу фамилию</string>
     <string name="enter_your_number">Введите ваш номер</string>
+    <string name="default_course">Курс по умолчанию</string>
+    <string name="offer">Предложение</string>
+    <string name="send_money">Отправлять деньги</string>
+
 </resources>
