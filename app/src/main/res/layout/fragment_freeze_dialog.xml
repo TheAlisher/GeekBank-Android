@@ -29,7 +29,7 @@
         android:backgroundTint="#479EF5"
         android:text="@string/freeze_card"
         android:textSize="12dp"
-        android:maxEms="3"
+        android:maxEms="9"
         android:textColor="#F8F9FA"
         app:cornerRadius="5dp"
         app:layout_constraintStart_toStartOf="parent"
