@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alish.geekbank.databinding.ItemCardListBinding
 import com.alish.geekbank.presentation.base.BaseComparatorCard
-import com.alish.geekbank.presentation.models.CardModel
+import com.alish.geekbank.presentation.models.CardModelUI
+
 
 class CardDetailAdapter :
-    ListAdapter<CardModel, CardDetailAdapter.CardViewHolder>(BaseComparatorCard()) {
+    ListAdapter<CardModelUI, CardDetailAdapter.CardViewHolder>(BaseComparatorCard()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         return CardViewHolder(
@@ -28,8 +29,7 @@ class CardDetailAdapter :
     inner class CardViewHolder(private val binding: ItemCardListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(item: CardModel) = with(binding) {
-            nameCard.text = item.name
+        fun onBind(item: CardModelUI) = with(binding) {
             dataCard.text = item.date
             roomCard.text = item.cardNumber
         }
