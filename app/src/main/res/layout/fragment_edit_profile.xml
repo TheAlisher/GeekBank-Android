@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/name"
         android:textColorHint="#8E8E93"
         android:textSize="14sp"
@@ -90,7 +90,10 @@
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:counterEnabled="true"
+        app:startIconDrawable="@drawable/user"
+        app:startIconTint="@color/white"
         app:counterMaxLength="20"
+        android:layout_marginBottom="30dp"
         app:counterTextColor="@color/white"
         app:endIconMode="clear_text"
         app:endIconTint="@color/white"
@@ -144,6 +147,8 @@
         app:boxStrokeWidthFocused="0dp"
         app:counterEnabled="true"
         app:counterMaxLength="20"
+        app:startIconDrawable="@drawable/user"
+        app:startIconTint="@color/white"
         app:counterTextColor="@color/white"
         app:endIconMode="clear_text"
         app:endIconTint="@color/white"
@@ -194,6 +199,8 @@
         android:textColorHint="#8E8E93"
         app:boxBackgroundMode="filled"
         app:boxStrokeWidth="0dp"
+        app:startIconDrawable="@drawable/phone"
+        app:startIconTint="@color/white"
         app:boxStrokeWidthFocused="0dp"
         app:counterEnabled="true"
         app:counterMaxLength="20"
@@ -222,4 +229,16 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        app:cornerRadius="5dp"
+        android:text="@string/save"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#0063F5"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_number"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

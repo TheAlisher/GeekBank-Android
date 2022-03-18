@@ -54,5 +54,6 @@
     <string name="default_course">Курс по умолчанию</string>
     <string name="offer">Предложение</string>
     <string name="send_money">Отправлять деньги</string>
+    <string name="save">Сохранить</string>
 
 </resources>
