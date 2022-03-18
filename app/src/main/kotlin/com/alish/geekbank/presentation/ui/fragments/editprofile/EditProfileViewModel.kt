@@ -1,9 +1,8 @@
-package com.alish.geekbank.presentation.ui.fragments.profile
+package com.alish.geekbank.presentation.ui.fragments.editProfile
 
-import com.alish.geekbank.common.resource.Resource
 import com.alish.geekbank.domain.usecases.FetchUserDataUseCase
+import com.alish.geekbank.domain.usecases.UpdateAccountUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
-import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.models.toUsersModelUI
 import com.alish.geekbank.presentation.state.UIState
@@ -14,7 +13,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor( private val fetchUserDataUseCase: FetchUserDataUseCase): BaseViewModel() {
+class EditProfileViewModel  @Inject constructor(private val updateAccountUseCase: UpdateAccountUseCase,
+private val fetchUserDataUseCase: FetchUserDataUseCase): BaseViewModel() {
+
     private val _stateUser =
         MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
     val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()

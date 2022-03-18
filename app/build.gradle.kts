@@ -119,6 +119,6 @@ dependencies {
     // Qr Code Scanner
     implementation("com.github.yuriy-budiyev:code-scanner:2.1.0")
 
-    // LottieFile
-    implementation(Dependencies.LottieFile.lottie)
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 }

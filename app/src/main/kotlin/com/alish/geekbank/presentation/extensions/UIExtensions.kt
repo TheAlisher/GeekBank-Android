@@ -1,9 +1,16 @@
 package com.alish.geekbank.presentation.extensions
 
+import android.content.pm.PackageManager
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.alish.geekbank.R
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 
 // region Fragment
@@ -11,6 +18,32 @@ import androidx.fragment.app.Fragment
 /**
  * Fragment Extensions
  */
+
+fun ImageView.setImage(uri: String) {
+    Glide.with(this)
+        .load(uri)
+        .circleCrop()
+        .error(R.drawable.placeholder)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .into(this)
+}
+
+fun Fragment.hasPermissionCheckAndRequest(
+    requestPermissionLauncher: ActivityResultLauncher<Array<String>>,
+    permission: Array<String>,
+): Boolean {
+    for (per in permission) {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                per
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissionLauncher.launch(permission)
+            return false
+        }
+    }
+    return true
+}
 
 fun Fragment.showToastShort(text: String) {
     Toast.makeText(context, text, Toast.LENGTH_SHORT).show()

@@ -149,7 +149,11 @@
         android:id="@+id/navigation_profile"
         android:name="com.alish.geekbank.presentation.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapFull"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.map.MapFull"
@@ -160,6 +164,11 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment"
         android:label="fragment_scanner"
         tools:layout="@layout/fragment_scanner" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.editProfile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 
 
 </navigation>
