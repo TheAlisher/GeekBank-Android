@@ -1,8 +1,16 @@
 package com.alish.geekbank.presentation.models
 
-data class CardModel(
-//    val image: Int? = null,
-    val cardNumber: String? = null,
-    val name: String? = null,
-    val date: String? = null
+import com.alish.geekbank.domain.models.CardModel
+import com.alish.geekbank.presentation.base.BaseDiffUtilCard
+
+data class CardModelUI(
+    val blocked: Boolean? = null,
+    val money: Int? = null,
+    val date: String? = null,
+    override val cardNumber: String? = null,
+    val id: String? = null
+) : BaseDiffUtilCard
+
+fun CardModel.toUI() = CardModelUI(
+  blocked, money, date, cardNumber, id
 )

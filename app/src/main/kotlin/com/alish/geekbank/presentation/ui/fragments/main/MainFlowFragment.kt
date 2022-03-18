@@ -34,6 +34,7 @@ class MainFlowFragment :
                 R.id.transferFragment,
                 R.id.qrFragment,
                 R.id.editProfileFragment,
+                R.id.scannerFragment,
                 -> {
                     whetherToShow(false)
                 }

@@ -6,6 +6,7 @@
       <module name="GeekBank-Android.app" target="11" />
       <module name="GeekBank-Android.buildSrc" target="11" />
       <module name="GeekBank-Android.data" target="11" />
+      <module name="GeekBank-Android1.buildSrc" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

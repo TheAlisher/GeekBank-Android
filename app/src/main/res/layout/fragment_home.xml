@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -34,9 +34,9 @@
                     android:id="@+id/cash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:layout_marginTop="50dp"
-                    android:text="Total balance"
+                    android:text="@string/total_balance"
                     android:textColor="@color/white"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -124,7 +124,7 @@
                 app:layout_constraintBottom_toTopOf="@id/map1"
                 app:layout_constraintRight_toRightOf="@id/map1"
                 android:layout_marginBottom="10dp"
-                 />
+                />
 
             <TextView
                 android:id="@+id/txt_news"
@@ -150,10 +150,10 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.gms.maps.MapView
-                android:id="@+id/map"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                />
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    />
             </androidx.cardview.widget.CardView>
 
 
@@ -166,8 +166,35 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bottom_sheet_corners_background_white"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/map1">
+
+                <TextView
+                    android:id="@+id/number_card"
+                    android:textSize="25sp"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="6343454321322243" />
+
+                <ImageView
+                    android:id="@+id/qr_view"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    tools:src="@tools:sample/avatars" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.appcompat.widget.LinearLayoutCompat>
