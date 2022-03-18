@@ -53,4 +53,5 @@
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_your_last_name">Enter your last name</string>
     <string name="enter_your_number">Enter your number</string>
+    <string name="save">SAVE</string>
 </resources>

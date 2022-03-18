@@ -3,10 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/drawable/back_dark.xml" value="0.195" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/drawable/back_profile.xml" value="0.153" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/drawable/background_card_number.xml" value="0.243" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/drawable/button_gradient.xml" value="0.195" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/layout/fragment_card_detail.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/layout/fragment_edit_profile.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/layout/fragment_freeze_dialog.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/layout/fragment_profile.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android-New/app/src/main/res/layout/fragment_transfer.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/bottom_sheet_corners_background.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_screen.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
