@@ -6,7 +6,7 @@ import java.util.*
 import javax.inject.Inject
 
 class LocalHelper @Inject constructor(
-    private val preferencesHelper: LanguagePreferencesHelper,
+    private val preferencesHelper: PreferencesHelper,
 ) {
 
     fun loadLocale(context: Context): Context {

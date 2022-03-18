@@ -33,6 +33,7 @@ class MainFlowFragment :
                 R.id.exchangeFragment,
                 R.id.transferFragment,
                 R.id.qrFragment,
+                R.id.editProfileFragment,
                 -> {
                     whetherToShow(false)
                 }
