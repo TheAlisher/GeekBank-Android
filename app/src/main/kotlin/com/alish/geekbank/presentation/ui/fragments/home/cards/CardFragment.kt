@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardBinding
 import com.alish.geekbank.presentation.base.BaseFragment
@@ -67,10 +68,10 @@ class CardFragment : BaseFragment<CardViewModel,FragmentCardBinding>(R.layout.fr
                 is UIState.Loading -> {}
                 is UIState.Success -> {
                     it.data.forEach { data->
-                        if (data?.id == preferencesHelper.getString("id")){
-                            binding.dataCard.text = data?.firstCard?.get("date").toString()
-                            binding.nameCard.text = data?.firstCard?.get("name").toString()
-                            binding.roomCard.text = data?.firstCard?.get("cardNumber").toString()
+                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
+//                            binding.dataCard.text = data?.date
+//                            binding.nameCard.text = data?.fullName
+//                            binding.roomCard.text = data?.cardNumber
                         }
                     }
                 }

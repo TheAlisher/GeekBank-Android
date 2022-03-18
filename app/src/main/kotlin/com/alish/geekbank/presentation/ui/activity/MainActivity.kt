@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.LocalHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         localHelper.loadLocale(this)
-        isAuthorized = preferenceHelper.getBoolean("bool")
+        isAuthorized = preferenceHelper.getBoolean(Constants.IS_AUTHORIZED)
         setUpNavigation()
     }
 

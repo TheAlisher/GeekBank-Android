@@ -1,6 +1,6 @@
 package com.alish.geekbank.presentation.base
 
 interface BaseDiffUtilCard {
-    val name: String?
+    val cardNumber: String?
     override fun equals(other: Any?): Boolean
 }
