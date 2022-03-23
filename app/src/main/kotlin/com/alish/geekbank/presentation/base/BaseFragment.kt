@@ -1,8 +1,15 @@
 package com.alish.geekbank.presentation.base
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.annotation.RequiresApi
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -12,8 +19,9 @@ import com.alish.geekbank.presentation.state.UIState
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+
 abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
-    @LayoutRes layoutId: Int
+    @LayoutRes layoutId: Int,
 ) : Fragment(layoutId) {
 
     protected abstract val viewModel: ViewModel
@@ -40,9 +48,12 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
     protected open fun setupSubscribes() {
     }
 
+
+
+
     protected fun <T> StateFlow<UIState<T>>.collectUIState(
         lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
-        action: (UIState<T>) -> Unit
+        action: (UIState<T>) -> Unit,
     ) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(lifecycleState) {

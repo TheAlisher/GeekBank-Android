@@ -20,6 +20,8 @@
     <color name="green_sheen">#70A9A1</color>
     <color name="prussian_blue">#003049</color>
 
-
+    <color name="red">#ED0505</color>
     <color name="white_black">#1C1C1E</color>
+
+    <color name="grey">#929491</color>
 </resources>

@@ -4,4 +4,6 @@
     <string name="create_a_password">Create a password</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="history_transactions">History transactions</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="forgot">Если вы забыли пин код, выйдите из аккаунта и зайдите снова</string>
 </resources>

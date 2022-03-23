@@ -40,17 +40,30 @@
         <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_card_list.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/menu/bottom_navigation.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Lucifer/AndroidStudioProjects/GeekBank-Android/app/src/main/res/xml/motion_scene.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable-v24/clear_transparent.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/clear_white.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/delete.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/fingerprint.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/oval_buttons.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/rounded_shape.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/splash_screen.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/view_green_oval.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/view_grey_oval.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/flow_fragment_main.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/flow_fragment_sign.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_biometric.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_create_pin_code.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_f_irst.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_first.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_first2.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_input_pin_code.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_settings.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_sign_in.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/key_pad_layout.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/key_pad_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.125" />
       </map>
     </option>

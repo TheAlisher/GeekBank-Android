@@ -10,9 +10,10 @@ class PreferencesHelper(context: Context) {
     private val preferences: SharedPreferences =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
+
     var pinCode: String?
         get() = preferences.getString("code", "")
-        set(value) = preferences.edit().putString("code", value).apply()
+        set(pasCode) = preferences.edit().putString("code", pasCode).apply()
 
     fun putBoolean(key: String,value:Boolean){
         var editor: SharedPreferences.Editor = preferences.edit()
@@ -23,15 +24,7 @@ class PreferencesHelper(context: Context) {
         return preferences.getBoolean(key,false)
     }
 
-    fun onSavePinCode() {
-        preferences.edit().putBoolean("show", true).apply()
-    }
-
     fun isShown(): Boolean {
         return preferences.getBoolean("show", false)
-    }
-
-    private fun remove(key: String) {
-        preferences.edit().remove(key).apply()
     }
 }

@@ -274,10 +274,11 @@ class GoodPinKeyPad : LinearLayout {
             }
         }
 
-        mBackRight!!.setOnClickListener { doClearPin() }
+        mBackRight!!.setOnClickListener {
+            doClearPin() }
 
         mBackLeft!!.setOnClickListener {
-           clearAll()
+          clearAll()
         }
     }
 
@@ -287,7 +288,7 @@ class GoodPinKeyPad : LinearLayout {
             try {
                 indicators.clear()
                 setIndicators(indicators.size)
-                // listener!!.onKeyPadPressed(pinToString(indicators))
+                listener!!.onKeyPadPressed(pinToString(indicators))
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -23,8 +23,6 @@ class MainFlowFragment :
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.pinCodeFragment,
-                R.id.inputPinCodeFragment,
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
@@ -32,6 +30,8 @@ class MainFlowFragment :
                 R.id.exchangeFragment,
                 R.id.transferFragment,
                 R.id.qrFragment,
+                R.id.firstFragment,
+                R.id.forgotPasswordDialogFragment
                 -> {
                     whetherToShow(false)
                 }
@@ -59,12 +59,8 @@ class MainFlowFragment :
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
-
-
         if (!preferenceHelper.isShown()) {
-            navController.navigate(R.id.pinCodeFragment)
-        } else {
-            navController.navigate(R.id.inputPinCodeFragment)
+            navController.navigate(R.id.firstFragment)
         }
     }
 
