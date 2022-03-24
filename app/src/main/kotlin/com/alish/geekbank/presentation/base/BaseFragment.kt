@@ -29,6 +29,10 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         setupListeners()
         setupRequests()
         setupSubscribes()
+        checkPosition()
+    }
+
+    protected open fun checkPosition() {
     }
 
     protected open fun initialize() {
