@@ -1,12 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
-import android.app.AlertDialog
-import android.content.DialogInterface
-import android.util.DisplayMetrics
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +14,6 @@ import com.alish.geekbank.databinding.FragmentCardDetailBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardModelUI
-import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
@@ -72,6 +66,7 @@ class CardDetailFragment :
                     else -> {}
                 }
             }
+
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 binding.bottomSheetInclude.imageBack.rotation = slideOffset * 180
             }
@@ -88,9 +83,9 @@ class CardDetailFragment :
         buttonExchange.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
         }
-//        buttonQR.setOnClickListener {
-//            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToScannerFragment())
-//        }
+        buttonQR.setOnClickListener {
+            findNavController().navigate(R.id.scannerFragment)
+        }
         buttonSettings.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
         }
@@ -102,21 +97,21 @@ class CardDetailFragment :
 
     override fun setupSubscribes() {
         viewModel.stateCard.collectUIState {
-            when(it){
+            when (it) {
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    if (list.size == 0 )
-                    it.data.forEach {data ->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
-                            if (data != null) {
-                                list.add(data)
-                                cardDetailAdapter.submitList(list)
+                    if (list.size == 0)
+                        it.data.forEach { data ->
+                            if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                                if (data != null) {
+                                    list.add(data)
+                                    cardDetailAdapter.submitList(list)
 
+                                }
                             }
-                        }
 
-                    }
+                        }
                 }
             }
         }
@@ -129,7 +124,7 @@ class CardDetailFragment :
     private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {
             val dialog = FreezeDialogFragment()
-            fragmentManager?.let { it1 -> dialog.show(it1,"freezeDialog") }
+            fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
         }
     }
 
