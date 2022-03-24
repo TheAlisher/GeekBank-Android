@@ -27,6 +27,19 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_detail_card.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_list_transfer_number.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/item_transfer_list.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/bottom_sheet.xml" value="0.25" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/bottom_sheet_home.xml" value="0.26851851851851855" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/content_main.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card_detail.xml" value="0.33" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_detail_news.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_freeze_dialog.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_input_pin_code.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_scanner.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/Emir/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_scanner_card.xml" value="0.1762917933130699" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable-v24/ic_card_foreground.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable-v24/ic_channel_foreground.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/background_card_number.xml" value="0.114" />
