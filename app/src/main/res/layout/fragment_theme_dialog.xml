@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/theme_corner"
+    tools:context=".presentation.ui.fragments.theme.ThemeDialogFragment">
+
+    <TextView
+        android:id="@+id/txt_theme"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/are_you_sure_you_want_to_switch_to_a_dark_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_theme"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/subtract"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_theme_yes"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cornerRadius="5dp"
+        android:text="@string/yes"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_theme"
+        android:backgroundTint="#111010"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_theme_cancel"
+        android:text="@string/cancel"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@id/btn_theme_yes"
+        app:layout_constraintTop_toBottomOf="@id/txt_theme"
+        android:backgroundTint="#F8F9FA"
+        app:cornerRadius="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

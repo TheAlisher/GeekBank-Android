@@ -12,8 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.alish.geekbank.databinding.FragmentForgotPasswordBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ForgotPasswordDialogFragment : DialogFragment() {
     private var _binding: FragmentForgotPasswordBinding? = null
 

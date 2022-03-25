@@ -13,7 +13,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel : ViewModel() {
+
+abstract class  BaseViewModel : ViewModel() {
 
     protected fun <T, S> Flow<Resource<T>>.collectRequest(
         state: MutableStateFlow<UIState<S>>,
@@ -35,6 +36,30 @@ abstract class BaseViewModel : ViewModel() {
             }
         }
     }
+
+
+     protected fun <T> MutableStateFlow<UIState<T>>.subscribeTo(
+            request: () -> Flow<Resource<T>>
+        ){
+
+            viewModelScope.launch(Dispatchers.IO) {
+                request().collect {
+                    when(it){
+                        is Resource.Loading -> {
+                            this@subscribeTo.value = UIState.Loading()
+                        }
+                        is Resource.Error -> it.message?.let { error->
+                            this@subscribeTo.value = UIState.Error(error)
+                        }
+                        is Resource.Success -> it.data?.let { data ->
+                            this@subscribeTo.value = UIState.Success(data)
+                        }
+                    }
+                }
+            }
+
+        }
+
 
     protected fun <T : Any, S : Any> Flow<PagingData<T>>.collectPagingRequest(
         mappedData: (T) -> S,

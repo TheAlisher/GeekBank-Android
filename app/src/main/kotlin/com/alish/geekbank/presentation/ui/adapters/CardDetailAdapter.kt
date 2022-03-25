@@ -4,18 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import com.alish.geekbank.databinding.ItemCardListBinding
-import com.alish.geekbank.presentation.base.BaseComparator1
-import com.alish.geekbank.presentation.models.CardsUIModel
+import com.alish.geekbank.presentation.base.BaseComparatorCard
+import com.alish.geekbank.presentation.models.CardModelUI
 
 
 class CardDetailAdapter :
-    ListAdapter<CardsUIModel, CardDetailAdapter.ViewHolder>(BaseComparator1()) {
+    ListAdapter<CardModelUI, CardDetailAdapter.CardViewHolder>(BaseComparatorCard()) {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+        return CardViewHolder(
             ItemCardListBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -24,17 +22,16 @@ class CardDetailAdapter :
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         holder.onBind(getItem(position))
     }
 
-    inner class ViewHolder(private val binding: ItemCardListBinding) :
+    inner class CardViewHolder(private val binding: ItemCardListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(item: CardsUIModel) = with(binding) {
-            imageVisa1.load(item.image)
+        fun onBind(item: CardModelUI) = with(binding) {
+            dataCard.text = item.date
+            roomCard.text = item.cardNumber
         }
     }
-
-
 }

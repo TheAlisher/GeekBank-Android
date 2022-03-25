@@ -216,9 +216,9 @@
           <ImageButton
               android:id="@+id/btn_fingerprint"
               android:layout_width="75dp"
-              android:layout_height="match_parent"
+              android:layout_height="75dp"
               android:src="@drawable/fingerprint"
-              android:background="@android:color/transparent"
+              android:background="@drawable/rounded_shape"
              />
 
           <com.google.android.material.button.MaterialButton

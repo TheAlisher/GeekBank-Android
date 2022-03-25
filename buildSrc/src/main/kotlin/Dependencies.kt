@@ -91,4 +91,5 @@ object Dependencies {
 
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
     }
+
 }

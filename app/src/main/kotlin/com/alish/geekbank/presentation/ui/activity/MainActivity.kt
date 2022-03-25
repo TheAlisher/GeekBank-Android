@@ -3,8 +3,11 @@ package com.alish.geekbank.presentation.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
+import com.alish.geekbank.data.local.preferences.LocalHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,16 +21,21 @@ class MainActivity : AppCompatActivity() {
     private var isAuthorized = false
 
     @Inject
+    lateinit var localHelper: LocalHelper
+
+    @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_GeekBankAndroid)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        isAuthorized = preferenceHelper.getBoolean("bool")
         setContentView(binding.root)
+        localHelper.loadLocale(this)
+        isAuthorized = preferenceHelper.getBoolean(Constants.IS_AUTHORIZED)
         setUpNavigation()
     }
+    
 
     private fun setUpNavigation() {
         val navHostFragment =

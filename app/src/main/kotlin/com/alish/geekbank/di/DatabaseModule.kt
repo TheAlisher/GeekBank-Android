@@ -22,13 +22,13 @@ object DatabaseModule {
     @Singleton
     @Provides
     fun provideRoom(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ): AppDatabase = roomClient.provideRoom(context)
 
     @Singleton
     @Provides
     fun provideFooDao(
-        appDatabase: AppDatabase
+        appDatabase: AppDatabase,
     ): FooDao = roomClient.provideFooDao(appDatabase)
 
     @Provides

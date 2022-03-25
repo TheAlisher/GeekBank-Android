@@ -1,8 +1,10 @@
 package com.alish.geekbank.di
 
-import com.alish.geekbank.data.repositories.SignInRepositoryImpl
-import com.alish.geekbank.domain.repositories.SignInRepository
+import com.alish.geekbank.data.repositories.ExchangeRepositoriesImpl
+import com.alish.geekbank.data.repositories.FireStoreRepositoryImpl
 import com.alish.geekbank.data.repositories.NewsRepositoryImpl
+import com.alish.geekbank.domain.repositories.ExchangeRepository
+import com.alish.geekbank.domain.repositories.FirestoreRepository
 import com.alish.geekbank.domain.repositories.NewsRepository
 import dagger.Binds
 import dagger.Module
@@ -15,6 +17,11 @@ abstract class RepositoriesModule {
 
     @Binds
     abstract fun bindNewsRepository(repositoryImpl: NewsRepositoryImpl): NewsRepository
+
     @Binds
-    abstract fun bindSignRepository(repositorySignImpl: SignInRepositoryImpl): SignInRepository
+    abstract fun bindExchangeRepository(repositoryImpl: ExchangeRepositoriesImpl) : ExchangeRepository
+
+    @Binds
+    abstract fun bindSignRepository(repositoryFirestoreImpl: FireStoreRepositoryImpl) : FirestoreRepository
+
 }

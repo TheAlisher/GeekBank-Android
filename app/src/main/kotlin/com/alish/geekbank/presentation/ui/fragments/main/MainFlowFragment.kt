@@ -1,8 +1,10 @@
 package com.alish.geekbank.presentation.ui.fragments.main
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.navigation.ui.NavigationUI
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
@@ -26,14 +28,20 @@ class MainFlowFragment :
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
-                R.id.profileFragment,
                 R.id.exchangeFragment,
                 R.id.transferFragment,
                 R.id.qrFragment,
                 R.id.firstFragment,
-                R.id.forgotPasswordDialogFragment
+                R.id.forgotPasswordDialogFragment,
+                R.id.editProfileFragment,
+                R.id.scannerFragment,
                 -> {
                     whetherToShow(false)
+                }
+                R.id.navigation_profile -> {
+                    if (preferenceHelper.isShown()) {
+
+                    }
                 }
                 else -> {
                     whetherToShow(true)
@@ -45,23 +53,20 @@ class MainFlowFragment :
             binding.bottomNavigationView.menu.getItem(2).isEnabled = false
 
         }
+        NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+
 
     }
-
 
     private fun whetherToShow(b: Boolean) {
         binding.bottomAppBar.isVisible = b
         binding.fab.isVisible = b
-
-
     }
 
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
-        if (!preferenceHelper.isShown()) {
-            navController.navigate(R.id.firstFragment)
-        }
+        navController.navigate(R.id.firstFragment)
     }
 
     override fun onStop() {

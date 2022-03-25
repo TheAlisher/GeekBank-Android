@@ -6,35 +6,47 @@ import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardDetailBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.CardListUIModel
-import com.alish.geekbank.presentation.models.CardsUIModel
+import com.alish.geekbank.presentation.models.CardModelUI
+import com.alish.geekbank.presentation.models.UsersModelUI
+import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
+import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
+import com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
 class CardDetailFragment :
     BaseFragment<CardDetailViewModel, FragmentCardDetailBinding>(R.layout.fragment_card_detail) {
 
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+
     override val viewModel: CardDetailViewModel by viewModels()
     override val binding by viewBinding(FragmentCardDetailBinding::bind)
     private val cardDetailAdapter = CardDetailAdapter()
     private val cardDetailListAdapter = CardDetailListAdapter()
+    val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
     override fun initialize() = with(binding) {
-        listRecycler.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         listRecycler.adapter = cardDetailAdapter
+        listRecycler.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetInclude.recycler.adapter = cardDetailListAdapter
         bottomSheetInclude.recycler.layoutManager =
@@ -42,7 +54,7 @@ class CardDetailFragment :
     }
 
     override fun setupListeners() {
-        setupAlertDialog()
+        setupDialog()
         setupAction()
         setupBottomSheet()
     }
@@ -69,19 +81,19 @@ class CardDetailFragment :
 
     private fun setupAction() = with(binding) {
         buttonHorizontal.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToTransferFragment())
+            findNavController().navigate(R.id.transferFragment)
         }
         buttonWallet.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToPaymentsFragment())
+            findNavController().navigate(R.id.paymentsFragment)
         }
         buttonExchange.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
+            findNavController().navigate(R.id.exchangeFragment)
         }
         buttonQR.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToQrFragment())
+            findNavController().navigate(R.id.scannerFragment)
         }
         buttonSettings.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
+            findNavController().navigate(R.id.settingsFragment)
         }
         binding.imageArrow.setOnClickListener {
             findNavController().navigateUp()
@@ -90,29 +102,37 @@ class CardDetailFragment :
     }
 
     override fun setupSubscribes() {
-        val list: ArrayList<CardsUIModel> = ArrayList()
-        list.add(CardsUIModel(R.drawable.visa, "Visa", 1))
-        list.add(CardsUIModel(R.drawable.visa_card, "Visa Card", 2))
-        cardDetailAdapter.submitList(list)
+        viewModel.stateCard.collectUIState {
+            when(it){
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    if (list.size == 0 )
+                    it.data.forEach {data ->
+                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
+                            if (data != null) {
+                                list.add(data)
+                                cardDetailAdapter.submitList(list)
+
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
         val list2: ArrayList<CardListUIModel> = ArrayList()
         list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
         cardDetailListAdapter.submitList(list2)
+
     }
 
-    private fun setupAlertDialog() {
+    private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {
-            val dialog = AlertDialog.Builder(requireContext())
-            dialog.setMessage("Are you sure,you want to freeze cards?")
-            dialog.setPositiveButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
-                dialog.dismiss()
-            })
-            dialog.setNegativeButton("Freeze card",
-                DialogInterface.OnClickListener { dialog, which ->
-                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                })
-            dialog.create()
-            dialog.show()
+            val dialog = FreezeDialogFragment()
+            fragmentManager?.let { it1 -> dialog.show(it1,"freezeDialog") }
         }
     }
+
+
 }

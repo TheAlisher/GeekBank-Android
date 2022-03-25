@@ -5,12 +5,15 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentSignInBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.mainNavController
 import com.alish.geekbank.presentation.state.UIState
+import com.google.api.LogDescriptor
 import dagger.hilt.android.AndroidEntryPoint
+import io.grpc.internal.LogExceptionRunnable
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -24,13 +27,14 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
     lateinit var preferencesHelper: PreferencesHelper
 
     override fun setupListeners() {
-        binding.btnIn.setOnClickListener {
+        binding.loginBtn.setOnClickListener {
             if (signDetails()){
                 signIn()
             }
         }
     }
     private fun signIn() = with(binding) {
+
         viewModel.signState.collectUIState {
             when (it) {
                 is UIState.Error -> {
@@ -40,14 +44,14 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
                 }
                 is UIState.Success -> {
                     it.data.forEach { data ->
-                        if (editId.text.toString().trim() == data?.id
-                                && editPassword.text.toString().trim() == data.password
+                        if (IDEt.text.toString().trim() == data?.id
+                                && passwordEt.text.toString().trim() == data.password
                             ) {
-                               preferencesHelper.putBoolean("bool",true)
-                                mainNavController().navigate(
-                                    R.id.action_signFlowFragment_to_mainFlowFragment
-                                )
-                            }
+                                preferencesHelper.putString(Constants.USER_ID,data.id)
+                                preferencesHelper.putBoolean(Constants.IS_AUTHORIZED,true)
+                                mainNavController().navigate(R.id.mainFlowFragment)
+
+                        }
                     }
                 }
             }
@@ -59,19 +63,19 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
 
     private fun signDetails():Boolean{
         when {
-            binding.editId.text.toString().trim().isEmpty() -> {
+            binding.IDEt.text.toString().trim().isEmpty() -> {
                 showToast("Enter Login")
                 return false
             }
-            binding.editPassword.text.toString().trim().isEmpty() -> {
+            binding.passwordEt.text.toString().trim().isEmpty() -> {
                 showToast("Enter Password")
                 return false
             }
-            binding.editId.text.toString().trim().length < 6 -> {
+            binding.IDEt.text.toString().trim().length < 6 -> {
                 showToast("Login must be bigger 7 simbols")
                 return false
             }
-            binding.editPassword.text.toString().trim().length < 6 -> {
+            binding.passwordEt.text.toString().trim().length < 6 -> {
                 showToast("Password must be bigger than 7 simbols")
                 return false
             }

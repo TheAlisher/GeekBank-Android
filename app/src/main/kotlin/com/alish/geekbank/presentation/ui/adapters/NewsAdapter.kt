@@ -1,9 +1,6 @@
 package com.alish.geekbank.presentation.ui.adapters
 
-
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +9,8 @@ import com.alish.geekbank.databinding.ItemNewsBinding
 import com.alish.geekbank.presentation.base.BaseComparator
 import com.alish.geekbank.presentation.models.NewsModelUI
 
-
-
-class NewsAdapter(private val clickNewsItem: (model: NewsModelUI) -> Unit): ListAdapter<NewsModelUI,NewsAdapter.NewsViewHolder>(BaseComparator()) {
+class NewsAdapter(private val clickNewsItem: (model: NewsModelUI) -> Unit) :
+    ListAdapter<NewsModelUI, NewsAdapter.NewsViewHolder>(BaseComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
@@ -32,20 +28,14 @@ class NewsAdapter(private val clickNewsItem: (model: NewsModelUI) -> Unit): List
         }
     }
 
-
-
-
     inner class NewsViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-
         init {
             itemView.setOnClickListener {
                 getItem(absoluteAdapterPosition)?.let {
                     clickNewsItem(it)
                 }
             }
-
         }
         fun onBind(model: NewsModelUI) = with(binding) {
             textTitle.text = model.title
@@ -54,6 +44,4 @@ class NewsAdapter(private val clickNewsItem: (model: NewsModelUI) -> Unit): List
             newsImage.load(model.urlToImage)
         }
     }
-
-
 }

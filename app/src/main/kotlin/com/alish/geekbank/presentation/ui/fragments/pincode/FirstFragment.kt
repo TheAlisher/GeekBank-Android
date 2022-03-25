@@ -1,5 +1,8 @@
 package com.alish.geekbank.presentation.ui.fragments.pincode
 
+import android.content.ContentValues.TAG
+import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.biometric.BiometricManager
@@ -14,6 +17,7 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentFirstBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.base.BaseViewModel
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.ui.fragments.biometricauthentication.AuthenticationError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -67,6 +71,7 @@ class FirstFragment :
     override fun setupListeners() {
         binding.description.setOnClickListener {
             findNavController().navigate(R.id.forgotPasswordDialogFragment)
+
         }
     }
 
@@ -228,5 +233,11 @@ class FirstFragment :
 
     private fun setErrorNotice(errorMessage: String) {
         binding.descriptionFingerprint.text = errorMessage
+    }
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { activity?.finish() }
     }
 }

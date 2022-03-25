@@ -10,28 +10,30 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils.loadAnimation
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardBinding
+import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.state.UIState
 import com.google.android.material.animation.AnimationUtils
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
+class CardFragment : BaseFragment<CardViewModel,FragmentCardBinding>(R.layout.fragment_card) {
 
-class CardFragment : Fragment() {
-
-    private lateinit var binding:FragmentCardBinding
+    override val viewModel: CardViewModel by viewModels()
+    override val binding:FragmentCardBinding by viewBinding(FragmentCardBinding::bind)
     private var xCoOrdinate = 0f
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentCardBinding.inflate(inflater, container,false)
-        return binding.root
-    }
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
 
     @SuppressLint("ClickableViewAccessibility")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupListeners() {
         binding.ivSecond.setOnTouchListener(View.OnTouchListener { view, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
@@ -44,7 +46,7 @@ class CardFragment : Fragment() {
                 }
                 MotionEvent.ACTION_UP -> {
 
-                    findNavController().navigate(R.id.action_cardFragment_to_cardDetailFragment)
+                    findNavController().navigate(R.id.cardDetailFragment)
 
                     Log.e("anime", "onViewCreated: $xCoOrdinate")
 
@@ -58,4 +60,25 @@ class CardFragment : Fragment() {
             true
         })
     }
+
+    override fun setupRequests() {
+        viewModel.stateUser.collectUIState {
+            when(it){
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    it.data.forEach { data->
+                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
+//                            binding.dataCard.text = data?.date
+//                            binding.nameCard.text = data?.fullName
+//                            binding.roomCard.text = data?.cardNumber
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
 }

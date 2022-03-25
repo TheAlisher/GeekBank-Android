@@ -2,10 +2,11 @@ package com.alish.geekbank.data.local.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.alish.geekbank.common.constants.Constants
 import javax.inject.Singleton
 
 @Singleton
-class PreferencesHelper(context: Context) {
+class PreferencesHelper (context: Context) {
 
     private val preferences: SharedPreferences =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)
@@ -24,7 +25,39 @@ class PreferencesHelper(context: Context) {
         return preferences.getBoolean(key,false)
     }
 
+    fun putString(key: String,value:String){
+        var editor: SharedPreferences.Editor = preferences.edit()
+        editor.putString(key,value)
+        editor.apply()
+    }
+
+    fun onSaveOnPinCode() {
+        preferences.edit().putBoolean("onPinCode", true).apply()
+    }
+    fun isShownPinCode(): Boolean {
+        return preferences.getBoolean("onPinCode", false)
+    }
+
+    fun getString(key: String):String?{
+        return preferences.getString(key,null)
+    }
+
     fun isShown(): Boolean {
         return preferences.getBoolean("show", false)
+    }
+
+    private fun remove(key: String) {
+        preferences.edit().remove(key).apply()
+    }
+
+    fun getLanguage() = preferences.getString(Constants.LANGUAGE, "ru")
+
+    fun getLanguageCode() = preferences.getString(Constants.LANGUAGE_CODE, "ru-RU")
+
+    fun setLocale(localization: Localization) {
+        preferences.edit().apply {
+            putString(Constants.LANGUAGE, localization.language).apply()
+            putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
+        }
     }
 }
