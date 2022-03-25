@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000"
+        motion:motionInterpolator="easeInOut"
+        motion:autoTransition="animateToStart"
+        motion:pathMotionArc="flip"
+        motion:layoutDuringTransition="honorRequest">
+       <KeyFrameSet>
+           <KeyPosition
+               motion:motionTarget="@+id/cash"
+               motion:framePosition="0"
+               motion:keyPositionType="deltaRelative" />
+           <KeyPosition
+               motion:motionTarget="@+id/cash"
+               motion:framePosition="100"
+               motion:keyPositionType="deltaRelative" />
+       </KeyFrameSet>
+        <OnSwipe motion:dragDirection="dragLeft"
+            motion:touchAnchorSide="left"
+            motion:maxVelocity="0.1"
+            motion:maxAcceleration="0.1" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/iv_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="230dp" />
+        <Constraint
+            android:id="@+id/cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="110dp" />
+        <Constraint
+            android:id="@+id/tv_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/cash"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp" />
+        <Constraint
+            android:id="@+id/button_exchange"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            motion:layout_constraintRight_toRightOf="@id/guidelineright" />
+        <Constraint
+            android:id="@+id/button_wallet"
+            motion:layout_constraintEnd_toStartOf="@id/button_exchange"
+            motion:layout_constraintStart_toEndOf="@id/button_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop" />
+        <Constraint
+            android:id="@+id/txt_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/button_exchange"
+            motion:layout_constraintLeft_toLeftOf="@id/button_exchange"
+            motion:layout_constraintRight_toRightOf="@id/button_exchange" />
+        <Constraint
+            android:id="@+id/txt_payments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/button_wallet"
+            motion:layout_constraintLeft_toLeftOf="@id/button_wallet"
+            motion:layout_constraintRight_toRightOf="@id/button_wallet" />
+        <Constraint
+            android:id="@+id/txt_transfer"
+            motion:layout_constraintEnd_toEndOf="@id/button_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/button_horizontal"
+            motion:layout_constraintStart_toStartOf="@id/button_horizontal" />
+        <Constraint
+            android:id="@+id/txt_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/guidelinebottom"
+            motion:layout_constraintLeft_toLeftOf="@id/button_settings"
+            motion:layout_constraintRight_toRightOf="@id/button_settings" />
+        <Constraint
+            android:id="@+id/txt_freeze_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/guidelinebottom"
+            motion:layout_constraintRight_toRightOf="@id/button_freeze_card"
+            motion:layout_constraintLeft_toLeftOf="@id/button_freeze_card" />
+        <Constraint
+            android:id="@+id/buttonQR"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_QR"
+            motion:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
+        <Constraint
+            android:id="@+id/txt_QR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/guidelinebottom"
+            motion:layout_constraintLeft_toLeftOf="@id/buttonQR"
+            motion:layout_constraintRight_toRightOf="@id/buttonQR" />
+        <Constraint
+            android:id="@+id/button_freeze_card"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_freeze_card"
+            motion:layout_constraintLeft_toLeftOf="@id/buttonQR"
+            motion:layout_constraintRight_toRightOf="@id/button_settings" />
+        <Constraint
+            android:id="@+id/button_settings"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_settings"
+            motion:layout_constraintRight_toRightOf="@id/guidelineright" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/iv_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            motion:layout_constraintRight_toRightOf="parent" />
+        <Constraint
+            android:id="@+id/cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/tv_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/cash"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            motion:layout_constraintLeft_toLeftOf="@id/guidelineleft"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            motion:layout_constraintLeft_toLeftOf="@id/guidelineleft"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            motion:layout_constraintLeft_toLeftOf="@id/guidelineleft"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_exchange"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            motion:layout_constraintRight_toRightOf="@id/guidelineright" />
+        <Constraint
+            android:id="@+id/button_exchange"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            motion:layout_constraintRight_toRightOf="@id/guidelineright"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_wallet"
+            motion:layout_constraintEnd_toStartOf="@id/button_exchange"
+            motion:layout_constraintStart_toEndOf="@id/button_horizontal"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/txt_transfer"
+            motion:layout_constraintEnd_toEndOf="@id/button_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/button_horizontal"
+            motion:layout_constraintStart_toStartOf="@id/button_horizontal"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/txt_payments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/button_wallet"
+            motion:layout_constraintLeft_toLeftOf="@id/button_wallet"
+            motion:layout_constraintRight_toRightOf="@id/button_wallet"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/txt_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@id/button_exchange"
+            motion:layout_constraintLeft_toLeftOf="@id/button_exchange"
+            motion:layout_constraintRight_toRightOf="@id/button_exchange"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/buttonQR"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_QR"
+            motion:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
+        <Constraint
+            android:id="@+id/buttonQR"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_QR"
+            motion:layout_constraintLeft_toLeftOf="@id/guidelineleft"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_settings"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_settings"
+            motion:layout_constraintRight_toRightOf="@id/guidelineright"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/button_freeze_card"
+            android:layout_width="80dp"
+            android:layout_height="65dp"
+            motion:layout_constraintBottom_toTopOf="@id/txt_freeze_card"
+            motion:layout_constraintLeft_toLeftOf="@id/buttonQR"
+            motion:layout_constraintRight_toRightOf="@id/button_settings"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/txt_QR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/guidelinebottom"
+            motion:layout_constraintLeft_toLeftOf="@id/buttonQR"
+            motion:layout_constraintRight_toRightOf="@id/buttonQR"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/txt_freeze_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/guidelinebottom"
+            motion:layout_constraintRight_toRightOf="@id/button_freeze_card"
+            motion:layout_constraintLeft_toLeftOf="@id/button_freeze_card"
+            android:visibility="gone" />
+        <Constraint
+            android:id="@+id/txt_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/guidelinebottom"
+            motion:layout_constraintLeft_toLeftOf="@id/button_settings"
+            motion:layout_constraintRight_toRightOf="@id/button_settings"
+            android:visibility="gone" />
+    </ConstraintSet>
+</MotionScene>

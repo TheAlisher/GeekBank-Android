@@ -160,6 +160,14 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment"
         android:label="fragment_scanner"
         tools:layout="@layout/fragment_scanner" />
+    <fragment
+        android:id="@+id/mainOnBoardingFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.onboarding.MainOnBoardingFragment"
+        android:label="MainOnBoardingFragment" >
+        <action
+            android:id="@+id/action_mainOnBoardingFragment_to_inputPinCodeFragment"
+            app:destination="@id/inputPinCodeFragment" />
+    </fragment>
 
 
 </navigation>
