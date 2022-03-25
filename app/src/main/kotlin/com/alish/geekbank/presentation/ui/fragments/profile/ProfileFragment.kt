@@ -112,7 +112,7 @@ class ProfileFragment :
 
     private fun setupEditProfile() {
         binding.imageEdit.setOnClickListener {
-            findNavController().navigate(ProfileFragmentDirections.actionNavigationProfileToEditProfileFragment())
+            findNavController().navigate(R.id.editProfileFragment)
         }
     }
 

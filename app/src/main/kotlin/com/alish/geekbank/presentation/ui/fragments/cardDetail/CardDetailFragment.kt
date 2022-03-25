@@ -18,6 +18,7 @@ import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
+import com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -75,19 +76,19 @@ class CardDetailFragment :
 
     private fun setupAction() = with(binding) {
         buttonHorizontal.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToTransferFragment())
+            findNavController().navigate(R.id.transferFragment)
         }
         buttonWallet.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToPaymentsFragment())
+            findNavController().navigate(R.id.paymentsFragment)
         }
         buttonExchange.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
+            findNavController().navigate(R.id.exchangeFragment)
         }
         buttonQR.setOnClickListener {
             findNavController().navigate(R.id.scannerFragment)
         }
         buttonSettings.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
+            findNavController().navigate(R.id.settingsFragment)
         }
         binding.imageArrow.setOnClickListener {
             findNavController().navigateUp()

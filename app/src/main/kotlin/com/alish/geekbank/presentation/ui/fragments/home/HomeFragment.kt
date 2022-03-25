@@ -1,6 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
 import android.view.MotionEvent
@@ -17,6 +18,7 @@ import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardModelUI
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
 import com.alish.geekbank.presentation.state.UIState
@@ -55,6 +57,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     lateinit var preferencesHelper: PreferencesHelper
 
     private fun clickNewsItem(model: NewsModelUI) {
+
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
 
@@ -98,7 +101,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 }
                 MotionEvent.ACTION_UP -> {
 
-                    findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
+                    findNavController().navigate(R.id.cardFragment)
 
                     Log.e("anime", "onViewCreated: $xCoOrdinate")
 
@@ -301,6 +304,23 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { activity?.finish() }
+    }
+
+//    private fun generateQrCode(cardNumber: String?): Bitmap? {
+//        val writer = MultiFormatWriter()
+//        var bitmap: Bitmap? = null
+//
+//        try {
+//            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+//            val encoder = BarcodeEncoder()
+//            bitmap = encoder.createBitmap(matrix)
+//        } catch (e: WriterException) {
+//        }
+//        return bitmap
+//    }
     private fun generateQrCode(cardNumber: String?): Bitmap? {
         val writer = MultiFormatWriter()
         var bitmap: Bitmap? = null
