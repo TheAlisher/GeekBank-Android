@@ -1,27 +1,43 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.models.CardListUIModel
+import com.alish.geekbank.presentation.models.CardModelUI
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.models.NewsModelUI
+import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
 import com.alish.geekbank.presentation.state.UIState
+import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
+import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
+import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
+import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -31,29 +47,47 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private var xCoOrdinate = 0f
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
+    private val cardDetailListAdapter = CardDetailListAdapter()
+    private val exchangeAdapter = ExchangeAdapter()
+    private val cardDetailAdapter = CardDetailAdapter()
+    val list = ArrayList<CardModelUI>()
+    private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
     private fun clickNewsItem(model: NewsModelUI) {
+
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
 
     override val viewModel: HomeViewModel by viewModels()
+    private val viewModelExchange: ExchangeViewModel by viewModels()
     override val binding by viewBinding(FragmentHomeBinding::bind)
 
     override fun initialize() {
-        binding.map.onCreate(null)
-        binding.map.onResume()
-        binding.map.getMapAsync(this)
-        binding.recyclerNews.adapter = adapter
+        binding.bottomSheetInclude.map.onCreate(null)
+        binding.bottomSheetInclude.map.onResume()
+        binding.bottomSheetInclude.map.getMapAsync(this)
+        binding.bottomSheetInclude.recyclerNews.adapter = adapter
+        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
+        binding.bottomSheetInclude.recyclerExchange.adapter = exchangeAdapter
+        binding.bottomSheetInclude.recyclerExchange.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.bottomSheetInclude.recycler.adapter = cardDetailListAdapter
+        binding.bottomSheetInclude.recycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
+
 
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun setupListeners() {
         clickForAllNews()
         clickForSeeFullMap()
         clickForQrScanner()
+        clickForExchange()
+        setupAction()
+        setupBottomSheet()
 
         binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
             when (event.actionMasked) {
@@ -67,7 +101,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 }
                 MotionEvent.ACTION_UP -> {
 
-                    findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
+                    findNavController().navigate(R.id.cardFragment)
 
                     Log.e("anime", "onViewCreated: $xCoOrdinate")
 
@@ -83,6 +117,27 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     }
 
+    private fun setupBottomSheet() {
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
+        bottomSheetBehavior?.isHideable = false
+        bottomSheetBehavior?.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
+                    }
+                    else -> {}
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                binding.bottomSheetInclude.imageBack.rotation = slideOffset * 180
+            }
+        })
+    }
+
     private fun clickForQrScanner() {
         binding.qrCode.setOnClickListener {
             findNavController().navigate(R.id.scannerFragment)
@@ -90,15 +145,33 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
     private fun clickForSeeFullMap() {
-        binding.txtShowAllMap.setOnClickListener {
+        binding.bottomSheetInclude.txtShowAllMap.setOnClickListener {
             findNavController().navigate(R.id.mapFull)
         }
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun clickForAllNews() {
-        binding.txtShowAll.setOnClickListener {
+        binding.bottomSheetInclude.txtShowAll.setOnClickListener {
             findNavController().navigate(R.id.allNews)
+        }
+    }
+
+    private fun clickForExchange() {
+        binding.bottomSheetInclude.txtShowAllExchange.setOnClickListener {
+            findNavController().navigate(R.id.exchangeFragment)
+        }
+    }
+
+    private fun setupAction() = with(binding) {
+        buttonHorizontal.setOnClickListener {
+            findNavController().navigate(R.id.transferFragment)
+        }
+        buttonWallet.setOnClickListener {
+            findNavController().navigate(R.id.paymentsFragment)
+        }
+        buttonExchange.setOnClickListener {
+            findNavController().navigate(R.id.exchangeFragment)
         }
     }
 
@@ -113,15 +186,15 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
                             binding.tvCash.text = data?.money.toString()
 
-                            binding.numberCard.text =
+                            binding.bottomSheetInclude.numberCard.text =
                                 "**** **** **** ****" + data?.cardNumber.toString().substring(
-                                        data?.cardNumber.toString().length - 4
-                                    )
-//                            binding.qrView.setImageBitmap(
-//                                generateQrCode(
-//                                    cardNumber = data?.cardNumber.toString()
-//                                )
-//                            )
+                                    data?.cardNumber.toString().length - 4
+                                )
+                            binding.bottomSheetInclude.qrView.setImageBitmap(
+                                generateQrCode(
+                                    cardNumber = data?.cardNumber.toString()
+                                )
+                            )
 
                         }
 
@@ -147,6 +220,69 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 }
             }
         }
+        viewModel.stateCard.collectUIState {
+            when (it) {
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    if (list.size == 0)
+                        it.data.forEach { data ->
+                            if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                                if (data != null) {
+                                    list.add(data)
+                                    cardDetailAdapter.submitList(list)
+
+                                }
+                            }
+
+                        }
+                }
+            }
+        }
+        val list2: ArrayList<CardListUIModel> = ArrayList()
+        list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
+        cardDetailListAdapter.submitList(list2)
+
+        viewModelExchange.exchangeState.collectUIState {
+            when (it) {
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    val listExchange = ArrayList<ExchangeModelsUI>()
+                    it.data.let { data ->
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                it.data.conversion_rates["KGS"].toString(),
+                                it.data.conversion_rates["KGS"].toString(),
+                            )
+                        )
+
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                it.data.conversion_rates["USD"].toString(),
+                                it.data.conversion_rates["USD"].toString(),
+                            )
+                        )
+
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                it.data.conversion_rates["EUR"].toString(),
+                                it.data.conversion_rates["EUR"].toString(),
+                            )
+                        )
+
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                it.data.conversion_rates["RUS"].toString(),
+                                it.data.conversion_rates["RUS"].toString(),
+                            )
+                        )
+
+                        exchangeAdapter.submitList(listExchange)
+                    }
+                }
+            }
+        }
     }
 
     override fun onMapReady(map: GoogleMap) {
@@ -168,6 +304,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { activity?.finish() }
+    }
+
 //    private fun generateQrCode(cardNumber: String?): Bitmap? {
 //        val writer = MultiFormatWriter()
 //        var bitmap: Bitmap? = null
@@ -180,5 +321,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 //        }
 //        return bitmap
 //    }
+    private fun generateQrCode(cardNumber: String?): Bitmap? {
+        val writer = MultiFormatWriter()
+        var bitmap: Bitmap? = null
+
+        try {
+            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+            val encoder = BarcodeEncoder()
+            bitmap = encoder.createBitmap(matrix)
+        } catch (e: WriterException) {
+        }
+        return bitmap
+    }
 
 }

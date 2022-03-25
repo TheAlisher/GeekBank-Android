@@ -46,7 +46,7 @@ class CardFragment : BaseFragment<CardViewModel,FragmentCardBinding>(R.layout.fr
                 }
                 MotionEvent.ACTION_UP -> {
 
-                    findNavController().navigate(R.id.action_cardFragment_to_cardDetailFragment)
+                    findNavController().navigate(R.id.cardDetailFragment)
 
                     Log.e("anime", "onViewCreated: $xCoOrdinate")
 

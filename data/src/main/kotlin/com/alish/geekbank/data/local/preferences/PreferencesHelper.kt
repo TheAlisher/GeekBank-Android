@@ -11,9 +11,10 @@ class PreferencesHelper (context: Context) {
     private val preferences: SharedPreferences =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
+
     var pinCode: String?
         get() = preferences.getString("code", "")
-        set(value) = preferences.edit().putString("code", value).apply()
+        set(pasCode) = preferences.edit().putString("code", pasCode).apply()
 
     fun putBoolean(key: String,value:Boolean){
         var editor: SharedPreferences.Editor = preferences.edit()
@@ -29,12 +30,16 @@ class PreferencesHelper (context: Context) {
         editor.putString(key,value)
         editor.apply()
     }
-    fun getString(key: String):String?{
-        return preferences.getString(key,null)
+
+    fun onSaveOnPinCode() {
+        preferences.edit().putBoolean("onPinCode", true).apply()
+    }
+    fun isShownPinCode(): Boolean {
+        return preferences.getBoolean("onPinCode", false)
     }
 
-    fun onSavePinCode() {
-        preferences.edit().putBoolean("show", true).apply()
+    fun getString(key: String):String?{
+        return preferences.getString(key,null)
     }
 
     fun isShown(): Boolean {
@@ -45,14 +50,14 @@ class PreferencesHelper (context: Context) {
         preferences.edit().remove(key).apply()
     }
 
-//    fun getLanguage() = preferences.getString(Constants.LANGUAGE, "ru")
-//
-//    fun getLanguageCode() = preferences.getString(Constants.LANGUAGE_CODE, "ru-RU")
-//
-//    fun setLocale(localization: Localization) {
-//        preferences.edit().apply {
-//            putString(Constants.LANGUAGE, localization.language).apply()
-//            putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
-//        }
-//    }
+    fun getLanguage() = preferences.getString(Constants.LANGUAGE, "ru")
+
+    fun getLanguageCode() = preferences.getString(Constants.LANGUAGE_CODE, "ru-RU")
+
+    fun setLocale(localization: Localization) {
+        preferences.edit().apply {
+            putString(Constants.LANGUAGE, localization.language).apply()
+            putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
+        }
+    }
 }

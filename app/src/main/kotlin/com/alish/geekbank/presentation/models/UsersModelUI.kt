@@ -1,13 +1,14 @@
 package com.alish.geekbank.presentation.models
 
 import com.alish.geekbank.domain.models.UsersModel
-import com.alish.geekbank.presentation.base.BaseDiffUtilCard
 
 data class UsersModelUI(
     val id: String? = null,
     val password: String? = null,
-    val fullName: String? = null
+    val name: String? = null,
+    val surname: String? = null,
+    val number: String? = null,
 )
 
 fun UsersModel.toUsersModelUI(): UsersModelUI =
-    UsersModelUI(id, password,fullName)
+    UsersModelUI(id, password, name, surname, number)

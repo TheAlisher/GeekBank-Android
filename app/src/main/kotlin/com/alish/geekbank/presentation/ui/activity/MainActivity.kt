@@ -3,6 +3,7 @@ package com.alish.geekbank.presentation.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         isAuthorized = preferenceHelper.getBoolean(Constants.IS_AUTHORIZED)
         setUpNavigation()
     }
+    
 
     private fun setUpNavigation() {
         val navHostFragment =
