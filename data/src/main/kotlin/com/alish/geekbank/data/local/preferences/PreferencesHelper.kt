@@ -45,14 +45,14 @@ class PreferencesHelper (context: Context) {
         preferences.edit().remove(key).apply()
     }
 
-//    fun getLanguage() = preferences.getString(Constants.LANGUAGE, "ru")
-//
-//    fun getLanguageCode() = preferences.getString(Constants.LANGUAGE_CODE, "ru-RU")
-//
-//    fun setLocale(localization: Localization) {
-//        preferences.edit().apply {
-//            putString(Constants.LANGUAGE, localization.language).apply()
-//            putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
-//        }
-//    }
+    fun getLanguage() = preferences.getString(Constants.LANGUAGE, "ru")
+
+    fun getLanguageCode() = preferences.getString(Constants.LANGUAGE_CODE, "ru-RU")
+
+    fun setLocale(localization: Localization) {
+        preferences.edit().apply {
+            putString(Constants.LANGUAGE, localization.language).apply()
+            putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
+        }
+    }
 }

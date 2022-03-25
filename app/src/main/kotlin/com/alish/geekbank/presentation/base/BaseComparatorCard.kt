@@ -9,7 +9,7 @@ class BaseComparatorCard<T : BaseDiffUtilCard> : DiffUtil.ItemCallback<T>() {
         oldItem: T,
         newItem: T
     ): Boolean {
-        return oldItem.name == newItem.name
+        return oldItem.cardNumber == newItem.cardNumber
     }
 
     @SuppressLint("DiffUtilEquals")

@@ -43,6 +43,10 @@
         <item name="android:background">@color/black</item>
     </style>
 
+    <style name="CustomEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlActivated">#727375</item>
+    </style>
+
     <style name="SplashScreen" parent="Theme.GeekBankAndroid">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>

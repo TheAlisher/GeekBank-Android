@@ -105,6 +105,9 @@ dependencies {
     implementation("io.coil-kt:coil:1.3.2")
 
     //Map
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+
+
     implementation("com.google.android.gms:play-services-maps:18.0.2")
 
     // Qr Code Generator
@@ -114,6 +117,6 @@ dependencies {
     // Qr Code Scanner
     implementation("com.github.yuriy-budiyev:code-scanner:2.1.0")
 
-    // LottieFile
-    implementation(Dependencies.LottieFile.lottie)
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 }
