@@ -57,4 +57,10 @@
     <string name="save">Сохранить</string>
     <string name="foorgot">Если вы забыли пароль, пожалуиста выйдите с аккаунта и зайдите снова</string>
 
+    <!-- OnBoarding -->
+    <string name="title_on_boarding_first_slide">Быстрая регистрация расходов и платежей</string>
+    <string name="title_on_boarding_second_slide">Перевод без комиссии</string>
+    <string name="title_on_boarding_third_slide">Быстрый выпуск карты</string>
+    <string name="title_button_get_started">Начать</string>
+
 </resources>

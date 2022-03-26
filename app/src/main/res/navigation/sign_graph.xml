@@ -16,4 +16,8 @@
         tools:layout="@layout/fragment_main_on_boarding"
         android:name="com.alish.geekbank.presentation.ui.fragments.onboarding.MainOnBoardingFragment"
         android:label="MainOnBoardingFragment" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.onboarding.OnBoardingFragment"
+        android:label="OnBoardingFragment" />
 </navigation>

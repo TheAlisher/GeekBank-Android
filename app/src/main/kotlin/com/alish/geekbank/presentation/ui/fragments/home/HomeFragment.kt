@@ -4,27 +4,23 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
-import com.alish.geekbank.databinding.FragmentCardBinding
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardModelUI
-import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
 import com.alish.geekbank.presentation.state.UIState
@@ -51,7 +47,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
-    private var xCoOrdinate = 0f
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
@@ -67,14 +62,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
+    private var navOptions: NavOptions.Builder? = null
+
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
+                findNavController().navigate(R.id.cardFragment)
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
@@ -82,6 +80,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
         })
     }
+
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun setupListeners() {
         clickForAllNews()
@@ -89,13 +88,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         clickForQrScanner()
         clickForExchange()
         setupAction()
-        setupDialog()
         setupBottomSheet()
     }
-
-    override val viewModel: HomeViewModel by viewModels()
-    private val viewModelExchange: ExchangeViewModel by viewModels()
-    override val binding by viewBinding(FragmentHomeBinding::bind)
 
     override fun initialize() {
         binding.bottomSheetInclude.map.onCreate(null)
@@ -111,12 +105,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-
-
-
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
-        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 2
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
@@ -156,19 +147,22 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     private fun clickForExchange() {
         binding.bottomSheetInclude.txtShowAllExchange.setOnClickListener {
-            findNavController().navigate(R.id.exchangeFragment)
+            findNavController().navigate(R.id.exchangeFragment
+            )
         }
     }
 
     private fun setupAction() = with(binding) {
-        buttonHorizontal.setOnClickListener {
-            findNavController().navigate(R.id.transferFragment)
-        }
         buttonWallet.setOnClickListener {
-            findNavController().navigate(R.id.paymentsFragment)
+            findNavController().navigate(R.id.paymentsFragment, null, NavOptions.Builder().setAnimation(
+                R.anim.fade_in,
+                R.anim.fade_out
+            ))
         }
         buttonExchange.setOnClickListener {
-            findNavController().navigate(R.id.exchangeFragment)
+            findNavController().navigate(R.id.exchangeFragment, null, NavOptions.Builder().setAnimation(
+                R.anim.popup_enter_material,
+                R.anim.popup_exit_material))
         }
     }
 
@@ -304,7 +298,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         overrideOnBackPressed { activity?.finish() }
     }
 
-//    private fun generateQrCode(cardNumber: String?): Bitmap? {
+    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
 //        val writer = MultiFormatWriter()
 //        var bitmap: Bitmap? = null
 //
@@ -327,11 +321,5 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         } catch (e: WriterException) {
         }
         return bitmap
-    }
-    private fun setupDialog() {
-        binding.buttonFreezeCard.setOnClickListener {
-            val dialog = FreezeDialogFragment()
-            fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
-        }
     }
 }

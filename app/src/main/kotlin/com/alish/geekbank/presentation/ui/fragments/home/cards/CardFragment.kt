@@ -1,9 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.home.cards
 
-import android.annotation.SuppressLint
-import android.util.Log
-import android.view.MotionEvent
-import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -11,8 +7,7 @@ import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardBinding
 import com.alish.geekbank.presentation.base.BaseFragment
-import com.alish.geekbank.presentation.state.UIState
-import com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragmentDirections
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,11 +22,16 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
 
     override fun setupListeners() {
         setupAction()
+        setupBackPressed()
     }
 
+    private fun setupBackPressed() {
+//        overrideOnBackPressed {
+//            findNavController().navigate(R.id.homeFragment)
+//        }
+    }
 
-
-//    override fun setupRequests() {
+    //    override fun setupRequests() {
 //        viewModel.stateUser.collectUIState {
 //            when (it) {
 //                is UIState.Error -> {}
@@ -52,9 +52,8 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
         ivExtraCard.setOnClickListener {
             findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
         }
-    ivSecond.setOnClickListener {
-        findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
+        ivSecond.setOnClickListener {
+            findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
+        }
     }
-    }
-
 }

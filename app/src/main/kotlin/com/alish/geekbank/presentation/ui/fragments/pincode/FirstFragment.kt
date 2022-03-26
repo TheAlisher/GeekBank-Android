@@ -9,6 +9,7 @@ import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
@@ -18,6 +19,7 @@ import com.alish.geekbank.databinding.FragmentFirstBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.ui.fragments.biometricauthentication.AuthenticationError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -35,6 +37,8 @@ class FirstFragment :
 
     @Inject
     lateinit var preferences: PreferencesHelper
+
+    private var navOptions: NavOptions.Builder? = null
 
 
     var number_list = ArrayList<String>()
@@ -165,7 +169,11 @@ class FirstFragment :
 
     private fun matchPassCode() {
         if (preferences.pinCode == pasCode) {
-            findNavController().navigate(R.id.homeFragment)
+            findNavController().navigate(R.id.homeFragment, null, NavOptions.Builder().setAnimation(
+                R.anim.input_method_enter,
+                R.anim.input_method_exit
+            )
+            )
         } else {
             Toast.makeText(requireContext(),
                 "PassCode dosen`t match please retry again!!!",

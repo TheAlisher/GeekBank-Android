@@ -18,7 +18,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_detailNews"
-            app:destination="@id/detailNews" />
+            app:destination="@id/detailNews"
+           />
+        <action
+            android:id="@+id/action_homeFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNews"
@@ -47,7 +51,14 @@
         android:id="@+id/cardFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.cards.CardFragment"
         android:label="fragment_card"
-        tools:layout="@layout/fragment_card" />
+        tools:layout="@layout/fragment_card" >
+        <action
+            android:id="@+id/action_cardFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+        <action
+            android:id="@+id/action_cardFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cardDetailFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
