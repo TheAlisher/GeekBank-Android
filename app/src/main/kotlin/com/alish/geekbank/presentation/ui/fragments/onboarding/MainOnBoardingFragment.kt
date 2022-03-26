@@ -11,13 +11,20 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+@AndroidEntryPoint
 class MainOnBoardingFragment : Fragment() {
 
     private lateinit var viewPager: ViewPager2
     private lateinit var viewPagerIndicator: LinearLayout
     private lateinit var skipButton: ExtendedFloatingActionButton
+
+    @Inject
+    lateinit var preferenceOnBoard: PreferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +33,8 @@ class MainOnBoardingFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_main_on_boarding, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -64,7 +73,8 @@ class MainOnBoardingFragment : Fragment() {
             if (viewPager.currentItem + 1 < 3) {
                 viewPager.currentItem = viewPager.currentItem + 1
             } else {
-                findNavController().navigate(R.id.action_mainOnBoardingFragment_to_inputPinCodeFragment)
+                findNavController().navigate(R.id.signInFragment)
+                preferenceOnBoard.putOnBoardBoolean()
             }
         }
     }

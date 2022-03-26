@@ -11,12 +11,9 @@ import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
@@ -34,6 +31,7 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
+import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -62,20 +60,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     override val viewModel: HomeViewModel by viewModels()
     override val binding by viewBinding(FragmentHomeBinding::bind)
-    private var bottomSheet: BottomSheetBehavior<ConstraintLayout>? = null
+    private val viewModelExchange: ExchangeViewModel by viewModels()
+
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
-
-    override val viewModel: HomeViewModel by viewModels()
-    private val viewModelExchange: ExchangeViewModel by viewModels()
-    override val binding by viewBinding(FragmentHomeBinding::bind)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener{
+        binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
                 findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
             }
@@ -85,31 +80,29 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
         })
     }
-
-    class CardFragment : Fragment(R.layout.fragment_card){
-        private lateinit var binding: FragmentCardBinding
-
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            binding = FragmentCardBinding.inflate(inflater,container,false)
-            return binding.root
-        }
+    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
+    override fun setupListeners() {
+        clickForAllNews()
+        clickForSeeFullMap()
+        clickForQrScanner()
+        clickForExchange()
+        setupAction()
+        setupDialog()
+        setupBottomSheet()
     }
 
-    override fun initialize() = with(binding){
-        bottomSheet?.state = BottomSheetBehavior.STATE_EXPANDED
-        bottomInclude.recycler.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        bottomSheet?.state = BottomSheetBehavior.STATE_EXPANDED
-
-        binding.bottomInclude.map.onCreate(null)
-        binding.bottomInclude.map.onResume()
-        binding.bottomInclude.map.getMapAsync(this@HomeFragment)
-        binding.bottomInclude.recyclerNews.adapter = adapter
-    }
+//    class CardFragment : Fragment(R.layout.fragment_card) {
+//        private lateinit var binding: FragmentCardBinding
+//
+//        override fun onCreateView(
+//            inflater: LayoutInflater,
+//            container: ViewGroup?,
+//            savedInstanceState: Bundle?
+//        ): View? {
+//            binding = FragmentCardBinding.inflate(inflater, container, false)
+//            return binding.root
+//        }
+//    }
 
 
     override fun initialize() {
@@ -127,42 +120,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
 
-    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
-    override fun setupListeners() {
-        clickForAllNews()
-        clickForSeeFullMap()
-        clickForQrScanner()
-        clickForExchange()
-        setupAction()
-        setupBottomSheet()
 
-        binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
-            when (event.actionMasked) {
-                MotionEvent.ACTION_DOWN -> {
-                    xCoOrdinate = view.x - event.rawX
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    view.animate().x(event.rawX + xCoOrdinate)
-                        .setDuration(0)
-                        .start()
-                }
-                MotionEvent.ACTION_UP -> {
-
-                    findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
-
-                    Log.e("anime", "onViewCreated: $xCoOrdinate")
-
-                }
-
-                else -> {
-                    view.clearAnimation()
-                    return@OnTouchListener false
-                }
-            }
-            true
-        })
-
-    }
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
@@ -186,7 +144,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
     private fun clickForQrScanner() {
-        binding.qrCode.setOnClickListener {
+        binding.buttonQR.setOnClickListener {
             findNavController().navigate(R.id.scannerFragment)
         }
     }
@@ -361,5 +319,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
         return bitmap
     }
-
+    private fun setupDialog() {
+        binding.buttonFreezeCard.setOnClickListener {
+            val dialog = FreezeDialogFragment()
+            fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
+        }
+    }
 }

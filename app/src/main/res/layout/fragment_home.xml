@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -111,11 +111,11 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_horizontal"
-                android:layout_width="80dp"
-                android:layout_height="65dp"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp"
-                android:background="@color/white_black"
+                android:background="@drawable/button_gradient"
                 app:iconPadding="0dp"
                 app:icon="@drawable/arrowshorizontal"
                 app:iconGravity="textStart"
@@ -135,9 +135,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_wallet"
-                android:layout_width="80dp"
-                android:layout_height="65dp"
-                app:backgroundTint="@color/white_black"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
                 app:cornerRadius="10dp"
                 app:iconPadding="0dp"
                 app:icon="@drawable/wallet"
@@ -159,9 +160,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_exchange"
-                android:layout_width="80dp"
-                android:layout_height="65dp"
-                app:backgroundTint="@color/white_black"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
                 app:cornerRadius="10dp"
                 app:iconPadding="0dp"
                 app:icon="@drawable/currency"
@@ -182,15 +184,16 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonQR"
-                android:layout_width="80dp"
-                android:layout_height="65dp"
-                app:backgroundTint="@color/white_black"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
                 app:cornerRadius="10dp"
-                app:iconPadding="0dp"
                 app:icon="@drawable/qrcode"
                 app:iconGravity="textStart"
-                app:layout_constraintLeft_toLeftOf="@id/guidelineleft"
-                app:layout_constraintBottom_toTopOf="@id/txt_QR" />
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toTopOf="@id/txt_QR"
+                app:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
 
             <TextView
                 android:id="@+id/txt_QR"
@@ -205,9 +208,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_freeze_card"
-                android:layout_width="80dp"
-                android:layout_height="65dp"
-                app:backgroundTint="@color/white_black"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/snowflake"
                 app:iconGravity="textStart"
@@ -229,9 +233,10 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_settings"
-                android:layout_width="80dp"
-                android:layout_height="65dp"
-                app:backgroundTint="@color/white_black"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
                 app:cornerRadius="10dp"
                 app:icon="@drawable/settingsadjust"
                 app:iconGravity="textStart"
@@ -249,11 +254,6 @@
                 app:layout_constraintLeft_toLeftOf="@id/button_settings"
                 app:layout_constraintRight_toRightOf="@id/button_settings"
                 app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
-
-
-
-
-
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelinetop"
@@ -282,19 +282,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.65"/>
+                app:layout_constraintGuide_percent="0.60"/>
+
 
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <include
+            android:id="@+id/bottom_sheet_include"
+            layout="@layout/bottom_sheet_home" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <include
-                android:id="@+id/bottom_sheet_include"
-                layout="@layout/bottom_sheet_home" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

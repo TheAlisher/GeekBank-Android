@@ -31,26 +31,30 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
 
 
 
-    override fun setupRequests() {
-        viewModel.stateUser.collectUIState {
-            when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
-                is UIState.Success -> {
-                    it.data.forEach { data ->
-                        if (data?.id == preferencesHelper.getString("id")) {
-                            binding.dataCard.text = data?.firstCard?.get("date").toString()
-                            binding.nameCard.text = data?.firstCard?.get("name").toString()
-                            binding.roomCard.text = data?.firstCard?.get("cardNumber").toString()
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    override fun setupRequests() {
+//        viewModel.stateUser.collectUIState {
+//            when (it) {
+//                is UIState.Error -> {}
+//                is UIState.Loading -> {}
+//                is UIState.Success -> {
+//                    it.data.forEach { data ->
+//                        if (data?.id == preferencesHelper.getString("id")) {
+//                            binding.dataCard.text = data?.firstCard?.get("date").toString()
+//                            binding.nameCard.text = data?.firstCard?.get("name").toString()
+//                            binding.roomCard.text = data?.firstCard?.get("cardNumber").toString()
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     private fun setupAction() = with(binding) {
         ivExtraCard.setOnClickListener {
             findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
         }
+    ivSecond.setOnClickListener {
+        findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
     }
+    }
+
 }

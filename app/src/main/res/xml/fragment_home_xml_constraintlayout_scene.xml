@@ -6,7 +6,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1000"
+        motion:duration="500"
         motion:motionInterpolator="easeInOut"
         motion:autoTransition="animateToStart"
         motion:pathMotionArc="flip"
@@ -54,16 +54,16 @@
             android:layout_marginTop="10dp" />
         <Constraint
             android:id="@+id/button_exchange"
-            android:layout_width="80dp"
-            android:layout_height="65dp"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
             motion:layout_constraintTop_toBottomOf="@id/guidelinetop"
             motion:layout_constraintRight_toRightOf="@id/guidelineright" />
         <Constraint
             android:id="@+id/button_wallet"
             motion:layout_constraintEnd_toStartOf="@id/button_exchange"
             motion:layout_constraintStart_toEndOf="@id/button_horizontal"
-            android:layout_width="80dp"
-            android:layout_height="65dp"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
             motion:layout_constraintTop_toBottomOf="@id/guidelinetop" />
         <Constraint
             android:id="@+id/txt_exchange"
@@ -102,8 +102,8 @@
             motion:layout_constraintLeft_toLeftOf="@id/button_freeze_card" />
         <Constraint
             android:id="@+id/buttonQR"
-            android:layout_width="80dp"
-            android:layout_height="65dp"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
             motion:layout_constraintBottom_toTopOf="@id/txt_QR"
             motion:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
         <Constraint
@@ -115,15 +115,15 @@
             motion:layout_constraintRight_toRightOf="@id/buttonQR" />
         <Constraint
             android:id="@+id/button_freeze_card"
-            android:layout_width="80dp"
-            android:layout_height="65dp"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
             motion:layout_constraintBottom_toTopOf="@id/txt_freeze_card"
             motion:layout_constraintLeft_toLeftOf="@id/buttonQR"
             motion:layout_constraintRight_toRightOf="@id/button_settings" />
         <Constraint
             android:id="@+id/button_settings"
-            android:layout_width="80dp"
-            android:layout_height="65dp"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
             motion:layout_constraintBottom_toTopOf="@id/txt_settings"
             motion:layout_constraintRight_toRightOf="@id/guidelineright" />
     </ConstraintSet>
