@@ -2,7 +2,6 @@ package com.alish.geekbank.presentation.ui.fragments.main
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
 import androidx.core.view.isVisible

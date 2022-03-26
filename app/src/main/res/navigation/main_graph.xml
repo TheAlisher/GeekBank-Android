@@ -47,7 +47,11 @@
         android:id="@+id/cardFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.cards.CardFragment"
         android:label="fragment_card"
-        tools:layout="@layout/fragment_card" />
+        tools:layout="@layout/fragment_card" >
+        <action
+            android:id="@+id/action_cardFragment_to_cardDetailFragment"
+            app:destination="@id/cardDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cardDetailFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
