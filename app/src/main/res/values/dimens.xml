@@ -6,4 +6,6 @@
     <dimen name="key_margin">50dp</dimen>
     <dimen name="size_360">360dp</dimen>
     <dimen name="size668">668dp</dimen>
+    <dimen name="cornerRadius">40fdp</dimen>
+    <dimen name="padding">30dp</dimen>
 </resources>

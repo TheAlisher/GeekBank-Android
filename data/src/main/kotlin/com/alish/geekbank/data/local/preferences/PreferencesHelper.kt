@@ -21,6 +21,16 @@ class PreferencesHelper (context: Context) {
         editor.putBoolean(key,value)
         editor.apply()
     }
+
+    fun putOnBoardBoolean(){
+        var editor: SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean("OnBoard",true).apply()
+        editor.apply()
+    }
+
+    fun getOnBoardBoolean():Boolean{
+        return preferences.getBoolean("OnBoard",false)
+    }
     fun getBoolean(key: String):Boolean{
         return preferences.getBoolean(key,false)
     }

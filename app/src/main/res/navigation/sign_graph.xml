@@ -11,4 +11,9 @@
         android:label="SignInFragment"
         tools:layout="@layout/fragment_sign_in">
     </fragment>
+    <fragment
+        android:id="@+id/mainOnBoardingFragment"
+        tools:layout="@layout/fragment_main_on_boarding"
+        android:name="com.alish.geekbank.presentation.ui.fragments.onboarding.MainOnBoardingFragment"
+        android:label="MainOnBoardingFragment" />
 </navigation>
