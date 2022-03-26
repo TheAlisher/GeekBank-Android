@@ -28,14 +28,14 @@ class MainFlowFragment :
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.pinCodeFragment,
-                R.id.inputPinCodeFragment,
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
                 R.id.exchangeFragment,
                 R.id.transferFragment,
                 R.id.qrFragment,
+                R.id.firstFragment,
+                R.id.forgotPasswordDialogFragment,
                 R.id.editProfileFragment,
                 R.id.scannerFragment,
                 -> {
@@ -114,18 +114,7 @@ class MainFlowFragment :
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
-
-
-        if (!preferenceHelper.isShown()) {
-            navController.navigate(R.id.pinCodeFragment)
-        } else if (preferenceHelper.isShown() && navController.currentDestination == navController.findDestination(
-                R.id.navigation_profile
-            )
-        ) {
-            Toast.makeText(requireContext(), "Language changed", Toast.LENGTH_SHORT).show()
-        } else {
-            navController.navigate(R.id.inputPinCodeFragment)
-        }
+        navController.navigate(R.id.firstFragment)
     }
 
     override fun onStop() {
