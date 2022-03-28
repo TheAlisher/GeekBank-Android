@@ -1,7 +1,5 @@
 package com.alish.geekbank.presentation.ui.adapters.fingerparint
 
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

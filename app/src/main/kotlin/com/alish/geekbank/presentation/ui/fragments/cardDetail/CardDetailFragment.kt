@@ -22,7 +22,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class CardDetailFragment :
     BaseFragment<CardDetailViewModel, FragmentCardDetailBinding>(R.layout.fragment_card_detail) {
@@ -92,7 +91,6 @@ class CardDetailFragment :
         binding.imageArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-
     }
 
     override fun setupSubscribes() {
@@ -118,7 +116,6 @@ class CardDetailFragment :
         val list2: ArrayList<CardListUIModel> = ArrayList()
         list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
         cardDetailListAdapter.submitList(list2)
-
     }
 
     private fun setupDialog() {
@@ -127,6 +124,4 @@ class CardDetailFragment :
             fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
         }
     }
-
-
 }

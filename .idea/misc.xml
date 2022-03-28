@@ -34,6 +34,7 @@
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable-v24/ic_card_foreground.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable-v24/ic_channel_foreground.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/background_card_number.xml" value="0.114" />
+        <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/bottom_sheet_corners_background_white.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/ic_channel_background.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/ic_enter_card_number.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/ic_next.xml" value="0.114" />
@@ -44,6 +45,7 @@
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/splash_screen.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/drawable/transfer_number_card.xml" value="0.114" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/layout/bottom_sheet.xml" value="0.2" />
+        <entry key="..\:/Users/GeekBank-Android/app/src/main/res/layout/bottom_sheet_home.xml" value="0.1685185185185185" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/layout/content_main.xml" value="0.1685185185185185" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/layout/flow_fragment_main.xml" value="0.225" />
         <entry key="..\:/Users/GeekBank-Android/app/src/main/res/layout/fragment_all_news.xml" value="0.225" />
