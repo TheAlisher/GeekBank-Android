@@ -12,6 +12,7 @@
         android:id="@+id/fragment"
         android:title=""
         />
+
     <item
         android:id="@+id/fragment2"
         android:title="Crypta"

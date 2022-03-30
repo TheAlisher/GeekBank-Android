@@ -20,9 +20,14 @@ class RetrofitClient {
         .addInterceptor(AuthorizationInterceptor())
         .build()
 
-
     private val provideRetrofit = Retrofit.Builder()
         .baseUrl("https://newsapi.org")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    private val provideRetrofitExchange = Retrofit.Builder()
+        .baseUrl("https://v6.exchangerate-api.com/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
@@ -30,6 +35,6 @@ class RetrofitClient {
     fun provideNewsApiService(): NewsApiService = provideRetrofit
         .create(NewsApiService::class.java)
 
-    fun provideExchangeApiService(): ExchangeApiService = provideRetrofit
+    fun provideExchangeApiService(): ExchangeApiService = provideRetrofitExchange
         .create(ExchangeApiService::class.java)
 }

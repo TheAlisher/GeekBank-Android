@@ -71,7 +71,6 @@ class FirstFragment :
     override fun setupListeners() {
         binding.description.setOnClickListener {
             findNavController().navigate(R.id.forgotPasswordDialogFragment)
-
         }
     }
 

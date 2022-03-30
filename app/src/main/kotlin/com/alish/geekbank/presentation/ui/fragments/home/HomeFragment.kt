@@ -19,6 +19,7 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
@@ -52,10 +53,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private val cardDetailListAdapter = CardDetailListAdapter()
     private val exchangeAdapter = ExchangeAdapter()
     private val cardDetailAdapter = CardDetailAdapter()
-    override val viewModel: HomeViewModel by viewModels()
-    override val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)
     val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
+
+    override val viewModel: HomeViewModel by viewModels()
+    override val binding by viewBinding(FragmentHomeBinding::bind)
+    private val viewModelExchange: ExchangeViewModel by viewModels()
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
@@ -222,49 +225,48 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         }
                 }
             }
-        }}
+        }
 
-//        viewModelExchange.exchangeState.collectUIState {
-//            when (it) {
-//                is UIState.Error -> {}
-//                is UIState.Loading -> {}
-//                is UIState.Success -> {
-//                    val listExchange = ArrayList<ExchangeModelsUI>()
-//                    it.data.let { data ->
-//                        listExchange.add(
-//                            ExchangeModelsUI(
-//                                it.data.conversion_rates["KGS"].toString(),
-//                                it.data.conversion_rates["KGS"].toString(),
-//                            )
-//                        )
-//
-//                        listExchange.add(
-//                            ExchangeModelsUI(
-//                                it.data.conversion_rates["USD"].toString(),
-//                                it.data.conversion_rates["USD"].toString(),
-//                            )
-//                        )
-//
-//                        listExchange.add(
-//                            ExchangeModelsUI(
-//                                it.data.conversion_rates["EUR"].toString(),
-//                                it.data.conversion_rates["EUR"].toString(),
-//                            )
-//                        )
-//
-//                        listExchange.add(
-//                            ExchangeModelsUI(
-//                                it.data.conversion_rates["RUS"].toString(),
-//                                it.data.conversion_rates["RUS"].toString(),
-//                            )
-//                        )
-//
-//                        exchangeAdapter.submitList(listExchange)
-//                    }
-//                }
-//            }
-//        }
-//    }
+        viewModelExchange.exchangeState.collectUIState {
+            when (it) {
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+                    val listExchange = ArrayList<ExchangeModelsUI>()
+                    it.data.let { data ->
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                "KZT",
+                                data.conversion_rates["KZT"].toString(),
+                            )
+                        )
+
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                "USD",
+                                data.conversion_rates["USD"].toString(),
+                            )
+                        )
+
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                "EUR",
+                                data.conversion_rates["EUR"].toString(),
+                            )
+                        )
+
+                        listExchange.add(
+                            ExchangeModelsUI(
+                                "RUS",
+                                data.conversion_rates["RUS"].toString(),
+                            )
+                        )
+                        exchangeAdapter.submitList(listExchange)
+                    }
+                }
+            }
+        }
+    }
 
         override fun onMapReady(map: GoogleMap) {
             MapsInitializer.initialize(requireContext())
@@ -276,21 +278,21 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             val geekTech2 = LatLng(42.813036, 73.845793)
             val geekTech3 = LatLng(42.814240, 73.845375)
 
-            googleMap.addMarker(MarkerOptions().position(geekTech).title("GeekTech"))
-            googleMap.addMarker(MarkerOptions().position(bizone).title("Bizone"))
-            googleMap.addMarker(MarkerOptions().position(geekTech1).title("vozle geeka"))
-            googleMap.addMarker(MarkerOptions().position(geekTech2).title("avtomoyka"))
-            googleMap.addMarker(MarkerOptions().position(geekTech3).title("chto to"))
+        googleMap.addMarker(MarkerOptions().position(geekTech).title("GeekTech"))
+        googleMap.addMarker(MarkerOptions().position(bizone).title("Bizone"))
+        googleMap.addMarker(MarkerOptions().position(geekTech1).title("vozle geeka"))
+        googleMap.addMarker(MarkerOptions().position(geekTech2).title("avtomoyka"))
+        googleMap.addMarker(MarkerOptions().position(geekTech3).title("chto to"))
 
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
-        }
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
+    }
 
-        override fun onAttach(context: Context) {
-            super.onAttach(context)
-            overrideOnBackPressed { activity?.finish() }
-        }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { activity?.finish() }
+    }
 
-        //    private fun generateQrCode(cardNumber: String?): Bitmap? {
+    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
 //        val writer = MultiFormatWriter()
 //        var bitmap: Bitmap? = null
 //
@@ -302,18 +304,17 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 //        }
 //        return bitmap
 //    }
-        private fun generateQrCode(cardNumber: String?): Bitmap? {
-            val writer = MultiFormatWriter()
-            var bitmap: Bitmap? = null
-
-            try {
-                val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
-                val encoder = BarcodeEncoder()
-                bitmap = encoder.createBitmap(matrix)
-            } catch (e: WriterException) {
-            }
-            return bitmap
+    private fun generateQrCode(cardNumber: String?): Bitmap? {
+        val writer = MultiFormatWriter()
+        var bitmap: Bitmap? = null
+        try {
+            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+            val encoder = BarcodeEncoder()
+            bitmap = encoder.createBitmap(matrix)
+        } catch (e: WriterException) {
         }
+        return bitmap
+    }
 
         private fun setupDialog() {
             binding.buttonFreezeCard.setOnClickListener {

@@ -23,7 +23,6 @@ class MainFlowFragment :
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
-
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -48,15 +47,12 @@ class MainFlowFragment :
                 else -> {
                     whetherToShow(true)
                 }
-
-
             }
+
             binding.bottomNavigationView.background = null
             binding.bottomNavigationView.menu.getItem(2).isEnabled = false
-
         }
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
-
     }
 
     override fun setUpListeners() {
@@ -66,8 +62,9 @@ class MainFlowFragment :
                 Color.RED,
                 Color.BLUE
             )
-            val cornerRadius = 16f.dp
-            val padding = 30.dp
+
+            val cornerRadius = 200f.dp
+            val padding = 28.dp
             val centerX = it.width.toFloat() / 2 - padding
             val centerY = it.height.toFloat() / 2 - padding
 
@@ -92,6 +89,7 @@ class MainFlowFragment :
                 Color.WHITE,
                 Color.RED
             )
+
             animateShadow(
                 shapeDrawable = shadowDrawable,
                 startColors = colors,
@@ -101,7 +99,6 @@ class MainFlowFragment :
                 centerY = centerY
             )
         }
-
     }
 
     private fun whetherToShow(b: Boolean) {

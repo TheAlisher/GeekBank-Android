@@ -1,6 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
-import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -106,7 +105,6 @@ class CardDetailFragment :
         binding.imageArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-
     }
 
     override fun setupSubscribes() {
