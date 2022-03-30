@@ -6,61 +6,48 @@
     android:background="#191919"
     android:padding="10dp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logo_airbnb"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/airbnb"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/txt_airbnb"
+        android:id="@+id/to_card"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Airbnb"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/logo_airbnb"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txt_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="4dp"
-        android:hint="Rental"
-        android:textColorHint="#8E8E93"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_airbnb" />
 
     <TextView
-        android:id="@+id/txt_number"
+        android:id="@+id/money"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginStart="150dp"
         android:layout_marginTop="15dp"
-        android:text="-53,100 KGS"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/minus"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="-"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf ="@id/money"
+        app:layout_constraintTop_toTopOf="@id/money"
+        />
 
     <TextView
-        android:id="@+id/txt_hint_time"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:hint="9:10 PM"
         android:textColorHint="#8E8E93"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_number" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

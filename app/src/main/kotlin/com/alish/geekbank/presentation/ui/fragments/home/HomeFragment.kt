@@ -16,7 +16,6 @@ import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
-import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.models.NewsModelUI
@@ -183,7 +182,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Loading -> {}
                 is UIState.Success -> {
                     it.data.forEach { data ->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                        if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
                             binding.tvCash.text = data?.money.toString()
 
                             binding.bottomSheetInclude.numberCard.text =
@@ -227,7 +226,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Success -> {
                     if (list.size == 0)
                         it.data.forEach { data ->
-                            if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
                                 if (data != null) {
                                     list.add(data)
                                     cardDetailAdapter.submitList(list)
@@ -239,9 +238,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 }
             }
         }
-        val list2: ArrayList<CardListUIModel> = ArrayList()
-        list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
-        cardDetailListAdapter.submitList(list2)
 
         viewModelExchange.exchangeState.collectUIState {
             when (it) {

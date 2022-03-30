@@ -1,6 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
 import com.alish.geekbank.domain.usecases.*
+import com.alish.geekbank.domain.usecases.firestore.FetchCardDataUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.models.*
 import com.alish.geekbank.presentation.state.UIState

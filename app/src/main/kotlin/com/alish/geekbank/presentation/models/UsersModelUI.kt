@@ -1,6 +1,7 @@
 package com.alish.geekbank.presentation.models
 
-import com.alish.geekbank.domain.models.UsersModel
+
+import com.alish.geekbank.domain.models.firestore.UsersModel
 
 data class UsersModelUI(
     val id: String? = null,

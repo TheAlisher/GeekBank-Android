@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.alish.geekbank.databinding.ItemDetailCardBinding
 import com.alish.geekbank.presentation.base.BaseComparator1
-import com.alish.geekbank.presentation.models.CardListUIModel
 
-class CardDetailListAdapter : ListAdapter<CardListUIModel, CardDetailListAdapter.ViewHolder>(
+import com.alish.geekbank.presentation.models.HistoryModelUI
+
+class CardDetailListAdapter : ListAdapter<HistoryModelUI, CardDetailListAdapter.ViewHolder>(
     BaseComparator1()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,9 +28,9 @@ class CardDetailListAdapter : ListAdapter<CardListUIModel, CardDetailListAdapter
 
     inner class ViewHolder(private val binding: ItemDetailCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: CardListUIModel) = with(binding) {
-            logoAirbnb.load(item.image)
-            txtAirbnb.text = item.name
+        fun onBind(item: HistoryModelUI) = with(binding) {
+            toCard.text = item.toCard
+            money.text = item.money.toString()
         }
     }
 }

@@ -28,7 +28,7 @@
         app:layout_constraintStart_toEndOf="@id/image_arrow"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_recycler"
         android:layout_width="match_parent"
         android:layout_height="240dp"

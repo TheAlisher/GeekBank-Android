@@ -53,6 +53,9 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
         android:label="fragment_card_detail"
         tools:layout="@layout/fragment_card_detail" >
+        <action
+            android:id="@+id/action_cardDetailFragment_to_freezeDialogFragment"
+            app:destination="@id/freezeDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferFragment"
@@ -98,7 +101,11 @@
         android:id="@+id/freezeDialogFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment"
         android:label="fragment_freeze_dialog"
-        tools:layout="@layout/fragment_freeze_dialog" />
+        tools:layout="@layout/fragment_freeze_dialog" >
+        <argument
+            android:name="cardNumber"
+            app:argType="string" />
+    </dialog>
     <fragment
         android:id="@+id/scannerFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment"

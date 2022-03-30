@@ -3,8 +3,11 @@ package com.alish.geekbank.presentation.ui.fragments.editProfile
 import android.Manifest
 import android.net.Uri
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
@@ -14,6 +17,7 @@ import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -54,6 +58,7 @@ class EditProfileFragment :
 
     override fun setupListeners() {
         clickGallery()
+        saveChangedData()
     }
 
     override fun setupRequests() {
@@ -64,15 +69,27 @@ class EditProfileFragment :
                 is UIState.Loading -> {
                 }
                 is UIState.Success -> {
-                    it.data.forEach { data ->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
-                            binding.inputName.setText(data?.name)
-                            binding.inputLastName.setText(data?.surname)
-                            binding.inputNumber.setText(data?.number)
-                        }
+                    binding.inputName.setText(it.data?.name)
+                    binding.inputLastName.setText(it.data?.surname)
+                    binding.inputNumber.setText(it.data?.number)
 
-                    }
                 }
+            }
+        }
+    }
+    private fun saveChangedData() = with(binding) {
+        btnSave.setOnClickListener {
+            if (inputName.text!!.isNotEmpty() && inputLastName.text!!.isNotEmpty() && inputNumber.text!!.isNotEmpty()) {
+                lifecycleScope.launch {
+                    viewModel.updateAccount(
+                        inputName.text.toString(),
+                        inputLastName.text.toString(),
+                        inputNumber.text.toString(),
+                    )
+                }
+                findNavController().navigate(R.id.navigation_profile)
+            }else{
+                Toast.makeText(requireContext(),"Значения не должны быть пустыми", Toast.LENGTH_SHORT).show()
             }
         }
     }
