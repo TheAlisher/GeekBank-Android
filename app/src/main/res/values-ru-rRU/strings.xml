@@ -55,5 +55,6 @@
     <string name="offer">Предложение</string>
     <string name="send_money">Отправлять деньги</string>
     <string name="save">Сохранить</string>
+    <string name="foorgot">Если вы забыли пароль, пожалуиста выйдите с аккаунта и зайдите снова</string>
 
 </resources>

@@ -15,7 +15,8 @@
 
     <item
         android:id="@+id/fragment2"
-        android:title=""
+        android:title="Crypta"
+        android:icon="@drawable/ic_blockchain"
         />
     <item
         android:id="@+id/navigation_profile"

@@ -9,7 +9,6 @@ import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
-import com.alish.geekbank.presentation.ui.fragments.home.HomeFragmentDirections
 import com.alish.geekbank.presentation.ui.fragments.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

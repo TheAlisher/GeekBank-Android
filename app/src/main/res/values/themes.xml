@@ -42,6 +42,13 @@
         <item name="android:background">@color/black</item>
     </style>
 
+    <style name="view_oval">
+        <item name="android:layout_width">10dp</item>
+        <item name="android:layout_height">10dp</item>
+    </style>
+
+
+
     <style name="CustomEditText" parent="Widget.AppCompat.EditText">
         <item name="colorControlActivated">#727375</item>
     </style>
