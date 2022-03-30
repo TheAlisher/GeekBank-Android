@@ -1,3 +1,7 @@
+import org.apache.tools.ant.util.JavaEnvUtils.VERSION_1_8
+
+val sourceCompatibility by extra(VERSION_1_8)
+val targetCompatibility by extra(VERSION_1_8)
 buildscript {
     dependencies {
         classpath("com.google.gms:google-services:4.3.10")

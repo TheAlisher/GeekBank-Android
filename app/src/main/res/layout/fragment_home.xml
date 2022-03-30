@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/black"
+    android:layout_height="match_parent"
+    android:background="@drawable/pattern1"
     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/card_anim"
-            android:layout_width="160dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutDescription="@xml/fragment_home_xml_constraintlayout_scene">
 
             <TextView
                 android:id="@+id/cash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
                 android:layout_marginTop="50dp"
-                android:text="@string/total_balance"
+                android:text="Total balance"
                 android:textColor="@color/white"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,77 +32,95 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
+                android:text="300.00$"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cash" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/qr_code"
-                android:layout_width="80dp"
-                android:layout_height="55dp"
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/button_gradient"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
-                app:backgroundTint="@null"
-                app:icon="@drawable/qrcode"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_cash" />
 
-            <TextView
+            <ImageView
+                android:id="@+id/iv_second"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="QR code"
+                android:src="@drawable/ic_mycard"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/room_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="65dp"
+                android:text="**** **** **** 2345"
                 android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintLeft_toLeftOf="@id/qr_code"
-                app:layout_constraintTop_toBottomOf="@id/qr_code" />
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="@id/iv_second"
+                app:layout_constraintTop_toTopOf="@id/iv_second" />
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/name_card_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="36dp"
+                android:text="Card Holder name"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@id/iv_second"
+                app:layout_constraintTop_toBottomOf="@id/room_card" />
 
-        <ImageView
-            android:id="@+id/iv_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/visa"
-            app:layout_constraintStart_toEndOf="@+id/card_anim"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/name_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="Namon Manzoor"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/iv_second"
+                app:layout_constraintTop_toBottomOf="@id/name_card_text" />
 
+            <TextView
+                android:id="@+id/data_card_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="36dp"
+                android:text="Expiry Date"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintLeft_toRightOf="@id/name_card_text"
+                app:layout_constraintTop_toBottomOf="@id/room_card" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
-            app:layout_constraintTop_toBottomOf="@id/iv_first">
+            <TextView
+                android:id="@+id/data_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="52dp"
+                android:layout_marginTop="12dp"
+                android:text="02/30"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                app:layout_constraintLeft_toRightOf="@id/name_card"
+                app:layout_constraintTop_toBottomOf="@id/data_card_text" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_horizontal"
-                android:layout_width="80dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/button_gradient"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
                 app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                android:background="@drawable/button_gradient"
+                app:iconPadding="0dp"
                 app:icon="@drawable/arrowshorizontal"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintLeft_toLeftOf="@id/guidelineleft"
+                app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
             <TextView
                 android:id="@+id/txt_transfer"
@@ -116,27 +129,23 @@
                 android:hint="Transfer"
                 android:textColorHint="#8E8E93"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/button_horizontal"
-                app:layout_constraintStart_toStartOf="@+id/button_horizontal"
+                app:layout_constraintEnd_toEndOf="@id/button_horizontal"
+                app:layout_constraintStart_toStartOf="@id/button_horizontal"
                 app:layout_constraintTop_toBottomOf="@id/button_horizontal" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_wallet"
-                android:layout_width="80dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
                 android:background="@drawable/button_gradient"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
                 app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:iconPadding="0dp"
                 app:icon="@drawable/wallet"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
+                app:layout_constraintEnd_toStartOf="@id/button_exchange"
                 app:layout_constraintStart_toEndOf="@id/button_horizontal"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
             <TextView
                 android:id="@+id/txt_payments"
@@ -145,27 +154,22 @@
                 android:hint="Payments"
                 android:textColorHint="#8E8E93"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/button_wallet"
-                app:layout_constraintStart_toStartOf="@+id/button_wallet"
+                app:layout_constraintLeft_toLeftOf="@id/button_wallet"
+                app:layout_constraintRight_toRightOf="@id/button_wallet"
                 app:layout_constraintTop_toBottomOf="@id/button_wallet" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_exchange"
-                android:layout_width="80dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
                 android:background="@drawable/button_gradient"
-                android:insetLeft="0dp"
-                android:insetRight="0dp"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
                 app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:iconPadding="0dp"
                 app:icon="@drawable/currency"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintStart_toEndOf="@id/button_wallet"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintRight_toRightOf="@id/guidelineright"
+                app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
             <TextView
                 android:id="@+id/txt_exchange"
@@ -174,20 +178,126 @@
                 android:hint="Exchange"
                 android:textColorHint="#8E8E93"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/button_exchange"
-                app:layout_constraintStart_toStartOf="@+id/button_exchange"
+                app:layout_constraintLeft_toLeftOf="@id/button_exchange"
+                app:layout_constraintRight_toRightOf="@id/button_exchange"
                 app:layout_constraintTop_toBottomOf="@id/button_exchange" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonQR"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/qrcode"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintBottom_toTopOf="@id/txt_QR"
+                app:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_QR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="QR"
+                android:textColorHint="#8E8E93"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="@id/buttonQR"
+                app:layout_constraintRight_toRightOf="@id/buttonQR"
+                app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
 
-            <include
-                android:id="@+id/bottom_sheet_include"
-                layout="@layout/bottom_sheet_home" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_freeze_card"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/snowflake"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintLeft_toLeftOf="@id/buttonQR"
+                app:layout_constraintRight_toRightOf="@id/button_settings"
+                app:layout_constraintBottom_toTopOf="@id/txt_freeze_card"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.appcompat.widget.LinearLayoutCompat>
+            <TextView
+                android:id="@+id/txt_freeze_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Freeze Card"
+                android:textColorHint="#8E8E93"
+                android:textSize="15sp"
+                app:layout_constraintRight_toRightOf="@id/button_freeze_card"
+                app:layout_constraintLeft_toLeftOf="@id/button_freeze_card"
+                app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_settings"
+                android:layout_width="75dp"
+                android:layout_height="60dp"
+                android:background="@drawable/button_gradient"
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/settingsadjust"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:layout_constraintRight_toRightOf="@id/guidelineright"
+                app:layout_constraintBottom_toTopOf="@id/txt_settings" />
+
+            <TextView
+                android:id="@+id/txt_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Settings"
+                android:textColorHint="#8E8E93"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="@id/button_settings"
+                app:layout_constraintRight_toRightOf="@id/button_settings"
+                app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinetop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.38" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.90" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineleft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.10"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinebottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.60"/>
+
+
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/bottom_sheet_include"
+            layout="@layout/bottom_sheet_home" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

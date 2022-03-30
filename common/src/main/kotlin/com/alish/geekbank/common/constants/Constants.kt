@@ -10,6 +10,7 @@ object Constants {
     const val LANGUAGE_CODE = "language_code"
     const val USER_ID = "UserID"
     const val IS_AUTHORIZED = "Sign"
+    const val IS_ON_BOARD = "OnBoard"
     const val USER_NAME = "UserName"
     const val COLLECTION_CARDS = "cards"
     const val COLLECTION_USERS = "users"

@@ -16,8 +16,9 @@ import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
-import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.models.CardListUIModel
+import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
 import com.alish.geekbank.presentation.state.UIState
@@ -26,6 +27,7 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
+import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -56,13 +58,32 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     lateinit var preferencesHelper: PreferencesHelper
 
     private fun clickNewsItem(model: NewsModelUI) {
-
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
 
-    override val viewModel: HomeViewModel by viewModels()
-    private val viewModelExchange: ExchangeViewModel by viewModels()
-    override val binding by viewBinding(FragmentHomeBinding::bind)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
+            override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+                findNavController().navigate(R.id.cardFragment)
+            }
+
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
+        })
+    }
+
+    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
+    override fun setupListeners() {
+        clickForAllNews()
+        clickForSeeFullMap()
+        clickForQrScanner()
+        clickForExchange()
+        setupAction()
+        setupDialog()
+        setupBottomSheet()
+    }
 
     override fun initialize() {
         binding.bottomSheetInclude.map.onCreate(null)
@@ -78,43 +99,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-
-    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
-    override fun setupListeners() {
-        clickForAllNews()
-        clickForSeeFullMap()
-        clickForQrScanner()
-        clickForExchange()
-        setupAction()
-        setupBottomSheet()
-
-        binding.ivFirst.setOnTouchListener(View.OnTouchListener { view, event ->
-            when (event.actionMasked) {
-                MotionEvent.ACTION_DOWN -> {
-                    xCoOrdinate = view.x - event.rawX
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    view.animate().x(event.rawX + xCoOrdinate)
-                        .setDuration(0)
-                        .start()
-                }
-                MotionEvent.ACTION_UP -> {
-
-                    findNavController().navigate(R.id.cardFragment)
-
-                    Log.e("anime", "onViewCreated: $xCoOrdinate")
-
-                }
-
-                else -> {
-                    view.clearAnimation()
-                    return@OnTouchListener false
-                }
-            }
-            true
-        })
-
-    }
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
@@ -138,7 +122,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
     private fun clickForQrScanner() {
-        binding.qrCode.setOnClickListener {
+        binding.buttonQR.setOnClickListener {
             findNavController().navigate(R.id.scannerFragment)
         }
     }
@@ -194,9 +178,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                                     cardNumber = data?.cardNumber.toString()
                                 )
                             )
-
                         }
-
                     }
                 }
             }
@@ -226,7 +208,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Success -> {
                     if (list.size == 0)
                         it.data.forEach { data ->
-                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
+                            if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
                                 if (data != null) {
                                     list.add(data)
                                     cardDetailAdapter.submitList(list)
@@ -305,7 +287,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         overrideOnBackPressed { activity?.finish() }
     }
 
-//    private fun generateQrCode(cardNumber: String?): Bitmap? {
+    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
 //        val writer = MultiFormatWriter()
 //        var bitmap: Bitmap? = null
 //
@@ -330,4 +312,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         return bitmap
     }
 
+    private fun setupDialog() {
+        binding.buttonFreezeCard.setOnClickListener {
+            val dialog = FreezeDialogFragment()
+            fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
+        }
+    }
 }
