@@ -87,7 +87,7 @@ class EditProfileFragment :
                         inputNumber.text.toString(),
                     )
                 }
-                findNavController().navigate(R.id.navigation_profile)
+                findNavController().navigate(R.id.profileFragment)
             }else{
                 Toast.makeText(requireContext(),"Значения не должны быть пустыми", Toast.LENGTH_SHORT).show()
             }

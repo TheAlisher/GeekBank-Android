@@ -40,7 +40,7 @@ class MainFlowFragment :
                 -> {
                     whetherToShow(false)
                 }
-                R.id.navigation_profile -> {
+                R.id.profileFragment -> {
                     if (preferenceHelper.isShown()) {
 
                     }
