@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.alish.geekbank.databinding.ItemTransferListBinding
 import com.alish.geekbank.presentation.base.BaseComparatorCard
-import com.alish.geekbank.presentation.models.CardModel
+import com.alish.geekbank.presentation.models.CardModelUI
 
 class CardTransferAdapter :
-    ListAdapter<CardModel, CardTransferAdapter.CardTransferViewHolder>(BaseComparatorCard()) {
+    ListAdapter<CardModelUI, CardTransferAdapter.CardTransferViewHolder>(BaseComparatorCard(
+        )) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTransferViewHolder {
         return CardTransferViewHolder(ItemTransferListBinding.inflate(LayoutInflater.from(parent.context),
@@ -24,9 +25,9 @@ class CardTransferAdapter :
     class CardTransferViewHolder(
         private val binding: ItemTransferListBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: CardModel) {
+        fun onBind(item: CardModelUI) {
             binding.cardNumber.text = item.cardNumber
-            binding.cardMoney.text = item.cardMoney.toString()
+            binding.cardMoney.text = item.money.toString()
         }
     }
 }

@@ -13,7 +13,7 @@ object Dependencies {
         const val material = "com.google.android.material:material:1.5.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.3"
         const val viewBindingPropertyDelegate =
-            "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.3"
+            "com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6"
     }
 
     object Core {
@@ -92,8 +92,4 @@ object Dependencies {
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
     }
 
-    object LottieFile {
-        private const val lottieVersion = "3.4.0"
-        const val lottie = "com.airbnb.android:lottie:$lottieVersion"
-    }
 }

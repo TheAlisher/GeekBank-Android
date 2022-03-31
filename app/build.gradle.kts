@@ -94,8 +94,6 @@ dependencies {
     // Material Design
     implementation("com.google.android.material:material:1.6.0-alpha03")
 
-    // viewBinding
-    implementation("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6")
 
     // Activity
     implementation("androidx.activity:activity-ktx:1.4.0")
@@ -107,6 +105,9 @@ dependencies {
     implementation("io.coil-kt:coil:1.3.2")
 
     //Map
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+
+
     implementation("com.google.android.gms:play-services-maps:18.0.2")
 
     // Qr Code Generator
@@ -116,6 +117,6 @@ dependencies {
     // Qr Code Scanner
     implementation("com.github.yuriy-budiyev:code-scanner:2.1.0")
 
-    // LottieFile
-    implementation(Dependencies.LottieFile.lottie)
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 }
