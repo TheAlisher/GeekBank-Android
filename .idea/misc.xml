@@ -3,6 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/ic_icon.xml" value="0.137" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/splahs_screen.xml" value="0.137" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/splash_screen.xml" value="0.137" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/bottom_sheet.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/flow_fragment_main.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_all_news.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_biometric.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_qr.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_sign_in.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_detail_card.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_exchange.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_list_transfer_number.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_transfer_list.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/key_pad_layout.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/menu/bottom_navigation.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/bottom_sheet_corners_background.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_screen.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
