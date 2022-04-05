@@ -35,14 +35,14 @@ abstract class BaseFragment<ViewModel : BaseViewModel, Binding : ViewBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         initialize()
-        setupListeners()
-        setupRequests()
         setupSubscribes()
-        checkPosition()
+        setupRequests()
+        setupListeners()
+
+
+
     }
 
-    protected open fun checkPosition() {
-    }
 
     protected open fun initialize() {
     }

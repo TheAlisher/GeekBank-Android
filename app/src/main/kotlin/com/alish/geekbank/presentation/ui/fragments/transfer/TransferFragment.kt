@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -15,14 +16,19 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentTransferBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.CardModelUI
+import com.alish.geekbank.presentation.models.TransferModel
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardTransferAdapter
+import com.alish.geekbank.presentation.ui.adapters.CardTransferAdapterTo
 import com.alish.geekbank.presentation.ui.adapters.fingerparint.CardFingerprint
 import com.alish.geekbank.presentation.ui.adapters.fingerparint.EnterCardNumberFingerPrint
 import com.alish.geekbank.presentation.ui.adapters.fingerparint.TransferAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class TransferFragment :
@@ -39,27 +45,7 @@ class TransferFragment :
     private val adapterCard = CardTransferAdapter()
     private val adapterCardTo = CardTransferAdapterTo()
 
-
-    private val fingerAdapter1 = TransferAdapter(listOf(CardFingerprint()))
-    private val fingerAdapter2 = TransferAdapter(listOf(EnterCardNumberFingerPrint()))
-    private val concatAdapter = ConcatAdapter(
-        ConcatAdapter.Config.Builder()
-            .setIsolateViewTypes(false)
-            .build(),
-        fingerAdapter2,
-        fingerAdapter1
-    )
-
     override fun initialize() = with(binding) {
-        cardRecycler1.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        cardRecycler1.adapter = fingerAdapter1
-        PagerSnapHelper().attachToRecyclerView(cardRecycler1)
-        cardRecycler2.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        cardRecycler2.adapter = concatAdapter
-        fingerAdapter2.itemCount
-        PagerSnapHelper().attachToRecyclerView(cardRecycler2)
         cardRecycler1.layoutManager = LinearLayoutManager(context,
             LinearLayoutManager.HORIZONTAL,false)
         cardRecycler1.adapter = adapterCard
@@ -78,14 +64,66 @@ class TransferFragment :
 
     private fun sendListeners() = with(binding) {
         btnSetMoney.setOnClickListener {
-            val money = inputTxtTransfer.text.toString()
-            val changedMoney: Int = moneyCurrent!!.toInt() - money.toInt()
-            lifecycleScope.launch {
-                viewModel.updateAccount(
-                    changedMoney, "1111222233334444").toString()
+            if (binding.inputTxtTransfer.text.toString() != "") {
+                var money = inputTxtTransfer.text.toString()
+                if (transferDetails(money.toInt())) {
+                    var balanceFrom: Int = fromCard.money!! - money.toInt()
+                    var balanceTo = toCard.money!! + money.toInt()
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.updateAccount(balanceFrom, fromCard.cardNumber.toString())
+                    }
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.updateAccount(balanceTo, toCard.cardNumber.toString())
+                    }
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.addHistory(
+                            money.toInt(),
+                            fromCard.cardNumber,
+                            toCard.cardNumber,
+                            "minus",
+                            getTime()
+                        )
+                    }
+                    viewLifecycleOwner.lifecycleScope.launch {
+                        viewModel.addHistory(
+                            money.toInt(),
+                            fromCard.cardNumber,
+                            toCard.cardNumber,
+                            "plus",
+                            getTime()
+                        )
+                    }
+                    findNavController().navigate(R.id.cardDetailFragment)
+                }
+            }else{
+                binding.inputTxtTransfer.error = "Введите сумму"
             }
-            Toast.makeText(requireContext(), "$changedMoney", Toast.LENGTH_SHORT).show()
         }
+    }
+    private fun checkPosition() {
+        binding.cardRecycler1.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val offset: Int = binding.cardRecycler1.computeHorizontalScrollOffset()
+                var position: Float = offset.toFloat() / (binding.cardRecycler1.getChildAt(0).measuredWidth).toFloat()
+                position += 0.5f
+                val postInt: Int = position.toInt()
+                fromCard.cardNumber = adapterCard.currentList[postInt].cardNumber
+                fromCard.money = adapterCard.currentList[postInt].money
+
+            }
+        })
+        binding.cardRecycler2.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val offset: Int = binding.cardRecycler2.computeHorizontalScrollOffset()
+                var position: Float = offset.toFloat() / (binding.cardRecycler2.getChildAt(0).measuredWidth).toFloat()
+                position += 0.5f
+                val postInt: Int = position.toInt()
+                toCard.cardNumber = adapterCard.currentList[postInt].cardNumber
+                toCard.money = adapterCard.currentList[postInt].money
+            }
+        })
     }
 
     override fun setupSubscribes() {
@@ -94,41 +132,33 @@ class TransferFragment :
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    val list = ArrayList<CardModelUI>()
-                    Log.d("anime", "setupSubscribes: ${it.data}")
-                    it.data.forEach { data ->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) with(binding) {
-                            list.add(data!!)
-                            cardRecycler1.postDelayed({
-                                fingerAdapter1.submitList(list)
-                            }, 300L)
-                            fingerAdapter2.submitList(list)
-                            Log.d("anime", "setupSubscribes: $list")
-                            if (moneyCurrent == null)
-                                moneyCurrent = data.money.toString()
-                        }
-                    }
+                    val list = ArrayList<CardModelUI?>()
+                    list.addAll(it.data.filter { it?.blocked == false } )
+                    adapterCard.submitList(list)
+                    adapterCardTo.submitList(list)
+
                 }
             }
         }
     }
+    private fun transferDetails(money: Int):Boolean{
+        if(fromCard.cardNumber == toCard.cardNumber){
+            toast("Вы выбрали одинаковые карты")
+            return false
+        }else if(fromCard.money!! < money) {
+            toast("На балансе недостаточно средств")
+            return false
+        }else{
+            return true
+        }
+    }
+    private fun toast(text: String){
+        Toast.makeText(requireContext(),text,Toast.LENGTH_SHORT).show()
+    }
+    private fun getTime(): String {
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val curentDate = sdf.format(Date())
+        return curentDate
 
-    override fun checkPosition() = with(binding) {
-        binding.cardRecycler1.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val offset: Int = binding.cardRecycler1.computeHorizontalScrollOffset()
-                var position: Float =
-                    offset.toFloat() / (binding.cardRecycler1.getChildAt(0).measuredWidth).toFloat()
-                position += 0.5f
-                val postInt: Int = position.toInt()
-                val positionIndex = postInt + 1
-
-                if (positionIndex == 0) {
-                    txtNumberAvailable.text = fingerAdapter1.currentList[postInt].money?.toString()
-                } else {
-                    txtNumberAvailable.text = fingerAdapter1.currentList[postInt].money?.toString()
-                }
-            }
-        })
     }
 }

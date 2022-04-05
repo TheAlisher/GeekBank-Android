@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
@@ -37,6 +38,7 @@ class CardDetailFragment :
     private val cardDetailListAdapter = CardDetailListAdapter()
     private var positionCard = ""
     val list = ArrayList<CardModelUI>()
+
     val historyList = ArrayList<HistoryModelUI?>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
@@ -44,6 +46,7 @@ class CardDetailFragment :
         listRecycler.adapter = cardDetailAdapter
         listRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
+        PagerSnapHelper().attachToRecyclerView(listRecycler)
         bottomSheetInclude.recycler.adapter = cardDetailListAdapter
         bottomSheetInclude.recycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -55,6 +58,7 @@ class CardDetailFragment :
         setupBottomSheet()
         checkPosition()
     }
+
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
@@ -79,16 +83,7 @@ class CardDetailFragment :
 
     private fun setupAction() = with(binding) {
         buttonHorizontal.setOnClickListener {
-            list.forEach {
-                if (positionCard == it.cardNumber && it.blocked == false){
-                    findNavController().navigate(R.id.transferFragment)
-                }else{
-                    Toast.makeText(context,"Blocked",Toast.LENGTH_SHORT).show()
-                }
-
-            }
-
-
+            findNavController().navigate(R.id.transferFragment)
         }
         buttonWallet.setOnClickListener {
             findNavController().navigate(R.id.paymentsFragment)
@@ -139,16 +134,15 @@ class CardDetailFragment :
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()
                 val filteredList = ArrayList<HistoryModelUI?>()
                 historyList.forEach {
-                    if (positionCard == it?.fromCard){
+                    if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
                         filteredList.add(it)
-                        cardDetailListAdapter.submitList(filteredList)
+                        cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data?.dateTime })
                     }
                 }
-
-
             }
         })
     }
+
 
 
 

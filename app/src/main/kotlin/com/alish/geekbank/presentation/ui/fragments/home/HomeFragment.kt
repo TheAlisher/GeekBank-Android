@@ -19,7 +19,7 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
-import com.alish.geekbank.presentation.models.CardListUIModel
+
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
@@ -47,7 +47,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
-    private var xCoOrdinate = 0f
+
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
@@ -171,22 +171,20 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    it.data.forEach { data ->
-                        if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
-                            binding.tvCash.text = data?.money.toString()
 
-                            binding.bottomSheetInclude.numberCard.text =
-                                "**** **** **** ****" + data?.cardNumber.toString().substring(
-                                    data?.cardNumber.toString().length - 4
+                    binding.tvCash.text = it.data[0]?.money.toString()
+
+                    binding.bottomSheetInclude.numberCard.text =
+                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
+                            it.data[0]?.cardNumber.toString().length - 4
                                 )
-                            binding.bottomSheetInclude.qrView.setImageBitmap(
-                                generateQrCode(
-                                    cardNumber = data?.cardNumber.toString()
+                    binding.bottomSheetInclude.qrView.setImageBitmap(
+                        generateQrCode(
+                            cardNumber = it.data[0]?.cardNumber.toString()
                                 )
                             )
                         }
-                    }
-                }
+
             }
         }
 

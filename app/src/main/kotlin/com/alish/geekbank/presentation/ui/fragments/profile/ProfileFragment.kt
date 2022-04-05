@@ -67,8 +67,16 @@ class ProfileFragment :
         setupRussian()
         setupEnglish()
         setupDialogTheme()
+        changePassClick()
         setupEditProfile()
         clickImage()
+    }
+
+    private fun changePassClick() {
+        binding.txtAccountPassword.setOnClickListener {
+            findNavController().navigate(R.id.changePassword)
+        }
+
     }
 
     override fun setupRequests() {

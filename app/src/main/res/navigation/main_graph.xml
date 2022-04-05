@@ -57,6 +57,9 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
         android:label="fragment_card_detail"
         tools:layout="@layout/fragment_card_detail" >
+        <action
+            android:id="@+id/action_cardDetailFragment_to_freezeDialogFragment"
+            app:destination="@id/freezeDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferFragment"
@@ -117,4 +120,9 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment"
         android:label="fragment_theme_dialog"
         tools:layout="@layout/fragment_theme_dialog" />
+    <fragment
+        android:id="@+id/changePassword"
+        android:name="com.alish.geekbank.presentation.ui.fragments.changepass.ChangePassword"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>
