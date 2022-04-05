@@ -1,7 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.sign.login
 
 import com.alish.geekbank.data.repositories.FireStoreRepositoryImpl
-import com.alish.geekbank.domain.usecases.FetchUserDataUseCase
+import com.alish.geekbank.domain.usecases.firestore.FetchUsersDataUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.models.toUsersModelUI
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(
-    private val signUseCaseUser: FetchUserDataUseCase,
+    private val signUseCaseUser: FetchUsersDataUseCase,
     private val repositoryImpl: FireStoreRepositoryImpl
 ) : BaseViewModel() {
 
@@ -32,7 +32,7 @@ class SignInViewModel @Inject constructor(
     private fun getData() {
         signUseCaseUser().collectRequest(_signState) {
             it.map { users ->
-                users?.toUsersModelUI()
+                users.toUsersModelUI()
             }
         }
     }

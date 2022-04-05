@@ -11,6 +11,8 @@ import com.alish.geekbank.data.local.preferences.LocalHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.security.Provider
+import java.security.Security
 import javax.inject.Inject
 
 @AndroidEntryPoint

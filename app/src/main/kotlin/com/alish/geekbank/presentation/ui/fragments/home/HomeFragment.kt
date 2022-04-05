@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +19,7 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
-import com.alish.geekbank.presentation.models.CardListUIModel
+
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
@@ -45,6 +47,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
+
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
@@ -168,22 +171,20 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    it.data.forEach { data ->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
-                            binding.tvCash.text = data?.money.toString()
 
-                            binding.bottomSheetInclude.numberCard.text =
-                                "**** **** **** ****" + data?.cardNumber.toString().substring(
-                                    data?.cardNumber.toString().length - 4
+                    binding.tvCash.text = it.data[0]?.money.toString()
+
+                    binding.bottomSheetInclude.numberCard.text =
+                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
+                            it.data[0]?.cardNumber.toString().length - 4
                                 )
-                            binding.bottomSheetInclude.qrView.setImageBitmap(
-                                generateQrCode(
-                                    cardNumber = data?.cardNumber.toString()
+                    binding.bottomSheetInclude.qrView.setImageBitmap(
+                        generateQrCode(
+                            cardNumber = it.data[0]?.cardNumber.toString()
                                 )
                             )
                         }
-                    }
-                }
+
             }
         }
 
@@ -211,7 +212,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Success -> {
                     if (list.size == 0)
                         it.data.forEach { data ->
-                            if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
                                 if (data != null) {
                                     list.add(data)
                                     cardDetailAdapter.submitList(list)
@@ -223,9 +224,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 }
             }
         }
-        val list2: ArrayList<CardListUIModel> = ArrayList()
-        list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
-        cardDetailListAdapter.submitList(list2)
 
         viewModelExchange.exchangeState.collectUIState {
             when (it) {
@@ -268,15 +266,15 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
-    override fun onMapReady(map: GoogleMap) {
-        MapsInitializer.initialize(requireContext())
-        googleMap = map
+        override fun onMapReady(map: GoogleMap) {
+            MapsInitializer.initialize(requireContext())
+            googleMap = map
 
-        val geekTech = LatLng(42.813358, 73.845158)
-        val bizone = LatLng(42.816208, 73.844670)
-        val geekTech1 = LatLng(42.813351, 73.845718)
-        val geekTech2 = LatLng(42.813036, 73.845793)
-        val geekTech3 = LatLng(42.814240, 73.845375)
+            val geekTech = LatLng(42.813358, 73.845158)
+            val bizone = LatLng(42.816208, 73.844670)
+            val geekTech1 = LatLng(42.813351, 73.845718)
+            val geekTech2 = LatLng(42.813036, 73.845793)
+            val geekTech3 = LatLng(42.814240, 73.845375)
 
         googleMap.addMarker(MarkerOptions().position(geekTech).title("GeekTech"))
         googleMap.addMarker(MarkerOptions().position(bizone).title("Bizone"))
@@ -316,10 +314,13 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         return bitmap
     }
 
-    private fun setupDialog() {
-        binding.buttonFreezeCard.setOnClickListener {
-            val dialog = FreezeDialogFragment()
-            fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
+        private fun setupDialog() {
+            binding.buttonFreezeCard.setOnClickListener {
+                val dialog = FreezeDialogFragment()
+                fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
+            }
         }
+
+
     }
-}
+
