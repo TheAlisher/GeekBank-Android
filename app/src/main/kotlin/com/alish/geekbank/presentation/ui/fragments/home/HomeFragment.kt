@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -171,22 +173,20 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    it.data.forEach { data ->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
-                            binding.tvCash.text = data?.money.toString()
 
-                            binding.bottomSheetInclude.numberCard.text =
-                                "**** **** **** ****" + data?.cardNumber.toString().substring(
-                                    data?.cardNumber.toString().length - 4
+                    binding.tvCash.text = it.data[0]?.money.toString()
+
+                    binding.bottomSheetInclude.numberCard.text =
+                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
+                            it.data[0]?.cardNumber.toString().length - 4
                                 )
-                            binding.bottomSheetInclude.qrView.setImageBitmap(
-                                generateQrCode(
-                                    cardNumber = data?.cardNumber.toString()
+                    binding.bottomSheetInclude.qrView.setImageBitmap(
+                        generateQrCode(
+                            cardNumber = it.data[0]?.cardNumber.toString()
                                 )
                             )
                         }
-                    }
-                }
+
             }
         }
 
@@ -214,7 +214,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Success -> {
                     if (list.size == 0)
                         it.data.forEach { data ->
-                            if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
+                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
                                 if (data != null) {
                                     list.add(data)
                                     cardDetailAdapter.submitList(list)
@@ -226,9 +226,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 }
             }
         }
-        val list2: ArrayList<CardListUIModel> = ArrayList()
-        list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
-        cardDetailListAdapter.submitList(list2)
 
         viewModelExchange.exchangeState.collectUIState {
             when (it) {
@@ -239,32 +236,31 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                     it.data.let { data ->
                         listExchange.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["KGS"].toString(),
-                                it.data.conversion_rates["KGS"].toString(),
+                                "KZT",
+                                data.conversion_rates["KZT"].toString(),
                             )
                         )
 
                         listExchange.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["USD"].toString(),
-                                it.data.conversion_rates["USD"].toString(),
+                                "USD",
+                                data.conversion_rates["USD"].toString(),
                             )
                         )
 
                         listExchange.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["EUR"].toString(),
-                                it.data.conversion_rates["EUR"].toString(),
+                                "EUR",
+                                data.conversion_rates["EUR"].toString(),
                             )
                         )
 
                         listExchange.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["RUS"].toString(),
-                                it.data.conversion_rates["RUS"].toString(),
+                                "RUS",
+                                data.conversion_rates["RUS"].toString(),
                             )
                         )
-
                         exchangeAdapter.submitList(listExchange)
                     }
                 }
@@ -272,15 +268,15 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
-    override fun onMapReady(map: GoogleMap) {
-        MapsInitializer.initialize(requireContext())
-        googleMap = map
+        override fun onMapReady(map: GoogleMap) {
+            MapsInitializer.initialize(requireContext())
+            googleMap = map
 
-        val geekTech = LatLng(42.813358, 73.845158)
-        val bizone = LatLng(42.816208, 73.844670)
-        val geekTech1 = LatLng(42.813351, 73.845718)
-        val geekTech2 = LatLng(42.813036, 73.845793)
-        val geekTech3 = LatLng(42.814240, 73.845375)
+            val geekTech = LatLng(42.813358, 73.845158)
+            val bizone = LatLng(42.816208, 73.844670)
+            val geekTech1 = LatLng(42.813351, 73.845718)
+            val geekTech2 = LatLng(42.813036, 73.845793)
+            val geekTech3 = LatLng(42.814240, 73.845375)
 
         googleMap.addMarker(MarkerOptions().position(geekTech).title("GeekTech"))
         googleMap.addMarker(MarkerOptions().position(bizone).title("Bizone"))
@@ -311,7 +307,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private fun generateQrCode(cardNumber: String?): Bitmap? {
         val writer = MultiFormatWriter()
         var bitmap: Bitmap? = null
-
         try {
             val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
             val encoder = BarcodeEncoder()

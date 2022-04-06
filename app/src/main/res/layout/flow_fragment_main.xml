@@ -69,7 +69,6 @@
         android:src="@drawable/ic_icon"
         app:backgroundTint="@color/black_matt"
         app:layout_anchor="@id/bottomAppBar"
-        />
-
+        tools:ignore="ContentDescription" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

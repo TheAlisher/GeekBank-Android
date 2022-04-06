@@ -1,9 +1,8 @@
 package com.alish.geekbank.presentation.ui.fragments.profile
 
-import com.alish.geekbank.common.resource.Resource
-import com.alish.geekbank.domain.usecases.FetchUserDataUseCase
+
+import com.alish.geekbank.domain.usecases.firestore.FetchUserDataUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
-import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.models.toUsersModelUI
 import com.alish.geekbank.presentation.state.UIState
@@ -16,12 +15,12 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor( private val fetchUserDataUseCase: FetchUserDataUseCase): BaseViewModel() {
     private val _stateUser =
-        MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
-    val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()
+        MutableStateFlow<UIState<UsersModelUI?>>(UIState.Loading())
+    val stateUser: StateFlow<UIState<UsersModelUI?>> = _stateUser.asStateFlow()
     init {
         fetchUser()
     }
     private fun fetchUser(){
-        fetchUserDataUseCase().collectRequest(_stateUser){it.map { data->data?.toUsersModelUI() }}
+        fetchUserDataUseCase().collectRequest(_stateUser){it?.toUsersModelUI() }
     }
 }

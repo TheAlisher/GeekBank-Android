@@ -28,7 +28,6 @@ class MainFlowFragment :
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
-
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -45,7 +44,7 @@ class MainFlowFragment :
                 -> {
                     whetherToShow(false)
                 }
-                R.id.navigation_profile -> {
+                R.id.profileFragment -> {
                     if (preferenceHelper.isShown()) {
 
                     }
@@ -53,15 +52,12 @@ class MainFlowFragment :
                 else -> {
                     whetherToShow(true)
                 }
-
-
             }
+
             binding.bottomNavigationView.background = null
             binding.bottomNavigationView.menu.getItem(2).isEnabled = false
-
         }
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
-
     }
 
     override fun setUpListeners() {
@@ -70,7 +66,6 @@ class MainFlowFragment :
                 Color.RED,
                 Color.WHITE,
                 Color.BLUE
-
             )
             val cornerRadius = 16f.dp
             val padding = 25.dp
@@ -107,7 +102,6 @@ class MainFlowFragment :
                 centerY = centerY
             )
         }
-
     }
 
     private fun whetherToShow(b: Boolean) {

@@ -1,4 +1,4 @@
-package com.alish.geekbank.domain.models
+package com.alish.geekbank.domain.models.firestore
 
 data class UsersModel(
     val id: String? = null,
