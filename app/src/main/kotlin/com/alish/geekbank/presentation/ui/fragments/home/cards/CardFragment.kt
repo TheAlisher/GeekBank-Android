@@ -7,7 +7,6 @@ import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardBinding
 import com.alish.geekbank.presentation.base.BaseFragment
-import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,14 +21,8 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
 
     override fun setupListeners() {
         setupAction()
-        setupBackPressed()
     }
 
-    private fun setupBackPressed() {
-//        overrideOnBackPressed {
-//            findNavController().navigate(R.id.homeFragment)
-//        }
-    }
 
     //    override fun setupRequests() {
 //        viewModel.stateUser.collectUIState {
@@ -56,4 +49,5 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
             findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
         }
     }
+
 }

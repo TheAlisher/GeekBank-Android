@@ -62,9 +62,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
-    private var navOptions: NavOptions.Builder? = null
-
-    private fun clickNewsItem(model: NewsModelUI) {
+       private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
 
@@ -104,6 +102,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         binding.bottomSheetInclude.recycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
+
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
@@ -147,8 +146,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     private fun clickForExchange() {
         binding.bottomSheetInclude.txtShowAllExchange.setOnClickListener {
-            findNavController().navigate(R.id.exchangeFragment
-            )
+            findNavController().navigate(R.id.exchangeFragment)
         }
     }
 
@@ -298,7 +296,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         overrideOnBackPressed { activity?.finish() }
     }
 
-    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
+//    private fun generateQrCode(cardNumber: String?): Bitmap? {
 //        val writer = MultiFormatWriter()
 //        var bitmap: Bitmap? = null
 //
