@@ -193,16 +193,40 @@
                         android:layout_marginTop="20dp"
                         android:textColor="@color/black"
                         android:textSize="25sp"
+                        android:textStyle="bold"
                         tools:text="6343454321322243" />
-
-                    <ImageView
-                        android:id="@+id/qr_view"
+                    
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:background="@drawable/gradient_qr"
+                        android:layout_marginTop="25dp"
                         android:layout_width="328dp"
-                        android:layout_height="328dp"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginBottom="16dp"
-                        tools:ignore="ContentDescription"
-                        tools:src="@tools:sample/avatars" />
+                        android:layout_height="328dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="28dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/costum_constrain_layout"
+                            android:layout_width="275dp"
+                            android:layout_height="275dp">
+
+                            <ImageView
+                                android:id="@+id/qr_view"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginTop="23dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_marginStart="30dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="30dp"
+                                tools:src="@tools:sample/avatars"
+                                android:layout_width="230dp"
+                                android:layout_height="230dp"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
