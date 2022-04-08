@@ -55,4 +55,16 @@
     <string name="enter_your_number">Enter your number</string>
     <string name="save">SAVE</string>
     <string name="foorgot">If you have forgotten your password, please log out of your account and log in again</string>
+    <string name="pin_code">Pin-Code</string>
+    <string name="error">error</string>
+    <string name="verify_your_identity">Verify your identity</string>
+    <string name="сonfirm_your_identity">Confirm your identity so we can verify it\'s you</string>
+    <string name="no_biometric">Sorry. It seems your device has no biometric hardware</string>
+    <string name="biometric_features_are_currently_unavailable">Biometric features are currently unavailable.</string>
+    <string name="not_registered_any_biometric_credentials">You have not registered any biometric credentials</string>
+    <string name="does_not_match">Access code does not match, please try again!!!</string>
+    <string name="not_match">Code does not match, please try again!</string>
+    <string name="fingerprint_not_registered">Fingerprint not registered</string>
+    <string name="enter_your_current_pin_code">ENTER YOUR CURRENT PIN CODE</string>
+    <string name="confirm_the_password">Confirm the password</string>
 </resources>
