@@ -69,6 +69,15 @@ class ProfileFragment :
         setupDialogTheme()
         setupEditProfile()
         clickImage()
+        setupChangePinCode()
+    }
+
+    private fun setupChangePinCode() {
+        binding.containerPinCode.setOnClickListener {
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToFirstFragment(true)
+            )
+        }
     }
 
     override fun setupRequests() {
