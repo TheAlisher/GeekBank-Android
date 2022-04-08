@@ -16,6 +16,7 @@ object Constants {
     const val CARD_NUMBER2 = "CardNum2"
     const val CARD_NUMBER3 = "CardNum3"
     const val CARD_NUMBER4 = "CardNum4"
+    const val CURRENT = "ENTER YOUR CURRENT PIN CODE"
 
 
 
