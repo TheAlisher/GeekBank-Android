@@ -88,10 +88,10 @@
         app:layout_constraintTop_toTopOf="@+id/txt_available" />
 
 
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:id="@+id/input_txt_transfer"
         android:textSize="42sp"
-        android:hint="$ 0,0"
+        android:hint="0"
         android:textColorHint="@color/title_text_color"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

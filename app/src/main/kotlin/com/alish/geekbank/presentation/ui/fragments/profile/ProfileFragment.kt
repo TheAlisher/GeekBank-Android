@@ -67,6 +67,7 @@ class ProfileFragment :
         setupRussian()
         setupEnglish()
         setupDialogTheme()
+        changePassClick()
         setupEditProfile()
         clickImage()
         setupChangePinCode()
@@ -80,6 +81,13 @@ class ProfileFragment :
         }
     }
 
+    private fun changePassClick() {
+        binding.txtAccountPassword.setOnClickListener {
+            findNavController().navigate(R.id.changePassword)
+        }
+
+    }
+
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
             when(it){
@@ -90,16 +98,14 @@ class ProfileFragment :
 
                 }
                 is UIState.Success -> {
-                    it.data.forEach {data->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
-                            binding.txtName.text = "${data?.name} ${data?.surname}"
-                        }
-                    }
+
+                    binding.txtName.text = it.data?.name
+
+
                 }
             }
         }
     }
-
     private fun setupRussian() = with(binding) {
         bottomSheet2Include.containerRussianBottomSheet.setOnClickListener {
             setLocale(Localization.RUSSIAN)

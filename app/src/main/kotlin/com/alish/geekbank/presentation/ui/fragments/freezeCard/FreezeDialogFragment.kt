@@ -11,16 +11,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.alish.geekbank.databinding.FragmentFreezeDialogBinding
+import com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import okhttp3.internal.cacheGet
 
-
+@AndroidEntryPoint
 class FreezeDialogFragment : DialogFragment() {
 
     private var _binding: FragmentFreezeDialogBinding? = null
     private val binding get() = _binding!!
+    private var cardNum: String? = null
+    private val viewModel by viewModels<FreezeCardViewModel>()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = FragmentFreezeDialogBinding.inflate(LayoutInflater.from(context))
+        cardNum = FreezeDialogFragmentArgs.fromBundle(requireArguments()).cardNumber
         val builder = AlertDialog.Builder(activity)
             .setView(binding.root)
             .create()
@@ -34,7 +43,11 @@ class FreezeDialogFragment : DialogFragment() {
             dismiss()
         }
         btnFreezeCard.setOnClickListener {
-            Toast.makeText(context, "You have frozen the card!!", Toast.LENGTH_SHORT).show()
+            lifecycleScope.launch {
+                viewModel.blockCard(cardNum.toString())
+            }
+
+            Toast.makeText(context,cardNum , Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
         }
 
