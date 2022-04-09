@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
@@ -66,7 +67,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
-
+//
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
@@ -79,7 +80,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
         })
     }
-
+//
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun setupListeners() {
         clickForAllNews()
@@ -168,7 +169,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     override fun setupRequests() {
         viewModel.stateCard.collectUIState() {
             when (it) {
-                is UIState.Error -> {}
+                is UIState.Error -> {
+                    Log.e("promo", it.error)
+                }
                 is UIState.Loading -> {}
                 is UIState.Success -> {
 
@@ -284,24 +287,24 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        overrideOnBackPressed { activity?.finish() }
-    }
-
-    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
-//        val writer = MultiFormatWriter()
-//        var bitmap: Bitmap? = null
 //
-//        try {
-//            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
-//            val encoder = BarcodeEncoder()
-//            bitmap = encoder.createBitmap(matrix)
-//        } catch (e: WriterException) {
-//        }
-//        return bitmap
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        overrideOnBackPressed { activity?.finish() }
 //    }
+//
+//    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
+////        val writer = MultiFormatWriter()
+////        var bitmap: Bitmap? = null
+////
+////        try {
+////            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+////            val encoder = BarcodeEncoder()
+////            bitmap = encoder.createBitmap(matrix)
+////        } catch (e: WriterException) {
+////        }
+////        return bitmap
+////    }
     private fun generateQrCode(cardNumber: String?): Bitmap? {
         val writer = MultiFormatWriter()
         var bitmap: Bitmap? = null
