@@ -8,20 +8,46 @@
     tools:context=".presentation.ui.fragments.pincode.FirstFragment">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/content_top"
-        app:layout_constraintGuide_percent="0.15"
+        android:id="@+id/content_top_1"
+        app:layout_constraintGuide_percent="0.01"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"/>
 
+    <ImageView
+        android:id="@+id/back_pinCode"
+        android:src="@drawable/back_white"
+        app:layout_constraintEnd_toStartOf="@id/content_start"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/content_top_1"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"/>
+
+    <TextView
+        android:id="@+id/label_pinCode"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/back_pinCode"
+        app:layout_constraintTop_toTopOf="@id/back_pinCode"
+        app:layout_constraintBottom_toBottomOf="@id/back_pinCode"
+        android:text="@string/pin_code"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginStart="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
     <TextView
         android:id="@+id/title"
+        android:maxEms="15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/content_top"
-        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@id/label_pinCode"
+        app:layout_constraintBottom_toTopOf="@id/view_ovals"
+        tools:text="@string/library_zxingandroidembedded_repositoryLink"
         android:layout_marginBottom="15dp"
+        android:layout_marginHorizontal="20dp"
         android:textColor="#F3F3F3"
         android:textSize="16sp"
         android:layout_width="wrap_content"
@@ -32,9 +58,9 @@
           app:layout_constraintVertical_bias="0"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintBottom_toTopOf="@id/layer_1"
-          app:layout_constraintTop_toBottomOf="@id/content_top"
-          android:layout_width="match_parent"
+          app:layout_constraintBottom_toTopOf="@id/content_top1"
+          app:layout_constraintTop_toBottomOf="@id/title"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:orientation="horizontal"
           android:gravity="center|bottom">
@@ -66,168 +92,205 @@
 
       </LinearLayout>
 
-      <LinearLayout
-          android:id="@+id/layer_1"
-          android:gravity="center_horizontal|center_vertical"
-          app:layout_constraintBottom_toTopOf="@id/layer_2"
-          android:layout_marginHorizontal="30dp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginBottom="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="85dp"
-          android:orientation="horizontal"
-          >
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_top1"
+        app:layout_constraintGuide_percent="0.34"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_top2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_center_center1"
+        app:layout_constraintGuide_percent="0.48"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_center_center2"
+        app:layout_constraintGuide_percent="0.59"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_center_center3"
+        app:layout_constraintGuide_percent="0.62"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_center_center4"
+        app:layout_constraintGuide_percent="0.73"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"/>
+
+
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_01"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_start"
+              app:layout_constraintEnd_toEndOf="@id/content_start_second"
+              app:layout_constraintTop_toTopOf="@id/content_top1"
+              app:layout_constraintBottom_toBottomOf="@id/content_top2"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="1"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_02"
-              android:layout_marginHorizontal="30dp"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_center"
+              app:layout_constraintEnd_toEndOf="@id/content_center_second"
+              app:layout_constraintTop_toTopOf="@id/content_top1"
+              app:layout_constraintBottom_toBottomOf="@id/content_top2"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="2"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_03"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_end_second"
+              app:layout_constraintEnd_toEndOf="@id/content_end"
+              app:layout_constraintTop_toTopOf="@id/content_top1"
+              app:layout_constraintBottom_toBottomOf="@id/content_top2"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="3"
               android:textColor="@color/black"/>
 
-      </LinearLayout>
 
-      <LinearLayout
-          android:id="@+id/layer_2"
-          app:layout_constraintBottom_toTopOf="@id/layer_3"
-          android:layout_marginHorizontal="30dp"
-          android:gravity="center_horizontal|center_vertical"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginBottom="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="85dp"
-          android:orientation="horizontal">
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_04"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_start"
+              app:layout_constraintEnd_toEndOf="@id/content_start_second"
+              app:layout_constraintTop_toTopOf="@id/content_center_center1"
+              app:layout_constraintBottom_toBottomOf="@id/content_center_center2"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="4"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_05"
-              android:layout_marginHorizontal="30dp"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_center"
+              app:layout_constraintEnd_toEndOf="@id/content_center_second"
+              app:layout_constraintTop_toTopOf="@id/content_center_center1"
+              app:layout_constraintBottom_toBottomOf="@id/content_center_center2"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="5"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_06"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_end_second"
+              app:layout_constraintEnd_toEndOf="@id/content_end"
+              app:layout_constraintTop_toTopOf="@id/content_center_center1"
+              app:layout_constraintBottom_toBottomOf="@id/content_center_center2"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="6"
               android:textColor="@color/black"/>
 
-      </LinearLayout>
 
-      <LinearLayout
-          android:id="@+id/layer_3"
-          app:layout_constraintBottom_toTopOf="@id/layer_4"
-          android:layout_marginHorizontal="30dp"
-          android:gravity="center_horizontal|center_vertical"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginBottom="10dp"
-          android:layout_width="match_parent"
-          android:layout_height="85dp"
-          android:orientation="horizontal">
+
+
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_07"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_end_second"
+              app:layout_constraintEnd_toEndOf="@id/content_end"
+              app:layout_constraintTop_toTopOf="@id/content_center_center3"
+              app:layout_constraintBottom_toBottomOf="@id/content_center_center4"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="7"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_08"
-              android:layout_marginHorizontal="30dp"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_center"
+              app:layout_constraintEnd_toEndOf="@id/content_center_second"
+              app:layout_constraintTop_toTopOf="@id/content_center_center3"
+              app:layout_constraintBottom_toBottomOf="@id/content_center_center4"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="8"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_09"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
+              app:layout_constraintStart_toStartOf="@id/content_start"
+              app:layout_constraintEnd_toEndOf="@id/content_start_second"
+              app:layout_constraintTop_toTopOf="@id/content_center_center3"
+              app:layout_constraintBottom_toBottomOf="@id/content_center_center4"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="9"
               android:textColor="@color/black"/>
 
-      </LinearLayout>
-
-      <LinearLayout
-          android:id="@+id/layer_4"
-          android:layout_marginHorizontal="30dp"
-          app:layout_constraintBottom_toTopOf="@id/content_bottom"
-          android:gravity="center_horizontal|center_vertical"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:layout_width="match_parent"
-          android:layout_height="85dp"
-          android:orientation="horizontal">
 
           <ImageButton
               android:id="@+id/btn_fingerprint"
-              android:layout_width="75dp"
-              android:layout_height="75dp"
+              app:layout_constraintStart_toStartOf="@id/content_start"
+              app:layout_constraintEnd_toEndOf="@id/content_start_second"
+              app:layout_constraintTop_toTopOf="@id/content_bottom1"
+              app:layout_constraintBottom_toBottomOf="@id/content_bottom"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:src="@drawable/fingerprint"
               android:background="@drawable/rounded_shape"
              />
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_0"
-              android:layout_width="75dp"
-              android:layout_height="match_parent"
-              android:layout_marginHorizontal="30dp"
+              app:layout_constraintStart_toStartOf="@id/content_center"
+              app:layout_constraintEnd_toEndOf="@id/content_center_second"
+              app:layout_constraintTop_toTopOf="@id/content_bottom1"
+              app:layout_constraintBottom_toBottomOf="@id/content_bottom"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
               android:backgroundTint="@color/white"
-              app:cornerRadius="40dp"
+              app:cornerRadius="30dp"
               android:textSize="32sp"
               android:text="0"
               android:textColor="@color/black"/>
@@ -235,15 +298,25 @@
           <ImageButton
               android:id="@+id/btn_clear"
               android:src="@drawable/delete"
-              android:layout_width="75dp"
-              android:layout_height="75dp"
-              android:background="@drawable/rounded_shape" />
+              app:layout_constraintStart_toStartOf="@id/content_end_second"
+              app:layout_constraintEnd_toEndOf="@id/content_end"
+              app:layout_constraintTop_toTopOf="@id/content_bottom1"
+              app:layout_constraintBottom_toBottomOf="@id/content_bottom"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
+              android:background="@drawable/rounded_shape"/>
 
-      </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_bottom1"
+        app:layout_constraintGuide_percent="0.77"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/content_bottom"
-        app:layout_constraintGuide_percent="0.85"
+        app:layout_constraintGuide_percent="0.87"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"/>
@@ -267,9 +340,51 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description"
-        android:text="error"
+        android:text="@string/error"
         android:textColor="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_end"
+        app:layout_constraintGuide_percent="0.84"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_start"
+        app:layout_constraintGuide_percent="0.15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_start_second"
+        app:layout_constraintGuide_percent="0.33"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_center"
+        app:layout_constraintGuide_percent="0.4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_center_second"
+        app:layout_constraintGuide_percent="0.58"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/content_end_second"
+        app:layout_constraintGuide_percent="0.66"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
