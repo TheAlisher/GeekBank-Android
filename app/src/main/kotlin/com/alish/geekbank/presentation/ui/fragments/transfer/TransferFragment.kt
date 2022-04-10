@@ -11,7 +11,6 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentTransferBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.models.CardModelUI
-import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardTransferAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +23,6 @@ class TransferFragment :
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
-
     private var moneyCurrent: String? = null
 
     override val viewModel: TransferViewModel by viewModels()
@@ -40,28 +38,27 @@ class TransferFragment :
 
     override fun setupListeners() {
         sendListeners()
-
     }
 
     private fun sendListeners() = with(binding) {
-        btnSendd.setOnClickListener {
+        btnSetMoney.setOnClickListener {
             var money = inputTxtTransfer.text.toString()
             var changedMoney: Int = moneyCurrent!!.toInt() - money.toInt()
             lifecycleScope.launch {
                 viewModel.updateAccount(
-                    changedMoney,"1111222233334444").toString()
-
+                    changedMoney, "1111222233334444").toString()
             }
             Toast.makeText(requireContext(), "$changedMoney", Toast.LENGTH_SHORT).show()
-
         }
     }
 
     override fun setupSubscribes() {
         viewModel.stateCard.collectUIState {
             when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     val list = ArrayList<CardModelUI>()
                     it.data.forEach { data ->
@@ -70,7 +67,6 @@ class TransferFragment :
                             adapterCard.submitList(list)
                             if (moneyCurrent == null)
                                 moneyCurrent = data.money.toString()
-
                         }
                     }
                 }

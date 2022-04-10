@@ -19,13 +19,12 @@ import javax.inject.Inject
 class CreatePinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentCreatePinCodeBinding>(
     R.layout.fragment_create_pin_code
 ) {
+    @Inject
+    lateinit var preferences: PreferencesHelper
     override lateinit var binding: FragmentCreatePinCodeBinding
     override val viewModel: CreatePinCodeViewModel
         get() = TODO("Not yet implemented")
     private var isConfirm = false
-
-    @Inject
-    lateinit var preferences: PreferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +37,6 @@ class CreatePinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentCreat
     override fun setupListeners() {
         binding.key.setKeyPadListener(object : KeyPadListerner {
             override fun onKeyPadPressed(value: String?) {
-
                 if (value?.length == 4) {
                     binding.title.text = Constants.СONFIRM
                     binding.key.clearAll()
@@ -48,7 +46,8 @@ class CreatePinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentCreat
                         preferences.onSavePinCode()
                         findNavController().navigate(R.id.action_pinCodeFragment_to_homeFragment)
                     } else {
-                        Toast.makeText(requireContext(), "wrong password", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "wrong password", Toast.LENGTH_SHORT)
+                            .show()
                         binding.key.clearAll()
                     }
                 } else {
@@ -57,12 +56,9 @@ class CreatePinCodeFragment : BaseFragment<CreatePinCodeViewModel, FragmentCreat
                     isConfirm = true
                 }
             }
-
             override fun onKeyBackPressed() {
             }
-
             override fun onClear() {
-
             }
         })
     }

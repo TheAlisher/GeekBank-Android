@@ -2,6 +2,7 @@ package com.alish.geekbank.presentation.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         localHelper.loadLocale(this)
         isAuthorized = preferenceHelper.getBoolean(Constants.IS_AUTHORIZED)
         setUpNavigation()
+        checkTheme()
     }
 
     private fun setUpNavigation() {
@@ -52,5 +54,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.graph = graph
+    }
+
+    private fun checkTheme() {
+        when (preferenceHelper.darkMode) {
+            0 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                delegate.applyDayNight()
+            }
+            1 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                delegate.applyDayNight()
+            }
+            2 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                delegate.applyDayNight()
+            }
+        }
     }
 }

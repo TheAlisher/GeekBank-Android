@@ -71,7 +71,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="30dp"
         android:text="@string/available"
-        android:textColor="#8E8E93"
+        android:textColor="@color/text_hint"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_recycler2" />
@@ -105,7 +105,7 @@
         android:layout_height="19dp"
         android:layout_marginStart="120dp"
         android:text="@string/commission"
-        android:textColor="#8E8E93"
+        android:textColor="@color/text_hint"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_txt_transfer" />
@@ -123,11 +123,11 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/background_card_number"
         android:text="@string/send_money"
         android:id="@+id/btn_set_money"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color_detail_news"
         android:textSize="20sp"
         app:icon="@drawable/ic_next"
         app:iconGravity="end"
@@ -136,15 +136,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_commission_number" />
-
-    <Button
-        android:id="@+id/btn_sendd"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_set_money"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"/>
-
-
 
     <!--    <com.airbnb.lottie.LottieAnimationView-->
     <!--        app:layout_constraintRight_toRightOf="@id/btn_set_money"-->

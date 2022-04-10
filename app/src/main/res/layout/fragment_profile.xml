@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="10dp"
-            android:background="#38393A"
+            android:background="@color/view_edit_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txt_name" />
@@ -139,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="25dp"
-            android:background="#38393A"
+            android:background="@color/view_edit_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/container_account_password" />
@@ -168,6 +168,12 @@
                 android:text="@string/notification"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
+            <Switch
+                android:id="@+id/switch_notification"
+                android:layout_marginStart="330dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
         </FrameLayout>
 
         <FrameLayout

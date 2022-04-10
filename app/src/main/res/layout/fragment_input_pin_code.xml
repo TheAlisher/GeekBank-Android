@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
+    android:background="@color/black"
     tools:context=".presentation.ui.fragments.pincode.CreatePinCodeFragment">
 
     <TextView
         android:id="@+id/title_input_code"
         android:text="@string/enter_your_password"
-        android:textColor="#F3F3F3"
+        android:textColor="@color/text_color_detail_news"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        tools:text="Too many attempt"
+        tools:text="@string/too_many_attempt"
         android:textColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,8 +49,8 @@
 
     <TextView
         android:id="@+id/forgot_passoword"
-        android:text="Forgot passoword?"
-        android:textColor="#898585"
+        android:text="@string/forgot_password"
+        android:textColor="@color/text_hint"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

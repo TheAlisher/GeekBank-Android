@@ -44,7 +44,7 @@
 
             <TextView
                 android:id="@+id/text_fines"
-                android:text="Fines"
+                android:text="@string/fines"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -88,7 +88,7 @@
 
             <TextView
                 android:id="@+id/text_cellular"
-                android:text="Cellular operators"
+                android:text="@string/cellular_operators"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -132,7 +132,7 @@
 
             <TextView
                 android:id="@+id/text_internet"
-                android:text="Internet"
+                android:text="@string/internet"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -176,7 +176,7 @@
 
             <TextView
                 android:id="@+id/text_public"
-                android:text="Public Utilites"
+                android:text="@string/public_utilites"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -220,7 +220,7 @@
 
             <TextView
                 android:id="@+id/text_games"
-                android:text="Games &amp; Entertainment"
+                android:text="@string/games_amp_entertainment"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -264,7 +264,7 @@
 
             <TextView
                 android:id="@+id/text_social"
-                android:text="Socail network"
+                android:text="@string/socail_network"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -308,7 +308,7 @@
 
             <TextView
                 android:id="@+id/text_fixed"
-                android:text="Fixed line"
+                android:text="@string/fixed_line"
                 android:textSize="20dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"

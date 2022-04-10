@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Error Text"
+        android:text="@string/error_text"
         android:textSize="16sp"
         android:visibility="invisible"
         android:textAlignment="center"

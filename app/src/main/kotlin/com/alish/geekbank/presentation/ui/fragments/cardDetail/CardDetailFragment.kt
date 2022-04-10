@@ -35,7 +35,6 @@ class CardDetailFragment :
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
-
     override val viewModel: CardDetailViewModel by viewModels()
     override val binding by viewBinding(FragmentCardDetailBinding::bind)
     private val cardDetailAdapter = CardDetailAdapter()
@@ -88,16 +87,12 @@ class CardDetailFragment :
         buttonExchange.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToExchangeFragment())
         }
-//        buttonQR.setOnClickListener {
-//            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToScannerFragment())
-//        }
         buttonSettings.setOnClickListener {
             findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToSettingsFragment())
         }
         binding.imageArrow.setOnClickListener {
             findNavController().navigateUp()
         }
-
     }
 
     override fun setupSubscribes() {
@@ -115,15 +110,14 @@ class CardDetailFragment :
 
                             }
                         }
-
                     }
                 }
             }
         }
+
         val list2: ArrayList<CardListUIModel> = ArrayList()
         list2.add(CardListUIModel(R.drawable.airbnb, "Airbnb", 1))
         cardDetailListAdapter.submitList(list2)
-
     }
 
     private fun setupDialog() {
@@ -132,6 +126,4 @@ class CardDetailFragment :
             fragmentManager?.let { it1 -> dialog.show(it1,"freezeDialog") }
         }
     }
-
-
 }

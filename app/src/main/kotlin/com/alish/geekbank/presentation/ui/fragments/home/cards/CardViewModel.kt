@@ -10,16 +10,20 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
+
 @HiltViewModel
-class CardViewModel @Inject constructor(private val fetchUserDataUseCase: FetchUserDataUseCase): BaseViewModel() {
+class CardViewModel @Inject constructor(private val fetchUserDataUseCase: FetchUserDataUseCase) :
+    BaseViewModel() {
 
     private val _stateUser =
         MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
     val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()
+
     init {
         fetchUserData()
     }
-    private fun fetchUserData(){
-        fetchUserDataUseCase().collectRequest(_stateUser){it.map { data -> data?.toUsersModelUI() }}
+
+    private fun fetchUserData() {
+        fetchUserDataUseCase().collectRequest(_stateUser) { it.map { data -> data?.toUsersModelUI() } }
     }
 }

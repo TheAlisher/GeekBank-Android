@@ -21,7 +21,6 @@ class MainFlowFragment :
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
-
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -46,16 +45,11 @@ class MainFlowFragment :
                 else -> {
                     whetherToShow(true)
                 }
-
-
             }
             binding.bottomNavigationView.background = null
             binding.bottomNavigationView.menu.getItem(2).isEnabled = false
-
         }
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
-
-
     }
 
     private fun whetherToShow(b: Boolean) {
@@ -67,10 +61,11 @@ class MainFlowFragment :
     override fun onStart() {
         super.onStart()
 
-
         if (!preferenceHelper.isShown()) {
             navController.navigate(R.id.pinCodeFragment)
-        } else if (preferenceHelper.isShown() && navController.currentDestination == navController.findDestination(R.id.navigation_profile)) {
+        } else if (preferenceHelper.isShown() && navController.currentDestination == navController.findDestination(
+                R.id.navigation_profile)
+        ) {
             Toast.makeText(requireContext(), "Language changed", Toast.LENGTH_SHORT).show()
         } else {
             navController.navigate(R.id.inputPinCodeFragment)

@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/text_login"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@id/loginTIL"
@@ -36,8 +36,8 @@
 
         <TextView
             android:id="@+id/IDText"
-            android:text="На вашей карте есть ID, введите цифры после"
-            android:textColor="#575555"
+            android:text="@string/your_card_has_an_id_enter_the_numbers_after"
+            android:textColor="@color/text_hint"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -46,7 +46,7 @@
 
     <TextView
         android:id="@+id/text_password"
-        android:text="Password"
+        android:text="@string/password"
         android:textColor="@color/white"
         android:textSize="15dp"
         app:layout_constraintLeft_toLeftOf="@id/passwordTIL"
@@ -78,8 +78,8 @@
 
         <TextView
             android:id="@+id/passwordText"
-            android:text="Ваш пароль"
-            android:textColor="#575555"
+            android:text="@string/your_password"
+            android:textColor="@color/text_hint"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/blue"
-        android:text="Login"
+        android:text="@string/log_in"
         android:textColor="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

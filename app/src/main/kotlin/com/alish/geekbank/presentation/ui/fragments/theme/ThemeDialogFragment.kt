@@ -6,15 +6,19 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
-import com.alish.geekbank.databinding.FragmentFreezeDialogBinding
+import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentThemeDialogBinding
+import javax.inject.Inject
 
 class ThemeDialogFragment : DialogFragment() {
 
     private var _binding: FragmentThemeDialogBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var preferencesHelp: PreferencesHelper
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = FragmentThemeDialogBinding.inflate(LayoutInflater.from(context))
@@ -27,13 +31,24 @@ class ThemeDialogFragment : DialogFragment() {
     }
 
     private fun setupButtonDialog() = with(binding) {
-        btnThemeCancel.setOnClickListener {
-            dismiss()
-        }
-        btnThemeYes.setOnClickListener {
-            Toast.makeText(context, "You changed to dark theme!!", Toast.LENGTH_SHORT).show()
-            dialog?.dismiss()
-        }
+
+//        if (preferencesHelp.isNightModeOn()) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        }
+//        btnThemeYes.setOnClickListener {
+//            if (preferencesHelp.isNightModeOn()) {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                preferencesHelp.editIsShown()
+//            } else {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//            }
+//            dismiss()
+//        }
+//        btnThemeCancel.setOnClickListener {
+//            dismiss()
+//        }
 
     }
 

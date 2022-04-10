@@ -92,5 +92,4 @@ class EditProfileFragment :
                 imageUri = it
             }
         }
-
 }

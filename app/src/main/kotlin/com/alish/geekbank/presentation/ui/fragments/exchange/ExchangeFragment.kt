@@ -28,8 +28,10 @@ class ExchangeFragment :
     override fun setupSubscribes() {
         viewModel.exchangeState.collectUIState {
             when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     it.data.let { data ->
                         val list = ArrayList<ExchangeModelsUI>()
@@ -39,28 +41,24 @@ class ExchangeFragment :
                                 it.data.conversion_rates["KGS"].toString(),
                             )
                         )
-
                         list.add(
                             ExchangeModelsUI(
                                 it.data.conversion_rates["USD"].toString(),
                                 it.data.conversion_rates["USD"].toString(),
                             )
                         )
-
                         list.add(
                             ExchangeModelsUI(
                                 it.data.conversion_rates["EUR"].toString(),
                                 it.data.conversion_rates["EUR"].toString(),
                             )
                         )
-
                         list.add(
                             ExchangeModelsUI(
                                 it.data.conversion_rates["RUS"].toString(),
                                 it.data.conversion_rates["RUS"].toString(),
                             )
                         )
-
                         adapter.submitList(list)
                         Log.d("anime", "setupSubscribes: " + list)
                     }

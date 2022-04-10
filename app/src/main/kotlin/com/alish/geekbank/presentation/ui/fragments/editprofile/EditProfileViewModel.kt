@@ -13,16 +13,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class EditProfileViewModel  @Inject constructor(private val updateAccountUseCase: UpdateAccountUseCase,
-private val fetchUserDataUseCase: FetchUserDataUseCase): BaseViewModel() {
+class EditProfileViewModel @Inject constructor(
+    private val updateAccountUseCase: UpdateAccountUseCase,
+    private val fetchUserDataUseCase: FetchUserDataUseCase,
+) : BaseViewModel() {
 
     private val _stateUser =
         MutableStateFlow<UIState<List<UsersModelUI?>>>(UIState.Loading())
     val stateUser: StateFlow<UIState<List<UsersModelUI?>>> = _stateUser.asStateFlow()
+
     init {
         fetchUser()
     }
-    private fun fetchUser(){
-        fetchUserDataUseCase().collectRequest(_stateUser){it.map { data->data?.toUsersModelUI() }}
+
+    private fun fetchUser() {
+        fetchUserDataUseCase().collectRequest(_stateUser) { it.map { data -> data?.toUsersModelUI() } }
     }
 }

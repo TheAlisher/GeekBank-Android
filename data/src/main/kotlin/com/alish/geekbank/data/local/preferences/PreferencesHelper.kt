@@ -6,7 +6,7 @@ import com.alish.geekbank.common.constants.Constants
 import javax.inject.Singleton
 
 @Singleton
-class PreferencesHelper (context: Context) {
+class PreferencesHelper(context: Context) {
 
     private val preferences: SharedPreferences =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)
@@ -15,22 +15,24 @@ class PreferencesHelper (context: Context) {
         get() = preferences.getString("code", "")
         set(value) = preferences.edit().putString("code", value).apply()
 
-    fun putBoolean(key: String,value:Boolean){
+    fun putBoolean(key: String, value: Boolean) {
         var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean(key,value)
+        editor.putBoolean(key, value)
         editor.apply()
-    }
-    fun getBoolean(key: String):Boolean{
-        return preferences.getBoolean(key,false)
     }
 
-    fun putString(key: String,value:String){
+    fun getBoolean(key: String): Boolean {
+        return preferences.getBoolean(key, false)
+    }
+
+    fun putString(key: String, value: String) {
         var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putString(key,value)
+        editor.putString(key, value)
         editor.apply()
     }
-    fun getString(key: String):String?{
-        return preferences.getString(key,null)
+
+    fun getString(key: String): String? {
+        return preferences.getString(key, null)
     }
 
     fun onSavePinCode() {
@@ -55,4 +57,21 @@ class PreferencesHelper (context: Context) {
             putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
         }
     }
+
+    companion object {
+        private const val DARK_STATUS = "io.github.manuelernesto.DARK_STATUS"
+    }
+
+    var darkMode = preferences.getInt(DARK_STATUS, 0)
+        set(value) = preferences.edit().putInt(DARK_STATUS, value).apply()
+
+
+//    fun isNightModeOn(): Boolean {
+//        return preferences.getBoolean("NightMode", false)
+//    }
+//    fun editIsShown() {
+//       preferences.edit().putBoolean("NightMode",false).apply()
+//    }
+
+
 }

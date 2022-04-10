@@ -1,7 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.home
 
 import android.annotation.SuppressLint
-import android.graphics.Bitmap
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -28,19 +27,19 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
+
+    @Inject
+    lateinit var preferencesHelper: PreferencesHelper
+    override val viewModel: HomeViewModel by viewModels()
+    override val binding by viewBinding(FragmentHomeBinding::bind)
     private var xCoOrdinate = 0f
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
 
-    @Inject
-    lateinit var preferencesHelper: PreferencesHelper
 
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
-
-    override val viewModel: HomeViewModel by viewModels()
-    override val binding by viewBinding(FragmentHomeBinding::bind)
 
     override fun initialize() {
         binding.map.onCreate(null)
@@ -66,13 +65,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         .start()
                 }
                 MotionEvent.ACTION_UP -> {
-
                     findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
-
                     Log.e("anime", "onViewCreated: $xCoOrdinate")
-
                 }
-
                 else -> {
                     view.clearAnimation()
                     return@OnTouchListener false
@@ -106,8 +101,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     override fun setupRequests() {
         viewModel.stateCard.collectUIState() {
             when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     it.data.forEach { data ->
                         if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
@@ -115,16 +112,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
                             binding.numberCard.text =
                                 "**** **** **** ****" + data?.cardNumber.toString().substring(
-                                        data?.cardNumber.toString().length - 4
-                                    )
+                                    data?.cardNumber.toString().length - 4
+                                )
 //                            binding.qrView.setImageBitmap(
 //                                generateQrCode(
 //                                    cardNumber = data?.cardNumber.toString()
 //                                )
 //                            )
-
                         }
-
                     }
                 }
             }
@@ -132,8 +127,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
         viewModel.newsState.collectUIState {
             when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     var list: ArrayList<NewsModelUI> = ArrayList()
                     for (i in it.data) {
@@ -164,7 +161,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         googleMap.addMarker(MarkerOptions().position(geekTech1).title("vozle geeka"))
         googleMap.addMarker(MarkerOptions().position(geekTech2).title("avtomoyka"))
         googleMap.addMarker(MarkerOptions().position(geekTech3).title("chto to"))
-
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
 

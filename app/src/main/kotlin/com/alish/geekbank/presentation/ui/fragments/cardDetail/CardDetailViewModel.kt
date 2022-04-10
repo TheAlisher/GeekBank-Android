@@ -25,6 +25,7 @@ class CardDetailViewModel @Inject constructor(
     init {
         fetchUserData()
     }
+
     private fun fetchUserData(){
         fetchCardDataUseCase().collectRequest(_stateCard){it.map { data -> data?.toUI() }}
     }

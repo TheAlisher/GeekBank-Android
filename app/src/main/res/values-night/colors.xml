@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <color name="purple_200">#FFBB86FC</color>-->
+<!--    <color name="purple_200">#0063F5</color>-->
 <!--    <color name="purple_500">#FF6200EE</color>-->
 <!--    <color name="purple_700">#FF3700B3</color>-->
 <!--    <color name="teal_200">#FF03DAC5</color>-->
 <!--    <color name="teal_700">#FF018786</color>-->
-<!--    <color name="black">#FF000000</color>-->
+<!--    <color name="white">#FF000000</color>-->
 <!--    <color name="black_matt">#272727</color>-->
-<!--    <color name="white">#FFFFFFFF</color>-->
+<!--    <color name="black">#FFFFFFFF</color>-->
 <!--    <color name="soap">#B3CFD6EA</color>-->
 <!--    <color name="blue">#B32C53C3</color>-->
 <!--    <color name="title_text_color">#727375</color>-->
@@ -18,9 +18,9 @@
 <!--    <color name="green_sheen">#70A9A1</color>-->
 <!--    <color name="prussian_blue">#003049</color>-->
 <!--    <color name="white_black">#1C1C1E</color>-->
-<!--    <color name="bottom_sheet_color">#191919</color>-->
+<!--    <color name="bottom_sheet_color">#EDFFFC</color>-->
 <!--    <color name="text_edit_profile_choose_photo">#0063F5</color>-->
-<!--    <color name="view_edit_profile">#38393A</color>-->
+<!--    <color name="view_edit_profile">#EDFFFC</color>-->
 <!--    <color name="text_hint">#8E8E93</color>-->
 <!--    <color name="dialog_color_freeze_card">#479EF5</color>-->
 <!--    <color name="text_color_dialog">#F8F9FA</color>-->
@@ -36,14 +36,15 @@
 <!--    <color name="light_2blue">#479EF5</color>-->
 <!--    <color name="purple">#4D0EFF</color>-->
 <!--    <color name="pink">#E71B40</color>-->
-    <color name="purple_200">#0063F5</color>
+
+    <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="white">#FF000000</color>
+    <color name="black">#FF000000</color>
     <color name="black_matt">#272727</color>
-    <color name="black">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="soap">#B3CFD6EA</color>
     <color name="blue">#B32C53C3</color>
     <color name="title_text_color">#727375</color>
@@ -54,9 +55,9 @@
     <color name="green_sheen">#70A9A1</color>
     <color name="prussian_blue">#003049</color>
     <color name="white_black">#1C1C1E</color>
-    <color name="bottom_sheet_color">#EDFFFC</color>
+    <color name="bottom_sheet_color">#191919</color>
     <color name="text_edit_profile_choose_photo">#0063F5</color>
-    <color name="view_edit_profile">#EDFFFC</color>
+    <color name="view_edit_profile">#38393A</color>
     <color name="text_hint">#8E8E93</color>
     <color name="dialog_color_freeze_card">#479EF5</color>
     <color name="text_color_dialog">#F8F9FA</color>

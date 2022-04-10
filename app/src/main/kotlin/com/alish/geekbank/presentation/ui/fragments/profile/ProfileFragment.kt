@@ -3,6 +3,8 @@ package com.alish.geekbank.presentation.ui.fragments.profile
 import android.Manifest
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,7 +17,6 @@ import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
-import com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -28,7 +29,6 @@ class ProfileFragment :
     override val binding by viewBinding(FragmentProfileBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
     private var uri: Uri? = null
-
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
@@ -57,7 +57,6 @@ class ProfileFragment :
         bottomSheetBehavior =
             BottomSheetBehavior.from(binding.bottomSheet2Include.bottomSheetLanguage)
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
-
     }
 
     override fun setupListeners() = with(binding) {
@@ -73,7 +72,7 @@ class ProfileFragment :
 
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
-            when(it){
+            when (it) {
                 is UIState.Error -> {
 
                 }
@@ -81,8 +80,8 @@ class ProfileFragment :
 
                 }
                 is UIState.Success -> {
-                    it.data.forEach {data->
-                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)){
+                    it.data.forEach { data ->
+                        if (data?.id == preferencesHelper.getString(Constants.USER_ID)) {
                             binding.txtName.text = "${data?.name} ${data?.surname}"
                         }
                     }
@@ -105,9 +104,42 @@ class ProfileFragment :
 
     private fun setupDialogTheme() {
         binding.containerTheme.setOnClickListener {
-            val dialog = ThemeDialogFragment()
-            activity?.supportFragmentManager?.let { it1 -> dialog.show(it1, "theme") }
+//            val dialog = ThemeDialogFragment()
+//            activity?.supportFragmentManager?.let { it1 -> dialog.show(it1, "theme") }
+            chooseThemeDialog()
         }
+    }
+
+    private fun chooseThemeDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(getString(R.string.choose_theme_text))
+        val styles = arrayOf("Light", "Dark", "System default")
+        val checkedItem = preferencesHelper.darkMode
+
+        builder.setSingleChoiceItems(styles, checkedItem) { dialog, which ->
+            when (which) {
+                0 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    preferencesHelper.darkMode = 0
+//                    delegate.applyDayNight()
+                    dialog.dismiss()
+                }
+                1 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    preferencesHelper.darkMode = 1
+//                    delegate.applyDayNight()
+                    dialog.dismiss()
+                }
+                2 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    preferencesHelper.darkMode = 2
+//                    delegate.applyDayNight()
+                    dialog.dismiss()
+                }
+            }
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
     private fun setupEditProfile() {
