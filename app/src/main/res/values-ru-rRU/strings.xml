@@ -65,4 +65,6 @@
     <string name="log_in">Авторизоваться</string>
     <string name="too_many_attempt">Слишком много попыток</string>
     <string name="choose_theme_text">Выберите тему</string>
+    <string name="foorgot">Если вы забыли пароль, пожалуиста выйдите с аккаунта и зайдите снова</string>
+
 </resources>

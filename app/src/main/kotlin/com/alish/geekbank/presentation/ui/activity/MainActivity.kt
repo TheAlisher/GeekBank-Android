@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
@@ -11,6 +12,8 @@ import com.alish.geekbank.data.local.preferences.LocalHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.security.Provider
+import java.security.Security
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var localHelper: LocalHelper
+
 
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         setUpNavigation()
         checkTheme()
     }
+    
 
     private fun setUpNavigation() {
         val navHostFragment =

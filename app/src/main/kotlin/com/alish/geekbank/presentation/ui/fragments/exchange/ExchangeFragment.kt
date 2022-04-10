@@ -37,30 +37,30 @@ class ExchangeFragment :
                         val list = ArrayList<ExchangeModelsUI>()
                         list.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["KGS"].toString(),
-                                it.data.conversion_rates["KGS"].toString(),
+                                "KZT",
+                                data.conversion_rates["KZT"].toString(),
                             )
                         )
                         list.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["USD"].toString(),
-                                it.data.conversion_rates["USD"].toString(),
+                                "USD",
+                                data.conversion_rates["USD"].toString(),
                             )
                         )
                         list.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["EUR"].toString(),
-                                it.data.conversion_rates["EUR"].toString(),
+                                "EUR",
+                                data.conversion_rates["EUR"].toString(),
                             )
                         )
                         list.add(
                             ExchangeModelsUI(
-                                it.data.conversion_rates["RUS"].toString(),
-                                it.data.conversion_rates["RUS"].toString(),
+                                "RUS",
+                                data.conversion_rates["RUS"].toString(),
                             )
                         )
                         adapter.submitList(list)
-                        Log.d("anime", "setupSubscribes: " + list)
+                        Log.d("fuck", "setupSubscribes: ${list}" )
                     }
                 }
             }

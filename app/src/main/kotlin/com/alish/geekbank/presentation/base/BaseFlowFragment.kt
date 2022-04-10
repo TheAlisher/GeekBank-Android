@@ -7,6 +7,8 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import dagger.hilt.android.AndroidEntryPoint
+
 
 abstract class BaseFlowFragment(
     @LayoutRes layoutId: Int,
@@ -19,6 +21,10 @@ abstract class BaseFlowFragment(
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setupNavigation()
+        setUpListeners()
+    }
+
+    open fun setUpListeners() {
     }
 
     open fun initialize() {

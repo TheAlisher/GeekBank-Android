@@ -64,4 +64,13 @@
     <string name="log_in">Log in</string>
     <string name="too_many_attempt">Too many attempt</string>
     <string name="choose_theme_text">Choose theme</string>
+    <string name="foorgot">If you have forgotten your password, please log out of your account and log in again</string>
+    <string-array name="condition">
+    <item>
+        neAdmin
+    </item>
+        <item>
+        Admin
+    </item>
+    </string-array>
 </resources>

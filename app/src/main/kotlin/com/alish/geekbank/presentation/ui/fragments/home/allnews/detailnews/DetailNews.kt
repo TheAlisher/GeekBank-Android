@@ -15,9 +15,9 @@ class DetailNews :
     override val binding: FragmentDetailNewsBinding by viewBinding(FragmentDetailNewsBinding::bind)
 
     override fun initialize() {
-        val model = DetailNewsArgs.fromBundle(requireArguments()).model
-        binding.imageNews.load(model.urlToImage)
-        binding.textDescription.text = model.description
-        binding.textTitle.text = model.title
+       // val model = DetailNewsArgs.fromBundle(requireArguments()).model
+//        binding.imageNews.load(model.urlToImage)
+//        binding.textDescription.text = model.description
+//        binding.textTitle.text = model.title
     }
 }

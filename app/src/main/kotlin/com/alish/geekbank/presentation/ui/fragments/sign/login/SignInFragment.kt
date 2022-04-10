@@ -11,7 +11,9 @@ import com.alish.geekbank.databinding.FragmentSignInBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.mainNavController
 import com.alish.geekbank.presentation.state.UIState
+import com.google.api.LogDescriptor
 import dagger.hilt.android.AndroidEntryPoint
+import io.grpc.internal.LogExceptionRunnable
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,12 +28,11 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
 
     override fun setupListeners() {
         binding.loginBtn.setOnClickListener {
-            if (signDetails()) {
+            if (signDetails()){
                 signIn()
             }
         }
     }
-
     private fun signIn() = with(binding) {
 
         viewModel.signState.collectUIState {
@@ -44,24 +45,26 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
                 is UIState.Success -> {
                     it.data.forEach { data ->
                         if (IDEt.text.toString().trim() == data?.id
-                            && passwordEt.text.toString().trim() == data.password
-                        ) {
-                            preferencesHelper.putString(Constants.USER_ID, data.id)
-                            preferencesHelper.putBoolean(Constants.IS_AUTHORIZED, true)
-                            mainNavController().navigate(
-                                R.id.action_signFlowFragment_to_mainFlowFragment)
+                                && passwordEt.text.toString().trim() == data.password
+                            ) {
+                                preferencesHelper.putString(Constants.USER_ID,data.id)
+                                preferencesHelper.putString(Constants.USER_CONDITION,
+                                    data.condition!!
+                                )
+                                preferencesHelper.putBoolean(Constants.IS_AUTHORIZED,true)
+                                mainNavController().navigate(R.id.mainFlowFragment)
+
                         }
                     }
                 }
             }
         }
     }
-
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+    private fun showToast(message: String){
+        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
     }
 
-    private fun signDetails(): Boolean {
+    private fun signDetails():Boolean{
         when {
             binding.IDEt.text.toString().trim().isEmpty() -> {
                 showToast("Enter Login")
