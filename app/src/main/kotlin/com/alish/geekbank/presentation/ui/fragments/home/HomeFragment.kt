@@ -133,6 +133,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
+
     private fun clickForSeeFullMap() {
         binding.bottomSheetInclude.txtShowAllMap.setOnClickListener {
             findNavController().navigate(R.id.mapFull)
@@ -166,27 +167,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     @SuppressLint("SetTextI18n")
     override fun setupRequests() {
-        viewModel.stateCard.collectUIState() {
-            when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
-                is UIState.Success -> {
-
-                    binding.tvCash.text = it.data[0]?.money.toString()
-
-                    binding.bottomSheetInclude.numberCard.text =
-                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
-                            it.data[0]?.cardNumber.toString().length - 4
-                                )
-                    binding.bottomSheetInclude.qrView.setImageBitmap(
-                        generateQrCode(
-                            cardNumber = it.data[0]?.cardNumber.toString()
-                                )
-                            )
-                        }
-
-            }
-        }
 
         viewModel.newsState.collectUIState {
             when (it) {
@@ -210,12 +190,24 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
+                    binding.tvCash.text = it.data[0]?.money.toString()
+
+                    binding.bottomSheetInclude.numberCard.text =
+                        "**** **** **** " + it.data[0]?.cardNumber.toString().substring(
+                            it.data[0]?.cardNumber.toString().length - 4
+                        )
+                    binding.bottomSheetInclude.qrView.setImageBitmap(
+                        generateQrCode(
+                            cardNumber = it.data[0]?.cardNumber.toString()
+                        )
+                    )
                     if (list.size == 0)
                         it.data.forEach { data ->
                             if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
                                 if (data != null) {
                                     list.add(data)
-                                    cardDetailAdapter.submitList(list)
+                                     cardDetailAdapter.submitList(list)
+
 
                                 }
                             }
@@ -290,18 +282,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         overrideOnBackPressed { activity?.finish() }
     }
 
-    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
-//        val writer = MultiFormatWriter()
-//        var bitmap: Bitmap? = null
-//
-//        try {
-//            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
-//            val encoder = BarcodeEncoder()
-//            bitmap = encoder.createBitmap(matrix)
-//        } catch (e: WriterException) {
-//        }
-//        return bitmap
-//    }
     private fun generateQrCode(cardNumber: String?): Bitmap? {
         val writer = MultiFormatWriter()
         var bitmap: Bitmap? = null

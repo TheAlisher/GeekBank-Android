@@ -26,4 +26,8 @@ class ProfileRepositoryImpl @Inject constructor(
         userCollection.document(preferencesHelper.getString(Constants.USER_ID).toString()).update(hashMap).await()
     }
 
+    override suspend fun createAccount(hashMap: HashMap<String, Any>,id: String) {
+        userCollection.document(id).set(hashMap).await()
+    }
+
 }

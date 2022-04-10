@@ -64,6 +64,9 @@ class ProfileFragment :
         containerLanguage.setOnClickListener {
             bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         }
+        containerForAdmins.setOnClickListener {
+            findNavController().navigate(R.id.adminFragment)
+        }
         setupRussian()
         setupEnglish()
         setupDialogTheme()

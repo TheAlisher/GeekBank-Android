@@ -15,19 +15,13 @@
 />
 
     <EditText
-        app:layout_constraintTop_toBottomOf="@id/editTextCard"
+        app:layout_constraintTop_toBottomOf="@id/editText"
         android:layout_marginTop="40dp"
         android:id="@+id/etMoney"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-    <EditText
-        app:layout_constraintTop_toBottomOf="@id/editText"
-        android:layout_marginTop="40dp"
-        android:id="@+id/editTextCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+
     <Button
         android:id="@+id/btn_send"
         android:layout_width="wrap_content"
@@ -36,4 +30,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/card_recycler1"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:listitem="@layout/item_transfer_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.ui.fragments.admin.createcard.CreateCardFragment">
+
+    <TextView
+    android:id="@+id/cardNum_txt"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:hint="Password"
+    android:textColorHint="#8E8E93"
+        app:layout_constraintTop_toTopOf="parent"
+    android:textSize="14sp"
+    app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/edit_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="10dp"
+    android:hint="Номер карты 8 символов"
+    android:textColorHint="#8E8E93"
+    app:boxBackgroundMode="filled"
+    app:boxStrokeWidth="0dp"
+    app:boxStrokeWidthFocused="0dp"
+    app:counterEnabled="true"
+    app:counterMaxLength="20"
+    app:startIconDrawable="@drawable/user"
+    app:startIconTint="@color/white"
+    app:counterTextColor="@color/white"
+    app:endIconMode="clear_text"
+    app:endIconTint="@color/white"
+    app:errorEnabled="true"
+    app:hintEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/cardNum_txt"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+        >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_profile"
+        android:imeOptions="actionDone"
+        android:inputType="textCapSentences"
+        android:maxLength="21"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="17dp"
+        android:theme="@style/CustomEditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/user_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Введите UserID которому хотите создать карту"
+        android:textColorHint="#8E8E93"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/edit_card"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_id_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Введите UserID"
+        app:layout_constraintTop_toBottomOf="@id/user_id"
+        android:textColorHint="#8E8E93"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:startIconDrawable="@drawable/user"
+        app:startIconTint="@color/white"
+        app:counterTextColor="@color/white"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/white"
+        app:errorEnabled="true"
+        app:hintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back_profile"
+            android:imeOptions="actionDone"
+            android:inputType="textCapSentences"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="17dp"
+            android:theme="@style/CustomEditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        app:cornerRadius="5dp"
+        android:text="@string/save"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#0063F5"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/user_id_edit"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -118,6 +118,15 @@ class CardDetailFragment :
                 is UIState.Loading -> {}
                 is UIState.Success -> {
                     historyList.addAll(it.data)
+                    val filteredList = ArrayList<HistoryModelUI>()
+                    historyList.forEach {
+                        if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")) {
+                            filteredList.add(it)
+
+                        }
+                    }
+                    cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data.dateTime })
+
                 }
             }
         }
@@ -133,12 +142,15 @@ class CardDetailFragment :
                 val postInt: Int = position.toInt()
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()
                 val filteredList = ArrayList<HistoryModelUI?>()
-                historyList.forEach {
-                    if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
-                        filteredList.add(it)
-                        cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data?.dateTime })
+                    historyList.forEach {
+                        if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
+                            filteredList.add(it)
+                        }
                     }
-                }
+                cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data?.dateTime })
+
+
+
             }
         })
     }

@@ -29,6 +29,8 @@ class MainFlowFragment :
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
+                R.id.adminFragment,
+                R.id.createUserFragment,
                 R.id.exchangeFragment,
                 R.id.transferFragment,
                 R.id.qrFragment,
