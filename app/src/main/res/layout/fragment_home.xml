@@ -32,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="10dp"
-                android:text="300.00$"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"

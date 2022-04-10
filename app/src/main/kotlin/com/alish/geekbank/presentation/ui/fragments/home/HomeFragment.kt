@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
@@ -67,7 +66,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
-//
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
@@ -80,7 +79,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
         })
     }
-//
+
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun setupListeners() {
         clickForAllNews()
@@ -134,6 +133,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
+
     private fun clickForSeeFullMap() {
         binding.bottomSheetInclude.txtShowAllMap.setOnClickListener {
             findNavController().navigate(R.id.mapFull)
@@ -167,29 +167,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     @SuppressLint("SetTextI18n")
     override fun setupRequests() {
-        viewModel.stateCard.collectUIState() {
-            when (it) {
-                is UIState.Error -> {
-                    Log.e("promo", it.error)
-                }
-                is UIState.Loading -> {}
-                is UIState.Success -> {
-
-                    binding.tvCash.text = it.data[0]?.money.toString()
-
-                    binding.bottomSheetInclude.numberCard.text =
-                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
-                            it.data[0]?.cardNumber.toString().length - 4
-                                )
-                    binding.bottomSheetInclude.qrView.setImageBitmap(
-                        generateQrCode(
-                            cardNumber = it.data[0]?.cardNumber.toString()
-                                )
-                            )
-                        }
-
-            }
-        }
 
         viewModel.newsState.collectUIState {
             when (it) {
@@ -213,12 +190,28 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
+                    for (i in it.data){
+                        binding.tvCash.text = i?.money.toString()
+
+                        binding.bottomSheetInclude.numberCard.text =
+                            "**** **** **** " + i?.cardNumber.toString().substring(
+                                i?.cardNumber.toString().length - 4
+                            )
+                        binding.bottomSheetInclude.qrView.setImageBitmap(
+                            generateQrCode(
+                                cardNumber = i?.cardNumber.toString()
+                            )
+                        )
+                        break
+                    }
+
                     if (list.size == 0)
                         it.data.forEach { data ->
                             if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
                                 if (data != null) {
                                     list.add(data)
-                                    cardDetailAdapter.submitList(list)
+                                     cardDetailAdapter.submitList(list)
+
 
                                 }
                             }
@@ -287,24 +280,12 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
-//
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        overrideOnBackPressed { activity?.finish() }
-//    }
-//
-//    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
-////        val writer = MultiFormatWriter()
-////        var bitmap: Bitmap? = null
-////
-////        try {
-////            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
-////            val encoder = BarcodeEncoder()
-////            bitmap = encoder.createBitmap(matrix)
-////        } catch (e: WriterException) {
-////        }
-////        return bitmap
-////    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { activity?.finish() }
+    }
+
     private fun generateQrCode(cardNumber: String?): Bitmap? {
         val writer = MultiFormatWriter()
         var bitmap: Bitmap? = null

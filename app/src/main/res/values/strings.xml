@@ -55,4 +55,12 @@
     <string name="enter_your_number">Enter your number</string>
     <string name="save">SAVE</string>
     <string name="foorgot">If you have forgotten your password, please log out of your account and log in again</string>
+    <string-array name="condition">
+    <item>
+        neAdmin
+    </item>
+        <item>
+        Admin
+    </item>
+    </string-array>
 </resources>
