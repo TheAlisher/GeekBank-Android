@@ -12,6 +12,7 @@ object Constants {
     const val IS_AUTHORIZED = "Sign"
     const val IS_ON_BOARD = "OnBoard"
     const val USER_NAME = "UserName"
+    const val USER_CONDITION = "UserCondition"
     const val COLLECTION_CARDS = "cards"
     const val COLLECTION_USERS = "users"
     const val COLLECTION_HISTORY = "history"

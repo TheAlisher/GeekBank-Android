@@ -57,10 +57,10 @@
     <string name="foorgot">If you have forgotten your password, please log out of your account and log in again</string>
     <string-array name="condition">
     <item>
-        Admin
+        neAdmin
     </item>
         <item>
-        neAdmin
+        Admin
     </item>
     </string-array>
 </resources>

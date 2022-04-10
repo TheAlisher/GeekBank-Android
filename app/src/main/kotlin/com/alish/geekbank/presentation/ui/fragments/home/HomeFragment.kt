@@ -190,17 +190,21 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    binding.tvCash.text = it.data[0]?.money.toString()
+                    for (i in it.data){
+                        binding.tvCash.text = i?.money.toString()
 
-                    binding.bottomSheetInclude.numberCard.text =
-                        "**** **** **** " + it.data[0]?.cardNumber.toString().substring(
-                            it.data[0]?.cardNumber.toString().length - 4
+                        binding.bottomSheetInclude.numberCard.text =
+                            "**** **** **** " + i?.cardNumber.toString().substring(
+                                i?.cardNumber.toString().length - 4
+                            )
+                        binding.bottomSheetInclude.qrView.setImageBitmap(
+                            generateQrCode(
+                                cardNumber = i?.cardNumber.toString()
+                            )
                         )
-                    binding.bottomSheetInclude.qrView.setImageBitmap(
-                        generateQrCode(
-                            cardNumber = it.data[0]?.cardNumber.toString()
-                        )
-                    )
+                        break
+                    }
+
                     if (list.size == 0)
                         it.data.forEach { data ->
                             if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {

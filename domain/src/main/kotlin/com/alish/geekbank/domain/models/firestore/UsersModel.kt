@@ -6,5 +6,6 @@ data class UsersModel(
     val name: String? = null,
     val surname: String? = null,
     val number: String? = null,
+    val condition: String? = null
 )
 

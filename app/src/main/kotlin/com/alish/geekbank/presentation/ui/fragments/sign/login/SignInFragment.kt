@@ -48,7 +48,9 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
                                 && passwordEt.text.toString().trim() == data.password
                             ) {
                                 preferencesHelper.putString(Constants.USER_ID,data.id)
-                                preferencesHelper.putString(Constants.USER_NAME,data.name + " " + data.surname)
+                                preferencesHelper.putString(Constants.USER_CONDITION,
+                                    data.condition!!
+                                )
                                 preferencesHelper.putBoolean(Constants.IS_AUTHORIZED,true)
                                 mainNavController().navigate(R.id.mainFlowFragment)
 
