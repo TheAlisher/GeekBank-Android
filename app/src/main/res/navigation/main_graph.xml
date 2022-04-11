@@ -6,10 +6,10 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.pincode.FirstFragment"
-        android:label="fragment_first"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/pinCodeFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.pincode.PinCodeFragment"
+        android:label="fragment_pin_code"
+        tools:layout="@layout/fragment_pin_code">
 
         <argument
             android:name="fromSettings"
@@ -61,7 +61,11 @@
         android:id="@+id/cardDetailFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
         android:label="fragment_card_detail"
-        tools:layout="@layout/fragment_card_detail"></fragment>
+        tools:layout="@layout/fragment_card_detail">
+        <action
+            android:id="@+id/action_cardDetailFragment_to_freezeDialogFragment"
+            app:destination="@id/freezeDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/transferFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.transfer.TransferFragment"
@@ -99,7 +103,7 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_firstFragment"
-            app:destination="@id/firstFragment" />
+            app:destination="@id/pinCodeFragment" />
     </fragment>
     <dialog
         android:id="@+id/forgotPasswordDialogFragment"
@@ -110,7 +114,11 @@
         android:id="@+id/freezeDialogFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment"
         android:label="fragment_freeze_dialog"
-        tools:layout="@layout/fragment_freeze_dialog" />
+        tools:layout="@layout/fragment_freeze_dialog">
+        <argument
+            android:name="cardNumber"
+            app:argType="string" />
+    </dialog>
     <fragment
         android:id="@+id/scannerFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment"
@@ -121,4 +129,9 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment"
         android:label="fragment_theme_dialog"
         tools:layout="@layout/fragment_theme_dialog" />
+    <fragment
+        android:id="@+id/changePassword"
+        android:name="com.alish.geekbank.presentation.ui.fragments.changepass.ChangePassword"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
 </navigation>

@@ -12,9 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
-import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
-import com.alish.geekbank.databinding.FragmentFirstBinding
+import com.alish.geekbank.databinding.FragmentPinCodeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
@@ -25,12 +24,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FirstFragment :
-    BaseFragment<BaseViewModel, FragmentFirstBinding>(R.layout.fragment_first),
+class PinCodeFragment :
+    BaseFragment<BaseViewModel, FragmentPinCodeBinding>(R.layout.fragment_pin_code),
     View.OnClickListener {
     override val viewModel: BaseViewModel by viewModels()
-    override val binding by viewBinding(FragmentFirstBinding::bind)
-    private val args by navArgs<FirstFragmentArgs>()
+    override val binding by viewBinding(FragmentPinCodeBinding::bind)
+    private val args by navArgs<PinCodeFragmentArgs>()
 
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var biometricManager: BiometricManager
