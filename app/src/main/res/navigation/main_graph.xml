@@ -134,4 +134,24 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.changepass.ChangePassword"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.payments.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.admin.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
+    <fragment
+        android:id="@+id/createUserFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.admin.createuser.CreateUserFragment"
+        android:label="create_user"
+        tools:layout="@layout/create_user" />
+    <fragment
+        android:id="@+id/createCardFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.admin.createcard.CreateCardFragment"
+        android:label="fragment_create_card"
+        tools:layout="@layout/fragment_create_card" />
 </navigation>

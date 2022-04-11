@@ -2,6 +2,7 @@ package com.alish.geekbank.presentation.extensions
 
 import android.content.pm.PackageManager
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -26,6 +27,20 @@ fun ImageView.setImage(uri: String) {
         .error(R.drawable.placeholder)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
+}
+fun EditText.check():Boolean{
+    return this.text.toString().trim() != ""
+}
+fun EditText.textGet(): String {
+    return this.text.toString().trim()
+}
+
+fun String.checkLength(): String{
+    return if (this.length < 2){
+        "0$this"
+    }else{
+        this
+    }
 }
 
 fun Fragment.hasPermissionCheckAndRequest(

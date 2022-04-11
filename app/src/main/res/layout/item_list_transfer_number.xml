@@ -34,6 +34,7 @@
             android:textSize="20dp"
             android:layout_marginEnd="20dp"
             android:autofillHints="123456"
+            android:ems="4"
             android:textColorHint="@color/white"
             tools:ignore="LabelFor,TextFields" />
 

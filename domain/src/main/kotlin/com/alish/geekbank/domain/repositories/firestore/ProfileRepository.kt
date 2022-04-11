@@ -12,5 +12,10 @@ interface ProfileRepository {
         hashMap: HashMap<String,Any>
     )
 
+    suspend fun createAccount(
+        hashMap: HashMap<String,Any>,
+        id: String
+    )
+
 
 }
