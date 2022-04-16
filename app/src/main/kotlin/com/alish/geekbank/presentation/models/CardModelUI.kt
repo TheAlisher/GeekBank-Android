@@ -9,8 +9,9 @@ data class CardModelUI(
     val money: Int? = null,
     val date: String? = null,
     override val cardNumber: String? = null,
+    val fullName: String? = null
 ) : BaseDiffUtilCard
 
 fun CardModel.toUI() = CardModelUI(
-    blocked, money, date, cardNumber
+    blocked, money, date, cardNumber,fullName
 )

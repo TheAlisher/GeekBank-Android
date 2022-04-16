@@ -2,8 +2,10 @@ package com.alish.geekbank.presentation.ui.fragments.profile
 
 import android.Manifest
 import android.net.Uri
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -57,6 +59,9 @@ class ProfileFragment :
         bottomSheetBehavior =
             BottomSheetBehavior.from(binding.bottomSheet2Include.bottomSheetLanguage)
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
+        if (preferencesHelper.getString(Constants.USER_CONDITION)=="neAdmin"){
+            binding.containerForAdmins.visibility = View.GONE
+        }
 
     }
 
@@ -64,12 +69,24 @@ class ProfileFragment :
         containerLanguage.setOnClickListener {
             bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         }
+        containerForAdmins.setOnClickListener {
+            findNavController().navigate(R.id.adminFragment)
+        }
         setupRussian()
         setupEnglish()
         setupDialogTheme()
         changePassClick()
         setupEditProfile()
         clickImage()
+        setupChangePinCode()
+    }
+
+    private fun setupChangePinCode() {
+        binding.containerPinCode.setOnClickListener {
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToFirstFragment(true)
+            )
+        }
     }
 
     private fun changePassClick() {
@@ -91,6 +108,7 @@ class ProfileFragment :
                 is UIState.Success -> {
 
                     binding.txtName.text = it.data?.name
+
 
 
                 }

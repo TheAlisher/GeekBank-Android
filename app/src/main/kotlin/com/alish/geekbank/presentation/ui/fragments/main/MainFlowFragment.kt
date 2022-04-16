@@ -34,10 +34,12 @@ class MainFlowFragment :
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
+                R.id.adminFragment,
+                R.id.createUserFragment,
                 R.id.exchangeFragment,
                 R.id.transferFragment,
                 R.id.qrFragment,
-                R.id.firstFragment,
+                R.id.pinCodeFragment,
                 R.id.forgotPasswordDialogFragment,
                 R.id.editProfileFragment,
                 R.id.scannerFragment,
@@ -113,7 +115,7 @@ class MainFlowFragment :
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
-        navController.navigate(R.id.firstFragment)
+        navController.navigate(R.id.pinCodeFragment)
     }
 
     override fun onStop() {
