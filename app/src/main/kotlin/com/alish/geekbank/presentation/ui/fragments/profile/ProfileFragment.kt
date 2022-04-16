@@ -78,6 +78,15 @@ class ProfileFragment :
         changePassClick()
         setupEditProfile()
         clickImage()
+        setupChangePinCode()
+    }
+
+    private fun setupChangePinCode() {
+        binding.containerPinCode.setOnClickListener {
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToFirstFragment(true)
+            )
+        }
     }
 
     private fun changePassClick() {

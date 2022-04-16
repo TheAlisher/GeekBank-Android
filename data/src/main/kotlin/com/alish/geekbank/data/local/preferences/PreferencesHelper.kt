@@ -11,19 +11,26 @@ class PreferencesHelper (context: Context) {
     private val preferences: SharedPreferences =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
+    fun clearField(value: String) {
+        preferences.edit().remove(value).apply()
+    }
 
     var pinCode: String?
         get() = preferences.getString("code", "")
         set(pasCode) = preferences.edit().putString("code", pasCode).apply()
 
+    var pinCodeSecond: String?
+        get() = preferences.getString("codeSecond", "")
+        set(pasCodeSecond) = preferences.edit().putString("codeSecond", pasCodeSecond).apply()
+
     fun putBoolean(key: String,value:Boolean){
-        var editor: SharedPreferences.Editor = preferences.edit()
+        val editor: SharedPreferences.Editor = preferences.edit()
         editor.putBoolean(key,value)
         editor.apply()
     }
 
     fun putOnBoardBoolean(){
-        var editor: SharedPreferences.Editor = preferences.edit()
+        val editor: SharedPreferences.Editor = preferences.edit()
         editor.putBoolean("OnBoard",true).apply()
         editor.apply()
     }
@@ -36,7 +43,7 @@ class PreferencesHelper (context: Context) {
     }
 
     fun putString(key: String,value:String){
-        var editor: SharedPreferences.Editor = preferences.edit()
+        val editor: SharedPreferences.Editor = preferences.edit()
         editor.putString(key,value)
         editor.apply()
     }

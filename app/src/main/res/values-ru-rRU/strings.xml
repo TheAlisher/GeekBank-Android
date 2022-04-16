@@ -56,5 +56,15 @@
     <string name="send_money">Отправлять деньги</string>
     <string name="save">Сохранить</string>
     <string name="foorgot">Если вы забыли пароль, пожалуиста выйдите с аккаунта и зайдите снова</string>
+    <string name="verify_your_identity">Подтвердите свою личность</string>
+    <string name="сonfirm_your_identity">Подтвердите свою личность, чтобы мы могли убедиться, что это вы</string>
+    <string name="no_biometric">Извини. Похоже, на вашем устройстве нет биометрического оборудования.</string>
+    <string name="biometric_features_are_currently_unavailable">Биометрические функции в настоящее время недоступны.</string>
+    <string name="not_registered_any_biometric_credentials">Вы не зарегистрировали никаких биометрических данных</string>
+    <string name="does_not_match">Код доступа не совпадает, повторите попытку!!!</string>
+    <string name="not_match">Код  не совпадает, повторите попытку!!!</string>
+    <string name="fingerprint_not_registered">Отпечаток пальца не зарегистрирован</string>
+    <string name="enter_your_current_pin_code">ВВЕДИТЕ ВАШ ТЕКУЩИЙ ПИН-КОД</string>
+    <string name="confirm_the_password">Подтвердите пароль</string>
 
 </resources>
