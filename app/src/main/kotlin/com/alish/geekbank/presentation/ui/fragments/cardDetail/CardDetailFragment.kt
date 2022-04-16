@@ -1,5 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
+import android.content.Context
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,6 +14,8 @@ import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardDetailBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.extensions.showToastShort
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.HistoryModelUI
 import com.alish.geekbank.presentation.state.UIState
@@ -155,14 +158,19 @@ class CardDetailFragment :
         })
     }
 
-
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { findNavController().navigate(R.id.cardFragment) }
+    }
 
     private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToFreezeDialogFragment(positionCard))
-        }
-    }
+            if (positionCard != ""){
+                findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToFreezeDialogFragment(positionCard))
+        }else{
+            this.showToastShort("У вас нет карт")
+            }
+    }}
 
 
 }

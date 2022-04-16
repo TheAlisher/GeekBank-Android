@@ -1,5 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.home.cards
 
+import android.content.Context
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -7,6 +8,7 @@ import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -48,6 +50,11 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
         ivSecond.setOnClickListener {
             findNavController().navigate(CardFragmentDirections.actionCardFragmentToCardDetailFragment())
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        overrideOnBackPressed { findNavController().navigate(R.id.homeFragment) }
     }
 
 }
