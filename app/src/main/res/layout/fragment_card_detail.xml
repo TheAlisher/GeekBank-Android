@@ -8,15 +8,15 @@
     android:padding="10dp"
     tools:context=".presentation.ui.fragments.cardDetail.CardDetailFragment">
 
-<!--    <com.google.android.material.imageview.ShapeableImageView-->
-<!--        android:id="@+id/image_arrow"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="25dp"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:src="@drawable/arrow_left"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 <!--    <androidx.appcompat.widget.AppCompatTextView-->
 <!--        android:layout_width="wrap_content"-->

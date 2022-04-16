@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +19,6 @@ import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.extensions.setAnimation
-import com.alish.geekbank.presentation.models.CardListUIModel
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
@@ -31,7 +28,6 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
-import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -64,7 +60,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
-       private fun clickNewsItem(model: NewsModelUI) {
+    private fun clickNewsItem(model: NewsModelUI) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailNews(model))
     }
 
@@ -154,15 +150,20 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     private fun setupAction() = with(binding) {
         buttonWallet.setOnClickListener {
-            findNavController().navigate(R.id.paymentsFragment, null, NavOptions.Builder().setAnimation(
-                R.anim.fade_in,
-                R.anim.fade_out
-            ))
+            findNavController().navigate(
+                R.id.paymentsFragment, null, NavOptions.Builder().setAnimation(
+                    R.anim.fade_in,
+                    R.anim.fade_out
+                )
+            )
         }
         buttonExchange.setOnClickListener {
-            findNavController().navigate(R.id.exchangeFragment, null, NavOptions.Builder().setAnimation(
-                R.anim.popup_enter_material,
-                R.anim.popup_exit_material))
+            findNavController().navigate(
+                R.id.exchangeFragment, null, NavOptions.Builder().setAnimation(
+                    R.anim.popup_enter_material,
+                    R.anim.popup_exit_material
+                )
+            )
         }
     }
 
@@ -179,14 +180,13 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                     binding.bottomSheetInclude.numberCard.text =
                         "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
                             it.data[0]?.cardNumber.toString().length - 4
-                                )
+                        )
                     binding.bottomSheetInclude.qrView.setImageBitmap(
                         generateQrCode(
                             cardNumber = it.data[0]?.cardNumber.toString()
-                                )
-                            )
-                        }
-
+                        )
+                    )
+                }
             }
         }
 
@@ -221,7 +221,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
                                 }
                             }
-
                         }
                 }
             }
@@ -268,15 +267,15 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
-        override fun onMapReady(map: GoogleMap) {
-            MapsInitializer.initialize(requireContext())
-            googleMap = map
+    override fun onMapReady(map: GoogleMap) {
+        MapsInitializer.initialize(requireContext())
+        googleMap = map
 
-            val geekTech = LatLng(42.813358, 73.845158)
-            val bizone = LatLng(42.816208, 73.844670)
-            val geekTech1 = LatLng(42.813351, 73.845718)
-            val geekTech2 = LatLng(42.813036, 73.845793)
-            val geekTech3 = LatLng(42.814240, 73.845375)
+        val geekTech = LatLng(42.813358, 73.845158)
+        val bizone = LatLng(42.816208, 73.844670)
+        val geekTech1 = LatLng(42.813351, 73.845718)
+        val geekTech2 = LatLng(42.813036, 73.845793)
+        val geekTech3 = LatLng(42.814240, 73.845375)
 
         googleMap.addMarker(MarkerOptions().position(geekTech).title("GeekTech"))
         googleMap.addMarker(MarkerOptions().position(bizone).title("Bizone"))
@@ -292,7 +291,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         overrideOnBackPressed { activity?.finish() }
     }
 
-//    private fun generateQrCode(cardNumber: String?): Bitmap? {
+    //    private fun generateQrCode(cardNumber: String?): Bitmap? {
 //        val writer = MultiFormatWriter()
 //        var bitmap: Bitmap? = null
 //
