@@ -8,6 +8,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -19,6 +20,7 @@ import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.extensions.showToastShort
 import com.alish.geekbank.presentation.extensions.vibrateDevice
+import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.ui.fragments.biometricauthentication.AuthenticationError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -36,6 +38,8 @@ class PinCodeFragment :
 
     @Inject
     lateinit var preferences: PreferencesHelper
+
+    private var navOptions: NavOptions.Builder? = null
 
 
     private var numberList = ArrayList<String>()
@@ -224,7 +228,6 @@ class PinCodeFragment :
             }
         }
     }
-
 
     private fun passwordClear() {
         binding.viewOval1.setBackgroundResource(R.drawable.view_grey_oval)
