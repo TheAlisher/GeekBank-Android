@@ -18,15 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:text="Card detail"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@id/image_arrow"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:text="Card detail"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/image_arrow"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_recycler"
@@ -36,9 +36,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/image_arrow"
+        app:layout_constraintTop_toTopOf="parent"
          />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -196,7 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.38" />
+            app:layout_constraintGuide_percent="0.30" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineright"
@@ -218,7 +217,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.60"/>
+            app:layout_constraintGuide_percent="0.52"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

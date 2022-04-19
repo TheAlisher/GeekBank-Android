@@ -4,8 +4,13 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
+import androidx.core.view.forEach
+import androidx.core.view.get
 import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.onNavDestinationSelected
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
@@ -60,13 +65,12 @@ class MainFlowFragment :
     override fun setUpListeners() {
         binding.fabView.doOnNextLayout {
             val colors = intArrayOf(
-                Color.WHITE,
                 Color.RED,
+                Color.WHITE,
                 Color.BLUE
             )
-
-            val cornerRadius = 200f.dp
-            val padding = 28.dp
+            val cornerRadius = 16f.dp
+            val padding = 25.dp
             val centerX = it.width.toFloat() / 2 - padding
             val centerY = it.height.toFloat() / 2 - padding
 
@@ -87,11 +91,10 @@ class MainFlowFragment :
                 padding = 30.dp
             )
             val endColors = intArrayOf(
-                Color.RED,
+                Color.GREEN,
                 Color.WHITE,
                 Color.RED
             )
-
             animateShadow(
                 shapeDrawable = shadowDrawable,
                 startColors = colors,
