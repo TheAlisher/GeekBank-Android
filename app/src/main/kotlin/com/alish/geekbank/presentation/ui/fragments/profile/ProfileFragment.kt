@@ -51,7 +51,7 @@ class ProfileFragment :
         if (preferencesHelper.getLanguageCode() != locale.languageCode) {
             preferencesHelper.setLocale(locale)
             activity?.recreate()
-            preferencesHelper.isShown()
+            preferencesHelper.putBoolean("123",true)
         }
     }
 

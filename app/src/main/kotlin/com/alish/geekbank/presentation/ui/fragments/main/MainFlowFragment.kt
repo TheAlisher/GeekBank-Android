@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
@@ -40,11 +41,6 @@ class MainFlowFragment :
                 R.id.scannerFragment,
                 -> {
                     whetherToShow(false)
-                }
-                R.id.profileFragment -> {
-                    if (preferenceHelper.isShown()) {
-
-                    }
                 }
                 else -> {
                     whetherToShow(true)
@@ -112,7 +108,12 @@ class MainFlowFragment :
     @SuppressLint("SetTextI18n")
     override fun onStart() {
         super.onStart()
-        navController.navigate(R.id.pinCodeFragment)
+        if (preferenceHelper.getBoolean("123")){
+            navController.navigate(R.id.profileFragment)
+        }else{
+            navController.navigate(R.id.pinCodeFragment)
+        }
+
     }
 
     override fun onStop() {

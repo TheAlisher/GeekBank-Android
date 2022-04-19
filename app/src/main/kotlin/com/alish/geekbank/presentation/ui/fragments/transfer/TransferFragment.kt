@@ -1,5 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.transfer
 
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -15,6 +16,7 @@ import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentTransferBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.TransferModel
 import com.alish.geekbank.presentation.state.UIState
@@ -161,4 +163,5 @@ class TransferFragment :
         return curentDate
 
     }
+
 }

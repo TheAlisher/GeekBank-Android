@@ -84,6 +84,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
 
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.2")
+    implementation("com.google.firebase:firebase-storage:19.1.1")
     kapt(Dependencies.Hilt.compiler)
 
     implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")

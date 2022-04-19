@@ -6,12 +6,15 @@ import com.alish.geekbank.data.repositories.base.BaseRepository
 import com.alish.geekbank.domain.models.firestore.UsersModel
 import com.alish.geekbank.domain.repositories.firestore.ProfileRepository
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
     private val firestore: FirebaseFirestore,
-    private val preferencesHelper: PreferencesHelper
+    private val preferencesHelper: PreferencesHelper,
+    private val storage: FirebaseStorage
 ) : ProfileRepository,BaseRepository() {
 
     private val userCollection = firestore.collection(Constants.COLLECTION_USERS)

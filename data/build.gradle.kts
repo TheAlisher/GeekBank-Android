@@ -48,6 +48,7 @@ dependencies {
     // Room
     api(Dependencies.Room.runtime)
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
+    implementation("com.google.firebase:firebase-storage-ktx:20.0.1")
     ksp(Dependencies.Room.compiler)
     implementation(Dependencies.Room.supportKotlinExtensionsAndCoroutines)
 

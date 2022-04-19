@@ -58,4 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         navController.graph = graph
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        preferenceHelper.putBoolean("123",false)
+    }
 }
