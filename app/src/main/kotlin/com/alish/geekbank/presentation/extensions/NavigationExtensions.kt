@@ -6,6 +6,7 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.alish.geekbank.R
 
@@ -24,3 +25,12 @@ fun Fragment.overrideOnBackPressed(onBackPressed: OnBackPressedCallback.() -> Un
 }
 
 fun Fragment.mainNavController() = requireActivity().findNavController(R.id.nav_host_fragment)
+
+fun NavOptions.Builder.setAnimation(
+    enterAnim: Int,
+    popExitAnim: Int
+): NavOptions {
+    return this.setEnterAnim(enterAnim)
+        .setPopExitAnim(popExitAnim)
+        .build()
+}

@@ -11,34 +11,40 @@ class PreferencesHelper(context: Context) {
     private val preferences: SharedPreferences =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
+    fun clearField(value: String) {
+        preferences.edit().remove(value).apply()
+    }
 
     var pinCode: String?
         get() = preferences.getString("code", "")
         set(pasCode) = preferences.edit().putString("code", pasCode).apply()
 
-    fun putBoolean(key: String, value: Boolean) {
-        var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean(key, value)
+    var pinCodeSecond: String?
+        get() = preferences.getString("codeSecond", "")
+        set(pasCodeSecond) = preferences.edit().putString("codeSecond", pasCodeSecond).apply()
+
+    fun putBoolean(key: String,value:Boolean){
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean(key,value)
         editor.apply()
     }
 
-    fun putOnBoardBoolean() {
-        var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean("OnBoard", true).apply()
+    fun putOnBoardBoolean(){
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putBoolean("OnBoard",true).apply()
         editor.apply()
     }
 
-    fun getOnBoardBoolean(): Boolean {
-        return preferences.getBoolean("OnBoard", false)
+    fun getOnBoardBoolean():Boolean{
+        return preferences.getBoolean("OnBoard",false)
+    }
+    fun getBoolean(key: String):Boolean{
+        return preferences.getBoolean(key,false)
     }
 
-    fun getBoolean(key: String): Boolean {
-        return preferences.getBoolean(key, false)
-    }
-
-    fun putString(key: String, value: String) {
-        var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putString(key, value)
+    fun putString(key: String,value:String){
+        val editor: SharedPreferences.Editor = preferences.edit()
+        editor.putString(key,value)
         editor.apply()
     }
 
@@ -50,8 +56,8 @@ class PreferencesHelper(context: Context) {
         return preferences.getBoolean("onPinCode", false)
     }
 
-    fun getString(key: String): String? {
-        return preferences.getString(key, null)
+    fun getString(key: String):String?{
+        return preferences.getString(key,null)
     }
 
     fun isShown(): Boolean {

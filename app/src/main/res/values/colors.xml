@@ -17,6 +17,13 @@
     <color name="orange">#ff7d57</color>
     <color name="indicator_inactive">#80BFBFBF</color>
     <color name="brown">#513201</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#2336E6</color>
+    <color name="colorGreenDarker">#002626</color>
+    <color name="colorAccentAlpha_10">#1A95C623</color>
+    <color name="colorGreenDarkerAlpha_10">#1A002626</color>
+
     <color name="white_transparent">#73FBFFFF</color>
     <color name="eeirie_black">#1B1B1E</color>
     <color name="eeirie_black_transparent">#731B1B1E</color>

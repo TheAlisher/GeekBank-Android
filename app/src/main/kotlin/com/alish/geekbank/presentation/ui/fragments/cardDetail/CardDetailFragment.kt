@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -13,13 +14,12 @@ import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentCardDetailBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.HistoryModelUI
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
-import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
-
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -31,6 +31,9 @@ class CardDetailFragment :
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
+
+    private var navOptions: NavOptions.Builder? = null
+
     override val viewModel: CardDetailViewModel by viewModels()
     override val binding by viewBinding(FragmentCardDetailBinding::bind)
     private val cardDetailAdapter = CardDetailAdapter()
@@ -43,7 +46,8 @@ class CardDetailFragment :
 
     override fun initialize() = with(binding) {
         listRecycler.adapter = cardDetailAdapter
-        listRecycler.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        listRecycler.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         PagerSnapHelper().attachToRecyclerView(listRecycler)
         bottomSheetInclude.recycler.adapter = cardDetailListAdapter
@@ -57,7 +61,6 @@ class CardDetailFragment :
         setupBottomSheet()
         checkPosition()
     }
-
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
@@ -82,23 +85,45 @@ class CardDetailFragment :
 
     private fun setupAction() = with(binding) {
         buttonHorizontal.setOnClickListener {
-            findNavController().navigate(R.id.transferFragment)
+            findNavController().navigate(
+                R.id.transferFragment, null, NavOptions.Builder().setAnimation(
+                    R.anim.input_method_enter,
+                    R.anim.input_method_exit
+                )
+            )
         }
         buttonWallet.setOnClickListener {
-            findNavController().navigate(R.id.paymentsFragment)
+            findNavController().navigate(
+                R.id.paymentsFragment, null, NavOptions.Builder().setAnimation(
+                    R.anim.fade_in,
+                    R.anim.fade_out
+                )
+            )
         }
         buttonExchange.setOnClickListener {
-            findNavController().navigate(R.id.exchangeFragment)
+            findNavController().navigate(
+                R.id.exchangeFragment,
+                null, NavOptions.Builder().setAnimation(
+                    R.anim.dialog_enter,
+                    R.anim.dialog_exit
+                )
+            )
         }
         buttonQR.setOnClickListener {
             findNavController().navigate(R.id.scannerFragment)
         }
         buttonSettings.setOnClickListener {
-            findNavController().navigate(R.id.settingsFragment)
+            findNavController().navigate(
+                R.id.settingsFragment,
+                null, NavOptions.Builder().setAnimation(
+                    R.anim.dialog_enter,
+                    R.anim.dialog_exit
+                )
+            )
         }
-//        binding.imageArrow.setOnClickListener {
-//            findNavController().navigateUp()
-//        }
+        binding.imageArrow.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun setupSubscribes() {
@@ -136,7 +161,8 @@ class CardDetailFragment :
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val offset: Int = binding.listRecycler.computeHorizontalScrollOffset()
-                var position: Float = offset.toFloat() / (binding.listRecycler.getChildAt(0).measuredWidth).toFloat()
+                var position: Float =
+                    offset.toFloat() / (binding.listRecycler.getChildAt(0).measuredWidth).toFloat()
                 position += 0.5f
                 val postInt: Int = position.toInt()
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()
@@ -153,9 +179,6 @@ class CardDetailFragment :
             }
         })
     }
-
-
-
 
     private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {

@@ -154,5 +154,4 @@
         app:layout_constraintLeft_toRightOf="@id/name_card_text_extra"
         app:layout_constraintTop_toBottomOf="@id/data_card_text_extra" />
 
-
 </androidx.constraintlayout.motion.widget.MotionLayout>

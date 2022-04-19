@@ -6,10 +6,16 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.pincode.FirstFragment"
-        android:label="fragment_first"
-        tools:layout="@layout/fragment_first"></fragment>
+        android:id="@+id/pinCodeFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.pincode.PinCodeFragment"
+        android:label="fragment_pin_code"
+        tools:layout="@layout/fragment_pin_code">
+
+        <argument
+            android:name="fromSettings"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.HomeFragment"
@@ -17,7 +23,11 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailNews"
-            app:destination="@id/detailNews" />
+            app:destination="@id/detailNews"
+           />
+        <action
+            android:id="@+id/action_homeFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNews"
@@ -50,6 +60,9 @@
         <action
             android:id="@+id/action_cardFragment_to_cardDetailFragment"
             app:destination="@id/cardDetailFragment" />
+        <action
+            android:id="@+id/action_cardFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardDetailFragment"
@@ -94,7 +107,11 @@
         android:id="@+id/profileFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_firstFragment"
+            app:destination="@id/pinCodeFragment" />
+    </fragment>
     <dialog
         android:id="@+id/forgotPasswordDialogFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.pincode.ForgotPasswordDialogFragment"

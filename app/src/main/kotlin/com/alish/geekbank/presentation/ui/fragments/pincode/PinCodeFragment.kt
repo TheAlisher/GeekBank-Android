@@ -1,55 +1,63 @@
 package com.alish.geekbank.presentation.ui.fragments.pincode
 
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.util.Log
 import android.view.View
-import android.widget.Toast
+import android.view.animation.AnimationUtils
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
-import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
-import com.alish.geekbank.databinding.FragmentFirstBinding
+import com.alish.geekbank.databinding.FragmentPinCodeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.extensions.showToastShort
+import com.alish.geekbank.presentation.extensions.vibrateDevice
+import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.ui.fragments.biometricauthentication.AuthenticationError
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FirstFragment :
-    BaseFragment<BaseViewModel, FragmentFirstBinding>(R.layout.fragment_first),
+class PinCodeFragment :
+    BaseFragment<BaseViewModel, FragmentPinCodeBinding>(R.layout.fragment_pin_code),
     View.OnClickListener {
     override val viewModel: BaseViewModel by viewModels()
-    override val binding by viewBinding(FragmentFirstBinding::bind)
+    override val binding by viewBinding(FragmentPinCodeBinding::bind)
+    private val args by navArgs<PinCodeFragmentArgs>()
 
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var biometricManager: BiometricManager
 
-
     @Inject
     lateinit var preferences: PreferencesHelper
 
+    private var navOptions: NavOptions.Builder? = null
 
-    var number_list = ArrayList<String>()
-    var pasCode = ""
-    var num_1: String? = null
-    var num_2: String? = null
-    var num_3: String? = null
-    var num_4: String? = null
+
+    private var numberList = ArrayList<String>()
+    private var pasCode = ""
+    private var pasCode1 = ""
+    private var num1: String? = null
+    private var num2: String? = null
+    private var num3: String? = null
+    private var num4: String? = null
 
 
     override fun initialize() {
         if (preferences.pinCode?.length == 0) {
-            binding.title.text = Constants.CREATE
+            binding.title.text = getString(R.string.create_a_password)
+            binding.description.isVisible = false
+            binding.btnFingerprint.isVisible = false
         } else {
-            binding.title.text = Constants.ENTER
+            binding.title.text = getString(R.string.enter_your_password)
         }
         binding.btn01.setOnClickListener(this)
         binding.btn02.setOnClickListener(this)
@@ -68,61 +76,76 @@ class FirstFragment :
         checkBiometricFeatureState()
     }
 
+    private fun setupViews() {
+        if (args.fromSettings) {
+            binding.backPinCode.isVisible = true
+            binding.labelPinCode.isVisible = true
+            binding.btnFingerprint.isVisible = false
+            binding.description.isVisible = false
+            binding.title.text = getString(R.string.enter_your_current_pin_code)
+        }
+    }
+
+
     override fun setupListeners() {
+        binding.backPinCode.setOnClickListener {
+            findNavController().navigateUp()
+        }
         binding.description.setOnClickListener {
             findNavController().navigate(R.id.forgotPasswordDialogFragment)
         }
+        setupViews()
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.btn_01 -> {
-                number_list.add("1")
-                passNumber(number_list)
+                numberList.add("1")
+                passNumber(numberList)
             }
             R.id.btn_02 -> {
-                number_list.add("2")
-                passNumber(number_list)
+                numberList.add("2")
+                passNumber(numberList)
             }
             R.id.btn_03 -> {
-                number_list.add("3")
-                passNumber(number_list)
+                numberList.add("3")
+                passNumber(numberList)
             }
             R.id.btn_04 -> {
-                number_list.add("4")
-                passNumber(number_list)
+                numberList.add("4")
+                passNumber(numberList)
             }
             R.id.btn_05 -> {
-                number_list.add("5")
-                passNumber(number_list)
+                numberList.add("5")
+                passNumber(numberList)
             }
             R.id.btn_06 -> {
-                number_list.add("6")
-                passNumber(number_list)
+                numberList.add("6")
+                passNumber(numberList)
             }
             R.id.btn_07 -> {
-                number_list.add("7")
-                passNumber(number_list)
+                numberList.add("7")
+                passNumber(numberList)
             }
             R.id.btn_08 -> {
-                number_list.add("8")
-                passNumber(number_list)
+                numberList.add("8")
+                passNumber(numberList)
             }
             R.id.btn_09 -> {
-                number_list.add("9")
-                passNumber(number_list)
+                numberList.add("9")
+                passNumber(numberList)
             }
             R.id.btn_0 -> {
-                number_list.add("0")
-                passNumber(number_list)
+                numberList.add("0")
+                passNumber(numberList)
             }
             R.id.btn_clear -> onClear()
 
             R.id.btn_fingerprint -> {
                 if (isBiometricFeatureAvailable()) {
                     biometricPrompt.authenticate(buildBiometricPrompt())
-                }else{
-                    Toast.makeText(requireContext(), "fingerprint not registered", Toast.LENGTH_SHORT).show()
+                } else {
+                    showToastShort(getString(R.string.fingerprint_not_registered))
                 }
             }
         }
@@ -134,26 +157,23 @@ class FirstFragment :
         } else {
             when (number_list.size) {
                 1 -> {
-                    num_1 = number_list[0]
+                    num1 = number_list[0]
                     binding.viewOval1.setBackgroundResource(R.drawable.view_green_oval)
                 }
                 2 -> {
-                    num_2 = number_list[1]
+                    num2 = number_list[1]
                     binding.viewOval2.setBackgroundResource(R.drawable.view_green_oval)
                 }
                 3 -> {
-                    num_3 = number_list[2]
+                    num3 = number_list[2]
                     binding.viewOval3.setBackgroundResource(R.drawable.view_green_oval)
                 }
                 4 -> {
-                    num_4 = number_list[3]
+                    num4 = number_list[3]
                     binding.viewOval4.setBackgroundResource(R.drawable.view_green_oval)
-                    pasCode = num_1 + num_2 + num_3 + num_4
-
+                    pasCode = num1 + num2 + num3 + num4
                     if (preferences.pinCode?.length == 0) {
-                        binding.title.text = Constants.СONFIRM
-                        preferences.pinCode = pasCode
-                        onClear()
+                        creatingPinCode()
                     } else {
                         matchPassCode()
                     }
@@ -162,15 +182,50 @@ class FirstFragment :
         }
     }
 
-    private fun matchPassCode() {
-        if (preferences.pinCode == pasCode) {
-            findNavController().navigate(R.id.homeFragment)
-        } else {
-            Toast.makeText(requireContext(),
-                "PassCode dosen`t match please retry again!!!",
-                Toast.LENGTH_SHORT).show()
-            onClear()
 
+    private fun creatingPinCode() {
+        binding.title.text = getString(R.string.confirm_the_password)
+        preferences.pinCode = pasCode
+        onClear()
+    }
+
+    private fun matchPassCode() {
+        val animationBounce = AnimationUtils.loadAnimation(requireContext(), R.anim.bounce)
+        if (args.fromSettings) {
+            when {
+                (preferences.pinCode == pasCode) -> {
+                    binding.title.text = getString(R.string.create_a_password)
+                    onClear()
+                }
+
+                (binding.title.text == getString(R.string.create_a_password) && pasCode.length == 4) -> {
+                    binding.title.text = getString(R.string.confirm_the_password)
+                    onClear()
+                    pasCode1 = num1 + num2 + num3 + num4
+                }
+
+                (binding.title.text == getString(R.string.confirm_the_password) && pasCode == pasCode1) -> {
+                    preferences.pinCode = pasCode
+                    findNavController().navigate(R.id.homeFragment)
+                }
+                else -> {
+                    showToastShort(getString(R.string.not_match))
+                    onClear()
+                    vibrateDevice(requireContext())
+                    binding.viewOvals.startAnimation(animationBounce)
+                }
+            }
+
+
+        } else {
+            if (preferences.pinCode == pasCode) {
+                findNavController().navigate(R.id.homeFragment)
+            } else {
+                showToastShort(getString(R.string.does_not_match))
+                onClear()
+                vibrateDevice(requireContext())
+                binding.viewOvals.startAnimation(animationBounce)
+            }
         }
     }
 
@@ -183,7 +238,7 @@ class FirstFragment :
 
     private fun onClear() {
         passwordClear()
-        number_list.clear()
+        numberList.clear()
         pasCode = ""
     }
 
@@ -195,18 +250,21 @@ class FirstFragment :
 
     private fun checkBiometricFeatureState() {
         when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> setErrorNotice("Sorry. It seems your device has no biometric hardware")
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> setErrorNotice("Biometric features are currently unavailable.")
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> setErrorNotice("You have not registered any biometric credentials")
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> setErrorNotice(getString(R.string.no_biometric))
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> setErrorNotice(getString(R.string.biometric_features_are_currently_unavailable))
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> setErrorNotice(getString(R.string.not_registered_any_biometric_credentials))
             BiometricManager.BIOMETRIC_SUCCESS -> {}
+            BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> {}
+            BiometricManager.BIOMETRIC_ERROR_UNSUPPORTED -> {}
+            BiometricManager.BIOMETRIC_STATUS_UNKNOWN -> {}
         }
     }
 
     private fun buildBiometricPrompt(): BiometricPrompt.PromptInfo {
         return BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Verify your identity")
-            .setDescription("Confirm your identity so we can verify it's you")
-            .setNegativeButtonText("Cancel")
+            .setTitle(getString(R.string.verify_your_identity))
+            .setDescription(getString(R.string.сonfirm_your_identity))
+            .setNegativeButtonText(getString(R.string.cancel))
             .setConfirmationRequired(false) //Allows user to authenticate without performing an action, such as pressing a button, after their biometric credential is accepted.
             .build()
     }
@@ -237,6 +295,10 @@ class FirstFragment :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        overrideOnBackPressed { activity?.finish() }
+        if (!args.fromSettings) {
+            overrideOnBackPressed { activity?.finish() }
+        } else {
+            overrideOnBackPressed { findNavController().navigateUp() }
+        }
     }
 }
