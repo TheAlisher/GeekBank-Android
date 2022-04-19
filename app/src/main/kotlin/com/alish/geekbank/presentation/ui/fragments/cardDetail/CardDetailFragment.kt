@@ -96,9 +96,9 @@ class CardDetailFragment :
         buttonSettings.setOnClickListener {
             findNavController().navigate(R.id.settingsFragment)
         }
-        binding.imageArrow.setOnClickListener {
-            findNavController().navigateUp()
-        }
+//        binding.imageArrow.setOnClickListener {
+//            findNavController().navigateUp()
+//        }
     }
 
     override fun setupSubscribes() {

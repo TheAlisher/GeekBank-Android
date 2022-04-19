@@ -2,20 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment"
-    android:id="@+id/main_graph">
+    android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.pincode.FirstFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" >
-    </fragment>
+        tools:layout="@layout/fragment_first"></fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailNews"
             app:destination="@id/detailNews" />
@@ -24,7 +23,7 @@
         android:id="@+id/detailNews"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.allnews.detailnews.DetailNews"
         android:label="fragment_detail_news"
-        tools:layout="@layout/fragment_detail_news" >
+        tools:layout="@layout/fragment_detail_news">
         <argument
             android:name="model"
             app:argType="com.alish.geekbank.presentation.models.NewsModelUI" />
@@ -33,7 +32,7 @@
         android:id="@+id/allNews"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.allnews.AllNews"
         android:label="fragment_all_news"
-        tools:layout="@layout/fragment_all_news" >
+        tools:layout="@layout/fragment_all_news">
         <action
             android:id="@+id/action_allNews_to_detailNews"
             app:destination="@id/detailNews" />
@@ -47,7 +46,7 @@
         android:id="@+id/cardFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.home.cards.CardFragment"
         android:label="fragment_card"
-        tools:layout="@layout/fragment_card" >
+        tools:layout="@layout/fragment_card">
         <action
             android:id="@+id/action_cardFragment_to_cardDetailFragment"
             app:destination="@id/cardDetailFragment" />
@@ -56,7 +55,7 @@
         android:id="@+id/cardDetailFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.cardDetail.CardDetailFragment"
         android:label="fragment_card_detail"
-        tools:layout="@layout/fragment_card_detail" >
+        tools:layout="@layout/fragment_card_detail">
         <action
             android:id="@+id/action_cardDetailFragment_to_freezeDialogFragment"
             app:destination="@id/freezeDialogFragment" />
@@ -105,7 +104,7 @@
         android:id="@+id/freezeDialogFragment"
         android:name="com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment"
         android:label="fragment_freeze_dialog"
-        tools:layout="@layout/fragment_freeze_dialog" >
+        tools:layout="@layout/fragment_freeze_dialog">
         <argument
             android:name="cardNumber"
             app:argType="string" />
@@ -115,11 +114,6 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment"
         android:label="fragment_scanner"
         tools:layout="@layout/fragment_scanner" />
-    <dialog
-        android:id="@+id/themeDialogFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment"
-        android:label="fragment_theme_dialog"
-        tools:layout="@layout/fragment_theme_dialog" />
     <fragment
         android:id="@+id/changePassword"
         android:name="com.alish.geekbank.presentation.ui.fragments.changepass.ChangePassword"

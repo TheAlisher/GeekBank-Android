@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.ui.fragments.main.MainFlowFragment">
 
     <androidx.fragment.app.FragmentContainerView
@@ -22,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:backgroundTint="@color/black_matt"
+        android:backgroundTint="@color/bottom_sheet_color"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="0dp"
         app:fabCradleVerticalOffset="10dp">
@@ -37,7 +38,7 @@
             app:itemHorizontalTranslationEnabled="true"
             app:itemIconTint="@color/main_menu"
             app:itemRippleColor="@color/colorHint2"
-            app:itemTextColor="@color/white"
+            app:itemTextColor="@color/black"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_icon"
-        app:backgroundTint="@color/black_matt"
+        app:backgroundTint="@color/bottom_sheet_color"
         app:layout_anchor="@id/bottomAppBar"
         tools:ignore="ContentDescription" />
 

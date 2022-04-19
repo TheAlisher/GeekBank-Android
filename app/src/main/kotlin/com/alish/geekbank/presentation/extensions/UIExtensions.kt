@@ -24,7 +24,7 @@ fun ImageView.setImage(uri: String) {
     Glide.with(this)
         .load(uri)
         .circleCrop()
-        .error(R.drawable.placeholder)
+        .error(R.drawable.ic_placeholder)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }

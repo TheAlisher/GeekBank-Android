@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pattern1"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.pincode.FirstFragment">
 
@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@id/content_top"
         app:layout_constraintVertical_bias="1"
         android:layout_marginBottom="15dp"
-        android:textColor="#F3F3F3"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -83,32 +83,32 @@
               android:id="@+id/btn_01"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="1"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_02"
               android:layout_marginHorizontal="30dp"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="2"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_03"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="3"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
       </LinearLayout>
 
@@ -128,32 +128,32 @@
               android:id="@+id/btn_04"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="4"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_05"
               android:layout_marginHorizontal="30dp"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="5"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_06"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="6"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
       </LinearLayout>
 
@@ -173,32 +173,32 @@
               android:id="@+id/btn_07"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="7"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_08"
               android:layout_marginHorizontal="30dp"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="8"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_09"
               android:layout_width="75dp"
               android:layout_height="match_parent"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="9"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
       </LinearLayout>
 
@@ -226,11 +226,11 @@
               android:layout_width="75dp"
               android:layout_height="match_parent"
               android:layout_marginHorizontal="30dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="40dp"
               android:textSize="32sp"
               android:text="0"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <ImageButton
               android:id="@+id/btn_clear"
@@ -255,7 +255,7 @@
         app:layout_constraintBottom_toTopOf="@id/description_fingerprint"
         android:text="@string/forgot_password"
         app:layout_constraintTop_toBottomOf="@id/content_bottom"
-        android:textColor="#898585"
+        android:textColor="@color/text_hint"
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -267,7 +267,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description"
-        android:text="error"
+        android:text="@string/error"
         android:textColor="@color/red"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

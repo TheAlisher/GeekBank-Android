@@ -16,40 +16,42 @@ class PreferencesHelper(context: Context) {
         get() = preferences.getString("code", "")
         set(pasCode) = preferences.edit().putString("code", pasCode).apply()
 
-    fun putBoolean(key: String,value:Boolean){
+    fun putBoolean(key: String, value: Boolean) {
         var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean(key,value)
+        editor.putBoolean(key, value)
         editor.apply()
     }
 
-    fun putOnBoardBoolean(){
+    fun putOnBoardBoolean() {
         var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putBoolean("OnBoard",true).apply()
+        editor.putBoolean("OnBoard", true).apply()
         editor.apply()
     }
 
-    fun getOnBoardBoolean():Boolean{
-        return preferences.getBoolean("OnBoard",false)
-    }
-    fun getBoolean(key: String):Boolean{
-        return preferences.getBoolean(key,false)
+    fun getOnBoardBoolean(): Boolean {
+        return preferences.getBoolean("OnBoard", false)
     }
 
-    fun putString(key: String,value:String){
+    fun getBoolean(key: String): Boolean {
+        return preferences.getBoolean(key, false)
+    }
+
+    fun putString(key: String, value: String) {
         var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putString(key,value)
+        editor.putString(key, value)
         editor.apply()
     }
 
     fun onSaveOnPinCode() {
         preferences.edit().putBoolean("onPinCode", true).apply()
     }
+
     fun isShownPinCode(): Boolean {
         return preferences.getBoolean("onPinCode", false)
     }
 
-    fun getString(key: String):String?{
-        return preferences.getString(key,null)
+    fun getString(key: String): String? {
+        return preferences.getString(key, null)
     }
 
     fun isShown(): Boolean {
@@ -77,14 +79,6 @@ class PreferencesHelper(context: Context) {
 
     var darkMode = preferences.getInt(DARK_STATUS, 0)
         set(value) = preferences.edit().putInt(DARK_STATUS, value).apply()
-
-
-//    fun isNightModeOn(): Boolean {
-//        return preferences.getBoolean("NightMode", false)
-//    }
-//    fun editIsShown() {
-//       preferences.edit().putBoolean("NightMode",false).apply()
-//    }
 
 
 }

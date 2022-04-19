@@ -7,7 +7,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -19,7 +18,6 @@ import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
-import com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -32,6 +30,7 @@ class ProfileFragment :
     override val binding by viewBinding(FragmentProfileBinding::bind)
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
     private var uri: Uri? = null
+
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
@@ -60,7 +59,7 @@ class ProfileFragment :
         bottomSheetBehavior =
             BottomSheetBehavior.from(binding.bottomSheet2Include.bottomSheetLanguage)
         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_HIDDEN
-        if (preferencesHelper.getString(Constants.USER_CONDITION)=="neAdmin"){
+        if (preferencesHelper.getString(Constants.USER_CONDITION) == "neAdmin") {
             binding.containerForAdmins.visibility = View.GONE
         }
 
@@ -75,10 +74,10 @@ class ProfileFragment :
         }
         setupRussian()
         setupEnglish()
-        setupDialogTheme()
         changePassClick()
         setupEditProfile()
         clickImage()
+        setupTheme()
     }
 
     private fun changePassClick() {
@@ -90,7 +89,7 @@ class ProfileFragment :
 
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
-            when(it){
+            when (it) {
                 is UIState.Error -> {
 
                 }
@@ -102,11 +101,11 @@ class ProfileFragment :
                     binding.txtName.text = it.data?.name
 
 
-
                 }
             }
         }
     }
+
     private fun setupRussian() = with(binding) {
         bottomSheet2Include.containerRussianBottomSheet.setOnClickListener {
             setLocale(Localization.RUSSIAN)
@@ -119,10 +118,8 @@ class ProfileFragment :
         }
     }
 
-    private fun setupDialogTheme() {
-        binding.containerTheme.setOnClickListener {
-//            val dialog = ThemeDialogFragment()
-//            activity?.supportFragmentManager?.let { it1 -> dialog.show(it1, "theme") }
+    private fun setupTheme() = with(binding) {
+        containerTheme.setOnClickListener {
             chooseThemeDialog()
         }
     }

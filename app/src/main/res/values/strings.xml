@@ -65,6 +65,10 @@
     <string name="too_many_attempt">Too many attempt</string>
     <string name="choose_theme_text">Choose theme</string>
     <string name="foorgot">If you have forgotten your password, please log out of your account and log in again</string>
+    <string name="error">Error</string>
+    <string name="translations">Translations</string>
+    <string name="exchange_rates">Exchange rates</string>
+    <string name="settings_fragment">Settings Fragment</string>
     <string-array name="condition">
     <item>
         neAdmin

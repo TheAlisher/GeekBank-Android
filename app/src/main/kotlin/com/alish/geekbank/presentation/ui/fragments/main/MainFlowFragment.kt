@@ -2,6 +2,7 @@ package com.alish.geekbank.presentation.ui.fragments.main
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
 import androidx.core.view.isVisible
@@ -26,6 +27,7 @@ class MainFlowFragment :
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
+                R.id.create_card,
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
@@ -113,6 +115,15 @@ class MainFlowFragment :
     override fun onStart() {
         super.onStart()
         navController.navigate(R.id.firstFragment)
+//        if (!preferenceHelper.isShown()) {
+//            navController.navigate(R.id.pinCodeFragment)
+//        } else if (preferenceHelper.isShown() && navController.currentDestination == navController.findDestination(
+//                R.id.navigation_profile)
+//        ) {
+//            Toast.makeText(requireContext(), "Language changed", Toast.LENGTH_SHORT).show()
+//        } else {
+//            navController.navigate(R.id.inputPinCodeFragment)
+//        }
     }
 
     override fun onStop() {

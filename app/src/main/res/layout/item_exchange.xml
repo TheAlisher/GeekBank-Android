@@ -12,7 +12,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/airbnb"
+        android:src="@drawable/ic_iconvalyt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         tools:text="Airbnb"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/logo_airbnb"
@@ -47,7 +47,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginTop="15dp"
         tools:text="-53,100 KGS"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -66,5 +66,9 @@
     <string name="too_many_attempt">Слишком много попыток</string>
     <string name="choose_theme_text">Выберите тему</string>
     <string name="foorgot">Если вы забыли пароль, пожалуиста выйдите с аккаунта и зайдите снова</string>
+    <string name="error">Ошибка</string>
+    <string name="translations">Переводы</string>
+    <string name="exchange_rates">Курсы обмена</string>
+    <string name="settings_fragment">Окно Настройки</string>
 
 </resources>

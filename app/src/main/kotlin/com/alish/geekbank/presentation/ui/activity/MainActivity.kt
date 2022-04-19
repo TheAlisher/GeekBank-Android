@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var localHelper: LocalHelper
 
-
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
