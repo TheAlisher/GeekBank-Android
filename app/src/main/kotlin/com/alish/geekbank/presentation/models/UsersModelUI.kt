@@ -9,8 +9,9 @@ data class UsersModelUI(
     val name: String? = null,
     val surname: String? = null,
     val number: String? = null,
-    val condition: String? = null
+    val condition: String? = null,
+    val userImage: String? = null
 )
 
 fun UsersModel.toUsersModelUI(): UsersModelUI =
-    UsersModelUI(id, password, name, surname, number,condition)
+    UsersModelUI(id, password, name, surname, number,condition, userImage)
