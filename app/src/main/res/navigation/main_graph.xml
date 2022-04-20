@@ -93,7 +93,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.editProfile.EditProfileFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.editprofile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
