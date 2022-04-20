@@ -13,15 +13,54 @@
         android:background="@color/black"
         tools:context=".presentation.ui.fragments.profile.ProfileFragment">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidLine2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_bottom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.21" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/horizontal_guid_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.045" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_placeholder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="58dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:src="@drawable/placeholder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_bottom"
+            app:layout_constraintEnd_toEndOf="@id/guidLine2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toTopOf="@id/horizontal_guid_top"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_bottom"
+                app:layout_constraintEnd_toEndOf="@id/guidLine2"
+                app:layout_constraintStart_toStartOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="@id/horizontal_guid_top"/>
+
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_edit"
