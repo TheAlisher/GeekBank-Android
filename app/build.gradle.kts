@@ -84,6 +84,12 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
 
     implementation("com.google.firebase:firebase-firestore-ktx:24.0.2")
+
+    // Import the BoM for the Firebase platform
+    implementation( platform("com.google.firebase:firebase-bom:28.4.0"))
+
+    // Firebase Storage
+    implementation("com.google.firebase:firebase-storage-ktx:20.0.1")
     kapt(Dependencies.Hilt.compiler)
 
     implementation("androidx.viewpager2:viewpager2:1.1.0-beta01")
@@ -105,7 +111,7 @@ dependencies {
     implementation("io.coil-kt:coil:1.3.2")
 
     //Map
-    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+    implementation("com.google.android.gms:play-services-maps:18.0.2")
 
 
     implementation("com.google.android.gms:play-services-maps:18.0.2")
