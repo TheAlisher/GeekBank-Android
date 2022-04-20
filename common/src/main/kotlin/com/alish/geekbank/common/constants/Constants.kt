@@ -21,6 +21,7 @@ object Constants {
     const val COLLECTION_CARDS = "cards"
     const val COLLECTION_USERS = "users"
     const val COLLECTION_HISTORY = "history"
+    const val CHANGE_LANGUAGE = "language"
 
 
 
