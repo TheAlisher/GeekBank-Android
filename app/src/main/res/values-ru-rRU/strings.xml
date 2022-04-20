@@ -66,5 +66,7 @@
     <string name="fingerprint_not_registered">Отпечаток пальца не зарегистрирован</string>
     <string name="enter_your_current_pin_code">ВВЕДИТЕ ВАШ ТЕКУЩИЙ ПИН-КОД</string>
     <string name="confirm_the_password">Подтвердите пароль</string>
+    <string name="language_changet">Язык изменен</string>
+
 
 </resources>
