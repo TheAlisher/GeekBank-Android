@@ -4,12 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -19,7 +18,7 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
-
+import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
@@ -29,7 +28,6 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
-import com.alish.geekbank.presentation.ui.fragments.freezeCard.FreezeDialogFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
@@ -47,7 +45,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
-
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
@@ -87,7 +84,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         clickForQrScanner()
         clickForExchange()
         setupAction()
-        setupDialog()
         setupBottomSheet()
     }
 
@@ -108,7 +104,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
-        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 2
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
@@ -133,7 +129,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
-
     private fun clickForSeeFullMap() {
         binding.bottomSheetInclude.txtShowAllMap.setOnClickListener {
             findNavController().navigate(R.id.mapFull)
@@ -154,19 +149,46 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     }
 
     private fun setupAction() = with(binding) {
-        buttonHorizontal.setOnClickListener {
-            findNavController().navigate(R.id.transferFragment)
-        }
         buttonWallet.setOnClickListener {
-            findNavController().navigate(R.id.paymentsFragment)
+            findNavController().navigate(
+                R.id.paymentsFragment, null, NavOptions.Builder().setAnimation(
+                    R.anim.fade_in,
+                    R.anim.fade_out
+                )
+            )
         }
         buttonExchange.setOnClickListener {
-            findNavController().navigate(R.id.exchangeFragment)
+            findNavController().navigate(
+                R.id.exchangeFragment, null, NavOptions.Builder().setAnimation(
+                    R.anim.popup_enter_material,
+                    R.anim.popup_exit_material
+                )
+            )
         }
     }
 
     @SuppressLint("SetTextI18n")
     override fun setupRequests() {
+        viewModel.stateCard.collectUIState() {
+            when (it) {
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
+                is UIState.Success -> {
+
+                    binding.tvCash.text = it.data[0]?.money.toString()
+
+                    binding.bottomSheetInclude.numberCard.text =
+                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
+                            it.data[0]?.cardNumber.toString().length - 4
+                        )
+                    binding.bottomSheetInclude.qrView.setImageBitmap(
+                        generateQrCode(
+                            cardNumber = it.data[0]?.cardNumber.toString()
+                        )
+                    )
+                }
+            }
+        }
 
         viewModel.newsState.collectUIState {
             when (it) {
@@ -215,7 +237,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
                                 }
                             }
-
                         }
                 }
             }
@@ -262,15 +283,15 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
     }
 
-        override fun onMapReady(map: GoogleMap) {
-            MapsInitializer.initialize(requireContext())
-            googleMap = map
+    override fun onMapReady(map: GoogleMap) {
+        MapsInitializer.initialize(requireContext())
+        googleMap = map
 
-            val geekTech = LatLng(42.813358, 73.845158)
-            val bizone = LatLng(42.816208, 73.844670)
-            val geekTech1 = LatLng(42.813351, 73.845718)
-            val geekTech2 = LatLng(42.813036, 73.845793)
-            val geekTech3 = LatLng(42.814240, 73.845375)
+        val geekTech = LatLng(42.813358, 73.845158)
+        val bizone = LatLng(42.816208, 73.844670)
+        val geekTech1 = LatLng(42.813351, 73.845718)
+        val geekTech2 = LatLng(42.813036, 73.845793)
+        val geekTech3 = LatLng(42.814240, 73.845375)
 
         googleMap.addMarker(MarkerOptions().position(geekTech).title("GeekTech"))
         googleMap.addMarker(MarkerOptions().position(bizone).title("Bizone"))
@@ -297,14 +318,4 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
         return bitmap
     }
-
-        private fun setupDialog() {
-            binding.buttonFreezeCard.setOnClickListener {
-                val dialog = FreezeDialogFragment()
-                fragmentManager?.let { it1 -> dialog.show(it1, "freezeDialog") }
-            }
-        }
-
-
-    }
-
+}

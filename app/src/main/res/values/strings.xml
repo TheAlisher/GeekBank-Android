@@ -77,4 +77,10 @@
         Admin
     </item>
     </string-array>
+
+    <!-- OnBoarding -->
+    <string name="title_on_boarding_first_slide">Fast recording of expenses and payments</string>
+    <string name="title_on_boarding_second_slide">Transfer without commission</string>
+    <string name="title_on_boarding_third_slide">Quick card issuance</string>
+    <string name="title_button_get_started">Get Started</string>
 </resources>

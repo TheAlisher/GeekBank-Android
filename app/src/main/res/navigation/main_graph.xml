@@ -23,7 +23,11 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailNews"
-            app:destination="@id/detailNews" />
+            app:destination="@id/detailNews"
+           />
+        <action
+            android:id="@+id/action_homeFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailNews"
@@ -56,6 +60,9 @@
         <action
             android:id="@+id/action_cardFragment_to_cardDetailFragment"
             app:destination="@id/cardDetailFragment" />
+        <action
+            android:id="@+id/action_cardFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardDetailFragment"

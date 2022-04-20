@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    app:layoutDescription="@xml/onboarding_scene">
+
+    <ImageView
+        android:id="@+id/baloon"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="350dp"
+        android:src="@drawable/blue_solid_dot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/baloon2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/orange_solid_dot" />
+
+    <ImageView
+        android:id="@+id/baloon3"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/purple_solid_dot" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/car_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_track" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_view_first"
+        style="@style/OnBoardingTitle"
+        android:text="@string/title_on_boarding_first_slide" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/car_vin_code_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_enjoy" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_view_second"
+        style="@style/OnBoardingTitle"
+        android:text="@string/title_on_boarding_second_slide" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/order_box_view"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_transaction"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_view_third"
+        style="@style/OnBoardingTitle"
+        android:text="@string/title_on_boarding_third_slide" />
+
+    <View
+        android:id="@+id/indicator_view_first"
+        android:layout_width="@dimen/spacing_medium"
+        android:layout_height="@dimen/spacing_medium"
+        android:background="@drawable/background_indicator_disabled" />
+
+    <View
+        android:id="@+id/indicator_view_second"
+        android:layout_width="@dimen/spacing_medium"
+        android:layout_height="@dimen/spacing_medium"
+        android:background="@drawable/background_indicator_disabled" />
+
+    <View
+        android:id="@+id/indicator_view_third"
+        android:layout_width="@dimen/spacing_medium"
+        android:layout_height="@dimen/spacing_medium"
+        android:background="@drawable/background_indicator_disabled" />
+
+    <View
+        android:id="@+id/indicator_view_active"
+        android:layout_width="@dimen/spacing_medium"
+        android:layout_height="@dimen/spacing_medium"
+        android:background="@drawable/background_indicator_enabled" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_get_started"
+        android:text="@string/title_button_get_started"
+        style="@style/OnBoarding.Button" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

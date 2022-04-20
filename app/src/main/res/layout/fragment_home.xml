@@ -7,7 +7,6 @@
     android:background="@drawable/pattern1"
     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
-
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/motionLayout"
             android:layout_width="match_parent"
@@ -36,7 +35,6 @@
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cash" />
-
 
             <ImageView
                 android:id="@+id/iv_second"
@@ -108,28 +106,29 @@
                 app:layout_constraintTop_toBottomOf="@id/data_card_text" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_horizontal"
+                android:id="@+id/buttonQR"
                 android:layout_width="75dp"
                 android:layout_height="60dp"
                 android:background="@drawable/button_gradient"
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp"
-                app:icon="@drawable/arrowshorizontal"
-                app:iconGravity="textStart"
+                app:icon="@drawable/qrcode"
                 app:iconPadding="0dp"
+                app:iconGravity="textStart"
+                app:layout_constraintTop_toBottomOf="@id/guidelinetop"
                 app:layout_constraintLeft_toLeftOf="@id/guidelineleft"
-                app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
+                />
 
-            <TextView
-                android:id="@+id/txt_transfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Transfer"
-                android:textColorHint="#8E8E93"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@id/button_horizontal"
-                app:layout_constraintStart_toStartOf="@id/button_horizontal"
-                app:layout_constraintTop_toBottomOf="@id/button_horizontal" />
+    <TextView
+        android:id="@+id/txt_QR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="QR"
+        android:textColorHint="#8E8E93"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="@id/buttonQR"
+        app:layout_constraintRight_toRightOf="@id/buttonQR"
+        app:layout_constraintTop_toBottomOf="@id/buttonQR" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_wallet"
@@ -138,11 +137,11 @@
                 android:background="@drawable/button_gradient"
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp"
+                app:iconPadding="0dp"
                 app:icon="@drawable/wallet"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
                 app:layout_constraintEnd_toStartOf="@id/button_exchange"
-                app:layout_constraintStart_toEndOf="@id/button_horizontal"
+                app:layout_constraintStart_toEndOf="@id/buttonQR"
                 app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
             <TextView
@@ -163,9 +162,9 @@
                 android:background="@drawable/button_gradient"
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp"
+                app:iconPadding="0dp"
                 app:icon="@drawable/currency"
                 app:iconGravity="textStart"
-                app:iconPadding="0dp"
                 app:layout_constraintRight_toRightOf="@id/guidelineright"
                 app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
@@ -180,85 +179,13 @@
                 app:layout_constraintRight_toRightOf="@id/button_exchange"
                 app:layout_constraintTop_toBottomOf="@id/button_exchange" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonQR"
-                android:layout_width="75dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_gradient"
-                app:backgroundTint="@null"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/qrcode"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toTopOf="@id/txt_QR"
-                app:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
-
-            <TextView
-                android:id="@+id/txt_QR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="QR"
-                android:textColorHint="#8E8E93"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@id/guidelinebottom"
-                app:layout_constraintLeft_toLeftOf="@id/buttonQR"
-                app:layout_constraintRight_toRightOf="@id/buttonQR" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_freeze_card"
-                android:layout_width="75dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_gradient"
-                app:backgroundTint="@null"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/snowflake"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toTopOf="@id/txt_freeze_card"
-                app:layout_constraintLeft_toLeftOf="@id/buttonQR"
-                app:layout_constraintRight_toRightOf="@id/button_settings" />
-
-            <TextView
-                android:id="@+id/txt_freeze_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Freeze Card"
-                android:textColorHint="#8E8E93"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@id/guidelinebottom"
-                app:layout_constraintLeft_toLeftOf="@id/button_freeze_card"
-                app:layout_constraintRight_toRightOf="@id/button_freeze_card" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_settings"
-                android:layout_width="75dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_gradient"
-                app:backgroundTint="@null"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/settingsadjust"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:layout_constraintBottom_toTopOf="@id/txt_settings"
-                app:layout_constraintRight_toRightOf="@id/guidelineright" />
-
-            <TextView
-                android:id="@+id/txt_settings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Settings"
-                android:textColorHint="#8E8E93"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@id/guidelinebottom"
-                app:layout_constraintLeft_toLeftOf="@id/button_settings"
-                app:layout_constraintRight_toRightOf="@id/button_settings" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelinetop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.38" />
+                app:layout_constraintGuide_percent="0.35" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineright"
@@ -272,26 +199,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.10" />
+                app:layout_constraintGuide_percent="0.10"
+                />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelinebottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.60" />
-
+                app:layout_constraintGuide_percent="0.50"/>
 
         </androidx.constraintlayout.motion.widget.MotionLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <include
             android:id="@+id/bottom_sheet_include"
-            layout="@layout/bottom_sheet_home"/>
+            layout="@layout/bottom_sheet_home" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

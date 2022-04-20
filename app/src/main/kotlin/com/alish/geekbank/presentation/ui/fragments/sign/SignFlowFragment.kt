@@ -19,7 +19,7 @@ class SignFlowFragment :
 
     override fun setupNavigation() {
         if (!preferenceSign.getOnBoardBoolean()) {
-            navController.navigate(R.id.mainOnBoardingFragment)
+            navController.navigate(R.id.onBoardingFragment)
         } else {
             navController.navigate(R.id.signInFragment)
         }
