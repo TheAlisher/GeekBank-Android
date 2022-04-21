@@ -1,7 +1,11 @@
 package com.alish.geekbank.presentation.ui.fragments.main
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
+import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
 import androidx.core.view.forEach
@@ -13,6 +17,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
+import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FlowFragmentMainBinding
 import com.alish.geekbank.presentation.base.BaseFlowFragment
@@ -47,9 +52,7 @@ class MainFlowFragment :
                     whetherToShow(false)
                 }
                 R.id.profileFragment -> {
-                    if (preferenceHelper.isShown()) {
 
-                    }
                 }
                 else -> {
                     whetherToShow(true)
@@ -60,6 +63,14 @@ class MainFlowFragment :
             binding.bottomNavigationView.menu.getItem(2).isEnabled = false
         }
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+
+        if (!preferenceHelper.isChange) {
+            navController.navigate(R.id.pinCodeFragment)
+        } else if (preferenceHelper.isChange && navController.currentDestination == navController.findDestination(R.id.profileFragment)) {
+            Log.d("PinCodeFragment", "setupNavigation: ")
+        } else {
+            navController.navigate(R.id.pinCodeFragment)
+        }
     }
 
     override fun setUpListeners() {
@@ -112,18 +123,16 @@ class MainFlowFragment :
         binding.fabView.isVisible = b
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onStart() {
-        super.onStart()
-        navController.navigate(R.id.pinCodeFragment)
-    }
 
     override fun onStop() {
+        Log.d("Fragment1", "onStop")
         super.onStop()
         val editor =
             this.requireActivity().getSharedPreferences("PASS_CODE", AppCompatActivity.MODE_PRIVATE)
                 .edit()
         editor.putBoolean("is_pass", false)
         editor.apply()
+
     }
+
 }
