@@ -51,7 +51,8 @@ class SignInFragment : BaseFragment<SignInViewModel, FragmentSignInBinding>(
                                 preferencesHelper.putString(Constants.USER_CONDITION,
                                     data.condition!!
                                 )
-                                preferencesHelper.putBoolean(Constants.IS_AUTHORIZED,true)
+                                preferencesHelper.userID = data.id
+                                preferencesHelper.putBoolean(Constants.IS_AUTHORIZED, true)
                                 mainNavController().navigate(R.id.mainFlowFragment)
 
                         }

@@ -92,4 +92,13 @@ object Dependencies {
         const val runtime = "androidx.paging:paging-runtime-ktx:$version"
     }
 
+    object Firebase {
+        private const val version = "24.0.2"
+
+        const val bom = "com.google.firebase:firebase-bom:29.3.0"
+        const val storage = "com.google.firebase:firebase-storage-ktx:20.0.1"
+        const val gms = "com.google.android.gms:play-services-tasks:18.0.1"
+        const val database = "com.google.firebase:firebase-firestore-ktx"
+    }
+
 }

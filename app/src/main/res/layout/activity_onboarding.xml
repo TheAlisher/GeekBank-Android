@@ -52,6 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/title_view_first"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         style="@style/OnBoardingTitle"
         android:text="@string/title_on_boarding_first_slide" />
 
@@ -65,6 +67,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/title_view_second"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         style="@style/OnBoardingTitle"
         android:text="@string/title_on_boarding_second_slide" />
 
@@ -78,6 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/title_view_third"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         style="@style/OnBoardingTitle"
         android:text="@string/title_on_boarding_third_slide" />
 
@@ -110,5 +116,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_get_started"
         android:text="@string/title_button_get_started"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         style="@style/OnBoarding.Button" />
 </androidx.constraintlayout.motion.widget.MotionLayout>
