@@ -207,6 +207,7 @@ class PinCodeFragment :
                 (binding.title.text == getString(R.string.confirm_the_password) && pasCode == pasCode1) -> {
                     preferences.pinCode = pasCode
                     findNavController().navigate(R.id.homeFragment)
+                   // preferences.putOnPinCode(true)
                 }
                 else -> {
                     showToastShort(getString(R.string.not_match))
@@ -220,6 +221,7 @@ class PinCodeFragment :
         } else {
             if (preferences.pinCode == pasCode) {
                 findNavController().navigate(R.id.homeFragment)
+                //preferences.putOnPinCode(true)
             } else {
                 showToastShort(getString(R.string.does_not_match))
                 onClear()
@@ -277,6 +279,7 @@ class PinCodeFragment :
         override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
             super.onAuthenticationSucceeded(result)
             findNavController().navigate(R.id.homeFragment)
+            //preferences.putOnPinCode(true)
         }
 
         override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
