@@ -1,9 +1,11 @@
 package com.alish.geekbank.presentation.extensions
 
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.StringRes
@@ -11,7 +13,11 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.alish.geekbank.R
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 
 
 // region Fragment
@@ -20,25 +26,50 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
  * Fragment Extensions
  */
 
-fun ImageView.setImage(uri: String) {
+fun ImageView.setImage(uri: String, progressBar: ProgressBar? = null) {
     Glide.with(this)
         .load(uri)
+        .listener(object : RequestListener<Drawable?> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable?>?,
+                isFirstResource: Boolean,
+            ): Boolean {
+                progressBar?.visibility = View.GONE
+                return false
+            }
+
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable?>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean,
+            ): Boolean {
+                progressBar?.visibility = View.GONE
+                return false
+            }
+
+        })
         .circleCrop()
         .error(R.drawable.placeholder)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }
-fun EditText.check():Boolean{
+
+fun EditText.check(): Boolean {
     return this.text.toString().trim() != ""
 }
+
 fun EditText.textGet(): String {
     return this.text.toString().trim()
 }
 
-fun String.checkLength(): String{
-    return if (this.length < 2){
+fun String.checkLength(): String {
+    return if (this.length < 2) {
         "0$this"
-    }else{
+    } else {
         this
     }
 }
