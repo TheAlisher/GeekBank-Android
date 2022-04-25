@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alish.geekbank.databinding.ItemCardListBinding
 import com.alish.geekbank.presentation.base.BaseComparatorCard
 import com.alish.geekbank.presentation.models.CardModelUI
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import javax.inject.Inject
+import kotlin.coroutines.coroutineContext
 
 
-class CardDetailAdapter :
+class CardDetailAdapter () :
     ListAdapter<CardModelUI, CardDetailAdapter.CardViewHolder>(BaseComparatorCard()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {

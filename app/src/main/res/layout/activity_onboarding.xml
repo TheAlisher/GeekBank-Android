@@ -49,8 +49,6 @@
         android:src="@drawable/ic_track" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/title_view_first"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -64,8 +62,6 @@
         android:src="@drawable/ic_enjoy" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/title_view_second"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -79,8 +75,6 @@
         android:src="@drawable/ic_transaction"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/title_view_third"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -112,8 +106,6 @@
         android:background="@drawable/background_indicator_enabled" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/button_get_started"
         android:text="@string/title_button_get_started"
         android:layout_width="50dp"

@@ -146,6 +146,7 @@ class CardDetailFragment :
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
+                    if (cardDetailListAdapter.currentList.size == 0 ){
                     historyList.addAll(it.data)
                     val filteredList = ArrayList<HistoryModelUI>()
                     historyList.forEach {
@@ -156,6 +157,7 @@ class CardDetailFragment :
                     }
                     cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data.dateTime })
 
+                }
                 }
             }
         }

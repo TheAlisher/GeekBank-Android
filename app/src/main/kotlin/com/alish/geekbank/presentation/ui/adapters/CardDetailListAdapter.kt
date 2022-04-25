@@ -45,6 +45,7 @@ class CardDetailListAdapter : ListAdapter<HistoryModelUI, RecyclerView.ViewHolde
     }
 
     override fun getItemViewType(position: Int): Int {
+
         return when (getItem(position).condition) {
             "plus" -> {
                 R.layout.item_transfer_plus
