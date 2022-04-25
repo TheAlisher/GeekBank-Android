@@ -45,7 +45,7 @@
             android:id="@+id/image_placeholder"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/placeholder"
+            tools:src="@drawable/placeholder"
             app:layout_constraintBottom_toBottomOf="@id/horizontal_guid_bottom"
             app:layout_constraintEnd_toEndOf="@id/guidLine2"
             app:layout_constraintStart_toStartOf="@id/guideline1"
