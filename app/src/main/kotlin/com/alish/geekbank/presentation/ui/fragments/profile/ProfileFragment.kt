@@ -1,10 +1,8 @@
 package com.alish.geekbank.presentation.ui.fragments.profile
 
-import android.Manifest
 import android.net.Uri
 import android.util.Log
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -17,15 +15,12 @@ import com.alish.geekbank.data.local.preferences.Localization
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
-import com.alish.geekbank.presentation.extensions.compressJPEG
-import com.alish.geekbank.presentation.extensions.hasPermissionCheckAndRequest
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -93,22 +88,21 @@ class ProfileFragment :
 
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
-            binding.progressBarEdit.isVisible = it is UIState.Loading
+            binding.imagePlaceholder.isVisible = it !is UIState.Loading
             when (it) {
                 is UIState.Error -> {
 
                 }
                 is UIState.Loading -> {
-                    binding.imagePlaceholder.isVisible = false
                 }
                 is UIState.Success -> {
-                    binding.imagePlaceholder.isVisible = true
                     binding.txtName.text = it.data?.name
                     lifecycleScope.launch {
                         viewModel.downloadProfileImage(preferencesHelper.userID.toString())
                             ?.let { image ->
                                 binding.imagePlaceholder.setImage(
-                                    image
+                                    image,
+                                    binding.progressBarEdit
                                 )
                             }
                     }
