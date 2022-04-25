@@ -45,4 +45,11 @@
     <color name="purple">#4D0EFF</color>
     <color name="pink">#E71B40</color>
 
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#2336E6</color>
+    <color name="colorGreenDarker">#002626</color>
+    <color name="colorAccentAlpha_10">#1A95C623</color>
+    <color name="colorGreenDarkerAlpha_10">#1A002626</color>
+
 </resources>
