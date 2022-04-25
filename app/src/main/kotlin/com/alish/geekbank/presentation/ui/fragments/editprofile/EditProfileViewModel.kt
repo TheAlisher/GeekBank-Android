@@ -16,6 +16,8 @@ import javax.inject.Inject
 class EditProfileViewModel @Inject constructor(
     private val updateAccountUseCase: UpdateAccountUseCase,
     private val fetchUserDataUseCase: FetchUserDataUseCase,
+    private val uploadEditProfileImageUseCase: UploadEditProfileImageUseCase  ,
+    private val downloadEditProfileImageUseCase: DownloadEditProfileImageUseCase
 ) : BaseViewModel() {
 
     private val _stateUser =
@@ -38,4 +40,16 @@ class EditProfileViewModel @Inject constructor(
         user["number"] = number
         updateAccountUseCase.updateAccount(user)
     }
+
+    suspend fun uploadEditProfileImage(file: ByteArray?, id: String) =
+        uploadEditProfileImageUseCase.uploadProfileImage(file, id)
+
+    suspend fun downloadEditProfileImage(id: String) =
+        downloadEditProfileImageUseCase.downloadEditProfileImage(id)
+
+//    suspend fun uploadProfileImage(file: ByteArray?, id: String) =
+//        uploadProfileImageUseCase.uploadProfileImage(file, id)
+
+//    suspend fun downloadProfileImage(id: String) =
+//        downloadProfileImageUseCase.downloadProfileImage(id)
 }

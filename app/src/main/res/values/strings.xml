@@ -80,6 +80,8 @@
     <string name="fingerprint_not_registered">Fingerprint not registered</string>
     <string name="enter_your_current_pin_code">ENTER YOUR CURRENT PIN CODE</string>
     <string name="confirm_the_password">Confirm the password</string>
+    <string name="language_changet">Language changed</string>
+
     <string-array name="condition">
     <item>
         neAdmin

@@ -2,12 +2,15 @@ package com.alish.geekbank.presentation.ui.fragments.profile
 
 import android.Manifest
 import android.net.Uri
+import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
@@ -18,8 +21,10 @@ import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
+import com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,24 +39,12 @@ class ProfileFragment :
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { isGranted ->
-        for (permission in isGranted) {
-            when {
-                permission.value -> fileChooserContract.launch("image/*")
-                !shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE) -> {
-//                    permissionMessage()
-                }
-            }
-        }
-    }
 
     private fun setLocale(locale: Localization) {
         if (preferencesHelper.getLanguageCode() != locale.languageCode) {
             preferencesHelper.setLocale(locale)
+            preferencesHelper.isChange = true
             activity?.recreate()
-            preferencesHelper.isShown()
         }
     }
 
@@ -76,8 +69,16 @@ class ProfileFragment :
         setupEnglish()
         changePassClick()
         setupEditProfile()
-        clickImage()
         setupTheme()
+        setupChangePinCode()
+    }
+
+    private fun setupChangePinCode() {
+        binding.containerPinCode.setOnClickListener {
+            findNavController().navigate(
+                ProfileFragmentDirections.actionProfileFragmentToFirstFragment(true)
+            )
+        }
     }
 
     private fun changePassClick() {
@@ -89,21 +90,47 @@ class ProfileFragment :
 
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
+            binding.imagePlaceholder.isVisible = it !is UIState.Loading
             when (it) {
                 is UIState.Error -> {
 
                 }
                 is UIState.Loading -> {
-
                 }
                 is UIState.Success -> {
-
                     binding.txtName.text = it.data?.name
-
-
+                    lifecycleScope.launch {
+                        viewModel.downloadProfileImage(preferencesHelper.userID.toString())
+                            ?.let { image ->
+                                binding.imagePlaceholder.setImage(
+                                    image,
+                                    binding.progressBarEdit
+                                )
+                            }
+                    }
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.e("lifecycle", "start")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("lifecycle", "resume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e("lifecycle", "pause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.e("lifecycle", "stop")
     }
 
     private fun setupRussian() = with(binding) {
@@ -161,25 +188,4 @@ class ProfileFragment :
             findNavController().navigate(R.id.editProfileFragment)
         }
     }
-
-    private fun clickImage() {
-        binding.imagePlaceholder.setOnClickListener {
-//            if (hasPermissionCheckAndRequest(
-//                    requestPermissionLauncher,
-//                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-//                )
-//            ) {
-//                fileChooserContract.launch("image/*")
-//            }
-            fileChooserContract.launch("image/*")
-        }
-    }
-
-    private val fileChooserContract =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
-            if (imageUri != null) {
-                binding.imagePlaceholder.setImage(imageUri.toString())
-                uri = imageUri
-            }
-        }
 }

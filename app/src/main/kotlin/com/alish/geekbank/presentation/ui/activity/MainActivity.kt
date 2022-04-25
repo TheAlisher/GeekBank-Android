@@ -1,10 +1,12 @@
 package com.alish.geekbank.presentation.ui.activity
 
+import android.os.Build
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
@@ -12,9 +14,8 @@ import com.alish.geekbank.data.local.preferences.LocalHelper
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import java.security.Provider
-import java.security.Security
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -36,9 +37,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         localHelper.loadLocale(this)
         isAuthorized = preferenceHelper.getBoolean(Constants.IS_AUTHORIZED)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w: Window = window // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
         setUpNavigation()
         checkTheme()
     }
+
+
     
 
     private fun setUpNavigation() {

@@ -1,23 +1,26 @@
-package com.alish.geekbank.presentation.ui.fragments.editProfile
+package com.alish.geekbank.presentation.ui.fragments.editprofile
 
 import android.Manifest
 import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
-import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentEditProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.compressJPEG
+import com.alish.geekbank.presentation.extensions.hasPermissionCheckAndRequest
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,7 +29,7 @@ class EditProfileFragment :
 
     override val viewModel: EditProfileViewModel by viewModels()
     override val binding by viewBinding(FragmentEditProfileBinding::bind)
-    private var imageUri: Uri? = null
+    private var uri: Uri? = null
     private var image = ""
 
     @Inject
@@ -46,14 +49,13 @@ class EditProfileFragment :
     }
 
     private fun checkPermissionGallery() {
-//        if (hasPermissionCheckAndRequest(
-//                requestPermissionLauncher,
-//                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-//            )
-//        ) {
-//            fileChooserContract.launch("image/*")
-        //     }
-        fileChooserContract.launch("image/*")
+        if (hasPermissionCheckAndRequest(
+                requestPermissionLauncher,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+            )
+        ) {
+            fileChooserContract.launch("image/*")
+        }
     }
 
     override fun setupListeners() {
@@ -63,6 +65,7 @@ class EditProfileFragment :
 
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
+            binding.imageEditPlaceholder.isVisible = it !is UIState.Loading
             when (it) {
                 is UIState.Error -> {
                 }
@@ -73,14 +76,25 @@ class EditProfileFragment :
                     binding.inputLastName.setText(it.data?.surname)
                     binding.inputNumber.setText(it.data?.number)
 
+                    lifecycleScope.launch {
+                        viewModel.downloadEditProfileImage(preferencesHelper.userID.toString())
+                            ?.let { image ->
+                                binding.imageEditPlaceholder.setImage(
+                                    image,
+                                    binding.progressBarEdit
+                                )
+                            }
+                    }
+
                 }
             }
         }
     }
+
     private fun saveChangedData() = with(binding) {
         btnSave.setOnClickListener {
             if (inputName.text!!.isNotEmpty() && inputLastName.text!!.isNotEmpty() && inputNumber.text!!.isNotEmpty()) {
-                lifecycleScope.launch {
+                val launch = lifecycleScope.launch {
                     viewModel.updateAccount(
                         inputName.text.toString(),
                         inputLastName.text.toString(),
@@ -88,8 +102,10 @@ class EditProfileFragment :
                     )
                 }
                 findNavController().navigate(R.id.profileFragment)
-            }else{
-                Toast.makeText(requireContext(),"Значения не должны быть пустыми", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(),
+                    "Значения не должны быть пустыми",
+                    Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -103,10 +119,21 @@ class EditProfileFragment :
     }
 
     private val fileChooserContract =
-        registerForActivityResult(ActivityResultContracts.GetContent()) {
-            if (it != null) {
-                binding.imageEditPlaceholder.setImage(it.toString())
-                imageUri = it
+        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
+            if (imageUri != null) {
+                uri = imageUri
+                lifecycleScope.launch {
+                    viewModel.uploadEditProfileImage(compressJPEG(imageUri,
+                        ByteArrayOutputStream(),
+                        quality = 70),
+                        preferencesHelper.userID.toString())
+                    viewModel.downloadEditProfileImage(preferencesHelper.userID.toString())
+                        ?.let { image ->
+                            binding.imageEditPlaceholder.setImage(
+                                image
+                            )
+                        }
+                }
             }
         }
 }

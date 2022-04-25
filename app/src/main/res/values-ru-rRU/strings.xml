@@ -80,6 +80,9 @@
     <string name="fingerprint_not_registered">Отпечаток пальца не зарегистрирован</string>
     <string name="enter_your_current_pin_code">ВВЕДИТЕ ВАШ ТЕКУЩИЙ ПИН-КОД</string>
     <string name="confirm_the_password">Подтвердите пароль</string>
+    <string name="language_changet">Язык изменен</string>
+
+
     <!-- OnBoarding -->
     <string name="title_on_boarding_first_slide">Быстрая регистрация расходов и платежей</string>
     <string name="title_on_boarding_second_slide">Перевод без комиссии</string>

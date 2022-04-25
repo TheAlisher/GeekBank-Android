@@ -2,7 +2,7 @@ package com.alish.geekbank.presentation.ui.fragments.main
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
 import androidx.core.view.forEach
@@ -18,8 +18,10 @@ import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FlowFragmentMainBinding
 import com.alish.geekbank.presentation.base.BaseFlowFragment
 import com.alish.geekbank.presentation.extensions.*
+import com.google.android.gms.maps.MapView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class MainFlowFragment :
@@ -32,7 +34,6 @@ class MainFlowFragment :
     override fun setupNavigation() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.create_card,
                 R.id.cardDetailFragment,
                 R.id.settingsFragment,
                 R.id.paymentsFragment,
@@ -49,9 +50,7 @@ class MainFlowFragment :
                     whetherToShow(false)
                 }
                 R.id.profileFragment -> {
-                    if (preferenceHelper.isShown()) {
 
-                    }
                 }
                 else -> {
                     whetherToShow(true)
@@ -62,6 +61,14 @@ class MainFlowFragment :
             binding.bottomNavigationView.menu.getItem(2).isEnabled = false
         }
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+
+        if (!preferenceHelper.isChange) {
+            navController.navigate(R.id.pinCodeFragment)
+        } else if (preferenceHelper.isChange && navController.currentDestination == navController.findDestination(R.id.profileFragment)) {
+            Log.d("PinCodeFragment", "setupNavigation: ")
+        } else {
+            navController.navigate(R.id.pinCodeFragment)
+        }
     }
 
     override fun setUpListeners() {
@@ -114,18 +121,16 @@ class MainFlowFragment :
         binding.fabView.isVisible = b
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onStart() {
-        super.onStart()
-        navController.navigate(R.id.pinCodeFragment)
-    }
 
     override fun onStop() {
+        Log.d("Fragment1", "onStop")
         super.onStop()
         val editor =
             this.requireActivity().getSharedPreferences("PASS_CODE", AppCompatActivity.MODE_PRIVATE)
                 .edit()
         editor.putBoolean("is_pass", false)
         editor.apply()
+
     }
+
 }
