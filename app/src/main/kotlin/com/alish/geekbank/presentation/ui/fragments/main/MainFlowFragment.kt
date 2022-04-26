@@ -39,12 +39,12 @@ class MainFlowFragment :
                 R.id.pinCodeFragment,
                 R.id.forgotPasswordDialogFragment,
                 R.id.editProfileFragment,
-                R.id.scannerFragment,
+                R.id.scannerFragment
                 -> {
                     whetherToShow(false)
                 }
                 R.id.profileFragment -> {
-
+                    whetherToShow(true)
                 }
                 else -> {
                     whetherToShow(true)
