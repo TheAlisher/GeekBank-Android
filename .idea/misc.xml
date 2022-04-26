@@ -89,6 +89,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/alina_theme.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/alina_user.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/alina_user_bottom_nav.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/arrow_plus.xml" value="0.1415" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/back_dark.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/back_profile.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/back_white.xml" value="0.1365" />
@@ -126,6 +127,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/number_bg.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/oval_buttons.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/rounded_shape.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/snow.xml" value="0.1415" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/splash_screen.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/view_green_oval.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/view_grey_oval.xml" value="0.1365" />
@@ -152,7 +154,8 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_f_irst.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_first.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_first2.xml" value="0.18645833333333334" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_forgot_password.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_freeze_dialog.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_home.xml" value="0.1962962962962963" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_input_pin_code.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_profile.xml" value="0.18645833333333334" />
