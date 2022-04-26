@@ -39,6 +39,7 @@ class MainFlowFragment :
                 R.id.pinCodeFragment,
                 R.id.forgotPasswordDialogFragment,
                 R.id.editProfileFragment,
+                R.id.freezeDialogFragment,
                 R.id.scannerFragment,
                 -> {
                     whetherToShow(false)
