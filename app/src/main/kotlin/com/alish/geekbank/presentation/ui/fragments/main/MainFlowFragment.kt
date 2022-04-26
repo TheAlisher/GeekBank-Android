@@ -45,7 +45,7 @@ class MainFlowFragment :
                     whetherToShow(false)
                 }
                 R.id.profileFragment -> {
-
+                    whetherToShow(true)
                 }
                 else -> {
                     whetherToShow(true)
