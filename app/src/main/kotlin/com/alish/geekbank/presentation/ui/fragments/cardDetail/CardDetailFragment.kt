@@ -63,7 +63,7 @@ class CardDetailFragment :
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
-        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 2
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
