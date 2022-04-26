@@ -1,10 +1,8 @@
 package com.alish.geekbank.presentation.ui.fragments.profile
 
-import android.Manifest
 import android.net.Uri
 import android.util.Log
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +19,6 @@ import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
-import com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

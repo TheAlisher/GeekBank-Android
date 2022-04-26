@@ -1,7 +1,9 @@
-package com.alish.geekbank.presentation.ui.fragments.editProfile
+package com.alish.geekbank.presentation.ui.fragments.editprofile
 
+import com.alish.geekbank.domain.usecases.firestore.DownloadEditProfileImageUseCase
 import com.alish.geekbank.domain.usecases.firestore.FetchUserDataUseCase
 import com.alish.geekbank.domain.usecases.firestore.UpdateAccountUseCase
+import com.alish.geekbank.domain.usecases.firestore.UploadEditProfileImageUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.models.toUsersModelUI
@@ -16,8 +18,8 @@ import javax.inject.Inject
 class EditProfileViewModel @Inject constructor(
     private val updateAccountUseCase: UpdateAccountUseCase,
     private val fetchUserDataUseCase: FetchUserDataUseCase,
-    private val uploadEditProfileImageUseCase: UploadEditProfileImageUseCase  ,
-    private val downloadEditProfileImageUseCase: DownloadEditProfileImageUseCase
+    private val uploadEditProfileImageUseCase: UploadEditProfileImageUseCase,
+    private val downloadEditProfileImageUseCase: DownloadEditProfileImageUseCase,
 ) : BaseViewModel() {
 
     private val _stateUser =

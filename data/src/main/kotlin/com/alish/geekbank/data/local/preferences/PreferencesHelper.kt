@@ -45,9 +45,9 @@ class PreferencesHelper(context: Context) {
     }
 
 
-    fun putString(key: String,value:String){
+    fun putString(key: String, value: String) {
         val editor: SharedPreferences.Editor = preferences.edit()
-        editor.putString(key,value)
+        editor.putString(key, value)
         editor.apply()
     }
 
@@ -72,6 +72,4 @@ class PreferencesHelper(context: Context) {
 
     var darkMode = preferences.getInt(DARK_STATUS, 0)
         set(value) = preferences.edit().putInt(DARK_STATUS, value).apply()
-
-
 }
