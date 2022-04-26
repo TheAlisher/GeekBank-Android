@@ -109,6 +109,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/dialog_corner_radius.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/dot_disable.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/dot_enable.xml" value="0.1365" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/exit_login.xml" value="0.1415" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/fingerprint.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/green_solid_dot.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_cards.xml" value="0.1365" />
@@ -137,6 +138,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/white_theme_press_test.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/white_theme_test.xml" value="0.1365" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_main.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/activity_onboarding.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/bottom_sheet.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/bottom_sheet_home.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/content_main.xml" value="0.18645833333333334" />
@@ -146,6 +148,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_biometric.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_card.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_create_pin_code.xml" value="0.18645833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_edit_profile.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_f_irst.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_first.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/GeekBank-Android/app/src/main/res/layout/fragment_first2.xml" value="0.18645833333333334" />
