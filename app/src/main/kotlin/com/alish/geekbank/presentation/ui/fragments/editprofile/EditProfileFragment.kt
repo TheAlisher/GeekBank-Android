@@ -55,7 +55,8 @@ class EditProfileFragment :
             )
         ) {
             fileChooserContract.launch("image/*")
-        }    }
+        }
+    }
 
     override fun setupListeners() {
         clickGallery()
@@ -64,24 +65,23 @@ class EditProfileFragment :
 
     override fun setupRequests() {
         viewModel.stateUser.collectUIState {
-            binding.progressBarEdit.isVisible = it is UIState.Loading
+            binding.imageEditPlaceholder.isVisible = it !is UIState.Loading
             when (it) {
                 is UIState.Error -> {
                 }
                 is UIState.Loading -> {
-                    binding.imageEditPlaceholder.isVisible = false
                 }
                 is UIState.Success -> {
                     binding.inputName.setText(it.data?.name)
                     binding.inputLastName.setText(it.data?.surname)
                     binding.inputNumber.setText(it.data?.number)
 
-                    binding.imageEditPlaceholder.isVisible = true
                     lifecycleScope.launch {
                         viewModel.downloadEditProfileImage(preferencesHelper.userID.toString())
                             ?.let { image ->
                                 binding.imageEditPlaceholder.setImage(
-                                    image
+                                    image,
+                                    binding.progressBarEdit
                                 )
                             }
                     }
@@ -119,7 +119,7 @@ class EditProfileFragment :
     }
 
     private val fileChooserContract =
-        registerForActivityResult(ActivityResultContracts.GetContent()) {imageUri ->
+        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
             if (imageUri != null) {
                 uri = imageUri
                 lifecycleScope.launch {
