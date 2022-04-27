@@ -53,7 +53,7 @@ fun ImageView.setImage(uri: String, progressBar: ProgressBar? = null) {
 
         })
         .circleCrop()
-        .error(R.drawable.placeholder)
+        .error(R.drawable.ic_placeholder)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }

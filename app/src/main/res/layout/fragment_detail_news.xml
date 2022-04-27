@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.fragments.home.allnews.detailnews.DetailNews">
 
-    <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/image_news"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:layout_marginVertical="20dp"
         android:paddingHorizontal="20dp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         tools:text="@tools:sample/lorem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
     <TextView
         android:id="@+id/text_description"
         android:layout_width="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingHorizontal="20dp"

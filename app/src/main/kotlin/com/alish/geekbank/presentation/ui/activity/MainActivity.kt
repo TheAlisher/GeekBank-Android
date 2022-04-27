@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var localHelper: LocalHelper
 
-
     @Inject
     lateinit var preferenceHelper: PreferencesHelper
 
@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }
         setUpNavigation()
+        checkTheme()
     }
 
 
@@ -66,5 +67,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.graph = graph
+    }
+
+    private fun checkTheme() {
+        when (preferenceHelper.darkMode) {
+            0 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                delegate.applyDayNight()
+            }
+            1 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                delegate.applyDayNight()
+            }
+            2 -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                delegate.applyDayNight()
+            }
+        }
     }
 }

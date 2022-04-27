@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -10,32 +11,44 @@
     <color name="white">#FFFFFFFF</color>
     <color name="soap">#B3CFD6EA</color>
     <color name="blue">#B32C53C3</color>
-
     <color name="colorHint2">#717171</color>
     <color name="colorGreen">#00703C</color>
-
-    <color name= "green">#32D74B</color>
     <color name="title_text_color">#727375</color>
     <color name="orange">#ff7d57</color>
     <color name="indicator_inactive">#80BFBFBF</color>
     <color name="brown">#513201</color>
+    <color name="white_transparent">#73FBFFFF</color>
+    <color name="eeirie_black">#1B1B1E</color>
+    <color name="eeirie_black_transparent">#731B1B1E</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="green_sheen">#70A9A1</color>
+    <color name="prussian_blue">#003049</color>
+    <color name="red">#ED0505</color>
+    <color name="white_black">#1C1C1E</color>
+    <color name="bottom_sheet_color">#EDFFFC</color>
+    <color name="text_edit_profile_choose_photo">#0063F5</color>
+    <color name="view_edit_profile">#38393A</color>
+    <color name="text_hint">#8E8E93</color>
+    <color name="dialog_color_freeze_card">#479EF5</color>
+    <color name="text_color_dialog">#F8F9FA</color>
+    <color name="text_color_detail_news">#F3F3F3</color>
+    <color name="btn_color_dialog_theme">#111010</color>
+    <color name="view_color_news">#99000000</color>
+    <color name="red_color">#db3a34</color>
+    <color name="color_container_payments">#191818</color>
+    <color name="green">#32D74B</color>
+    <color name="yellow">#FFD60A</color>
+    <color name="scanner">#77000000</color>
+    <color name="light_blue">#0063F5</color>
+    <color name="light_2blue">#479EF5</color>
+    <color name="purple">#4D0EFF</color>
+    <color name="pink">#E71B40</color>
+    <color name="grey">#929491</color>
+
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#2336E6</color>
     <color name="colorGreenDarker">#002626</color>
     <color name="colorAccentAlpha_10">#1A95C623</color>
     <color name="colorGreenDarkerAlpha_10">#1A002626</color>
-
-    <color name="white_transparent">#73FBFFFF</color>
-    <color name="eeirie_black">#1B1B1E</color>
-    <color name="eeirie_black_transparent">#731B1B1E</color>
-
-    <color name="transparent">#00FFFFFF</color>
-    <color name="green_sheen">#70A9A1</color>
-    <color name="prussian_blue">#003049</color>
-
-    <color name="red">#ED0505</color>
-    <color name="white_black">#1C1C1E</color>
-
-    <color name="grey">#929491</color>
 </resources>

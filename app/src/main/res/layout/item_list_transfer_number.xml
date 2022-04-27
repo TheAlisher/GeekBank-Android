@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:background="@drawable/ic_qr_button"
+            android:background="@drawable/ic_qrcode"
             tools:ignore="ContentDescription" />
 
         <EditText
@@ -32,10 +32,11 @@
             android:layout_marginTop="5dp"
             android:paddingTop="1dp"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:layout_marginEnd="20dp"
             android:autofillHints="123456"
             android:ems="4"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/text_hint"
             tools:ignore="LabelFor,TextFields" />
 
         <TextView
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="Enter Card Number"
-            android:textColor="#898585"
+            android:textColor="@color/text_hint"
             android:textSize="17sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

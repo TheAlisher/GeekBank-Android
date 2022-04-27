@@ -47,7 +47,7 @@ class ScannerFragment :
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1) {
@@ -73,7 +73,6 @@ class ScannerFragment :
             autoFocusMode = AutoFocusMode.SAFE
             scanMode = ScanMode.SINGLE
         }
-
         codeScanner!!.decodeCallback = DecodeCallback {
             runOnUiThread {
                 Snackbar.make(scannerView, "Scan result: ${it.text}", 5000).show()

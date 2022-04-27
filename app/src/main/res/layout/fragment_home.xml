@@ -4,212 +4,285 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pattern1"
+    android:background="@color/white"
     tools:context=".presentation.ui.fragments.home.HomeFragment">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/motionLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutDescription="@xml/fragment_home_xml_constraintlayout_scene">
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_home_xml_constraintlayout_scene">
 
-            <TextView
-                android:id="@+id/cash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="50dp"
-                android:text="Total balance"
-                android:textColor="@color/white"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/total_balance"
+            android:textColor="@color/text_hint"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_cash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cash" />
-
-            <ImageView
-                android:id="@+id/iv_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_mycard"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/room_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="65dp"
-                android:text="**** **** **** 2345"
-                android:textColor="@color/white"
-                android:textSize="25dp"
-                app:layout_constraintStart_toStartOf="@id/iv_second"
-                app:layout_constraintTop_toTopOf="@id/iv_second" />
-
-            <TextView
-                android:id="@+id/name_card_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
-                android:text="Card Holder name"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                app:layout_constraintStart_toStartOf="@id/iv_second"
-                app:layout_constraintTop_toBottomOf="@id/room_card" />
-
-            <TextView
-                android:id="@+id/name_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="Namon Manzoor"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/iv_second"
-                app:layout_constraintTop_toBottomOf="@id/name_card_text" />
-
-            <TextView
-                android:id="@+id/data_card_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="36dp"
-                android:text="Expiry Date"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toRightOf="@id/name_card_text"
-                app:layout_constraintTop_toBottomOf="@id/room_card" />
-
-            <TextView
-                android:id="@+id/data_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="12dp"
-                android:text="02/30"
-                android:textColor="@color/white"
-                android:textSize="15dp"
-                app:layout_constraintLeft_toRightOf="@id/name_card"
-                app:layout_constraintTop_toBottomOf="@id/data_card_text" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonQR"
-                android:layout_width="75dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_gradient"
-                app:backgroundTint="@null"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/qrcode"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart"
-                app:layout_constraintTop_toBottomOf="@id/guidelinetop"
-                app:layout_constraintLeft_toLeftOf="@id/guidelineleft"
-                />
-
-    <TextView
-        android:id="@+id/txt_QR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="QR"
-        android:textColorHint="#8E8E93"
-        android:textSize="15sp"
-        app:layout_constraintLeft_toLeftOf="@id/buttonQR"
-        app:layout_constraintRight_toRightOf="@id/buttonQR"
-        app:layout_constraintTop_toBottomOf="@id/buttonQR" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_wallet"
-                android:layout_width="75dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_gradient"
-                app:backgroundTint="@null"
-                app:cornerRadius="10dp"
-                app:iconPadding="0dp"
-                app:icon="@drawable/wallet"
-                app:iconGravity="textStart"
-                app:layout_constraintEnd_toStartOf="@id/button_exchange"
-                app:layout_constraintStart_toEndOf="@id/buttonQR"
-                app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
-
-            <TextView
-                android:id="@+id/txt_payments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Payments"
-                android:textColorHint="#8E8E93"
-                android:textSize="15sp"
-                app:layout_constraintLeft_toLeftOf="@id/button_wallet"
-                app:layout_constraintRight_toRightOf="@id/button_wallet"
-                app:layout_constraintTop_toBottomOf="@id/button_wallet" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_exchange"
-                android:layout_width="75dp"
-                android:layout_height="60dp"
-                android:background="@drawable/button_gradient"
-                app:backgroundTint="@null"
-                app:cornerRadius="10dp"
-                app:iconPadding="0dp"
-                app:icon="@drawable/currency"
-                app:iconGravity="textStart"
-                app:layout_constraintRight_toRightOf="@id/guidelineright"
-                app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
-
-            <TextView
-                android:id="@+id/txt_exchange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Exchange"
-                android:textColorHint="#8E8E93"
-                android:textSize="15sp"
-                app:layout_constraintLeft_toLeftOf="@id/button_exchange"
-                app:layout_constraintRight_toRightOf="@id/button_exchange"
-                app:layout_constraintTop_toBottomOf="@id/button_exchange" />
+        <TextView
+            android:id="@+id/tv_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cash" />
 
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelinetop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.35" />
+        <ImageView
+            android:id="@+id/iv_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mycard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineright"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.90" />
+        <TextView
+            android:id="@+id/room_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="65dp"
+            android:text="**** **** **** 2345"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            app:layout_constraintStart_toStartOf="@id/iv_second"
+            app:layout_constraintTop_toTopOf="@id/iv_second" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineleft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.10"
-                />
+        <TextView
+            android:id="@+id/name_card_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:text="Card Holder name"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="@id/iv_second"
+            app:layout_constraintTop_toBottomOf="@id/room_card" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelinebottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.50"/>
+        <TextView
+            android:id="@+id/name_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="Namon Manzoor"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/iv_second"
+            app:layout_constraintTop_toBottomOf="@id/name_card_text" />
 
-        </androidx.constraintlayout.motion.widget.MotionLayout>
+        <TextView
+            android:id="@+id/data_card_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="36dp"
+            android:text="Expiry Date"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintLeft_toRightOf="@id/name_card_text"
+            app:layout_constraintTop_toBottomOf="@id/room_card" />
+
+        <TextView
+            android:id="@+id/data_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="12dp"
+            android:text="02/30"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintLeft_toRightOf="@id/name_card"
+            app:layout_constraintTop_toBottomOf="@id/data_card_text" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_horizontal"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            android:background="@drawable/button_gradient"
+            app:iconPadding="0dp"
+            app:icon="@drawable/ic_vector__line"
+            app:iconGravity="textStart"
+            app:layout_constraintLeft_toLeftOf="@id/guidelineleft"
+            app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
+
+        <TextView
+            android:id="@+id/txt_transfer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/transfer"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/button_horizontal"
+            app:layout_constraintStart_toStartOf="@id/button_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/button_horizontal" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_wallet"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_gradient"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:iconPadding="0dp"
+            app:icon="@drawable/ic_wallet"
+            app:iconGravity="textStart"
+            app:layout_constraintEnd_toStartOf="@id/button_exchange"
+            app:layout_constraintStart_toEndOf="@id/button_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
+
+        <TextView
+            android:id="@+id/txt_payments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/payments"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="@id/button_wallet"
+            app:layout_constraintRight_toRightOf="@id/button_wallet"
+            app:layout_constraintTop_toBottomOf="@id/button_wallet" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_exchange"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_gradient"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:iconPadding="0dp"
+            app:icon="@drawable/ic_y"
+            app:iconGravity="textStart"
+            app:layout_constraintRight_toRightOf="@id/guidelineright"
+            app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
+
+        <TextView
+            android:id="@+id/txt_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/exchange"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="@id/button_exchange"
+            app:layout_constraintRight_toRightOf="@id/button_exchange"
+            app:layout_constraintTop_toBottomOf="@id/button_exchange" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonQR"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_gradient"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_qrcode"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:layout_constraintBottom_toTopOf="@id/txt_QR"
+            app:layout_constraintLeft_toLeftOf="@id/guidelineleft" />
+
+        <TextView
+            android:id="@+id/txt_QR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/qr"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="@id/buttonQR"
+            app:layout_constraintRight_toRightOf="@id/buttonQR"
+            app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_freeze_card"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_gradient"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_freez_card"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:layout_constraintLeft_toLeftOf="@id/buttonQR"
+            app:layout_constraintRight_toRightOf="@id/button_settings"
+            app:layout_constraintBottom_toTopOf="@id/txt_freeze_card"/>
+
+        <TextView
+            android:id="@+id/txt_freeze_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/freeze_card"
+            android:textColorHint="@color/text_hint"
+            android:textSize="15sp"
+            android:maxEms="5"
+            app:layout_constraintRight_toRightOf="@id/button_freeze_card"
+            app:layout_constraintLeft_toLeftOf="@id/button_freeze_card"
+            app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_settings"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_gradient"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_sliders_horizontal"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:layout_constraintRight_toRightOf="@id/guidelineright"
+            app:layout_constraintBottom_toTopOf="@id/txt_settings" />
+
+        <TextView
+            android:id="@+id/txt_settings"
+            android:hint="@string/settings"
+            android:textColorHint="@color/text_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="@id/button_settings"
+            app:layout_constraintRight_toRightOf="@id/button_settings"
+            app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinetop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.38" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineleft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.10" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinebottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.60" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -219,4 +292,6 @@
             android:id="@+id/bottom_sheet_include"
             layout="@layout/bottom_sheet_home" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
