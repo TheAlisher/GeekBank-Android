@@ -4,33 +4,46 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/button_gradient.xml" value="0.1" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/check_internet_costum.xml" value="0.1" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/costum_cardview_internet.xml" value="0.147" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/costum_constrain_layout.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/costum_gradient.xml" value="0.1" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/costum_no_internet.xml" value="0.1365" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/delete.xml" value="0.147" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/gardient_qr.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/gradient_center.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/gradient_end.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/gradient_qr.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/gradient_start.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/ic_icon.xml" value="0.137" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/ic_wifi.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/splahs_screen.xml" value="0.137" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/drawable/splash_screen.xml" value="0.137" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/alert_dialog.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/bottom_sheet.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/bottom_sheet_home.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/check_internet_dialog.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/flow_fragment_main.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/flow_fragment_sign.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_all_news.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_biometric.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_edit_profile.xml" value="0.1" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_home.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_no_internet.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.1" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_qr.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_sign_in.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_wifi.xml" value="0.16822916666666668" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/fragment_wifi2.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_detail_card.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_exchange.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_list_transfer_number.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/item_transfer_list.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/key_pad_layout.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/layout/no_internet_dialog.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/99677/AndroidStudioProjects/GeekBank-Android1/app/src/main/res/menu/bottom_navigation.xml" value="0.18229166666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/bottom_sheet_corners_background.xml" value="0.181" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/GeekBank-Android/app/src/main/res/drawable/ic_screen.xml" value="0.181" />
