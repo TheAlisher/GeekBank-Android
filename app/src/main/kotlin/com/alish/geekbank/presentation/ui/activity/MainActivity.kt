@@ -38,11 +38,6 @@ class MainActivity : AppCompatActivity() {
         localHelper.loadLocale(this)
         isAuthorized = preferenceHelper.getBoolean(Constants.IS_AUTHORIZED)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            val w: Window = window // in Activity's onCreate() for instance
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }
         setUpNavigation()
         checkTheme()
     }
