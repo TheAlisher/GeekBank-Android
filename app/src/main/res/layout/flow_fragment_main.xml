@@ -30,7 +30,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
             android:paddingTop="5dp"
@@ -39,9 +39,10 @@
             app:itemRippleColor="@color/colorHint2"
             app:itemTextColor="@color/white"
             app:labelVisibilityMode="labeled"
+            app:layout_anchor="@id/nav_host_fragment_main"
+            app:layout_behavior=".utils.BottomNavigationBehavior"
+            app:layout_anchorGravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_navigation" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
