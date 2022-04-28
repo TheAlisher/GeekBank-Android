@@ -29,7 +29,10 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapsInitializer
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -40,9 +43,11 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
+
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
@@ -66,7 +71,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(R.id.cardFragment)
+                findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
@@ -84,6 +89,18 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         clickForExchange()
         setupAction()
         setupBottomSheet()
+        clickProfile()
+    }
+
+    private fun clickProfile() {
+//        val menuItemProfile = parentFragmentInNavHost<MainFlowFragment>()
+//            .parentFragmentInNavHost<HomeFragment>()
+//            .requireView()
+//            .findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+//            .menu
+//            .findItem(R.id.mainFlowFragment)
+
+
     }
 
     override fun initialize() {
