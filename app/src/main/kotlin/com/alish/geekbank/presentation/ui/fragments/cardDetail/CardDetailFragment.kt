@@ -1,7 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
@@ -73,7 +72,8 @@ class CardDetailFragment :
                     BottomSheetBehavior.STATE_HIDDEN -> {
                         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
                     }
-                    else -> {}
+                    else -> {
+                    }
                 }
             }
 
@@ -121,25 +121,26 @@ class CardDetailFragment :
                 )
             )
         }
-        binding.imageArrow.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     override fun setupSubscribes() {
         viewModel.stateCard.collectUIState {
             when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     cardDetailAdapter.submitList(it.data)
                 }
             }
         }
         viewModel.stateHistory.collectUIState {
-            when(it){
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+            when (it) {
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     historyList.addAll(it.data)
                     val filteredList = ArrayList<HistoryModelUI>()
@@ -167,13 +168,12 @@ class CardDetailFragment :
                 val postInt: Int = position.toInt()
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()
                 val filteredList = ArrayList<HistoryModelUI?>()
-                    historyList.forEach {
-                        if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
-                            filteredList.add(it)
-                        }
+                historyList.forEach {
+                    if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")) {
+                        filteredList.add(it)
                     }
+                }
                 cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data?.dateTime })
-
 
 
             }
@@ -182,7 +182,8 @@ class CardDetailFragment :
 
     private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToFreezeDialogFragment(positionCard))
+            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToFreezeDialogFragment(
+                positionCard))
         }
     }
 

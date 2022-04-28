@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#191919"
+    android:background="@color/bottom_sheet_color"
     >
 
     <ImageView
@@ -26,7 +26,7 @@
         android:layout_marginStart="15dp"
         tools:text="1234123412341234"
         app:layout_constraintLeft_toRightOf="@id/image"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="@id/image" />
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:text="Переводы"
+        android:text="@string/translations"
         app:layout_constraintLeft_toRightOf="@id/image"
         android:textColor="@color/grey"
         android:textSize="15sp"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="25000"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf ="@id/money"
         app:layout_constraintTop_toTopOf="@id/money"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         tools:text="09:19"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf ="@id/money" />
 

@@ -28,8 +28,10 @@ class ExchangeFragment :
     override fun setupSubscribes() {
         viewModel.exchangeState.collectUIState {
             when (it) {
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     it.data.let { data ->
                         val list = ArrayList<ExchangeModelsUI>()
@@ -39,28 +41,24 @@ class ExchangeFragment :
                                 data.conversion_rates["KZT"].toString(),
                             )
                         )
-
                         list.add(
                             ExchangeModelsUI(
                                 "USD",
                                 data.conversion_rates["USD"].toString(),
                             )
                         )
-
                         list.add(
                             ExchangeModelsUI(
                                 "EUR",
                                 data.conversion_rates["EUR"].toString(),
                             )
                         )
-
                         list.add(
                             ExchangeModelsUI(
                                 "RUS",
                                 data.conversion_rates["RUS"].toString(),
                             )
                         )
-
                         adapter.submitList(list)
                         Log.d("fuck", "setupSubscribes: ${list}" )
                     }

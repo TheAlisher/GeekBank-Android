@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#191919"
+    android:background="@color/bottom_sheet_color"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.fragments.exchange.ExchangeFragment">
@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/default_course"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -28,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="@string/offer"
-        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#191919"
+    android:background="@color/bottom_sheet_color"
     android:padding="10dp">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -12,7 +12,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/airbnb"
+        android:src="@drawable/ic_iconvalyt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         tools:text="Airbnb"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/logo_airbnb"
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginTop="4dp"
-        android:textColorHint="#8E8E93"
+        android:textColorHint="@color/text_hint"
         app:layout_constraintStart_toStartOf="@+id/exchange_name"
         app:layout_constraintTop_toBottomOf="@id/exchange_name"
         tools:hint="Rental" />
@@ -47,7 +47,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginTop="15dp"
         tools:text="-53,100 KGS"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:textColorHint="#8E8E93"
+        android:textColorHint="@color/text_hint"
         app:layout_constraintEnd_toEndOf="@+id/exchange_number"
         app:layout_constraintTop_toBottomOf="@id/exchange_number"
         tools:hint="9:10 PM" />

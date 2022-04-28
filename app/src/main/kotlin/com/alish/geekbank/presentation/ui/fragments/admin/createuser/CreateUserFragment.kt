@@ -13,11 +13,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CreateUserFragment : BaseFragment<CreateUserViewModel,CreateUserBinding>(R.layout.create_user) {
+class CreateUserFragment :
+    BaseFragment<CreateUserViewModel, CreateUserBinding>(R.layout.create_user) {
 
     override val viewModel: CreateUserViewModel by viewModels()
     override val binding: CreateUserBinding by viewBinding(CreateUserBinding::bind)
-
 
 
     override fun setupListeners() {
@@ -26,7 +26,7 @@ class CreateUserFragment : BaseFragment<CreateUserViewModel,CreateUserBinding>(R
 
     private fun createUserClick() = with(binding) {
         btnSave.setOnClickListener {
-            if (inputFirstName.check() && inputLastName.check() && inputLogin.check() && inputNumber.check() && inputPass.check()){
+            if (inputFirstName.check() && inputLastName.check() && inputLogin.check() && inputNumber.check() && inputPass.check()) {
                 lifecycleScope.launch {
                     viewModel.createUser(
                         inputFirstName.textGet(),
@@ -42,7 +42,6 @@ class CreateUserFragment : BaseFragment<CreateUserViewModel,CreateUserBinding>(R
             findNavController().navigate(R.id.profileFragment)
         }
     }
-
 
 
 }
