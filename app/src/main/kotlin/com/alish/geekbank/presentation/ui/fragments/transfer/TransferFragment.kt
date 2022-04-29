@@ -39,7 +39,6 @@ class TransferFragment :
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
 
-    private var moneyCurrent: String? = null
     private var fromCard = TransferModel()
     private var toCard = TransferModel()
     override val viewModel: TransferViewModel by viewModels()

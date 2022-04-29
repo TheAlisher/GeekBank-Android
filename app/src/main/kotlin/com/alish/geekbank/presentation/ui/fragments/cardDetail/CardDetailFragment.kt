@@ -41,7 +41,7 @@ class CardDetailFragment :
 
     override val viewModel: CardDetailViewModel by viewModels()
     override val binding by viewBinding(FragmentCardDetailBinding::bind)
-    private val cardDetailAdapter = CardDetailAdapter()
+    private val cardDetailAdapter = CardDetailAdapter(this::click)
     private val cardDetailListAdapter = CardDetailListAdapter()
     private var positionCard = ""
     val list = ArrayList<CardModelUI>()
@@ -58,6 +58,7 @@ class CardDetailFragment :
         bottomSheetInclude.recycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
+    private fun click(){}
 
     override fun setupListeners() {
         setupDialog()
@@ -173,12 +174,13 @@ class CardDetailFragment :
                 val postInt: Int = position.toInt()
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()
                 val filteredList = ArrayList<HistoryModelUI?>()
-                    historyList.forEach {
-                        if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
-                            filteredList.add(it)
-                        }
+                historyList.forEach {
+                    if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
+                        filteredList.add(it)
                     }
+                }
                 cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data?.dateTime })
+
 
 
 

@@ -13,7 +13,7 @@ import javax.inject.Inject
 import kotlin.coroutines.coroutineContext
 
 
-class CardDetailAdapter () :
+class CardDetailAdapter (private val click: () -> Unit) :
     ListAdapter<CardModelUI, CardDetailAdapter.CardViewHolder>(BaseComparatorCard()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
@@ -32,6 +32,12 @@ class CardDetailAdapter () :
 
     inner class CardViewHolder(private val binding: ItemCardListBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            itemView.setOnClickListener {
+                click()
+            }
+        }
 
         fun onBind(item: CardModelUI) = with(binding) {
             dataCard.text = item.date

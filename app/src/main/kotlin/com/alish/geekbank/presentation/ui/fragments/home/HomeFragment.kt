@@ -50,7 +50,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
     private val exchangeAdapter = ExchangeAdapter()
-    private val cardDetailAdapter = CardDetailAdapter()
     val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
@@ -228,17 +227,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         break
                     }
 
-                    if (list.size == 0)
-                        it.data.forEach { data ->
-                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
-                                if (data != null) {
-                                    list.add(data)
-                                     cardDetailAdapter.submitList(list)
-
-
-                                }
-                            }
-                        }
                 }
             }
         }
@@ -319,4 +307,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
         return bitmap
     }
+    fun click() {
+
+    }
 }
+
+

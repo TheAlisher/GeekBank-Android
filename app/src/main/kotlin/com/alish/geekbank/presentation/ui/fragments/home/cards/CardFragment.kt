@@ -20,7 +20,11 @@ class CardFragment : BaseFragment<CardViewModel, FragmentCardBinding>(R.layout.f
 
     override val viewModel: CardViewModel by viewModels()
     override val binding: FragmentCardBinding by viewBinding(FragmentCardBinding::bind)
-    private val adapter = CardDetailAdapter()
+    private val adapter = CardDetailAdapter(this::click)
+
+    private fun click() {
+        findNavController().navigate(R.id.cardDetailFragment)
+    }
 
 
     @Inject
