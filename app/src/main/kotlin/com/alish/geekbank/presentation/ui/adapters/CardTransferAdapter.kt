@@ -9,13 +9,19 @@ import com.alish.geekbank.presentation.base.BaseComparatorCard
 import com.alish.geekbank.presentation.models.CardModelUI
 
 class CardTransferAdapter :
-    ListAdapter<CardModelUI, CardTransferAdapter.CardTransferViewHolder>(BaseComparatorCard(
-        )) {
+    ListAdapter<CardModelUI, CardTransferAdapter.CardTransferViewHolder>(
+        BaseComparatorCard(
+        )
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTransferViewHolder {
-        return CardTransferViewHolder(ItemTransferListBinding.inflate(LayoutInflater.from(parent.context),
-            parent,
-            false))
+        return CardTransferViewHolder(
+            ItemTransferListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: CardTransferViewHolder, position: Int) {

@@ -1,10 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.payments.payment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,7 +13,6 @@ import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.TransferModel
 import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardTransferAdapter
-import com.alish.geekbank.presentation.ui.adapters.fingerparint.TransferAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat

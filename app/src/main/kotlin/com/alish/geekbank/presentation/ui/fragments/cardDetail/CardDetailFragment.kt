@@ -1,7 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
@@ -121,9 +120,6 @@ class CardDetailFragment :
                 )
             )
         }
-        binding.imageArrow.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     override fun setupSubscribes() {
@@ -137,7 +133,7 @@ class CardDetailFragment :
             }
         }
         viewModel.stateHistory.collectUIState {
-            when(it){
+            when (it) {
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
@@ -167,13 +163,12 @@ class CardDetailFragment :
                 val postInt: Int = position.toInt()
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()
                 val filteredList = ArrayList<HistoryModelUI?>()
-                    historyList.forEach {
-                        if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")){
-                            filteredList.add(it)
-                        }
+                historyList.forEach {
+                    if ((positionCard == it?.fromCard && (it.condition == "minus" || it.condition == "service")) || (positionCard == it?.toCard && it.condition == "plus")) {
+                        filteredList.add(it)
                     }
+                }
                 cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data?.dateTime })
-
 
 
             }
@@ -182,7 +177,11 @@ class CardDetailFragment :
 
     private fun setupDialog() {
         binding.buttonFreezeCard.setOnClickListener {
-            findNavController().navigate(CardDetailFragmentDirections.actionCardDetailFragmentToFreezeDialogFragment(positionCard))
+            findNavController().navigate(
+                CardDetailFragmentDirections.actionCardDetailFragmentToFreezeDialogFragment(
+                    positionCard
+                )
+            )
         }
     }
 

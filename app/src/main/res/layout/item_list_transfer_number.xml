@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="10dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="350dp"
@@ -28,14 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:hint="Card Number"
             android:layout_marginTop="5dp"
-            android:paddingTop="1dp"
-            android:textSize="20dp"
             android:layout_marginEnd="20dp"
             android:autofillHints="123456"
             android:ems="4"
+            android:hint="Card Number"
+            android:paddingTop="1dp"
             android:textColorHint="@color/white"
+            android:textSize="20dp"
             tools:ignore="LabelFor,TextFields" />
 
         <TextView
