@@ -115,25 +115,7 @@ class ProfileFragment :
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.e("lifecycle", "start")
-    }
 
-    override fun onResume() {
-        super.onResume()
-        Log.e("lifecycle", "resume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e("lifecycle", "pause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e("lifecycle", "stop")
-    }
 
     private fun setupRussian() = with(binding) {
         bottomSheet2Include.containerRussianBottomSheet.setOnClickListener {
