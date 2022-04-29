@@ -98,7 +98,12 @@ class ProfileFragment :
                     binding.txtName.text = it.data?.name
                     lifecycleScope.launch {
                         viewModel.downloadProfileImage(preferencesHelper.userID.toString())
-                            ?.let { image ->
+                            .also { image ->
+                                if (image == null) {
+                                    binding.progressBarEdit.visibility = View.GONE
+                                    binding.imagePlaceholder.setImageResource(R.drawable.ic_placeholder)
+                                }
+                            }?.let { image ->
                                 binding.imagePlaceholder.setImage(
                                     image,
                                     binding.progressBarEdit
