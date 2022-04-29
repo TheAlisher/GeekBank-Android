@@ -48,7 +48,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
     private val exchangeAdapter = ExchangeAdapter()
-    private val cardDetailAdapter = CardDetailAdapter()
     val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
@@ -67,7 +66,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(R.id.cardFragment)
+                findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}

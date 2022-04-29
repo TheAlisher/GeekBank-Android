@@ -121,8 +121,8 @@ class TransferFragment :
                 var position: Float = offset.toFloat() / (binding.cardRecycler2.getChildAt(0).measuredWidth).toFloat()
                 position += 0.5f
                 val postInt: Int = position.toInt()
-                toCard.cardNumber = adapterCard.currentList[postInt].cardNumber
-                toCard.money = adapterCard.currentList[postInt].money
+                toCard.cardNumber = adapterCardTo.currentList[postInt].cardNumber
+                toCard.money = adapterCardTo.currentList[postInt].money
             }
         })
     }
@@ -136,7 +136,10 @@ class TransferFragment :
                     val list = ArrayList<CardModelUI?>()
                     list.addAll(it.data.filter { it?.blocked == false } )
                     adapterCard.submitList(list)
-                    adapterCardTo.submitList(list)
+                    val list2 = ArrayList<CardModelUI?>()
+                    list2.addAll(it.data.filter { it?.blocked == false } )
+                    list2.add(0,CardModelUI())
+                    adapterCardTo.submitList(list2)
 
                 }
             }

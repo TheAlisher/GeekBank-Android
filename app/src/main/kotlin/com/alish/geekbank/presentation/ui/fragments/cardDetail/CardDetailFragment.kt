@@ -1,5 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
+import android.content.Context
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -143,6 +144,7 @@ class CardDetailFragment :
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
+                    if (cardDetailListAdapter.currentList.size == 0 ){
                     historyList.addAll(it.data)
                     val filteredList = ArrayList<HistoryModelUI>()
                     historyList.forEach {
@@ -153,7 +155,7 @@ class CardDetailFragment :
                     }
                     cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data.dateTime })
 
-                }
+                }}
             }
         }
     }
