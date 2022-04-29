@@ -1,5 +1,7 @@
 package com.alish.geekbank.presentation.ui.fragments.transfer
 
+import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +14,7 @@ import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FragmentTransferBinding
 import com.alish.geekbank.presentation.base.BaseFragment
+import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.TransferModel
 import com.alish.geekbank.presentation.state.UIState
@@ -145,7 +148,11 @@ class TransferFragment :
                     val list = ArrayList<CardModelUI?>()
                     list.addAll(it.data.filter { it?.blocked == false })
                     adapterCard.submitList(list)
-                    adapterCardTo.submitList(list)
+                    val list2 = ArrayList<CardModelUI?>()
+                    list2.addAll(it.data.filter { it?.blocked == false } )
+                    list2.add(0,CardModelUI())
+                    adapterCardTo.submitList(list2)
+
                 }
             }
         }
@@ -173,4 +180,5 @@ class TransferFragment :
         return curentDate
 
     }
+
 }

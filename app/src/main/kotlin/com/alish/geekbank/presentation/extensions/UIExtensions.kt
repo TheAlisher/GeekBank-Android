@@ -2,6 +2,7 @@ package com.alish.geekbank.presentation.extensions
 
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -53,7 +54,7 @@ fun ImageView.setImage(uri: String, progressBar: ProgressBar? = null) {
 
         })
         .circleCrop()
-        .error(R.drawable.placeholder)
+        .error(R.drawable.ic_placeholder)
         .transition(DrawableTransitionOptions.withCrossFade())
         .into(this)
 }

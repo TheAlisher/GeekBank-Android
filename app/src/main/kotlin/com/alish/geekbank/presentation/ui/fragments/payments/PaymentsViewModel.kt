@@ -10,10 +10,10 @@ import javax.inject.Inject
 class PaymentsViewModel @Inject constructor():BaseViewModel() {
 
     private val images = intArrayOf(
-       R.drawable.fines,
-        R.drawable.cellular,
-        R.drawable.internet,
-        R.drawable.publik
+       R.drawable.ic_file_text,
+        R.drawable.ic_ios_smartphone,
+        R.drawable.ic_language,
+        R.drawable.ic_home_2
     )
 
     private val names11 = arrayOf(

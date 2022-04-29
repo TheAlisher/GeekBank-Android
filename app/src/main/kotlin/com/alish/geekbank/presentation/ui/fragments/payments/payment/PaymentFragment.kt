@@ -17,10 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
-class PaymentFragment : BaseFragment<PaymentViewModel,FragmentPaymentBinding>(R.layout.fragment_payment) {
+class PaymentFragment : BaseFragment<PaymentViewModel, FragmentPaymentBinding>(R.layout.fragment_payment) {
 
     override val viewModel: PaymentViewModel by viewModels()
     override val binding: FragmentPaymentBinding by viewBinding(FragmentPaymentBinding::bind)

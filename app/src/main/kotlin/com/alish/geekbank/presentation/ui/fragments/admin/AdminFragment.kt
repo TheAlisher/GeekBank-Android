@@ -19,7 +19,6 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
         super.onViewCreated(view, savedInstanceState)
         clickButtons()
     }
-
     private fun clickButtons() {
         binding.createUserBtn.setOnClickListener {
             findNavController().navigate(R.id.createUserFragment)

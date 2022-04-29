@@ -1,11 +1,10 @@
 package com.alish.geekbank.presentation.ui.fragments.home.map
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.alish.geekbank.R
+import androidx.fragment.app.Fragment
 import com.alish.geekbank.databinding.FragmentMapFullBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -14,7 +13,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class MapFull : Fragment(),OnMapReadyCallback {
+class MapFull : Fragment(), OnMapReadyCallback {
 
     private lateinit var binding: FragmentMapFullBinding
     private lateinit var googleMap: GoogleMap
@@ -22,9 +21,9 @@ class MapFull : Fragment(),OnMapReadyCallback {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-        binding = FragmentMapFullBinding.inflate(inflater,container,false)
+        binding = FragmentMapFullBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -54,7 +53,6 @@ class MapFull : Fragment(),OnMapReadyCallback {
         googleMap.addMarker(MarkerOptions().position(geekTech1).title("vozle geeka"))
         googleMap.addMarker(MarkerOptions().position(geekTech2).title("avtomoyka"))
         googleMap.addMarker(MarkerOptions().position(geekTech3).title("chto to"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech,17f))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(geekTech, 17f))
     }
-
 }

@@ -1,6 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.editprofile
 
-
 import com.alish.geekbank.domain.usecases.firestore.DownloadEditProfileImageUseCase
 import com.alish.geekbank.domain.usecases.firestore.FetchUserDataUseCase
 import com.alish.geekbank.domain.usecases.firestore.UpdateAccountUseCase
@@ -19,8 +18,8 @@ import javax.inject.Inject
 class EditProfileViewModel @Inject constructor(
     private val updateAccountUseCase: UpdateAccountUseCase,
     private val fetchUserDataUseCase: FetchUserDataUseCase,
-    private val uploadEditProfileImageUseCase: UploadEditProfileImageUseCase  ,
-    private val downloadEditProfileImageUseCase: DownloadEditProfileImageUseCase
+    private val uploadEditProfileImageUseCase: UploadEditProfileImageUseCase,
+    private val downloadEditProfileImageUseCase: DownloadEditProfileImageUseCase,
 ) : BaseViewModel() {
 
     private val _stateUser =
@@ -44,8 +43,10 @@ class EditProfileViewModel @Inject constructor(
         updateAccountUseCase.updateAccount(user)
     }
 
-    suspend fun uploadEditProfileImage(file: ByteArray?, id: String) =
-        uploadEditProfileImageUseCase.uploadProfileImage(file, id)
+    suspend fun uploadEditProfileImage(
+        file: ByteArray?, id: String, navigate: () -> Unit,
+    ) =
+        uploadEditProfileImageUseCase.uploadProfileImage(file, id, navigate)
 
     suspend fun downloadEditProfileImage(id: String) =
         downloadEditProfileImageUseCase.downloadEditProfileImage(id)

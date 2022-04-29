@@ -27,7 +27,8 @@
            />
         <action
             android:id="@+id/action_homeFragment_to_cardFragment"
-            app:destination="@id/cardFragment" />
+            app:destination="@id/cardFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/detailNews"
@@ -131,11 +132,6 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.qrCode.scanner.ScannerFragment"
         android:label="fragment_scanner"
         tools:layout="@layout/fragment_scanner" />
-    <dialog
-        android:id="@+id/themeDialogFragment"
-        android:name="com.alish.geekbank.presentation.ui.fragments.theme.ThemeDialogFragment"
-        android:label="fragment_theme_dialog"
-        tools:layout="@layout/fragment_theme_dialog" />
     <fragment
         android:id="@+id/changePassword"
         android:name="com.alish.geekbank.presentation.ui.fragments.changepass.ChangePassword"

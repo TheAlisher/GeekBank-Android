@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import javax.inject.Inject
 
+
 @AndroidEntryPoint
 class EditProfileFragment :
     BaseFragment<EditProfileViewModel, FragmentEditProfileBinding>(R.layout.fragment_edit_profile) {
@@ -31,6 +32,7 @@ class EditProfileFragment :
     override val binding by viewBinding(FragmentEditProfileBinding::bind)
     private var uri: Uri? = null
     private var image = ""
+    private var isChooseImage = false
 
     @Inject
     lateinit var preferencesHelper: PreferencesHelper
@@ -77,13 +79,20 @@ class EditProfileFragment :
                     binding.inputNumber.setText(it.data?.number)
 
                     lifecycleScope.launch {
-                        viewModel.downloadEditProfileImage(preferencesHelper.userID.toString())
-                            ?.let { image ->
-                                binding.imageEditPlaceholder.setImage(
-                                    image,
-                                    binding.progressBarEdit
-                                )
-                            }
+                        if (!isChooseImage) {
+                            viewModel.downloadEditProfileImage(preferencesHelper.userID.toString())
+                                .also { image ->
+                                    if (image == null) {
+                                        binding.progressBarEdit.visibility = View.GONE
+                                        binding.imageEditPlaceholder.setImageResource(R.drawable.ic_placeholder)
+                                    }
+                                }?.let { image ->
+                                    binding.imageEditPlaceholder.setImage(
+                                        image,
+                                        binding.progressBarEdit
+                                    )
+                                }
+                        }
                     }
 
                 }
@@ -94,14 +103,19 @@ class EditProfileFragment :
     private fun saveChangedData() = with(binding) {
         btnSave.setOnClickListener {
             if (inputName.text!!.isNotEmpty() && inputLastName.text!!.isNotEmpty() && inputNumber.text!!.isNotEmpty()) {
-                val launch = lifecycleScope.launch {
+                lifecycleScope.launch {
                     viewModel.updateAccount(
                         inputName.text.toString(),
                         inputLastName.text.toString(),
                         inputNumber.text.toString(),
                     )
+                    viewModel.uploadEditProfileImage(compressJPEG(uri,
+                        ByteArrayOutputStream(),
+                        quality = 70),
+                        preferencesHelper.userID.toString()) {
+                        findNavController().navigate(R.id.profileFragment)
+                    }
                 }
-                findNavController().navigate(R.id.profileFragment)
             } else {
                 Toast.makeText(requireContext(),
                     "Значения не должны быть пустыми",
@@ -122,18 +136,8 @@ class EditProfileFragment :
         registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
             if (imageUri != null) {
                 uri = imageUri
-                lifecycleScope.launch {
-                    viewModel.uploadEditProfileImage(compressJPEG(imageUri,
-                        ByteArrayOutputStream(),
-                        quality = 70),
-                        preferencesHelper.userID.toString())
-                    viewModel.downloadEditProfileImage(preferencesHelper.userID.toString())
-                        ?.let { image ->
-                            binding.imageEditPlaceholder.setImage(
-                                image
-                            )
-                        }
-                }
+                isChooseImage = true
+                binding.imageEditPlaceholder.setImage(imageUri.toString(), binding.progressBarEdit)
             }
         }
 

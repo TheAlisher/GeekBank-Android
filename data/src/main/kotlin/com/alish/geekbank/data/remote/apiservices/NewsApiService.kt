@@ -7,7 +7,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NewsApiService {
+interface   NewsApiService {
 
     @GET("/v2/everything?apiKey=c08ab6a617d0486d8677c0ba7bcb18bc")
     suspend fun fetchNews(

@@ -7,17 +7,38 @@
     android:background="@drawable/dialog_corner_radius"
     tools:context=".presentation.ui.fragments.freezeCard.FreezeDialogFragment">
 
+    <ImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/snow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.97" />
+
     <TextView
         android:id="@+id/txt_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="@string/are_you_sure_you_want_to_freeze_cards"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color_detail_news"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
@@ -26,27 +47,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#479EF5"
+        android:backgroundTint="@color/light_2blue"
         android:text="@string/freeze_card"
         android:textSize="12dp"
         android:maxEms="9"
-        android:textColor="#F8F9FA"
+        android:textColor="@color/text_color_dialog"
         app:cornerRadius="5dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guidelineStart"
+        app:layout_constraintEnd_toStartOf="@id/btn_cancel"
         app:layout_constraintTop_toBottomOf="@id/txt_dialog" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:textSize="12dp"
-        android:backgroundTint="#F8F9FA"
+        android:backgroundTint="@color/text_color_dialog"
         android:text="@string/cancel"
-        android:textColor="#479EF5"
+        android:textColor="@color/light_2blue"
         app:cornerRadius="5dp"
         app:layout_constraintStart_toEndOf="@id/btn_freeze_card"
+        app:layout_constraintEnd_toStartOf="@id/image_card"
         app:layout_constraintTop_toBottomOf="@id/txt_dialog" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -54,8 +77,10 @@
         android:layout_width="95dp"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/card"
+        android:src="@drawable/ic_card"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintStart_toEndOf="@id/btn_cancel"
         app:layout_constraintTop_toBottomOf="@id/txt_dialog" />
 

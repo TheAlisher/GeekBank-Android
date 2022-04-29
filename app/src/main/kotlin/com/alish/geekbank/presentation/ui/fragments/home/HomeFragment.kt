@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +16,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
+import com.alish.geekbank.databinding.ActivityMainBinding.bind
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
@@ -46,7 +48,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
     private val exchangeAdapter = ExchangeAdapter()
-    private val cardDetailAdapter = CardDetailAdapter()
     val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
@@ -65,7 +66,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(R.id.cardFragment)
+                findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
@@ -225,17 +226,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         break
                     }
 
-                    if (list.size == 0)
-                        it.data.forEach { data ->
-                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
-                                if (data != null) {
-                                    list.add(data)
-                                     cardDetailAdapter.submitList(list)
-
-
-                                }
-                            }
-                        }
                 }
             }
         }
