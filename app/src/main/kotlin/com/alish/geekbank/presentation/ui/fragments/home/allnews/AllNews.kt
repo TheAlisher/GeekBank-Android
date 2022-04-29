@@ -13,7 +13,7 @@ import com.alish.geekbank.presentation.ui.fragments.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AllNews() : BaseFragment<HomeViewModel,FragmentAllNewsBinding>(R.layout.fragment_all_news) {
+class AllNews() : BaseFragment<HomeViewModel, FragmentAllNewsBinding>(R.layout.fragment_all_news) {
 
     override val viewModel: HomeViewModel by viewModels()
     override val binding: FragmentAllNewsBinding by viewBinding(FragmentAllNewsBinding::bind)
@@ -21,19 +21,19 @@ class AllNews() : BaseFragment<HomeViewModel,FragmentAllNewsBinding>(R.layout.fr
 
     private fun clickItemNews(model: NewsModelUI) {
         findNavController().navigate(AllNewsDirections.actionAllNewsToDetailNews(model))
-
     }
 
     override fun initialize() = with(binding) {
         rvNews.adapter = adapter
-
     }
 
     override fun setupRequests() {
         viewModel.newsState.collectUIState {
-            when(it){
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+            when (it) {
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     var list: ArrayList<NewsModelUI> = ArrayList()
                     list.addAll(it.data)

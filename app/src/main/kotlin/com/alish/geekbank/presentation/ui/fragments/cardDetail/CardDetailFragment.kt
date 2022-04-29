@@ -1,6 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
-import android.content.Context
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -67,7 +66,6 @@ class CardDetailFragment :
         checkPosition()
     }
 
-
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
         bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
@@ -79,7 +77,8 @@ class CardDetailFragment :
                     BottomSheetBehavior.STATE_HIDDEN -> {
                         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
                     }
-                    else -> {}
+                    else -> {
+                    }
                 }
             }
 
@@ -127,9 +126,6 @@ class CardDetailFragment :
                 )
             )
         }
-        binding.imageArrow.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     override fun setupSubscribes() {
@@ -147,7 +143,6 @@ class CardDetailFragment :
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    if (cardDetailListAdapter.currentList.size == 0 ){
                     historyList.addAll(it.data)
                     val filteredList = ArrayList<HistoryModelUI>()
                     historyList.forEach {
@@ -159,7 +154,6 @@ class CardDetailFragment :
                     cardDetailListAdapter.submitList(filteredList.sortedByDescending { data -> data.dateTime })
 
                 }
-                }
             }
         }
     }
@@ -169,7 +163,8 @@ class CardDetailFragment :
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val offset: Int = binding.listRecycler.computeHorizontalScrollOffset()
-                var position: Float = offset.toFloat() / (binding.listRecycler.getChildAt(0).measuredWidth).toFloat()
+                var position: Float =
+                    offset.toFloat() / (binding.listRecycler.getChildAt(0).measuredWidth).toFloat()
                 position += 0.5f
                 val postInt: Int = position.toInt()
                 positionCard = cardDetailAdapter.currentList[postInt].cardNumber.toString()

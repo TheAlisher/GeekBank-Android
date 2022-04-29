@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_sheet_corners_background"
-            android:backgroundTint="#191919"
+            android:backgroundTint="@color/bottom_sheet_color"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
-                android:src="@drawable/chevron"
+                android:src="@drawable/ic_vector_stroke"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,10 +40,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="25dp"
-                android:text="History transactions"
-                android:textColor="@color/white"
+                android:layout_marginTop="15dp"
+                android:text="@string/history_transactions"
+                android:textColor="@color/black"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/image_back"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,17 +59,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_back"
-                tools:listitem="@layout/item_detail_card"
-                tools:itemCount="3"/>
+                tools:itemCount="3"
+                tools:listitem="@layout/item_detail_card" />
 
             <TextView
                 android:id="@+id/txt_exchange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Exchange rates"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/white"
+                android:text="@string/exchange_rates"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/recycler_exchange"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -77,13 +78,13 @@
             <TextView
                 android:id="@+id/txt_show_all_exchange"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="See All"
-                app:layout_constraintTop_toTopOf="@id/txt_exchange"
+                android:text="@string/see_all"
                 android:textColor="@color/purple_200"
                 android:textSize="14sp"
-                android:layout_height="wrap_content"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txt_exchange" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_exchange"
@@ -94,8 +95,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_exchange"
-                tools:listitem="@layout/item_detail_card"
-                tools:itemCount="4"/>
+                tools:itemCount="4"
+                tools:listitem="@layout/item_detail_card" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -110,7 +111,7 @@
                     android:layout_marginTop="500dp"
                     android:layout_marginEnd="30dp"
                     android:layout_marginBottom="10dp"
-                    android:text="See All"
+                    android:text="@string/see_all"
                     android:textColor="@color/purple_200"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@id/recycler_news"
@@ -133,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="See All"
+                    android:text="@string/see_all"
                     android:textColor="@color/purple_200"
                     app:layout_constraintBottom_toTopOf="@id/map1"
                     app:layout_constraintRight_toRightOf="@id/map1" />
@@ -143,8 +144,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Latest News"
-                    android:textColor="@color/white"
+                    android:text="@string/latest_news"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@id/txt_show_all"
                     app:layout_constraintLeft_toLeftOf="@id/recycler_news" />
@@ -179,10 +180,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="460dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="97dp"
                     android:background="@drawable/bottom_sheet_corners_background_white"
                     android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:layout_marginBottom="97dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/map1"
                     >

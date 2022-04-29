@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context=".presentation.ui.fragments.transfer.TransferFragment">
 
     <ProgressBar
@@ -25,7 +25,7 @@
         android:layout_marginStart="25dp"
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/from_the_card"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +48,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         android:text="@string/to_the_card"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_recycler1" />
@@ -72,7 +72,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="30dp"
         android:text="@string/available"
-        android:textColor="#8E8E93"
+        android:textColor="@color/text_hint"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_recycler2" />
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="$ 3,150.70"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/txt_available"
         app:layout_constraintTop_toTopOf="@+id/txt_available" />
@@ -93,7 +93,7 @@
         android:textSize="42sp"
         android:hint="0"
         android:textColorHint="@color/title_text_color"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_available"
@@ -106,7 +106,7 @@
         android:layout_height="19dp"
         android:layout_marginStart="120dp"
         android:text="@string/commission"
-        android:textColor="#8E8E93"
+        android:textColor="@color/text_hint"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_txt_transfer" />
@@ -116,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="$ 5,150"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/txt_commission"
         app:layout_constraintTop_toTopOf="@+id/txt_commission" />
@@ -124,11 +124,11 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/background_card_number"
         android:text="@string/send_money"
         android:id="@+id/btn_set_money"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color_detail_news"
         android:textSize="20sp"
         app:icon="@drawable/ic_next"
         app:iconGravity="end"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bottom_sheet_color"
     tools:context=".presentation.ui.fragments.qrCode.scanner.ScannerFragment">
 
     <com.budiyev.android.codescanner.CodeScannerView
@@ -21,6 +22,6 @@
         app:frameCornersSize="60dp"
         app:frameSize="0.75"
         app:frameThickness="2dp"
-        app:maskColor="#77000000" />
+        app:maskColor="@color/scanner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

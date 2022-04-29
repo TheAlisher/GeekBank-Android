@@ -1,11 +1,5 @@
 package com.alish.geekbank.presentation.ui.fragments.admin.createcard
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -19,13 +13,12 @@ import com.alish.geekbank.presentation.extensions.textGet
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.UsersModelUI
 import com.alish.geekbank.presentation.state.UIState
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.lang.NullPointerException
 
 @AndroidEntryPoint
-class CreateCardFragment : BaseFragment<CreateCardViewModel,FragmentCreateCardBinding>(R.layout.fragment_create_card) {
+class CreateCardFragment :
+    BaseFragment<CreateCardViewModel, FragmentCreateCardBinding>(R.layout.fragment_create_card) {
     override val viewModel: CreateCardViewModel by viewModels()
     override val binding: FragmentCreateCardBinding by viewBinding(FragmentCreateCardBinding::bind)
     private val userList = ArrayList<UsersModelUI>()
@@ -36,29 +29,30 @@ class CreateCardFragment : BaseFragment<CreateCardViewModel,FragmentCreateCardBi
     }
 
     private fun clickCreateCard() = with(binding) {
-        btnSave.setOnClickListener  {
+        btnSave.setOnClickListener {
             var userId: String? = null
             var userFullName: String? = null
             var condition = true
-            for (i in userList){
-                if (createDetails(inputUserId.textGet(),i.id!!)){
+            for (i in userList) {
+                if (createDetails(inputUserId.textGet(), i.id!!)) {
                     userId = i.id
                     userFullName = i.name + " " + i.surname
                 }
             }
-            for (i in cardsList){
-                if (inputCard.textGet() == i?.cardNumber){
+            for (i in cardsList) {
+                if (inputCard.textGet() == i?.cardNumber) {
                     this@CreateCardFragment.showToastShort("Такая карта есть")
                     condition = false
                     break
-                }else{
+                } else {
                     condition = true
                 }
             }
 
-            if (userId != null && userFullName != null && condition){
+            if (userId != null && userFullName != null && condition) {
                 val money = (10000..100000).random()
-                val getRandomDate = (1..12).random().toString().checkLength() + "/" + (24..27).random().toString()
+                val getRandomDate =
+                    (1..12).random().toString().checkLength() + "/" + (24..27).random().toString()
                 lifecycleScope.launch {
                     viewModel.createCard(
                         inputCard.textGet(),
@@ -71,11 +65,9 @@ class CreateCardFragment : BaseFragment<CreateCardViewModel,FragmentCreateCardBi
                 findNavController().navigate(R.id.adminFragment)
                 this@CreateCardFragment.showToastShort("Uspeshno")
             }
-            if(userId == null){
+            if (userId == null) {
                 this@CreateCardFragment.showToastShort("User ne nayden")
             }
-
-
 
 
         }
@@ -83,8 +75,9 @@ class CreateCardFragment : BaseFragment<CreateCardViewModel,FragmentCreateCardBi
 
     override fun setupRequests() {
         viewModel.stateUsers.collectUIState {
-            when(it){
-                is UIState.Error -> {}
+            when (it) {
+                is UIState.Error -> {
+                }
                 is UIState.Loading -> {
 
                 }
@@ -95,9 +88,11 @@ class CreateCardFragment : BaseFragment<CreateCardViewModel,FragmentCreateCardBi
             }
         }
         viewModel.stateCards.collectUIState {
-            when(it){
-                is UIState.Error -> {}
-                is UIState.Loading -> {}
+            when (it) {
+                is UIState.Error -> {
+                }
+                is UIState.Loading -> {
+                }
                 is UIState.Success -> {
                     cardsList.addAll(it.data)
                 }
@@ -105,7 +100,7 @@ class CreateCardFragment : BaseFragment<CreateCardViewModel,FragmentCreateCardBi
         }
     }
 
-    fun createDetails(id: String,idFromFirestore: String):Boolean{
+    fun createDetails(id: String, idFromFirestore: String): Boolean {
         return id == idFromFirestore
     }
 

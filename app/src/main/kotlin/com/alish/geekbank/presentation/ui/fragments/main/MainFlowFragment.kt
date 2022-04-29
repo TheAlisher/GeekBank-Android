@@ -1,11 +1,17 @@
 package com.alish.geekbank.presentation.ui.fragments.main
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
+import androidx.core.view.forEach
+import androidx.core.view.get
 import androidx.core.view.isVisible
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.onNavDestinationSelected
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper

@@ -65,4 +65,11 @@ class PreferencesHelper(context: Context) {
             putString(Constants.LANGUAGE_CODE, localization.languageCode).apply()
         }
     }
+
+    companion object {
+        private const val DARK_STATUS = "io.github.manuelernesto.DARK_STATUS"
+    }
+
+    var darkMode = preferences.getInt(DARK_STATUS, 0)
+        set(value) = preferences.edit().putInt(DARK_STATUS, value).apply()
 }
