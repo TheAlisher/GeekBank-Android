@@ -43,8 +43,10 @@ class EditProfileViewModel @Inject constructor(
         updateAccountUseCase.updateAccount(user)
     }
 
-    suspend fun uploadEditProfileImage(file: ByteArray?, id: String) =
-        uploadEditProfileImageUseCase.uploadProfileImage(file, id)
+    suspend fun uploadEditProfileImage(
+        file: ByteArray?, id: String, navigate: () -> Unit,
+    ) =
+        uploadEditProfileImageUseCase.uploadProfileImage(file, id, navigate)
 
     suspend fun downloadEditProfileImage(id: String) =
         downloadEditProfileImageUseCase.downloadEditProfileImage(id)

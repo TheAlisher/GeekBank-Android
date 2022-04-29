@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.alish.geekbank.R
 
 fun NavController.navigateSafely(@IdRes actionId: Int) {

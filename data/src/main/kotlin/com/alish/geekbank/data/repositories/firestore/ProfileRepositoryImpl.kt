@@ -9,6 +9,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.tasks.await
+import java.io.IOException
+import java.lang.Exception
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
@@ -43,8 +45,12 @@ class ProfileRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun downloadProfileImage(id: String): String {
-        return storageReference.child("profileimages/$id")
-            .downloadUrl.await().toString()
+    override suspend fun downloadProfileImage(id: String): String? {
+        return try {
+            storageReference.child("profileimages/$id")
+                .downloadUrl.await()?.toString()
+        } catch (e: Exception) {
+            null
+        }
     }
 }
