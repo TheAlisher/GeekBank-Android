@@ -15,16 +15,26 @@ class EditProfileRepositoryImpl @Inject constructor(
 ) : EditProfileRepository, BaseRepository() {
 
 
-    override suspend fun uploadEditProfileImage(file: ByteArray?, id: String) {
+    override suspend fun uploadEditProfileImage(
+        file: ByteArray?,
+        id: String,
+        navigate: () -> Unit,
+    ) {
         file?.let {
             storageReference.child("profileimages/$id")
                 .putBytes(it)
-                .await()
+                .addOnSuccessListener {
+                    navigate()
+                }.await()
         }
     }
 
     override suspend fun downloadEditProfileImage(id: String): String? {
-        return storageReference.child("profileimages/$id")
-            .downloadUrl.await().toString()
+        return try {
+            storageReference.child("profileimages/$id")
+                .downloadUrl.await()?.toString()
+        } catch (e: Exception) {
+            null
+        }
     }
 }

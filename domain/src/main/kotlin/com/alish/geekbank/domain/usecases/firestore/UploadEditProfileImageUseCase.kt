@@ -4,8 +4,10 @@ import com.alish.geekbank.domain.repositories.firestore.EditProfileRepository
 import javax.inject.Inject
 
 class UploadEditProfileImageUseCase @Inject constructor(
-    private val repository: EditProfileRepository
+    private val repository: EditProfileRepository,
 ) {
-    suspend fun uploadProfileImage(file: ByteArray?, id: String) =
-        repository.uploadEditProfileImage(file, id)
+    suspend fun uploadProfileImage(
+        file: ByteArray?, id: String, navigate: () -> Unit,
+    ) =
+        repository.uploadEditProfileImage(file, id, navigate)
 }

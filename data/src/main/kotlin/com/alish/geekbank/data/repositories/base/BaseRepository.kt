@@ -7,6 +7,7 @@ import com.alish.geekbank.common.resource.Resource
 import com.alish.geekbank.data.remote.pagingsources.base.BasePagingSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.lang.Exception
 
 abstract class BaseRepository {
 
