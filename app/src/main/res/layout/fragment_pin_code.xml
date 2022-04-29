@@ -144,11 +144,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_top2"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="1"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_02"
@@ -158,11 +158,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_top2"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="2"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_03"
@@ -172,11 +172,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_top2"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="3"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
 
 
@@ -188,11 +188,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_center_center2"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="4"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_05"
@@ -202,11 +202,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_center_center2"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="5"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_06"
@@ -216,11 +216,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_center_center2"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="6"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
 
 
@@ -234,11 +234,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_center_center4"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="7"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_08"
@@ -248,11 +248,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_center_center4"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="8"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <com.google.android.material.button.MaterialButton
               android:id="@+id/btn_09"
@@ -262,11 +262,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_center_center4"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="50dp"
               android:textSize="32sp"
               android:text="9"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
 
           <ImageButton
@@ -289,11 +289,11 @@
               app:layout_constraintBottom_toBottomOf="@id/content_bottom"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:backgroundTint="@color/white"
+              android:backgroundTint="@color/black"
               app:cornerRadius="30dp"
               android:textSize="32sp"
               android:text="0"
-              android:textColor="@color/black"/>
+              android:textColor="@color/white"/>
 
           <ImageButton
               android:id="@+id/btn_clear"
