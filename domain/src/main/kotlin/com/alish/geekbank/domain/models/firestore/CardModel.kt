@@ -6,5 +6,4 @@ data class CardModel(
     val date: String? = null,
     val cardNumber: String? = null,
     val fullName: String? = null
-) {
-}
+)

@@ -21,7 +21,7 @@
     <string name="card_detail">Деталь карты</string>
     <string name="transfer">Передача</string>
     <string name="payments">Платежи</string>
-    <string name="exchange">Обмен</string>
+    <string name="exchange">Курс валют</string>
     <string name="qr">QR-код</string>
     <string name="card_holder_name">Имя владельца карты</string>
     <string name="expiry_date">Срок действия</string>
