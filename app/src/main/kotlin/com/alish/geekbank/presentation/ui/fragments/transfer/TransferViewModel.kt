@@ -5,8 +5,6 @@ import com.alish.geekbank.domain.usecases.firestore.FetchCardDataUseCase
 import com.alish.geekbank.domain.usecases.firestore.UpdateCardsUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
 import com.alish.geekbank.presentation.models.CardModelUI
-import com.alish.geekbank.presentation.models.CardsModels
-import com.alish.geekbank.presentation.models.toCardUI
 import com.alish.geekbank.presentation.models.toUI
 import com.alish.geekbank.presentation.state.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,10 +22,6 @@ class TransferViewModel @Inject constructor(
     private val _stateCard =
         MutableStateFlow<UIState<List<CardModelUI?>>>(UIState.Loading())
     val stateCard: StateFlow<UIState<List<CardModelUI?>>> = _stateCard.asStateFlow()
-
-    private val _stateCards =
-        MutableStateFlow<UIState<List<CardsModels?>>>(UIState.Loading())
-    val stateCards: StateFlow<UIState<List<CardsModels?>>> = _stateCards.asStateFlow()
 
     init {
         fetchCardData()
@@ -57,7 +51,5 @@ class TransferViewModel @Inject constructor(
 
     private fun fetchCardData() {
         fetchCardDataUseCase().collectRequest(_stateCard) { it.map { data -> data?.toUI() } }
-
-        fetchCardDataUseCase().collectRequest(_stateCards) { it.map { data -> data?.toCardUI() } }
     }
 }

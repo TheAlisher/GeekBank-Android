@@ -15,7 +15,3 @@ data class CardModelUI(
 fun CardModel.toUI() = CardModelUI(
     blocked, money, date, cardNumber, fullName
 )
-
-fun CardModel.toCardUI() = CardsModels.CardUI(
-    blocked, money, date, cardNumber, fullName
-)
