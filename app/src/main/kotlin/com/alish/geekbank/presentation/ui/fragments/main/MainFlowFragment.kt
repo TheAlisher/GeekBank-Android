@@ -45,7 +45,8 @@ class MainFlowFragment :
                 R.id.pinCodeFragment,
                 R.id.forgotPasswordDialogFragment,
                 R.id.editProfileFragment,
-                R.id.scannerFragment
+                R.id.freezeDialogFragment,
+                R.id.scannerFragment,
                 -> {
                     whetherToShow(false)
                 }
@@ -104,6 +105,7 @@ class MainFlowFragment :
                 Color.WHITE,
                 Color.RED
             )
+
             animateShadow(
                 shapeDrawable = shadowDrawable,
                 startColors = colors,

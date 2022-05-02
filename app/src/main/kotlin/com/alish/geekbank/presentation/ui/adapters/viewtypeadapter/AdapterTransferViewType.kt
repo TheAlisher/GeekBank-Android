@@ -1,5 +1,7 @@
-package com.alish.geekbank.presentation.ui.adapters
+package com.alish.geekbank.presentation.ui.adapters.viewtypeadapter
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -10,8 +12,9 @@ import com.alish.geekbank.databinding.ItemTransferListBinding
 import com.alish.geekbank.presentation.base.BaseComparatorCard
 import com.alish.geekbank.presentation.models.CardModelUI
 
-
-class CardTransferAdapterTo :
+class AdapterTransferViewType(
+    val onInput: (number: String?) -> Unit
+) :
     ListAdapter<CardModelUI, RecyclerView.ViewHolder>(BaseComparatorCard()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -24,6 +27,7 @@ class CardTransferAdapterTo :
                         false
                     )
                 )
+
             R.layout.item_transfer_list -> {
                 MyCardViewHolder(
                     ItemTransferListBinding.inflate(
@@ -48,15 +52,9 @@ class CardTransferAdapterTo :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
             R.layout.item_list_transfer_number ->
-                getItem(position).let {
-                    (holder as EnterCardViewHolder).onBind(it)
-                }
-
+                (holder as EnterCardViewHolder).onBind(getItem(position) as CardModelUI)
             R.layout.item_transfer_list ->
-                getItem(position).let {
-                    (holder as MyCardViewHolder).onBind(it)
-                }
-
+                (holder as MyCardViewHolder).onBind(getItem(position) as CardModelUI)
         }
     }
 
@@ -73,8 +71,28 @@ class CardTransferAdapterTo :
 
     inner class EnterCardViewHolder(private val binding: ItemListTransferNumberBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(cardModelUI: CardModelUI) {
 
+        init {
+            binding.enterCardNumber.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    onInput(
+                        binding.enterCardNumber.text.toString()
+                    )
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                }
+
+            })
+        }
+
+        fun onBind(cardModelUI: CardModelUI) {
+            binding.apply {
+                enterCardNumber.setText(cardModelUI.cardNumber ?: "")
+            }
         }
     }
 

@@ -26,7 +26,6 @@ object NetworkModule {
     @Provides
     fun provideFireStore() = FirebaseFirestore.getInstance()
 
-
     @Singleton
     @Provides
     fun provideExchange() = retrofitClient.provideExchangeApiService()

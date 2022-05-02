@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +20,6 @@ import com.alish.geekbank.databinding.ActivityMainBinding.bind
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
-import com.alish.geekbank.presentation.extensions.parentFragmentInNavHost
 import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
@@ -30,14 +30,9 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
-import com.alish.geekbank.presentation.ui.fragments.main.MainFlowFragment
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapsInitializer
-import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -46,16 +41,13 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.fragment_home),
     OnMapReadyCallback {
-
     private lateinit var googleMap: GoogleMap
     private val adapter: NewsAdapter = NewsAdapter(this::clickNewsItem)
     private val cardDetailListAdapter = CardDetailListAdapter()
     private val exchangeAdapter = ExchangeAdapter()
-    private val cardDetailAdapter = CardDetailAdapter()
     val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
 
@@ -74,7 +66,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCardFragment())
+                findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
@@ -92,18 +84,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         clickForExchange()
         setupAction()
         setupBottomSheet()
-        clickProfile()
-    }
-
-    private fun clickProfile() {
-//        val menuItemProfile = parentFragmentInNavHost<MainFlowFragment>()
-//            .parentFragmentInNavHost<HomeFragment>()
-//            .requireView()
-//            .findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-//            .menu
-//            .findItem(R.id.mainFlowFragment)
-
-
     }
 
     override fun initialize() {
@@ -123,7 +103,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
-        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
+        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 2
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
@@ -132,8 +112,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                     BottomSheetBehavior.STATE_HIDDEN -> {
                         bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
                     }
-                    else -> {
-                    }
+                    else -> {}
                 }
             }
 
@@ -191,10 +170,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     override fun setupRequests() {
         viewModel.stateCard.collectUIState() {
             when (it) {
-                is UIState.Error -> {
-                }
-                is UIState.Loading -> {
-                }
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
                 is UIState.Success -> {
 
                     binding.tvCash.text = it.data[0]?.money.toString()
@@ -214,10 +191,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
         viewModel.newsState.collectUIState {
             when (it) {
-                is UIState.Error -> {
-                }
-                is UIState.Loading -> {
-                }
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
                 is UIState.Success -> {
                     var list: ArrayList<NewsModelUI> = ArrayList()
                     for (i in it.data) {
@@ -233,12 +208,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         }
         viewModel.stateCard.collectUIState {
             when (it) {
-                is UIState.Error -> {
-                }
-                is UIState.Loading -> {
-                }
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
                 is UIState.Success -> {
-                    for (i in it.data) {
+                    for (i in it.data){
                         binding.tvCash.text = i?.money.toString()
 
                         binding.bottomSheetInclude.numberCard.text =
@@ -253,27 +226,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                         break
                     }
 
-                    if (list.size == 0)
-                        it.data.forEach { data ->
-                            if (data?.cardNumber == preferencesHelper.getString(Constants.USER_ID)) {
-                                if (data != null) {
-                                    list.add(data)
-                                    cardDetailAdapter.submitList(list)
-
-
-                                }
-                            }
-                        }
                 }
             }
         }
 
         viewModelExchange.exchangeState.collectUIState {
             when (it) {
-                is UIState.Error -> {
-                }
-                is UIState.Loading -> {
-                }
+                is UIState.Error -> {}
+                is UIState.Loading -> {}
                 is UIState.Success -> {
                     val listExchange = ArrayList<ExchangeModelsUI>()
                     it.data.let { data ->
