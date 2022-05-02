@@ -237,7 +237,7 @@
               android:backgroundTint="@color/white"
               app:cornerRadius="50dp"
               android:textSize="32sp"
-              android:text="7"
+              android:text="9"
               android:textColor="@color/black"/>
 
           <com.google.android.material.button.MaterialButton
@@ -265,7 +265,7 @@
               android:backgroundTint="@color/white"
               app:cornerRadius="50dp"
               android:textSize="32sp"
-              android:text="9"
+              android:text="7"
               android:textColor="@color/black"/>
 
 
