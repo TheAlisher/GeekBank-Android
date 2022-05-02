@@ -19,6 +19,7 @@ import com.alish.geekbank.databinding.ActivityMainBinding.bind
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
+import com.alish.geekbank.presentation.extensions.parentFragmentInNavHost
 import com.alish.geekbank.presentation.extensions.setAnimation
 import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
@@ -29,12 +30,14 @@ import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
+import com.alish.geekbank.presentation.ui.fragments.main.MainFlowFragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -71,7 +74,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         super.onViewCreated(view, savedInstanceState)
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
-                findNavController().navigate(R.id.action_homeFragment_to_cardFragment)
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToCardFragment())
             }
 
             override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
