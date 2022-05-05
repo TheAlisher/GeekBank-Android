@@ -9,24 +9,24 @@
 
     <ProgressBar
         android:id="@+id/loading"
-        android:visibility="gone"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginEnd="14dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/btn_set_money"
         app:layout_constraintRight_toRightOf="@id/btn_set_money"
-        app:layout_constraintTop_toTopOf="@id/btn_set_money"
-        android:layout_marginEnd="14dp"/>
+        app:layout_constraintTop_toTopOf="@id/btn_set_money" />
 
     <TextView
-        android:layout_marginTop="20dp"
         android:id="@+id/txt_from_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
         android:text="@string/from_the_card"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -61,9 +61,9 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:itemCount="4"
         app:layout_constraintTop_toBottomOf="@id/txt_to_the_card"
-        tools:listitem="@layout/item_list_transfer_number"/>
+        tools:itemCount="4"
+        tools:listitem="@layout/item_list_transfer_number" />
 
     <TextView
         android:id="@+id/txt_available"
@@ -81,24 +81,25 @@
         android:id="@+id/txt_number_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="$ 3,150.70"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/txt_available"
-        app:layout_constraintTop_toTopOf="@+id/txt_available" />
+        app:layout_constraintTop_toTopOf="@+id/txt_available"
+        tools:text="$ 3,150.70" />
 
 
     <EditText
         android:id="@+id/input_txt_transfer"
-        android:textSize="42sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:hint="0"
-        android:textColorHint="@color/title_text_color"
+        android:inputType="number"
         android:textColor="@color/black"
+        android:textColorHint="@color/title_text_color"
+        android:textSize="42sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_available"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toBottomOf="@id/txt_available" />
 
     <TextView
         android:id="@+id/txt_commission"
@@ -115,25 +116,25 @@
         android:id="@+id/txt_commission_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="$ 5,150"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/txt_commission"
-        app:layout_constraintTop_toTopOf="@+id/txt_commission" />
+        app:layout_constraintTop_toTopOf="@+id/txt_commission"
+        tools:text="$ 5,150" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_set_money"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/background_card_number"
         android:text="@string/send_money"
-        android:id="@+id/btn_set_money"
         android:textColor="@color/text_color_detail_news"
         android:textSize="20sp"
-        app:icon="@drawable/ic_next"
-        app:iconGravity="end"
         android:textStyle="bold"
         app:backgroundTint="@null"
+        app:icon="@drawable/ic_next"
+        app:iconGravity="end"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_commission_number" />

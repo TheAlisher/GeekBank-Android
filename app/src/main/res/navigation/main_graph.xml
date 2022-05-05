@@ -166,4 +166,13 @@
         android:name="com.alish.geekbank.presentation.ui.fragments.admin.createcard.CreateCardFragment"
         android:label="fragment_create_card"
         tools:layout="@layout/fragment_create_card" />
+    <fragment
+        android:id="@+id/cardLockFragment"
+        android:name="com.alish.geekbank.presentation.ui.fragments.settings.cardlock.CardLockFragment"
+        android:label="fragment_card_lock"
+        tools:layout="@layout/fragment_card_lock" >
+        <action
+            android:id="@+id/action_cardLockFragment_to_freezeDialogFragment"
+            app:destination="@id/freezeDialogFragment" />
+    </fragment>
 </navigation>
