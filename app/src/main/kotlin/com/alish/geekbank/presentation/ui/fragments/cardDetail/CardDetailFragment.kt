@@ -1,6 +1,8 @@
 package com.alish.geekbank.presentation.ui.fragments.cardDetail
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
@@ -23,6 +25,10 @@ import com.alish.geekbank.presentation.state.UIState
 import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.WriterException
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -45,6 +51,7 @@ class CardDetailFragment :
 
     val historyList = ArrayList<HistoryModelUI?>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
+    private var bottomSheetBehaviorQr: BottomSheetBehavior<ConstraintLayout>? = null
 
     override fun initialize() = with(binding) {
         listRecycler.adapter = cardDetailAdapter
@@ -68,6 +75,8 @@ class CardDetailFragment :
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
+        bottomSheetBehaviorQr = BottomSheetBehavior.from(binding.bottomSheetIncludeQr.bottomSheetQr)
+        bottomSheetBehaviorQr?.state = BottomSheetBehavior.STATE_HIDDEN
         bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
@@ -88,6 +97,7 @@ class CardDetailFragment :
         })
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupAction() = with(binding) {
         buttonHorizontal.setOnClickListener {
             findNavController().navigate(
@@ -115,7 +125,14 @@ class CardDetailFragment :
             )
         }
         buttonQR.setOnClickListener {
-            findNavController().navigate(R.id.scannerFragment)
+            bottomSheetBehaviorQr?.state = BottomSheetBehavior.STATE_EXPANDED
+            bottomSheetIncludeQr.numberCard.text =
+                "**** **** **** " + positionCard.substring(positionCard.length - 4)
+            bottomSheetIncludeQr.qrView.setImageBitmap(
+                generateQrCode(
+                    cardNumber = positionCard
+                )
+            )
         }
         buttonSettings.setOnClickListener {
             findNavController().navigate(
@@ -202,5 +219,15 @@ class CardDetailFragment :
         }
     }
 
-
+    private fun generateQrCode(cardNumber: String?): Bitmap? {
+        val writer = MultiFormatWriter()
+        var bitmap: Bitmap? = null
+        try {
+            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+            val encoder = BarcodeEncoder()
+            bitmap = encoder.createBitmap(matrix)
+        } catch (e: WriterException) {
+        }
+        return bitmap
+    }
 }

@@ -1,7 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.profile
 
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
@@ -62,6 +61,9 @@ class ProfileFragment :
         containerForAdmins.setOnClickListener {
             findNavController().navigate(R.id.adminFragment)
         }
+        containerSettings.setOnClickListener {
+            findNavController().navigate(R.id.settingsFragment)
+        }
         setupRussian()
         setupEnglish()
         changePassClick()
@@ -114,7 +116,6 @@ class ProfileFragment :
             }
         }
     }
-
 
 
     private fun setupRussian() = with(binding) {

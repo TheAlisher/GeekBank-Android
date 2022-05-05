@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,9 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
-import com.alish.geekbank.common.constants.Constants
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
-import com.alish.geekbank.databinding.ActivityMainBinding.bind
 import com.alish.geekbank.databinding.FragmentHomeBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.overrideOnBackPressed
@@ -25,12 +22,14 @@ import com.alish.geekbank.presentation.models.CardModelUI
 import com.alish.geekbank.presentation.models.NewsModelUI
 import com.alish.geekbank.presentation.models.exchange.ExchangeModelsUI
 import com.alish.geekbank.presentation.state.UIState
-import com.alish.geekbank.presentation.ui.adapters.CardDetailAdapter
 import com.alish.geekbank.presentation.ui.adapters.CardDetailListAdapter
 import com.alish.geekbank.presentation.ui.adapters.ExchangeAdapter
 import com.alish.geekbank.presentation.ui.adapters.NewsAdapter
 import com.alish.geekbank.presentation.ui.fragments.exchange.ExchangeViewModel
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapsInitializer
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -50,6 +49,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     private val exchangeAdapter = ExchangeAdapter()
     val list = ArrayList<CardModelUI>()
     private var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>? = null
+    private var bottomSheetBehaviorQr: BottomSheetBehavior<ConstraintLayout>? = null
 
     override val viewModel: HomeViewModel by viewModels()
     override val binding by viewBinding(FragmentHomeBinding::bind)
@@ -80,7 +80,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
     override fun setupListeners() {
         clickForAllNews()
         clickForSeeFullMap()
-        clickForQrScanner()
+        clickForQr()
         clickForExchange()
         setupAction()
         setupBottomSheet()
@@ -103,6 +103,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
+        bottomSheetBehaviorQr = BottomSheetBehavior.from(binding.bottomSheetIncludeQr.bottomSheetQr)
+        bottomSheetBehaviorQr?.state = BottomSheetBehavior.STATE_HIDDEN
         bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 2
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
@@ -122,9 +124,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         })
     }
 
-    private fun clickForQrScanner() {
+    private fun clickForQr() {
         binding.buttonQR.setOnClickListener {
-            findNavController().navigate(R.id.scannerFragment)
+            bottomSheetBehaviorQr?.state = BottomSheetBehavior.STATE_EXPANDED
         }
     }
 
@@ -176,11 +178,11 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
 
                     binding.tvCash.text = it.data[0]?.money.toString()
 
-                    binding.bottomSheetInclude.numberCard.text =
-                        "**** **** **** ****" + it.data[0]?.cardNumber.toString().substring(
+                    binding.bottomSheetIncludeQr.numberCard.text =
+                        "**** **** **** " + it.data[0]?.cardNumber.toString().substring(
                             it.data[0]?.cardNumber.toString().length - 4
                         )
-                    binding.bottomSheetInclude.qrView.setImageBitmap(
+                    binding.bottomSheetIncludeQr.qrView.setImageBitmap(
                         generateQrCode(
                             cardNumber = it.data[0]?.cardNumber.toString()
                         )
@@ -211,18 +213,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
                 is UIState.Error -> {}
                 is UIState.Loading -> {}
                 is UIState.Success -> {
-                    for (i in it.data){
+                    for (i in it.data) {
                         binding.tvCash.text = i?.money.toString()
 
-                        binding.bottomSheetInclude.numberCard.text =
-                            "**** **** **** " + i?.cardNumber.toString().substring(
-                                i?.cardNumber.toString().length - 4
-                            )
-                        binding.bottomSheetInclude.qrView.setImageBitmap(
-                            generateQrCode(
-                                cardNumber = i?.cardNumber.toString()
-                            )
-                        )
                         break
                     }
 
@@ -299,7 +292,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         val writer = MultiFormatWriter()
         var bitmap: Bitmap? = null
         try {
-            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 550, 550)
+            val matrix = writer.encode(cardNumber, BarcodeFormat.QR_CODE, 650, 650)
             val encoder = BarcodeEncoder()
             bitmap = encoder.createBitmap(matrix)
         } catch (e: WriterException) {
