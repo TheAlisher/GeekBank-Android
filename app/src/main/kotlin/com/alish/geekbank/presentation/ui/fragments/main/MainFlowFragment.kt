@@ -1,24 +1,17 @@
 package com.alish.geekbank.presentation.ui.fragments.main
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnNextLayout
-import androidx.core.view.forEach
-import androidx.core.view.get
 import androidx.core.view.isVisible
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.onNavDestinationSelected
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
 import com.alish.geekbank.data.local.preferences.PreferencesHelper
 import com.alish.geekbank.databinding.FlowFragmentMainBinding
 import com.alish.geekbank.presentation.base.BaseFlowFragment
 import com.alish.geekbank.presentation.extensions.*
-import com.google.android.gms.maps.MapView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -45,7 +38,7 @@ class MainFlowFragment :
                 R.id.pinCodeFragment,
                 R.id.forgotPasswordDialogFragment,
                 R.id.editProfileFragment,
-                R.id.scannerFragment
+                R.id.scannerFragment,
                 -> {
                     whetherToShow(false)
                 }
@@ -64,7 +57,9 @@ class MainFlowFragment :
 
         if (!preferenceHelper.isChange) {
             navController.navigate(R.id.pinCodeFragment)
-        } else if (preferenceHelper.isChange && navController.currentDestination == navController.findDestination(R.id.profileFragment)) {
+        } else if (preferenceHelper.isChange && navController.currentDestination == navController.findDestination(
+                R.id.profileFragment)
+        ) {
             Log.d("PinCodeFragment", "setupNavigation: ")
         } else {
             navController.navigate(R.id.pinCodeFragment)
@@ -115,12 +110,11 @@ class MainFlowFragment :
         }
     }
 
-    private fun whetherToShow(b: Boolean) {
+     fun whetherToShow(b: Boolean) {
         binding.bottomAppBar.isVisible = b
         binding.fab.isVisible = b
         binding.fabView.isVisible = b
     }
-
 
     override fun onStop() {
         Log.d("Fragment1", "onStop")
