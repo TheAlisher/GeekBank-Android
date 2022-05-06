@@ -1,7 +1,6 @@
 package com.alish.geekbank.presentation.ui.fragments.profile
 
 import android.net.Uri
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
@@ -67,6 +66,9 @@ class ProfileFragment :
         containerForAdmins.setOnClickListener {
             findNavController().navigate(R.id.adminFragment)
         }
+        containerSettings.setOnClickListener {
+            findNavController().navigate(R.id.settingsFragment)
+        }
         setupRussian()
         setupEnglish()
         changePassClick()
@@ -120,25 +122,6 @@ class ProfileFragment :
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.e("lifecycle", "start")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e("lifecycle", "resume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e("lifecycle", "pause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e("lifecycle", "stop")
-    }
 
     private fun setupRussian() = with(binding) {
         bottomSheet2Include.containerRussianBottomSheet.setOnClickListener {

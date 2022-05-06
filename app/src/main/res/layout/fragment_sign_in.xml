@@ -11,7 +11,7 @@
         android:id="@+id/text_login"
         android:text="@string/login"
         android:textColor="@color/black"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@id/loginTIL"
         app:layout_constraintLeft_toLeftOf="@id/loginTIL"
         android:layout_width="wrap_content"
@@ -29,11 +29,13 @@
 
         <EditText
             android:id="@+id/ID_et"
+            android:maxLines="1"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:background="@drawable/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/IDText"
@@ -49,7 +51,7 @@
         android:id="@+id/text_password"
         android:text="@string/password"
         android:textColor="@color/black"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="@id/passwordTIL"
         app:layout_constraintBottom_toTopOf="@id/passwordTIL"
         android:layout_below="@id/loginTIL"
@@ -72,6 +74,8 @@
         <EditText
             android:id="@+id/password_et"
             android:layout_width="match_parent"
+            android:maxLines="1"
+            android:inputType="textPassword"
             android:layout_height="wrap_content"
             android:background="@drawable/password"
             android:textColor="@color/black"

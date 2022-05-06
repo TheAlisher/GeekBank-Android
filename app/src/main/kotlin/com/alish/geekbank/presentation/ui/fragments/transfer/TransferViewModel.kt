@@ -18,23 +18,29 @@ class TransferViewModel @Inject constructor(
     private val fetchCardDataUseCase: FetchCardDataUseCase,
     private val updateCardsUseCase: UpdateCardsUseCase,
     private val addHistoryUseCases: AddHistoryUseCases
-):BaseViewModel() {
+) : BaseViewModel() {
     private val _stateCard =
         MutableStateFlow<UIState<List<CardModelUI?>>>(UIState.Loading())
     val stateCard: StateFlow<UIState<List<CardModelUI?>>> = _stateCard.asStateFlow()
 
-
     init {
         fetchCardData()
     }
-    suspend fun updateAccount(money: Int,cardNumber: String){
-        val user =HashMap<String,Any>()
+
+    suspend fun updateAccount(money: Int, cardNumber: String) {
+        val user = HashMap<String, Any>()
         user["money"] = money
-        updateCardsUseCase.updateAccount(user,cardNumber)
+        updateCardsUseCase.updateAccount(user, cardNumber)
     }
 
-    suspend fun addHistory(money: Int,fromCard: String?,toCard: String?,condition: String?,dateTime: String?){
-        val map = HashMap<String,Any>()
+    suspend fun addHistory(
+        money: Int,
+        fromCard: String?,
+        toCard: String?,
+        condition: String?,
+        dateTime: String?
+    ) {
+        val map = HashMap<String, Any>()
         map["fromCard"] = fromCard.toString()
         map["toCard"] = toCard.toString()
         map["dateTime"] = dateTime.toString()
@@ -42,7 +48,6 @@ class TransferViewModel @Inject constructor(
         map["money"] = money
         addHistoryUseCases.addHistory(map)
     }
-
 
     private fun fetchCardData() {
         fetchCardDataUseCase().collectRequest(_stateCard) { it.map { data -> data?.toUI() } }

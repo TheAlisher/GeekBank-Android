@@ -13,5 +13,5 @@ data class CardModelUI(
 ) : BaseDiffUtilCard
 
 fun CardModel.toUI() = CardModelUI(
-    blocked, money, date, cardNumber,fullName
+    blocked, money, date, cardNumber, fullName
 )

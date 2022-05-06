@@ -1,4 +1,4 @@
-package com.alish.geekbank.presentation.ui.fragments.settings
+package com.alish.geekbank.presentation.ui.fragments.settings.cardlock
 
 import com.alish.geekbank.domain.usecases.firestore.FetchCardDataUseCase
 import com.alish.geekbank.presentation.base.BaseViewModel
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(
+class CardLockViewModel @Inject constructor(
     private val fetchCardDataUseCase: FetchCardDataUseCase
 ) : BaseViewModel() {
 
@@ -27,5 +27,4 @@ class SettingsViewModel @Inject constructor(
     private fun fetchCard() {
         fetchCardDataUseCase().collectRequest(_stateCard) { it.map { data -> data?.toUI() } }
     }
-
 }

@@ -105,16 +105,17 @@
             android:textSize="15dp"
             app:layout_constraintLeft_toRightOf="@id/name_card"
             app:layout_constraintTop_toBottomOf="@id/data_card_text" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_horizontal"
             android:layout_width="75dp"
             android:layout_height="60dp"
+            android:background="@drawable/button_gradient"
             app:backgroundTint="@null"
             app:cornerRadius="10dp"
-            android:background="@drawable/button_gradient"
-            app:iconPadding="0dp"
             app:icon="@drawable/ic_vector__line"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintLeft_toLeftOf="@id/guidelineleft"
             app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
@@ -136,9 +137,9 @@
             android:background="@drawable/button_gradient"
             app:backgroundTint="@null"
             app:cornerRadius="10dp"
-            app:iconPadding="0dp"
             app:icon="@drawable/ic_wallet"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintEnd_toStartOf="@id/button_exchange"
             app:layout_constraintStart_toEndOf="@id/button_horizontal"
             app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
@@ -161,9 +162,9 @@
             android:background="@drawable/button_gradient"
             app:backgroundTint="@null"
             app:cornerRadius="10dp"
-            app:iconPadding="0dp"
             app:icon="@drawable/ic_y"
             app:iconGravity="textStart"
+            app:iconPadding="0dp"
             app:layout_constraintRight_toRightOf="@id/guidelineright"
             app:layout_constraintTop_toBottomOf="@id/guidelinetop" />
 
@@ -198,9 +199,9 @@
             android:hint="@string/qr"
             android:textColorHint="@color/text_hint"
             android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/guidelinebottom"
             app:layout_constraintLeft_toLeftOf="@id/buttonQR"
-            app:layout_constraintRight_toRightOf="@id/buttonQR"
-            app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+            app:layout_constraintRight_toRightOf="@id/buttonQR" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_freeze_card"
@@ -212,21 +213,21 @@
             app:icon="@drawable/ic_freez_card"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
+            app:layout_constraintBottom_toTopOf="@id/txt_freeze_card"
             app:layout_constraintLeft_toLeftOf="@id/buttonQR"
-            app:layout_constraintRight_toRightOf="@id/button_settings"
-            app:layout_constraintBottom_toTopOf="@id/txt_freeze_card"/>
+            app:layout_constraintRight_toRightOf="@id/button_settings" />
 
         <TextView
             android:id="@+id/txt_freeze_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/freeze_card"
+            android:maxEms="5"
             android:textColorHint="@color/text_hint"
             android:textSize="15sp"
-            android:maxEms="5"
-            app:layout_constraintRight_toRightOf="@id/button_freeze_card"
+            app:layout_constraintBottom_toTopOf="@id/guidelinebottom"
             app:layout_constraintLeft_toLeftOf="@id/button_freeze_card"
-            app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+            app:layout_constraintRight_toRightOf="@id/button_freeze_card" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_settings"
@@ -238,19 +239,19 @@
             app:icon="@drawable/ic_sliders_horizontal"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:layout_constraintRight_toRightOf="@id/guidelineright"
-            app:layout_constraintBottom_toTopOf="@id/txt_settings" />
+            app:layout_constraintBottom_toTopOf="@id/txt_settings"
+            app:layout_constraintRight_toRightOf="@id/guidelineright" />
 
         <TextView
             android:id="@+id/txt_settings"
-            android:hint="@string/settings"
-            android:textColorHint="@color/text_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="@string/settings"
+            android:textColorHint="@color/text_hint"
             android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/guidelinebottom"
             app:layout_constraintLeft_toLeftOf="@id/button_settings"
-            app:layout_constraintRight_toRightOf="@id/button_settings"
-            app:layout_constraintBottom_toTopOf="@id/guidelinebottom" />
+            app:layout_constraintRight_toRightOf="@id/button_settings" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -291,6 +292,10 @@
         <include
             android:id="@+id/bottom_sheet_include"
             layout="@layout/bottom_sheet_home" />
+
+        <include
+            android:id="@+id/bottom_sheet_include_qr"
+            layout="@layout/bottom_sheet_qr" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 

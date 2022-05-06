@@ -4,23 +4,30 @@
         android:id="@+id/homeFragment"
         android:title="@string/home"
         android:icon="@drawable/ic_home"/>
+        android:menuCategory="secondary"
+        />
     <item
         android:id="@+id/cardFragment"
         android:title="@string/cards"
         android:icon="@drawable/ic_pay"/>
+        android:menuCategory="secondary"
+        />
     <item
         android:id="@+id/fragment"
         android:title=""
+        android:menuCategory="secondary"
         />
 
     <item
         android:id="@+id/fragment2"
         android:title="@string/crypta"
         android:icon="@drawable/ic_blockchain"
+        android:menuCategory="secondary"
         />
     <item
         android:id="@+id/profileFragment"
         android:title="@string/profile"
         android:icon="@drawable/ic_userprofile"/>
+        android:menuCategory="secondary"/>
 
 </menu>
