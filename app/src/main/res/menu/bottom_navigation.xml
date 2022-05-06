@@ -3,13 +3,13 @@
     <item
         android:id="@+id/homeFragment"
         android:title="@string/home"
-        android:icon="@drawable/ic_home"/>
+        android:icon="@drawable/ic_home"
         android:menuCategory="secondary"
         />
     <item
         android:id="@+id/cardFragment"
         android:title="@string/cards"
-        android:icon="@drawable/ic_pay"/>
+        android:icon="@drawable/ic_pay"
         android:menuCategory="secondary"
         />
     <item
@@ -27,7 +27,7 @@
     <item
         android:id="@+id/profileFragment"
         android:title="@string/profile"
-        android:icon="@drawable/ic_userprofile"/>
+        android:icon="@drawable/ic_userprofile"
         android:menuCategory="secondary"/>
 
 </menu>
