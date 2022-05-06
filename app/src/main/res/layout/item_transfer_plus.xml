@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/bottom_sheet_color"
-    >
+    android:background="@color/bottom_sheet_color">
 
     <ImageView
         android:id="@+id/image"

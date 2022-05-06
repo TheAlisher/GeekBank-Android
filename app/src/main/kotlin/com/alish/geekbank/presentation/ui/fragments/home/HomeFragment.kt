@@ -105,7 +105,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(R.layout.f
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheetHome)
         bottomSheetBehaviorQr = BottomSheetBehavior.from(binding.bottomSheetIncludeQr.bottomSheetQr)
         bottomSheetBehaviorQr?.state = BottomSheetBehavior.STATE_HIDDEN
-        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 2
+        bottomSheetBehavior?.peekHeight = 700
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {

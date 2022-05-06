@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/ic_home"
         android:menuCategory="secondary"
         />
     <item
         android:id="@+id/cardFragment"
-        android:title="Cards"
+        android:title="@string/cards"
         android:icon="@drawable/ic_pay"
         android:menuCategory="secondary"
         />
@@ -20,13 +20,13 @@
 
     <item
         android:id="@+id/fragment2"
-        android:title="Crypta"
+        android:title="@string/crypta"
         android:icon="@drawable/ic_blockchain"
         android:menuCategory="secondary"
         />
     <item
         android:id="@+id/profileFragment"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/ic_userprofile"
         android:menuCategory="secondary"/>
 

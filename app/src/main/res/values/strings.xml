@@ -81,7 +81,13 @@
     <string name="enter_your_current_pin_code">ENTER YOUR CURRENT PIN CODE</string>
     <string name="confirm_the_password">Confirm the password</string>
     <string name="language_changet">Language changed</string>
-
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_default">System default</string>
+    <string name="home">Home</string>
+    <string name="cards">Cards</string>
+    <string name="crypta">Crypta</string>
+    <string name="profile">Profile</string>
     <string-array name="condition">
     <item>
         neAdmin

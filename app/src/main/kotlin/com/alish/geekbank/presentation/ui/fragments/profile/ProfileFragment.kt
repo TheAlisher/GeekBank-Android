@@ -8,6 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alish.geekbank.R
@@ -18,10 +19,12 @@ import com.alish.geekbank.databinding.FragmentProfileBinding
 import com.alish.geekbank.presentation.base.BaseFragment
 import com.alish.geekbank.presentation.extensions.setImage
 import com.alish.geekbank.presentation.state.UIState
+import com.alish.geekbank.presentation.ui.fragments.main.MainFlowFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class ProfileFragment :
@@ -56,6 +59,8 @@ class ProfileFragment :
 
     override fun setupListeners() = with(binding) {
         containerLanguage.setOnClickListener {
+            ((parentFragment as NavHostFragment).parentFragment as MainFlowFragment).whetherToShow(
+                false)
             bottomSheetBehavior?.state = BottomSheetBehavior.STATE_EXPANDED
         }
         containerForAdmins.setOnClickListener {
@@ -137,9 +142,23 @@ class ProfileFragment :
     }
 
     private fun chooseThemeDialog() {
+//        MaterialAlertDialogBuilder(requireContext(),
+//            R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background)
+//            .setTitle("Dialog")
+//            .setMessage("Message...  ....")
+//            .setPositiveButton("Ok",  /* listener = */null)
+//            .show()
+
+//        val materialBuilder = MaterialAlertDialogBuilder(requireContext(), R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background)
+//        materialBuilder.setTitle(getString(R.string.choose_theme_text))
+//        val materialStyles = arrayOf(getString(R.string.light), getString(R.string.dark), getString(R.string.system_default))
+//        val materialChecked = preferencesHelper.darkMode
+
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(getString(R.string.choose_theme_text))
-        val styles = arrayOf("Light", "Dark", "System default")
+        val styles = arrayOf(getString(R.string.light),
+            getString(R.string.dark),
+            getString(R.string.system_default))
         val checkedItem = preferencesHelper.darkMode
 
         builder.setSingleChoiceItems(styles, checkedItem) { dialog, which ->

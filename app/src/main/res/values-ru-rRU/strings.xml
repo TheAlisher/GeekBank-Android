@@ -81,12 +81,17 @@
     <string name="enter_your_current_pin_code">ВВЕДИТЕ ВАШ ТЕКУЩИЙ ПИН-КОД</string>
     <string name="confirm_the_password">Подтвердите пароль</string>
     <string name="language_changet">Язык изменен</string>
-
-
+    <string name="pin_code">Пин-Код</string>
+    <string name="light">Светлый</string>
+    <string name="dark">Темный</string>
+    <string name="system_default">Системные установки по умолчанию</string>
+    <string name="home">Домой</string>
+    <string name="cards">Карты</string>
+    <string name="crypta">Крипта</string>
+    <string name="profile">Профиль</string>
     <!-- OnBoarding -->
     <string name="title_on_boarding_first_slide">Быстрая регистрация расходов и платежей</string>
     <string name="title_on_boarding_second_slide">Перевод без комиссии</string>
     <string name="title_on_boarding_third_slide">Быстрый выпуск карты</string>
     <string name="title_button_get_started">Начать</string>
-
 </resources>

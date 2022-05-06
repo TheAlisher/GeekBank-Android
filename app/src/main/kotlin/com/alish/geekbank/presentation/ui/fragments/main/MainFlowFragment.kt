@@ -117,7 +117,7 @@ class MainFlowFragment :
         }
     }
 
-    private fun whetherToShow(b: Boolean) {
+     fun whetherToShow(b: Boolean) {
         binding.bottomAppBar.isVisible = b
         binding.fab.isVisible = b
         binding.fabView.isVisible = b

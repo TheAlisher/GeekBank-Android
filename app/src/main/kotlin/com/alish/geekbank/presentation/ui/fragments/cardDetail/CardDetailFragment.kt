@@ -75,9 +75,9 @@ class CardDetailFragment :
 
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheetInclude.bottomSheet)
+        bottomSheetBehavior?.peekHeight = 650
         bottomSheetBehaviorQr = BottomSheetBehavior.from(binding.bottomSheetIncludeQr.bottomSheetQr)
         bottomSheetBehaviorQr?.state = BottomSheetBehavior.STATE_HIDDEN
-        bottomSheetBehavior?.peekHeight = resources.displayMetrics.heightPixels / 3
         bottomSheetBehavior?.isHideable = false
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
@@ -90,7 +90,6 @@ class CardDetailFragment :
                     }
                 }
             }
-
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
                 binding.bottomSheetInclude.imageBack.rotation = slideOffset * 180
             }
